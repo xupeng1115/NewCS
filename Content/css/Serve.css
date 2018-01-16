@@ -1,0 +1,531 @@
+@charset "utf-8";
+/******************************Banner****************************/
+.top-banner {
+	position:relative;
+	width:100%;
+	height:280px;
+	background:url(../img/serve_banner.png)no-repeat center center;
+	background-size:cover;
+}
+
+.top-banner .banner-title{
+	padding-top:107px;
+	padding-bottom:20px;
+	line-height:47px;
+	font-family:"NotoSansCJKsc-Light";
+	font-size:32px;
+	text-align:center;
+	color:#fff;
+}
+
+.top-banner .banner-msg{
+	font-family:"NotoSansCJKsc-Light";
+	font-size:16px;
+	text-align:center;
+	color:#fff;
+}
+
+/***************************中间内容区content***********************/
+section{
+	position:relative;
+}
+
+section .module-title{
+	position:relative;
+	margin:0 auto;
+	width:200px;
+	padding-top:120px;
+	text-align:center;
+	font-size:24px;
+	letter-spacing: 0.9px;
+	color:#333;
+}
+
+section .module-title::before{
+	position:absolute;
+	top:100px;
+	left:60px;
+	content:"";
+	width:63px;
+	height:78px;
+	background:url(../img/advantage_icon.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+
+/****************************导航************************/
+section .nav-wrapper{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:20;
+	width:100%;
+	height:45px;
+	background:#fff;
+	box-shadow: 0 2px 5px 0 rgba(227, 227, 227, 0.5);
+}
+
+section .nav-scroll {
+    position: fixed;
+}
+
+.nav-wrapper .nav-container{
+	margin:0 auto;
+	padding-top:8px;
+	width:600px;
+	height:38px;
+}
+
+.nav-container .nav-item{
+	float:left;
+	padding:0 15px;
+	margin-right:100px;
+	height:30px;
+	line-height:30px;
+	background:#fff;
+	letter-spacing: 0.5px;
+	font-size:14px;
+	text-align:center;
+	color:#6d6d6d;
+	border-radius: 15px;
+	cursor:pointer;
+}
+
+.nav-container .nav-item a{
+	display:block;
+	padding:0 20px;
+	width:100%;
+	height:100%;
+	border-radius: 15px;
+}
+.nav-container .nav-item a{
+	color:#6d6d6d;
+}
+
+.nav-container .active-nav-item a{
+	color:#fff;
+	background:#ffbf00;
+}
+
+.nav-container .nav-item:last-child{
+	margin-right:0;
+}
+
+
+/********************服务优势********************/
+section .advantage-wrapper{
+	position:relative;
+	width:100%;
+	margin-bottom:100px;
+}
+
+.advantage-wrapper .advantage-title{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:100%;
+	text-align:center;
+}
+
+.advantage-wrapper .advantage-title:before{
+	left:50%;
+	margin-left:-39px;
+}
+
+.advantage-wrapper .advantage-content{
+	position:relative;
+	margin-right:15%;
+	height:550px;
+	background:url(../img/serve_advantage_bg.png)no-repeat center center;
+	background:cover;
+}
+
+.advantage-wrapper .advantage-list{
+	position:absolute;
+	top:220px;
+	left:48%;
+	width:630px;
+}
+
+.advantage-wrapper  .advantage-list .advantage-item{
+	float:left;
+	margin-right:30px;
+	margin-bottom:25px;
+	width:300px;
+}
+
+.advantage-wrapper  .advantage-list .advantage-item:nth-child(2n+0){
+	margin-right:0;
+}
+
+.advantage-item .item-title{
+	position:relative;
+	padding-left:20px;
+	padding-bottom:10px;
+	font-size:18px;
+	color:#333;
+	letter-spacing: 0.6px;
+  	text-align:left;
+}
+
+.advantage-item .item-title:before{
+	position:absolute;
+	top:7px;
+	left:0;
+	content:"";
+	width:10px;
+	height:10px;
+	background:#0099e5;
+	
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+}
+
+.advantage-item .item-text{
+	font-size:12px;
+	color:#333;
+	line-height: 1.67;
+  	letter-spacing: 0.9px;
+}
+
+.advantage-item .item-msg{
+	font-size:12px;
+	color:#0099e5;
+	line-height: 1.67;
+  	letter-spacing: 0.9px;
+}
+
+/*******************服务内容*******************/
+section .content-wrapper{
+	width:100%;
+	height:640px;
+	background:url(../img/serve_content_bg.png)no-repeat center center;
+	background-size:cover;
+}
+
+.content-wrapper .content-title{
+	padding-top:80px;
+	color:#fff;
+}
+
+.content-wrapper .content-title:before{
+	top:60px;
+}
+
+.content-wrapper .content-box{
+	margin:0 auto;
+	padding:60px 0 50px 20px;
+	width:960px;
+}
+
+.content-box .left-list{
+	float:left;
+	width:330px;
+}
+
+.content-box .content-right{
+	float:right;
+	width:560px;
+	height:360px;
+	background:url(../img/serve_content_icon.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.content-box .left-list .left-item{
+	float:left;
+	padding-bottom:30px;
+	width:155px;
+}
+
+.left-item .left-title{
+	padding-bottom:10px;
+	font-size:18px;
+	letter-spacing: 0.6px;
+  	text-align: right;
+  	color: #ffbf00;
+}
+
+.left-item .left-text{
+	font-size:12px;
+	line-height: 1.83;
+  	letter-spacing: 0.4px;
+  	color: #fff;
+  	text-align:right;
+}
+
+
+
+/*******************服务课程*******************/
+section .flow-wrapper{
+	padding-top:40px;
+	padding-bottom:80px;
+	width:100%;
+}
+
+.flow-wrapper .flow-title{
+	padding-top:40px;
+	padding-bottom:60px;
+}
+
+.flow-wrapper .flow-title::before{
+    top: 20px;
+    left: 60px;
+}
+
+.flow-wrapper .flow-list{
+	margin:0 auto;
+	padding-top:10px;
+	width:975px;
+}
+
+.flow-list .flow-item{
+	position:relative;
+	float:left;
+	margin-right:45px;
+	margin-bottom:20px;
+	width:210px;
+}
+
+.flow-list .flow-item:nth-child(4n+0){
+	margin-right:0;
+}
+
+.flow-item .flow-img-box{
+	position:relative;
+	width:100%;
+	height:110px;
+	overflow:hidden;
+	border-radius:4px;
+}
+
+.flow-img-box .flow-img{
+	display:block;
+	width:100%;
+}
+
+.flow-img-box .flow-flo{
+	position:absolute;
+	bottom:2px;
+	left:5px;
+	z-index:10;
+	width:200px;
+	height:0;
+	background:rgba(0,0,0,0.5);
+	text-align:center;
+	border-radius:4px;
+	overflow:hidden;
+	
+	transition:all 0.5s;
+	-webkit-transition:all 0.5s; /* Safari */
+	-moz-transition-duration:all 0.5s;
+	-o-transition-duration:all 0.5s;
+}
+
+.flow-img-box:hover .flow-flo{
+	height:105px;
+}
+
+.flow-flo .flow-btn{
+	display:inline-block;
+	position:relative;
+	width:30px;
+	height:30px;
+	margin:33px 20px 0 20px;
+	cursor:pointer;
+}
+
+.flow-flo .flow-btn-online{
+	background:url(../img/serve_course_icon01.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.flow-flo .flow-btn-offline{
+	background:url(../img/serve_course_icon02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.flow-flo .flow-btn:before{
+	position:absolute;
+	top:40px;
+	left:-10px;
+	width:50px;
+	font-size:12px;
+	letter-spacing: 0.4px;
+	color:#fff;
+}
+
+.flow-flo .flow-btn-online:before{
+	content:"线上学习";
+}
+
+.flow-flo .flow-btn-offline:before{
+	content:"线下培训";
+}
+
+.flow-item .flow-item-title{
+	margin-top:10px;
+	line-height:20px;
+	font-size:14px;
+	letter-spacing:0.4px;
+	color:#333;
+	text-align:left;
+}
+
+.flow-item .flow-item-title span{
+	display:inline-block;
+}
+
+.flow-item .flow-item-title .flow-title-dec{
+	margin-left:10px;
+	color:#aeaeae;
+}
+
+.flow-item .flow-star-box{
+	margin-top:10px;
+	font-size:12px;
+	letter-spacing:0.4px;
+	color:#6d6d6d;
+	text-align:left;
+}
+
+.flow-item .flow-star-box span{
+	display:inline-block;
+}
+
+.flow-item .flow-star-box .flow-star{
+	font-size:10px;
+	color:#efa03c;
+}
+
+.flow-item .flow-star-box .flow-star-number{
+	margin-left:10px;
+}
+
+
+
+
+/********************aside*************************/
+aside{
+	display:none;
+	position:fixed;
+	top:300px;
+	right:0;
+	width:100px;
+	z-index:100;
+}
+
+aside .aside-container{
+	position:relative;
+	width:100%;
+	padding:10px 20px;	
+}
+
+.aside-container .aside-btn{
+	display:block;
+	position:relative;
+	height:60px;
+	width:60px;
+	margin-bottom:10px;
+	border-radius:100%;
+	background-color: #ffbf00;
+  	box-shadow: 0 2px 4px 2px rgba(175, 175, 175, 0.26);
+	cursor:pointer;
+}
+
+.back-top-btn::before{
+	position:absolute;
+	top: 17px;
+    left: 27px;
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+	
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+}
+
+.back-top-btn::after{
+	position:absolute;
+	bottom: 11px;
+    left: 17px;
+    content: "Top";
+    font-size: 14px;
+  	letter-spacing: 0.8px;
+  	text-align: center;
+  	color: #fff;
+}
+
+.aside-container .consult-btn::before{
+	position:absolute;
+	top:17px;
+	left:16px;
+	z-index:10;
+	content:"";
+	width:30px;
+	height:30px;
+	background:url(../img/consult.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.consult-btn .consult-msg{
+	position:absolute;
+	bottom:-30px;
+	left:50%;
+	margin-left:-42px;
+	width:84px;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	text-align:center;
+	color:#6d6d6d;
+}
+
+.consult-btn .consult-type{
+	display:none;
+	position:absolute;
+	top:22px;
+	left:-180px;
+	z-index:100;
+	width:150px;
+	height:186px;
+	padding:15px 10px 5px 10px;
+	background:#fff;
+	box-shadow: 0 2px 4px 0 rgba(226, 226, 226, 0.5);
+	border-radius:4px;
+	line-height:18px;
+	text-align:center;
+	font-size:12px;
+	color:#8d8d8d;
+}
+
+.consult-btn .consult-type::before{
+	position:absolute;
+	top: 3px;
+    right: -14px;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-left: -1px;
+    border-top: 20px solid transparent;
+    border-left: 20px solid #fff;
+    border-bottom: 20px solid transparent;
+}
+
+.consult-type .consult-img{
+	display:block;
+	width:130px;
+	height:130px;
+}
+
+.aside-container .consult-btn:hover .consult-type{
+	display:block;
+}
