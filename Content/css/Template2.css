@@ -309,184 +309,79 @@ textarea::-webkit-input-placeholder {
 footer{
 	position:relative;
 	width:100%;
-	height:385px;
-	background:url(../img/footer_bg.png)no-repeat center center;
-	background-size:cover;
+	height:104px;
+	background:#5a5a5a;
 }
 
-footer .back-top{
-	display:block;
-	position:absolute;
-	top:-32px;
-	right:50%;
-	margin-right:-500px;
-	width:64px;
-	height:64px;
-	border-radius:100%;
-	background-color: #64d3de;
-  	box-shadow: 0 3px 6px 0 rgba(154, 154, 154, 0.5);
-	cursor:pointer;
-}
-
-footer .back-top:hover{
-	background:#2ecbdb;
-}
-
-.back-top::before{
-	position:absolute;
-	top: 21px;
-    left: 27px;
-    content: "";
-    width: 11px;
-    height: 11px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-	
-	transform:rotate(-45deg);
-	-ms-transform:rotate(-45deg); 	/* IE 9 */
-	-moz-transform:rotate(-45deg); 	/* Firefox */
-	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
-	-o-transform:rotate(-45deg); 	/* Opera */
-}
-
-.back-top::after{
-	position:absolute;
-	bottom: 11px;
-    left: 20px;
-    content: "Top";
-    font-size: 14px;
-  	letter-spacing: 0.8px;
-  	text-align: center;
-  	color: #fff;
-}
-
-footer .about-us{
+footer .foot-box{
 	margin:0 auto;
-	padding-top:60px;
+	position:relative;
 	width:1200px;
+	height:100%;	
 }
 
-footer .about-us::after{
-	display:inline-block;
-	content:"";
-	clear:both;
-}
-
-.about-us .about-left{
-	position:relative;
+.foot-box .foot-left{
 	float:left;
-	width:500px;
-  	font-size: 14px;
-  	text-align: justify;
-  	color: #e7e7e7;
+	margin-top:30px;
+	width:600px;
 }
 
-.about-left .about-title .title-big{
-  	font-size: 34px;
-  	text-align: justify;
-  	color: #fff;
+.foot-left .foot-href{
+	width:100%;
+	height:18px;
 }
 
-.about-left .about-title{
-	padding-bottom:30px;
-}
-
-.about-left .about-title .title-little{
-	font-family:"NotoSansCJKsc-Light";
-  	font-size: 26px;
-  	font-weight: 300;
-  	text-align: justify;
-  	color: #cacaca;
-}
-
-.about-left .about-dec{
-	padding-bottom:30px;
-}
-
-.about-left .about-dec .dec-text{
-  	color: #fff;
-}
-
-.about-left .about-dec .dec-text .dec-name{
-  	font-size: 18px;
-  	color: #ffbf00;
-}
-
-.about-left .about-phone{
-	position:relative;
-	padding-bottom:2px;
-	padding-left:25px;
-}
-
-.about-left .about-phone i{
-	position:absolute;
-	top:0;
-	left:0;
-	font-size:16px;
-	color:#fff;
-}
-
-.about-left .about-email{
-	position:absolute;
-	bottom:72px;
-	left:230px;
-	padding-bottom:2px;
-	padding-left:25px;
-}
-
-.about-left .about-email i{
-	position:absolute;
-	top:0;
-	left:0;
-	font-size:16px;
-	color:#fff;
-}
-
-.about-left .about-address{
-	position:relative;
-	padding-bottom:30px;
-	padding-left:25px;
-  	color: #e6e6e6;
-}
-
-.about-left .about-address i{
-	position:absolute;
-	top:0;
-	left:0;
-	font-size:16px;
-	color:#fff;
-}
-
-.about-left .about-other{
-	padding-bottom:2px;
-  	color: rgba(208, 208, 208, 0.9);
-}
-
-footer .about-right{
-	float:right;
-	width:250px;
-}
-
-footer .about-right .right-box{
-	margin-top:40px;
-	width:250px;
-	height:300px;
-	display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.right-box img{
+.foot-left .foot-href .foot-href-item{
 	display:inline-block;
-	width:170px;
+	float:left;
+	margin-right:20px;
+	height:100%;
+	line-height:18px;
+	font-size:12px;
 }
-	
-.right-box .right-dec{
-	padding-top:30px;
-  	font-size: 18px;
-  	text-align: center;
-  	color: #ffffff;
+
+.foot-left .foot-href .foot-href-item a{
+	color:#fff;
 }
+
+.foot-left .about-other{
+	margin-top:10px;
+	font-size:12px;
+	color: rgba(208, 208, 208, 0.9);
+}
+
+.foot-box .foot-right{
+	margin-top:30px;
+	float:right;
+}
+
+.foot-box .foot-right .foot-right-item{
+	display:inline-block;
+	margin-right:20px;
+	float:left;
+	width: 45px;
+  	height: 45px;
+  	border-radius:100%;
+  	border: solid 1px #979797;
+  	font-size:20px;
+  	color:#c3c3c3;
+  	cursor:pointer;
+}
+
+.foot-box .foot-right .foot-weixin i{
+	padding:12px;
+}
+
+.foot-box .foot-right .foot-recommend i{
+	padding:10px;
+}
+
+.foot-box .foot-right .foot-call i{
+	padding:10px;
+}
+
+
+
 
 /**********************************登录注册弹窗***********************************************/
 .lr-container{
