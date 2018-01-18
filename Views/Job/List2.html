@@ -23,7 +23,7 @@
 	</head>
 <body>
 	<!--Page Public -->
-	<div class="container-fluid">
+	<div class="container-fluid" id="app">
 		
 		<!-- Top -->
 		<header class="row">
@@ -50,9 +50,7 @@
 		
 		<!--********************************************Page Private************************************-->
 		<!-- Banner-->
-		<div class="row top-banner">
-			
-		</div>
+		<div class="row top-banner"></div>
 		<!-- Content -->
 		<section class="row">
 			<div class="row position clearbox">
@@ -64,14 +62,19 @@
 						<span class="search-title-left">筛选</span>
 						<span class="search-clear-btn">清空选择</span>
 					</div>
+					<div class="search-type search-item">
+						<div class="search-item-title search-type-title">工作类型</div>
+						<input type="radio" class="select-radio select-practice" name="radio" value="实习" v-model="selectType"/>
+						<input type="radio" class="select-radio select-full" name="radio" value="全职" v-model="selectType"/>
+					</div>
 					<div class="search-area search-item">
-						<div class="search-item-title search-area-title">选择区域</div>
-						<select class="search-area-box search-select" value="上海">
-							<option value ="上海">上海</option>
-  							<option value ="深圳">深圳</option>
-							<option value="广州">广州</option>
-							<option value="北京">北京</option>
-						</select>
+						<div class="search-item-title search-area-title">选择城市</div>
+						<div class="search-area-box search-select">
+							<div class="search-select-value search-area-value" v-html="areaValue" v-on:click="searchArea" v-bind:class="{searched:areaKey}"><!--深圳--></div>
+							<ul class="search-select-list clearbox" style="display:none;" v-show="areaKey">
+								<li class="search-select-item search-area" v-for='item in areaList' v-bind:key="item.ID" v-html="item.Name" v-on:click="areaItem(item)"><!--上海--></li>
+							</ul>
+						</div>
 					</div>
 					<div class="search-item search-pay">
 						<div class="search-item-title search-area-title">期望薪资</div>
@@ -88,216 +91,63 @@
 							</div>
 						</div>
 					</div>
-					<div class="search-area search-item">
-						<div class="search-item-title search-area-title">选择行业</div>
-						<select class="search-area-box search-select" value="房地产">
-							<option value ="半导体">半导体</option>
-  							<option value ="IT互联网">IT互联网</option>
-							<option value="物流">物流</option>
-							<option value="零售">零售</option>
-						</select>
+					<div class="search-industry search-item">
+						<div class="search-item-title search-a-title">选择行业</div>
+						<div class="search-industry-box search-select">
+							<div class="search-select-value search-industry-value" v-html="industryValue" v-on:click="searchIndustry" v-bind:class="{searched:industryKey}"><!--半导体--></div>
+							<ul class="search-select-list clearbox" style="display:none;" v-show="industryKey">
+								<li class="search-select-item search-industry" v-for='item in industryList' v-bind:key="item.ID" v-html="item.Name" v-on:click="industryItem(item)"><!--IT互联网--></li>
+							</ul>
+						</div>
 					</div>
-					<div class="search-area search-item">
-						<div class="search-item-title search-area-title">职位</div>
-						<select class="search-area-box search-select" value="销售">
-							<option value ="开发">开发</option>
-  							<option value ="客服">客服</option>
-							<option value="管理">管理</option>
-							<option value="法律">法律</option>
-						</select>
+					<div class="search-position search-item">
+						<div class="search-item-title search-position-title">职位</div>
+						<div class="search-position-box search-select">
+							<div class="search-select-value search-position-value" v-html="positionValue" v-on:click="searchPosition" v-bind:class="{searched:positionKey}"><!--开发--></div>
+							<ul class="search-select-list clearbox" style="display:none;" v-show="positionKey">
+								<li class="search-select-item search-position" v-for='item in PostList' v-bind:key="item.ID" v-html="item.Name" v-on:click="positionItem(item)"><!--法律--></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				
 				<!-- 搜素职位 -->
 				<div class="position-box">
 					<ul class="position-list">
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company01.png" class="position-company-img"/>
+						<li class="position-item clearbox" v-for="item in positionList" v-bind:key="item.ID" v-on:index="item.ID">
+							<img class="position-company-img" v-bind:src="item.ImgUrl" v-on:error="ImgError"/>
 							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
+								<span class="position-name" v-html="item.Name" v-bind:index="item.ID" v-on:click="detailHref(item.ID)"><!--新媒体运营--></span>
+								<div class="position-company" v-html="item.Company"><!--有鱼金融科技--></div>
+								<div class="position-demand">
+									<span class="demand-experience" v-html="'经验'+item.Experience"><!--经验3-5年--></span>
+									<span class="demand-education" v-html="item.Education?'/'+item.Education:''"><!--/本科--></span>
+									<span class="demand-area" v-html="item.Area?'/'+item.Area:''"><!--/北京-丰台区--></span>
+								</div>
 								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
+									<li class="tag-item" v-for="tag in item.Tag" v-bind:key="tag.ID" v-bind:index="tag.ID" v-html="tag.TagName"><!--运营--></li>
 								</ul>
 								<div class="position-star-box">
 									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=1"></i>
+										<i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=2"></i>
+										<i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=3"></i>
+										<i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=4"></i>
+										<i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=5"></i>
 									</span>
-									<span class="position-commend">24324人已学习</span>
+									<span class="position-commend" v-html="item.Comment+'已学习'"><!--24324人已学习--></span>
 								</div>
 								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
+									<span class="like-icon no-like" v-bind:index="item.ID" v-on:click="likeCut(item.ID,$event)"></span>
+									<span class="like-num" v-html="item.Like"><!--78867--></span>
 								</div>
 							</div>
 							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer0" style="display:none;"></div>
-								<div class="position-empty-match">
-									<div class="position-empty-login-btn">登录查看匹配度</div>
+								<div class="position-match" style="display:none;" v-bind:id="'indicatorContainer'+item.ID" v-show="loginKey"></div>
+								<div class="position-empty-match" style="display:none;" v-show="!loginKey">
+									<div class="position-empty-login-btn" v-bind:index="item.ID" v-on:click="viewMath(item.ID)">登录查看匹配度</div>
 								</div>
-								<div class="position-resume-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company02.png" class="position-company-img"/>
-							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
-								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
-								</ul>
-								<div class="position-star-box">
-									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-									</span>
-									<span class="position-commend">24324人已学习</span>
-								</div>
-								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
-								</div>
-							</div>
-							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer1"></div>
-								<div class="position-resume-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company03.png" class="position-company-img"/>
-							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
-								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
-								</ul>
-								<div class="position-star-box">
-									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-									</span>
-									<span class="position-commend">24324人已学习</span>
-								</div>
-								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
-								</div>
-							</div>
-							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer2"></div>
-								<div class="position-resume-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company04.png" class="position-company-img"/>
-							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
-								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
-								</ul>
-								<div class="position-star-box">
-									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-									</span>
-									<span class="position-commend">24324人已学习</span>
-								</div>
-								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
-								</div>
-							</div>
-							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer3"></div>
-								<div class="position-resume-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company05.png" class="position-company-img"/>
-							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
-								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
-								</ul>
-								<div class="position-star-box">
-									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-									</span>
-									<span class="position-commend">24324人已学习</span>
-								</div>
-								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
-								</div>
-							</div>
-							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer4"></div>
-								<div class="position-resume-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="position-item clearbox">
-							<img src="../../Content/image/job_list_company06.png" class="position-company-img"/>
-							<div class="position-msg-box">
-								<span class="position-name">新媒体运营</span>
-								<div class="position-company">有鱼金融科技</div>
-								<div class="position-demand">经验3-5年/本科/北京-丰台区</div>
-								<ul class="position-tag-list clearbox">
-									<li class="tag-item">运营</li>
-									<li class="tag-item">数据分析</li>
-									<li class="tag-item">微信开发</li>
-								</ul>
-								<div class="position-star-box">
-									<span class="position-star">
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-										<i class="fa fa-star" aria-hidden="true"></i>
-									</span>
-									<span class="position-commend">24324人已学习</span>
-								</div>
-								<div class="position-like">
-									<span class="like-icon no-like"></span>
-									<span class="like-num">78867</span>
-								</div>
-							</div>
-							<div class="position-resume-box">
-								<div class="position-match" id="indicatorContainer5"></div>
-								<div class="position-resume-btn">投递简历</div>
+								<div class="position-resume-btn" v-bind:index="item.ID" v-on:click="resumeHref(item.ID)">投递简历</div>
 							</div>
 						</li>
 					</ul>
@@ -306,80 +156,34 @@
 				
 				<!-- 推荐职位 -->
 				<div class="position-recommend">
-					<div class="recommend-top">
+					<div class="recommend-top" style="display:none;" v-show="loginKey">
 						<div class="recommend-title">
 							<i class="material-icons recommend-title-icon">&#xE80E;</i>
 							<span class="recommend-title-text">推荐职位</span>
 						</div>
 						<div class="recommend-msg">根据您的测评和简历进行大数据分析推荐更适合您的职位</div>
 					</div>
-					<ul class="recommend-list">
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company01.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
-							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
+					<ul class="recommend-list" style="display:none;" v-show="loginKey">
+						<li class="recommend-item clearbox" v-for="item in recommendList" v-bind:key="item.ID" v-bind:index="item.ID">
+							<img class="recommend-company-img" v-bind:src="item.ImgUrl" v-on:error="ImgError"/>
+							<div class="recommend-name" v-html="item.Name"><!--海外广告投放--></div>
+							<div class="recommend-company" v-html="item.Company"><!--洋葱数学--></div>
+							<div class="recommend-msg">
+								<span class="demand-experience" v-html="'经验'+item.Experience"><!--经验3-5年--></span>
+								<span class="demand-education" v-html="item.Education?'/'+item.Education:''"><!--/本科--></span>
+								<span class="demand-area" v-html="item.Area?'/'+item.Area:''"><!--/北京-丰台区--></span>
 							</div>
-						</li>
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company02.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
 							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company03.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
-							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company04.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
-							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company02.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
-							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
-							</div>
-						</li>
-						<li class="recommend-item clearbox">
-							<img src="../../Content/image/job_recommend_company03.png" class="recommend-company-img"/>
-							<div class="recommend-name">海外广告投放</div>
-							<div class="recommend-company">洋葱数学</div>
-							<div class="recommend-msg">经验3-5年/本科/长沙-岳麓区</div>
-							<div class="recommend-operation clearbox">
-								<div class="recommend-detail-btn recommend-btn">查看详情</div>
-								<div class="recommend-resume-btn recommend-btn">投递简历</div>
+								<div class="recommend-detail-btn recommend-btn" v-bind:index="item.ID" v-on:click="detailHref(item.ID)">查看详情</div>
+								<div class="recommend-resume-btn recommend-btn" v-bind:index="item.ID" v-on:click="resumeHref(item.ID)">投递简历</div>
 							</div>
 						</li>
 					</ul>
-					<div class="recommend-empty" style="display:none;">
+					<div class="recommend-empty" style="display:none;" v-show="!loginKey">
 						<div class="empty-top">登陆后根据您的测评和简历进行大数据分析推荐更适合您的职位。</div>
 						<div class="empty-msg">登录并完成测评，可根据您的大数据分析推荐职位，匹配率最高可达</div>
 						<div class="empty-degree">99%</div>
-						<div class="empty-login-btn">立即登录</div>
+						<div class="empty-login-btn" v-on:click="emptyLogin">立即登录</div>
 					</div>
 					<div class="recommend-contact clearbox">
 						<img src="../../Content/image/erwei.png"/>
@@ -398,6 +202,22 @@
 			
 		</section>
 		<!--********************************************Page Private End*********************************-->
+		
+		<!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
 		
 		<!-- Login and Register Dialog -->
 		<div class="lr-container">
@@ -507,6 +327,7 @@
 	<script src="../../Scripts/js/Template2.js?v=20171221"></script>
 	
 	<!-- Private JS -->
+	<script src="../../Scripts/mock/jobList_mock.js"></script>
 	<script src="../../Scripts/lib/job_radialIndicator.js"></script>
 	<script src="../../Scripts/lib/jquery.page.js"></script>
 	<script src="../../Scripts/js/JobList2.js?v=20171221"></script>

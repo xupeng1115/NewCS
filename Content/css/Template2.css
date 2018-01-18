@@ -63,6 +63,11 @@ textarea::-webkit-input-placeholder {
     letter-spacing: 1px;   
 }  
 
+img{
+	border:none;
+	font-size:0;
+}
+
 .container-fluid {
   	padding:0;
 }
@@ -728,132 +733,6 @@ footer .foot-box{
 .form-box .register-password-tips{
 	margin-bottom:0;
 }
-
-/********************aside*************************/
-aside{
-	display:none;
-	position:fixed;
-	top:300px;
-	right:0;
-	width:100px;
-	z-index:100;
-}
-
-aside .aside-container{
-	position:relative;
-	width:100%;
-	padding:10px 20px;	
-}
-
-.aside-container .aside-btn{
-	display:block;
-	position:relative;
-	height:60px;
-	width:60px;
-	margin-bottom:10px;
-	border-radius:100%;
-	background-color: #ffbf00;
-  	box-shadow: 0 2px 4px 2px rgba(175, 175, 175, 0.26);
-	cursor:pointer;
-}
-
-.back-top-btn::before{
-	position:absolute;
-	top: 17px;
-    left: 27px;
-    content: "";
-    width: 11px;
-    height: 11px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-	
-	transform:rotate(-45deg);
-	-ms-transform:rotate(-45deg); 	/* IE 9 */
-	-moz-transform:rotate(-45deg); 	/* Firefox */
-	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
-	-o-transform:rotate(-45deg); 	/* Opera */
-}
-
-.back-top-btn::after{
-	position:absolute;
-	bottom: 11px;
-    left: 17px;
-    content: "Top";
-    font-size: 14px;
-  	letter-spacing: 0.8px;
-  	text-align: center;
-  	color: #fff;
-}
-
-.aside-container .consult-btn::before{
-	position:absolute;
-	top:17px;
-	left:16px;
-	z-index:10;
-	content:"";
-	width:30px;
-	height:30px;
-	background:url(../img/consult.png)no-repeat center center;
-	background-size:100% 100%;
-}
-
-.consult-btn .consult-msg{
-	position:absolute;
-	bottom:-30px;
-	left:50%;
-	margin-left:-42px;
-	width:84px;
-	height:20px;
-	line-height:20px;
-	font-size:14px;
-	text-align:center;
-	color:#6d6d6d;
-}
-
-.consult-btn .consult-type{
-	display:none;
-	position:absolute;
-	top:22px;
-	left:-180px;
-	z-index:100;
-	width:150px;
-	height:186px;
-	padding:15px 10px 5px 10px;
-	background:#fff;
-	box-shadow: 0 2px 4px 0 rgba(226, 226, 226, 0.5);
-	border-radius:4px;
-	line-height:18px;
-	text-align:center;
-	font-size:12px;
-	color:#8d8d8d;
-}
-
-.consult-btn .consult-type::before{
-	position:absolute;
-	top: 3px;
-    right: -14px;
-    content: "";
-    width: 0;
-    height: 0;
-    margin-left: -1px;
-    border-top: 20px solid transparent;
-    border-left: 20px solid #fff;
-    border-bottom: 20px solid transparent;
-}
-
-.consult-type .consult-img{
-	display:block;
-	width:130px;
-	height:130px;
-}
-
-.aside-container .consult-btn:hover .consult-type{
-	display:block;
-}
-
-
-
-
 
 /***********************login后hover我的后台接口****************************/
 .lr-success:hover .backstage-entrance-container{
