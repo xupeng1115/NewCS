@@ -3,7 +3,7 @@ var positionList=[
 	{
 		ID:0,
 		ImgUrl:'../../Content/image/job_list_company01.png',
-		Name:'新媒体运营',
+		Name:'有鱼金融科技',
 		Company:'有鱼金融科技',
 		Experience:'3-5年',
 		Education:'学历',
@@ -167,8 +167,35 @@ var positionList=[
 //推荐职位列表
 var recommendList=[
 	{
-		ID:0,
-		ImgUrl:'../../Content/image/job_list_company01.png',
+		ID:6,
+		ImgUrl:'../../Content/image/job_list_company03.png',
+		Name:'有鱼金融科技',
+		Company:'有鱼金融科技',
+		Experience:'1-3年',
+		Education:'学历',
+		Area:'上海-浦东新区',
+		Tag:[
+			{
+				ID:0,
+				TagName:'运营'
+			},
+			{
+				ID:1,
+				TagName:'数据分析'
+			},
+			{
+				ID:2,
+				TagName:'微信开发'
+			}
+		],
+		Star:5,
+		Comment:20232,
+		Like:23423,
+		Match:89,
+	},
+	{
+		ID:7,
+		ImgUrl:'../../Content/image/job_list_company05.png',
 		Name:'新媒体运营',
 		Company:'有鱼金融科技',
 		Experience:'3-5年',
@@ -194,7 +221,61 @@ var recommendList=[
 		Match:23,
 	},
 	{
-		ID:1,
+		ID:8,
+		ImgUrl:'../../Content/image/job_list_company02.png',
+		Name:'新媒体运营',
+		Company:'有鱼金融科技',
+		Experience:'3-5年',
+		Education:'学历',
+		Area:'北京-丰台区',
+		Tag:[
+			{
+				ID:0,
+				TagName:'运营'
+			},
+			{
+				ID:1,
+				TagName:'数据分析'
+			},
+			{
+				ID:2,
+				TagName:'微信开发'
+			}
+		],
+		Star:2,
+		Comment:20232,
+		Like:23423,
+		Match:87,
+	},
+	{
+		ID:9,
+		ImgUrl:'../../Content/image/job_list_company06.png',
+		Name:'新媒体运营',
+		Company:'有鱼金融科技',
+		Experience:'3-5年',
+		Education:'学历',
+		Area:'北京-丰台区',
+		Tag:[
+			{
+				ID:0,
+				TagName:'运营'
+			},
+			{
+				ID:1,
+				TagName:'数据分析'
+			},
+			{
+				ID:2,
+				TagName:'微信开发'
+			}
+		],
+		Star:3,
+		Comment:20232,
+		Like:23423,
+		Match:34,
+	},
+	{
+		ID:10,
 		ImgUrl:'../../Content/image/job_list_company02.png',
 		Name:'新媒体运营',
 		Company:'有鱼金融科技',
@@ -218,12 +299,12 @@ var recommendList=[
 		Star:5,
 		Comment:20232,
 		Like:23423,
-		Match:18,
+		Match:12,
 	},
 	{
-		ID:2,
-		ImgUrl:'../../Content/image/job_list_company03.png',
-		Name:'新媒体运营',
+		ID:11,
+		ImgUrl:'../../Content/image/job_list_company01.png',
+		Name:'有鱼金融科技',
 		Company:'有鱼金融科技',
 		Experience:'3-5年',
 		Education:'学历',
@@ -242,91 +323,10 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
-		Star:2,
-		Comment:20232,
-		Like:23423,
-		Match:95,
-	},
-	{
-		ID:3,
-		ImgUrl:'../../Content/image/job_list_company04.png',
-		Name:'新媒体运营',
-		Company:'有鱼金融科技',
-		Experience:'3-5年',
-		Education:'学历',
-		Area:'北京-丰台区',
-		Tag:[
-			{
-				ID:0,
-				TagName:'运营'
-			},
-			{
-				ID:1,
-				TagName:'数据分析'
-			},
-			{
-				ID:2,
-				TagName:'微信开发'
-			}
-		],
-		Star:3,
+		Star:5,
 		Comment:20232,
 		Like:23423,
 		Match:67,
-	},
-	{
-		ID:4,
-		ImgUrl:'../../Content/image/job_list_company05.png',
-		Name:'新媒体运营',
-		Company:'有鱼金融科技',
-		Experience:'3-5年',
-		Education:'学历',
-		Area:'北京-丰台区',
-		Tag:[
-			{
-				ID:0,
-				TagName:'运营'
-			},
-			{
-				ID:1,
-				TagName:'数据分析'
-			},
-			{
-				ID:2,
-				TagName:'微信开发'
-			}
-		],
-		Star:5,
-		Comment:20232,
-		Like:23423,
-		Match:53,
-	},
-	{
-		ID:5,
-		ImgUrl:'../../Content/image/job_list_company06.png',
-		Name:'新媒体运营',
-		Company:'有鱼金融科技',
-		Experience:'3-5年',
-		Education:'学历',
-		Area:'北京-丰台区',
-		Tag:[
-			{
-				ID:0,
-				TagName:'运营'
-			},
-			{
-				ID:1,
-				TagName:'数据分析'
-			},
-			{
-				ID:2,
-				TagName:'微信开发'
-			}
-		],
-		Star:5,
-		Comment:20232,
-		Like:23423,
-		Match:96,
 	}
 ]
 
@@ -391,9 +391,9 @@ var positions=[
 	}
 ]
 
+var pageCount1=100;
 
-
-
+var pageCount2=50;
 
 
 

@@ -28,18 +28,36 @@
 		<!-- Top -->
 		<header class="row">
 			<div class="row top-box top-width">
-				<div class="top-logo"></div>
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
 				<ul class="top-nav">
-					<li class="top-nav-item" style="display:none;"><a href="../Home/Index.html">首页</a></li>
-					<li class="top-nav-item" style="display:none;"><a href="../Job/List.html">职位兴趣</a></li>
-					<li class="top-nav-item" style="display:none;"><a href="../Resume/Index.html">我的职位</a></li>
-					<li class="top-nav-item" style="display:none;"><a href="../Resume/Index.html">服务内容</a></li>
-					<li class="top-nav-item" style="display:none;"><a href="#">关于我们</a></li>
-					<li class="top-nav-item top-nav-search" style="display:block;">
-						<input type="text" class="top-search-input" placeholder="请输入您想要的职位"/>
-						<div class="top-search-btn">搜索</div>
-					</li>
-					<li class="top-nav-item login-register" style="display:block;"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Resume/Index.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Resume/Index.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="#">关于我们</a></li>
+					<li class="top-nav-item login-register" style="display:none;" v-show="!loginKey"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item lr-success" style="display:none;" v-show="loginKey">
+                        <a href="../../Resume/Index.html"><img src="../../Content/img/head.png" class="success-img" onerror="nofind();"/></a>
+                        <div class="backstage-entrance-container">
+                        	<img src="../../Content/image/job_list_company03.png" class="bg-filter"/>
+						    <div class="backstage-entrance">
+							    <div class="entrance-wrapper">
+								    <div class="entrance-top clearbox">
+									    <img src="../../Content/img/head.png" class="entrance-img" onerror="nofind();"/>
+									    <div class="entrance-name">小明</div>
+									    <div class="entrance-tag">数据分析&nbsp;&nbsp;数据分析&nbsp;&nbsp;吃苦耐劳 &nbsp;&nbsp;IT行业&nbsp;&nbsp;IT行业IT行业&nbsp;&nbsp;</div>
+								    </div>
+								    <ul class="entrance-href-box clearbox">
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">收藏职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">投递职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">有关留言</a></li>
+									    <li class="entrance-href-item"><a href="../Assessment/Index.html">我的测评</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+								    </ul>
+								    <div class="entrance-back-btn login-exit">安全退出</div>
+							    </div>
+						    </div>
+					    </div>
+                    </li>
 					<li class="top-nav-item top-nav-call" style="display:block;">
 						<div class="top-call-msg top-call-text">求职小助手</div>
 						<div class="top-call-num top-call-text">+86 400 123 4567</div>
@@ -53,24 +71,29 @@
 		<div class="row top-banner"></div>
 		<!-- Content -->
 		<section class="row">
+			
 			<div class="row position clearbox">
-				
+				<!-- 搜索框 -->
+				<div class="search-box">
+					<input type="text" class="search-input" placeholder="请输入您想要的职位" v-model="positionName"/>
+					<div class="search-btn" v-on:click="searchBtn">搜索</div>
+				</div>
 				<!-- 搜索选项 -->
 				<div class="position-search">
-					<div class="search-name">研发工程师</div>
+					<div class="search-name" v-html="positionName"><!--研发工程师--></div>
 					<div class="search-title">
 						<span class="search-title-left">筛选</span>
-						<span class="search-clear-btn">清空选择</span>
+						<span class="search-clear-btn" v-on:click="clearSelect">清空选择</span>
 					</div>
 					<div class="search-type search-item">
 						<div class="search-item-title search-type-title">工作类型</div>
-						<input type="radio" class="select-radio select-practice" name="radio" value="实习" v-model="selectType"/>
-						<input type="radio" class="select-radio select-full" name="radio" value="全职" v-model="selectType"/>
+						<input type="radio" class="select-radio select-practice" name="radio" value="实习" v-model="searchObj.selectType"/>
+						<input type="radio" class="select-radio select-full" name="radio" value="全职" v-model="searchObj.selectType"/>
 					</div>
 					<div class="search-area search-item">
 						<div class="search-item-title search-area-title">选择城市</div>
 						<div class="search-area-box search-select">
-							<div class="search-select-value search-area-value" v-html="areaValue" v-on:click="searchArea" v-bind:class="{searched:areaKey}"><!--深圳--></div>
+							<div class="search-select-value search-area-value" v-html="searchObj.areaValue!==''?searchObj.areaValue:'请选择'" v-on:click="searchArea" v-bind:class="{searched:areaKey}"><!--深圳--></div>
 							<ul class="search-select-list clearbox" style="display:none;" v-show="areaKey">
 								<li class="search-select-item search-area" v-for='item in areaList' v-bind:key="item.ID" v-html="item.Name" v-on:click="areaItem(item)"><!--上海--></li>
 							</ul>
@@ -79,22 +102,13 @@
 					<div class="search-item search-pay">
 						<div class="search-item-title search-area-title">期望薪资</div>
 						<div class="search-pay-box">
-							<div class="search-bar">
-								<div class="search-bar-box">
-									<div class="search-bar-left search-bar-circle">
-										<span class="search-pay-min search-pay-num">￥1000</span>
-									</div>
-									<div class="search-bar-right search-bar-circle">
-										<span class="search-pay-max search-pay-num">￥8000</span>
-									</div>
-								</div>
-							</div>
+							<input id="range" style="display:none;"/>
 						</div>
 					</div>
 					<div class="search-industry search-item">
 						<div class="search-item-title search-a-title">选择行业</div>
 						<div class="search-industry-box search-select">
-							<div class="search-select-value search-industry-value" v-html="industryValue" v-on:click="searchIndustry" v-bind:class="{searched:industryKey}"><!--半导体--></div>
+							<div class="search-select-value search-industry-value" v-html="searchObj.industryValue!==''?searchObj.industryValue:'请选择'" v-on:click="searchIndustry" v-bind:class="{searched:industryKey}"><!--半导体--></div>
 							<ul class="search-select-list clearbox" style="display:none;" v-show="industryKey">
 								<li class="search-select-item search-industry" v-for='item in industryList' v-bind:key="item.ID" v-html="item.Name" v-on:click="industryItem(item)"><!--IT互联网--></li>
 							</ul>
@@ -103,7 +117,7 @@
 					<div class="search-position search-item">
 						<div class="search-item-title search-position-title">职位</div>
 						<div class="search-position-box search-select">
-							<div class="search-select-value search-position-value" v-html="positionValue" v-on:click="searchPosition" v-bind:class="{searched:positionKey}"><!--开发--></div>
+							<div class="search-select-value search-position-value" v-html="searchObj.positionValue!==''?searchObj.positionValue:'请选择'" v-on:click="searchPosition" v-bind:class="{searched:positionKey}"><!--开发--></div>
 							<ul class="search-select-list clearbox" style="display:none;" v-show="positionKey">
 								<li class="search-select-item search-position" v-for='item in PostList' v-bind:key="item.ID" v-html="item.Name" v-on:click="positionItem(item)"><!--法律--></li>
 							</ul>
@@ -324,12 +338,14 @@
 	<!-- Public JS -->
 	<script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
 	<script src="../../Scripts/lib/vue.min.js"></script>
+	<script src="../../Scripts/lib/communication.js"></script>
 	<script src="../../Scripts/js/Template2.js?v=20171221"></script>
 	
 	<!-- Private JS -->
 	<script src="../../Scripts/mock/jobList_mock.js"></script>
 	<script src="../../Scripts/lib/job_radialIndicator.js"></script>
 	<script src="../../Scripts/lib/jquery.page.js"></script>
+	<script src="../../Scripts/lib/ion.rangeSlider.min.js"></script>
 	<script src="../../Scripts/js/JobList2.js?v=20171221"></script>
 	
 </body>

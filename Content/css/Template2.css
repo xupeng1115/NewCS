@@ -148,11 +148,17 @@ header .top-box{
 }
 
 .top-box .top-logo{
-	width:192px;
-	height:30px;
 	float:left;
 	margin-left:10px;
 	margin-top:18px;
+	width:192px;
+	height:30px;
+}
+
+.top-logo a{
+	display:block;
+	width:100%;
+	height:100%;
 	background:url(../image/knx_logo.png)no-repeat center center;
 	background-size:cover;
 }
@@ -164,9 +170,9 @@ header .top-box{
 }
 
 .top-box .top-nav .top-nav-item{
-	height:100%;
 	position:relative;
 	float:left;
+	height:100%;
 	margin-left:45px;
 	line-height:65px;
 	cursor:pointer;
@@ -187,6 +193,22 @@ header .top-box{
 	border-radius:23px;
 }
 
+.top-box .top-nav .lr-success{
+	padding-right:14px;
+}
+
+.top-box .top-nav .lr-success:after{
+	position:absolute;
+	top:31px;
+	right:0;
+	content:"";
+	width:0;
+	height:0;
+	border-top:5px solid #ffbf00;
+	border-left:4px solid transparent;
+	border-right:4px solid transparent;
+}
+
 .top-box .top-nav .login-register:hover{
 	border-color:#ffbf00;
 }
@@ -203,87 +225,9 @@ header .top-box{
 	border-radius:100%;
 }
 
-.top-box .top-nav .top-nav-search{
-	position:relative;
-	margin-top:13px;
-	margin-left:50px;
-	padding:0;
-	width:560px;
-	height:40px;
-	line-height:38px;
-	border:none;
-	cursor:default;
-	background:#fff;
-}
-
-.top-box .top-nav .top-nav-search .top-search-input{
-	display:block;
-	position:relative;
-	float:left;
-	padding:8px 15px 8px 54px;
-	width:470px;
-	height:100%;
-	line-height:24px;
-	border:1px solid transparent;
-	border-right:none;
-  	font-size: 16px;
-  	text-align: left;
-  	color: #333;
-	outline:none;
-}
-
-.top-box .top-nav .top-nav-search:before{
-	position:absolute;
-	top:8px;
-	left:15px;
-	z-index:100;
-	content:"";
-	width:24px;
-	height:24px;
-	background:url(../image/job_list_search.png)no-repeat center center;
-	background-size:100% 100%;
-}
-
-.top-box .top-nav .top-nav-search .top-search-input:focus{
-	border-color:#ffbf00;
-}
-
-input:-moz-placeholder,   
-textarea:-moz-placeholder {   
-    color: #c3c3c3;   
-}   
-
-input:-ms-input-placeholder,   
-textarea:-ms-input-placeholder {   
-    color: #c3c3c3;   
-}   
-
-input::-webkit-input-placeholder,   
-textarea::-webkit-input-placeholder {   
-    color: #c3c3c3;   
-}
-
-.top-box .top-nav .top-nav-search .top-search-btn{
-	float:left;
-	width: 90px;
-  	height: 40px;
-  	line-height:40px;
-  	background-color: #ffbf00;
-  	box-shadow: 2px 2px 15px 0 #989898;
-  	font-size: 16px;
-  	text-align: center;
-  	color: #fff;
-  	cursor:pointer;
-  	box-shadow:none;
-}
-
-.top-box .top-nav .top-nav-search .top-search-btn:hover{
-	background:#ffb400;
-}
-
 .top-box .top-nav .top-nav-call{
 	margin-top:12px;
-	margin-left:30px;
+	margin-left:45px;
 	padding:0;
 	width:120px;
 	height:40px;
@@ -385,7 +329,9 @@ footer .foot-box{
 	padding:10px;
 }
 
-
+.foot-box .foot-right .foot-right-item:hover i{
+	color:#ffbf00;
+}
 
 
 /**********************************登录注册弹窗***********************************************/
@@ -734,6 +680,109 @@ footer .foot-box{
 	margin-bottom:0;
 }
 
+/********************************aside侧边栏************************************/
+aside{
+	position:fixed;
+	bottom:0;
+	right:0;
+	z-index:100;
+	width: 60px;
+  	background-color: #ffffff;
+  	box-shadow: 0 2px 12px 0 rgba(213, 213, 213, 0.5);
+}
+
+aside .aside-container{
+	position:relative;
+	margin:0 auto;
+	width:30px;
+}
+
+.aside-container .aside-item{
+	position:relative;
+	width:100%;
+	height:60px;
+	text-align:center;
+	font-size:14px;
+	color:#c3c3c3;
+	letter-spacing:0.8px;
+	border-bottom: solid 1px #ebebeb;
+	cursor:pointer;
+}
+
+.aside-container .aside-back-top{
+	padding-top:20px;
+	line-height:40px;
+}
+
+.aside-container .aside-back-top:before{
+	position:absolute;
+	top:22px;
+	left:11px;
+	content:"";
+	width:8px;
+	height:8px;
+	border-top:1px solid #c3c3c3;
+	border-left:1px solid #c3c3c3;
+	
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg); 	/* Opera */
+}
+
+.aside-container .aside-back-top:hover:before{
+	border-color:#ffbf00;
+}
+
+.aside-container .aside-call{
+	padding-top:20px;
+}
+
+.aside-container .aside-call i{
+	font-size:22px;
+}
+
+.aside-container .aside-weixin{
+	padding-top:20px;
+}
+
+.aside-container .aside-weixin i{
+	font-size:22px;
+}
+
+.aside-container .aside-share{
+	padding-top:17px;
+	font-size:22px;
+	border:none;
+}
+
+.aside-container .aside-share:before{
+	display:none;
+	position:absolute;
+	top:13px;
+	left:0;
+	content:"分享网页";
+	width:100%;
+	height:34px;
+	line-height:17px;
+	color:#fbc02d;
+	font-size:12px;
+}
+
+.aside-container .aside-item:hover{
+	color:#fbc02d;
+}
+
+.aside-container .aside-share:hover i{
+	display:none;
+}
+
+.aside-container .aside-share:hover:before{
+	display:block;
+}
+
+
 /***********************login后hover我的后台接口****************************/
 .lr-success:hover .backstage-entrance-container{
 	display:block;
@@ -746,9 +795,24 @@ footer .foot-box{
 	right:0;
 	z-index:100;
 	width:310px;
+	height:274px;
 	border-top:1px solid transparent;	
 	color:#fff;
 	cursor:default;
+}
+
+.lr-success .backstage-entrance-container .bg-filter{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:150;
+	width:100%;
+	height:100%;
+	-webkit-filter: blur(3px); /* Chrome, Opera */
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);    
+    filter: blur(2px);
 }
 
 .lr-success .backstage-entrance-container:hover{
@@ -756,9 +820,11 @@ footer .foot-box{
 }
 
 .backstage-entrance-container .backstage-entrance{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:200;
 	width:100%;
-  	border-radius: 4px;
-  	background-color:rgba(0,0,0,0.62);
 }
 
 .backstage-entrance .entrance-wrapper{
