@@ -418,7 +418,12 @@ input[type=radio]:checked:after {
 	margin-bottom:10px;
 }
 
-.position-item .position-msg-box .position-name{
+.position-item .position-msg-box .position-msg-href{
+	display:inline-block;
+	max-width:270px;
+}
+
+.position-item .position-msg-box .position-msg-href .position-name{
 	display:inline-block;
 	max-width:270px;
   	font-size: 18px;
@@ -429,7 +434,7 @@ input[type=radio]:checked:after {
   	cursor:pointer;
 }
 
-.position-item .position-msg-box .position-name:hover{
+.position-item .position-msg-box .position-msg-href .position-name:hover{
 	color:#ffbf00;
 }
 
@@ -622,15 +627,18 @@ input[type=radio]:checked:after {
 	width: 150px;
   	height:45px;
   	line-height:45px;
-  	text-align:center;
-  	font-size:14px;
-  	font-weight:500;
-  	color:#fff;
-  	background-color: #6d6d6d;
-  	cursor:pointer;
 }
 
-.position-item .position-resume-box .position-resume-btn:hover{
+.position-item .position-resume-box .position-resume-btn .position-resume-href{
+	display:block;
+	text-align:center;
+	background-color: #6d6d6d;
+	font-size:14px;
+  	font-weight:500;
+  	color:#fff;
+}
+
+.position-item .position-resume-box .position-resume-btn .position-resume-href:hover{
 	background:#5d5c5c;
 }
 
@@ -1034,12 +1042,15 @@ input[type=radio]:checked:after {
 	float:left;
 	width:142px;
 	height:30px;
+}
+
+.recommend-operation .recommend-btn a{
+	display:block;
 	line-height:30px;
 	background:#fff;
 	font-size:12px;
 	text-align:center;
 	color:#6d6d6d;
-	cursor:pointer;
 }
 
 .recommend-operation .recommend-detail-btn{
@@ -1047,7 +1058,7 @@ input[type=radio]:checked:after {
 	border-right:1px solid #ededed;
 }
 
-.recommend-operation .recommend-btn:hover{
+.recommend-operation .recommend-btn a:hover{
 	background:#ffbf00;
 	color:#333;
 }

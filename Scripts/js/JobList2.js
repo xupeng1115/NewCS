@@ -64,12 +64,6 @@ var app=new Vue({
 		    oImg.src="../../Content/image/job_list_company01.png";
 		    oImg.onerror=null;
 		},
-		detailHref:function(ID){
-			window.location.href="Index.html?ID="+ID;
-		},
-		resumeHref:function(ID){
-			window.location.href="Index.html?ID="+ID;
-		},
 		viewMath:function(ID){
 			$(".lr-container").show();
 		},
