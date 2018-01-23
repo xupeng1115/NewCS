@@ -333,3 +333,10 @@ function myAjax(myType, myUrl, myParams, mySuccessFun, myErrorFun) {
         communication.post(params, successFun, errorFun);
     }
 }
+
+//图片没有成功加载出来时处理
+function nofind(){
+    var oImg=event.srcElement;
+    oImg.src="../../Content/img/head.png";
+    oImg.onerror=null;
+}

@@ -53,8 +53,7 @@
 }
 
 .banner-tag-content .banner-tag{
-	margin:0 auto;
-	padding-right:54px;
+	display:inline-block;
 	height:30px;
 }
 
@@ -73,9 +72,8 @@
 }
 
 .banner-tag-content .add-tag-btn{
-	position:absolute;
-	top:0px;
-	right:0;
+	position:relative;
+	display:inline-block;
 	width:54px;
 	height:30px;
 	background:#ffbf00;
@@ -84,7 +82,6 @@
 }
 
 .banner-tag-content .add-tag-btn::before{
-	display:block;
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -1404,7 +1401,7 @@ input[type=radio]:checked:before {
 }
 
 .practice-edit-container .practice-positionname{
-	width:210px;
+	width:180px;
 }
 
 .practice-edit-container .practice-select-begin{
@@ -1818,6 +1815,7 @@ input[type=radio]:checked:before {
 }
 
 
+
 /*********************************标签选项表弹窗**************************************/
 .flo-box{
 	position:fixed;
@@ -1916,7 +1914,7 @@ input[type=radio]:checked:before {
 
 .tag-select-box .select-list{
 	padding:0 26px;
-	padding-bottom:100px;
+	padding-bottom:65px;
 	width:100%;
 	overflow-x:hidden;
 	overflow-y:auto;
@@ -1944,13 +1942,13 @@ input[type=radio]:checked:before {
 	color:#fff;
 }
 
+
 .tag-select-box .select-btn-box{
 	width:100%;
 	height: 45px;
   	background-color: #ffffff;
   	box-shadow: 0 -1px 0 0 #eaeaea;
 }
-
 .select-btn-box .select-btn{
 	position:relative;
 	float:left;
@@ -1978,6 +1976,4 @@ input[type=radio]:checked:before {
 .select-btn-box .select-reset-btn{
 	color: #ee5c54;
 }
-
-
 

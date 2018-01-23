@@ -1,60 +1,37 @@
 "use strict";
-
-var oUserInfo={
-	ID:0,
-	PicturePath:"",
-	Name:"",
-	Gender:"",							
-	AddressInfo:"",
-	Tel:"",
-	Email:""
-//	ID:1,
-//	PicturePath:'../../Content/img/head.png',
-//	Name:'Jessie Lai',
-//	Gender:'1',							
-//	AddressInfo:'上海市长宁区玛瑙路1438号国际古北财富中心二期',
-//	Tel:'15136677782',
-//	Email:'987239822@qq.com'
-}
+//请求接口
+var titleUrl = "/My/GetTitles",
+	addTitleUrl = "/My/SubmitUserTitle",
+	userTitleUrl = "/My/GetUserTitles";
 
 //Vue数据模型（交互逻辑和事件绑定）
 var app=new Vue({
 	el:'#app',
 	data:{							
-		tagBoxShow:false,									
-		totalTags:[									
-			{ID:1,TitleName:"研发类"},
-			{ID:2,TitleName:"吃苦耐劳"},
-			{ID:3,TitleName:"奉献精神呵呵呵"},
-			{ID:4,TitleName:"研发类"},
-			{ID:5,TitleName:"吃苦耐劳"},
-			{ID:6,TitleName:"奉献精神呵呵呵"},
-			{ID:7,TitleName:"研发类"},
-			{ID:8,TitleName:"吃苦耐劳"},
-			{ID:9,TitleName:"奉献精神呵呵呵"}
-		],
-		userTags:[],
-		selectedTags:[],
-		
-		userInfoShow:oUserInfo.Name!==""&&oUserInfo.Gender!==""&&oUserInfo.Tel!==""&&oUserInfo.AddressInfo!==""&&oUserInfo.Email!=="",
-		editOnce:!(oUserInfo.Name!==""&&oUserInfo.Gender!==""&&oUserInfo.Tel!==""&&oUserInfo.AddressInfo!==""&&oUserInfo.Email!==""),
+		tagBoxShow:false,
+		totalTags:[],
+		userTags:UserTitleList,
+		selectedTags:UserTitleList,
+		//个人基本信息
+		userInfoShow:ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!=="",
+		editOnce:!(ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!==""),
 		userInfo:{
-			ID:oUserInfo.ID,
-			PicturePath:oUserInfo.PicturePath,
-			Name:oUserInfo.Name,
-			Gender:oUserInfo.Gender,							
-			AddressInfo:oUserInfo.AddressInfo,
-			Tel:oUserInfo.Tel,
-			Email:oUserInfo.Email
+			ID:ResumeBasic.ID,
+			PicturePath:ResumeBasic.PicturePath,
+			Name:ResumeBasic.Name,
+			Gender:ResumeBasic.Gender,							
+			AddressInfo:ResumeBasic.AddressInfo,
+			Tel:ResumeBasic.Tel,
+			Email:ResumeBasic.Email
 		},
 		userEditInfo:{
-			ID:oUserInfo.ID,
-			PicturePath:oUserInfo.PicturePath,
-			Name:oUserInfo.Name,
-			Gender:oUserInfo.Gender,							
-			AddressInfo:oUserInfo.AddressInfo,
-			Tel:oUserInfo.Tel,
-			Email:oUserInfo.Email
+			ID:ResumeBasic.ID,
+			PicturePath:ResumeBasic.PicturePath,
+			Name:ResumeBasic.Name,
+			Gender:ResumeBasic.Gender,							
+			AddressInfo:ResumeBasic.AddressInfo,
+			Tel:ResumeBasic.Tel,
+			Email:ResumeBasic.Email
 		},
 		userPhoneShow:false,
 		userEmailShow:false,
@@ -69,6 +46,7 @@ var app=new Vue({
 		currentModule:0,
 		
 		currrentDate:new Date().getFullYear(),
+		//教育经历模块
 		educationDate:[
 			{
 				year:2012,
@@ -84,51 +62,31 @@ var app=new Vue({
 			}
 		],
 		educationLists:[
-			{
-				SchoolName:"斯坦福大学",
-				Education:6,
-				BeginDate:"2015-05-06",
-				EndDate:"2018-06-06",
-				Major:"计算机"
-			},
-			{
-				SchoolName:"耶鲁大学",
-				Education:7,
-				BeginDate:"2015-05-06",
-				EndDate:"2018-06-06",
-				Major:"计算机"
-			},
-			{
-				SchoolName:"剑桥大学",
-				Education:8,
-				BeginDate:"2015-05-06",
-				EndDate:"2018-06-06",
-				Major:"计算机"
-			}
+			
 		],
 		educationEditBackgrounds:[
 			{
-				id:5,
-				background:"大专",
+				id:10,
+				background:"大专"
 			},
 			{
-				id:6,
-				background:"本科",
+				id:11,
+				background:"本科"
 			},
 			{
-				id:7,
-				background:"硕士",
+				id:12,
+				background:"硕士"
 			},
 			{
-				id:8,
-				background:"博士",
+				id:13,
+				background:"博士"
 			},
 			{
-				id:9,
-				background:"其他",
+				id:143,
+				background:"其他"
 			}
 		],
-		educationEditgraduates:[
+		educationEditgraduatesYear:[
 			{
 				graduate:"2019",
 			},
@@ -157,14 +115,54 @@ var app=new Vue({
 				graduate:"2011",
 			}
 		],
+        educationEditgraduatesMonth:[
+			{
+				graduate:"01",
+			},
+			{
+				graduate:"02",
+			},
+			{
+				graduate:"03",
+			},
+			{
+				graduate:"04",
+			},
+			{
+				graduate:"05",
+			},
+			{
+				graduate:"06",
+			},
+			{
+				graduate:"07",
+			},
+			{
+				graduate:"08",
+			},
+			{
+				graduate:"09",
+			},
+			{
+				graduate:"10",
+			},
+			{
+				graduate:"11",
+			},
+			{
+				graduate:"12",
+			}
+		],
 		educationmajor:"",
 		educationschool:"",
 		educationBackgroundid:"",
 		educationbackground:"",
-		educationgraduate:"",
+		educationgraduate_year:"",
+        educationgraduate_month:"",
 		educationmonth:"",
 		
-		awardgraduates:[
+		//荣誉经历模块
+		awardgraduates_year:[
 			{
 				year:"2019",
 			},
@@ -193,23 +191,52 @@ var app=new Vue({
 				year:"2011",
 			}
 		],
-		awardLists:[
+        awardgraduates_month:[
 			{
-				HonorName:"外语系第十三届英语戏剧比赛一等奖一等奖",
-				GetTime:"2015-05-06"
+				month:"01",
 			},
 			{
-				HonorName:"外语系第十三届英语戏剧比赛一等奖一等奖",
-				GetTime:"2015-05-06"
+				month:"02",
 			},
 			{
-				HonorName:"外语系第十三届英语戏剧比赛一等奖一等奖",
-				GetTime:"2015-05-06"
+				month:"03",
+			},
+			{
+				month:"04",
+			},
+			{
+				month:"05",
+			},
+			{
+				month:"06",
+			},
+			{
+				month:"07",
+			},
+			{
+				month:"08",
+			},
+			{
+				month:"09",
+			},
+			{
+				month:"10",
+			},
+			{
+				month:"11",
+			},
+			{
+				month:"12",
 			}
 		],
+		awardLists:[
+			
+		],
 		awardname:"",
-		awardgraduate:"",
+		awardgraduate_year:"",
+        awardgraduate_month:"",
 		
+		//实习经历模块
 		practiceYears:[
 			{
 				year:2019
@@ -243,123 +270,28 @@ var app=new Vue({
 			}
 		],
 		practiceLists:[
-			{
-				url:"../../Content/img/position_head.png",
-				companyname:"洋葱数学",
-				positionname:"HR助理",
-				site:"长沙-岳麓区",
-				begin:"2016/08/11",
-				end:"2016/09/20",
-				content:"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设;"
-						+"<br>"+
-						"2、建立、维护人事档案，办理和更新劳动合同；"
-						+"<br>"+
-						"3、收集相关的劳动用工等人事政策及法规；"
-						+"<br>"+
-						"4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；"
-						+"<br>"+
-						"5、协同开展新员工入职培训，执行培训计划，以及培训效果的跟踪、反馈；"
-						+"<br>"+
-						"6、办理相应的社会保险、医保等外联工作；"
-						+"<br>"+
-						"7、在技术服务部的主要职责：1、文件整理；2、绩效考核数据统计；3、服务计划与出差记录；"
-						+"<br>"+
-						"8、其他临时任务。"
-			},
-			{
-				url:"../../Content/img/position_head.png",
-				companyname:"洋葱数学",
-				positionname:"HR助理",
-				site:"长沙-岳麓区",
-				begin:"2016/08/11",
-				end:"2016/09/20",
-				content:"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设;"
-						+"<br>"+
-						"2、建立、维护人事档案，办理和更新劳动合同；"
-						+"<br>"+
-						"3、收集相关的劳动用工等人事政策及法规；"
-						+"<br>"+
-						"4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；"
-						+"<br>"+
-						"5、协同开展新员工入职培训，执行培训计划，以及培训效果的跟踪、反馈；"
-						+"<br>"+
-						"6、办理相应的社会保险、医保等外联工作；"
-						+"<br>"+
-						"7、在技术服务部的主要职责：1、文件整理；2、绩效考核数据统计；3、服务计划与出差记录；"
-						+"<br>"+
-						"8、其他临时任务。"
-			},
-			{
-				url:"../../Content/img/position_head.png",
-				companyname:"洋葱数学",
-				positionname:"HR助理",
-				site:"长沙-岳麓区",
-				begin:"2016/08/11",
-				end:"2016/09/20",
-				content:"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设;"
-						+"<br>"+
-						"2、建立、维护人事档案，办理和更新劳动合同；"
-						+"<br>"+
-						"3、收集相关的劳动用工等人事政策及法规；"
-						+"<br>"+
-						"4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；"
-						+"<br>"+
-						"5、协同开展新员工入职培训，执行培训计划，以及培训效果的跟踪、反馈；"
-						+"<br>"+
-						"6、办理相应的社会保险、医保等外联工作；"
-						+"<br>"+
-						"7、在技术服务部的主要职责：1、文件整理；2、绩效考核数据统计；3、服务计划与出差记录；"
-						+"<br>"+
-						"8、其他临时任务。"
-			}
+			
 		],
 		practicecompanyname:"",
 		practicepositionname:"",
 		practicesite:"",
-		practicebegin:"",
-		practiceend:"",
+		practicebegin_year:"",
+        practicebegin_month:"",
+		practiceend_year:"",
+        practiceend_month:"",
 		practicecontent:"",
 		
+		//技能模块
 		skillLists:[
-			{
-				name:'英语CET-6',
-				bar:"200",
-				dec:"熟练使用英语交流"
-			},
-			{
-				name:'英语CET-6',
-				bar:"100",
-				dec:"熟练使用英语交流"
-			},
-			{
-				name:'英语CET-6',
-				bar:"300",
-				dec:"熟练使用英语交流"
-			}
+			
 		],
 		skillname:"",
 		skillbar:"",
 		skilldec:"",
 		
+		//课外活动模块
 		activityLists:[
-			{
-				name:"学术学术辩论",
-				date:"2017年1月20日",
-				site:"苏州",
-				dec:"课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会",
-			},
-			{
-				name:"学术学术辩论",
-				date:"2017年1月20日",
-				site:"苏州",
-				dec:"课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会",
-			},
-			{
-				name:"学术学术辩论",
-				date:"2017年1月20日",
-				site:"苏州",
-				dec:"课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会课程由英锐联合哈佛大学辩论委员会",
-			}
+			
 		],
 		activityYears:[
 			{
@@ -396,7 +328,8 @@ var app=new Vue({
 		
 		activitysite:"",
 		activitydec:"",
-		activitydate:"",
+		activitydate_year:"",
+        activitydate_month:"",
 		activityname:""
 		
 	},
@@ -427,69 +360,65 @@ var app=new Vue({
 		}
 	},
 	methods:{
+		imgError:function(){
+			console.log();
+			var oImg=event.srcElement;
+		    oImg.src="../../Content/img/head.png";
+		    oImg.onerror=null;
+		},
 		addTags:function(){
-			$.each(this.userTags,function(index,item){
-				this.selectedTags.push(item);
-			})
-			this.tagBoxShow=true;
+			var titleUrl='../../Scripts/mock/test.json';
+			var myParams = {};
+            var mySuccessFun = function(result){
+            	if(result.Success){
+            		app.totalTags=result.Data;
+            		console.log($(".select-item"));
+            		$.each(app.userTags,function(i,userItem){
+//          			console.log(userItem);
+            			$.each(app.totalTags,function(j,totalItem){
+            				if(userItem.ID===totalItem.ID){
+            					console.log($(".select-item"));
+//          					$(".select-item").eq(j).addClass("selected");
+            				}
+            			})
+            		})
+            		app.tagBoxShow=true;
+            	}else{
+            		alert(result.Message);
+            	}
+            }
+            var myErrorFun=function(){
+            	alert("网络出错了！");
+            }
+			
+			//发送请求获取标签列表
+            myAjax("get",titleUrl,JSON.stringify(myParams),mySuccessFun,myErrorFun);
 		},
 		tagConfirm:function(){
-			$.each(this.selectedTags,function(index,item){
-				var oIndex=index,oItem=item;
-				$.each(this.userTags,function(index,item){
-					if(item.ID!==oItem.ID){
-						this.userTags.push(oItem);
-					}
-				})
-			})
-			this.userTags=this.selectedTags;
 			this.tagBoxShow=false;
 		},
 		tagClick:function(tag,event){
-			var oNum=this.selectedTags.length;
-			console.log(oNum);
 			var oSelected=$(event.target).hasClass("selected");
-			var oIndex;
-			if(oNum<=5){
-				if(oNum===5){
-					if(oSelected){
-						$(event.target).removeClass("selected");
-						this.tagSplice(tag);
+
+			if(oSelected){
+				var oIndex;
+				$(event.target).removeClass("selected");
+				$.each(this.selectedTags, function (index, item){
+					if(item.ID===tag.ID){
+						oIndex=index;
+						return;
 					}
-				}else{
-					if(oSelected){
-						$(event.target).removeClass("selected");
-						this.tagSplice(tag);
-					}else{
-						$(event.target).addClass("selected");
-						this.selectedTags.push(tag);
-					}
-				}
+				})
+				this.selectedTags.splice(oIndex,0);
 			}else{
-				alert("最多选择5个标签");
+				$(event.target).addClass("selected");
+				this.selectedTags.push(tag);
 			}
-		},
-		tagSplice:function(tag){
-			var oIndex;
-			$.each(this.selectedTags, function (index, item){
-				if(item.ID===tag.ID){
-					oIndex=index;
-					return;
-				}
-			})
-			this.selectedTags.splice(oIndex,1);
 		},
 		tagCancel:function(){
 			this.tagBoxShow=false;
 		},
 		tagReset:function(){
-			var oSelects=$(".select-item");
-			$.each(oSelects,function(index,item){
-				if($(item).hasClass("selected")){
-					$(item).removeClass("selected");
-				}
-			})
-			this.selectedTags.splice(0);
 			this.tagBoxShow=false;
 		},
 		infoEdit:function(){
@@ -529,13 +458,33 @@ var app=new Vue({
 			}
 			this.userInfo={
 				ID:this.userEditInfo.ID,
-				PicturePath:this.userEditInfo.PicturePath,
+				PicturePath:app.userInfo.PicturePath,
 				Name:this.userEditInfo.Name,
 				Gender:this.userEditInfo.Gender,							
 				AddressInfo:this.userEditInfo.AddressInfo,
 				Tel:this.userEditInfo.Tel,
 				Email:this.userEditInfo.Email
 			}
+			var that = this;
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					if(!that.userInfo.ID){
+						Obj.ID=result.Data;
+					}
+					
+                    getResumeBasicInfo();
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+			var that = this;
+
+            //提交简历信息
+            myAjax("post", "/Resume/SubmitResumeBasic", JSON.stringify(this.userInfo), mySuccessFun, myErrorFun);
+            
 			this.editOnce=false;
 			this.clickEnable=true;
 			this.userInfoShow=true;
@@ -619,8 +568,11 @@ var app=new Vue({
 				break;
 			}
 		},
-		selectgraduate:function(graduate){
-			this.educationgraduate=graduate;
+		selectgraduateyear:function(graduate){
+			this.educationgraduate_year=graduate;
+		},
+        selectgraduatemonth:function(graduate){
+			this.educationgraduate_month=graduate;
 		},
 		selectbackground:function(background,id){
 			this.educationbackground=background;
@@ -635,13 +587,15 @@ var app=new Vue({
 		educationCancel:function(type){
 			this.educationmajor="";
 			this.educationschool="";
-			this.educationgraduate="";
+			this.educationgraduate_year="";
+            this.educationgraduate_month="";
 			this.educationShift();
 			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
+		//教育背景
 		educationSave:function(type){
 			if($.trim(this.educationmajor)===""){
 				return;
@@ -652,72 +606,158 @@ var app=new Vue({
 			if($.trim(this.educationbackground)===""){
 				return;
 			}
-			if($.trim(this.educationgraduate)===""){
+			if($.trim(this.educationgraduate_year)===""){
 				return;
 			}
+            var _endDay= Number(this.educationgraduate_year);
+            var _beginDay = _endDay;
+            
+            switch (this.educationbackgroundid) {
+            case 10:
+                _beginDay = _endDay - 3;
+                break;
+            case 11:
+                _beginDay = _endDay - 4;
+                break;
+            case 12:
+                _beginDay = _endDay - 2;
+                break;
+            case 13:
+                _beginDay = _endDay - 4;
+                break;
+            default:
+                _beginDay = _endDay - 2;
+                break;
+            }
 
 			var Obj={
+				ResumeID:app.userEditInfo.ID,
 				Major:this.educationmajor,
 				Education:this.educationbackgroundid,
 				SchoolName:this.educationschool,
-				BeginDate:Number(this.educationgraduate)-4,
-				EndDate:Number(this.educationgraduate)
+				BeginDate: _beginDay + "-" +this.educationgraduate_month, 
+				EndDate: _endDay + "-" +this.educationgraduate_month
 			}
-			
-			this.educationLists.unshift(Obj);
-			this.educationDate.splice(0,1,{year:this.educationgraduate,month:"7月"});
-			
-			this.moduleActiveHide(type);
-			this.currentModule=0;
-			this.clickEnable=true;
-			this.headEditEnable=false;
-			
-			this.educationmajor="";
-			this.educationschool="";
-			this.educationbackground="";
-			this.educationgraduate="";
-			this.educationbackgroundid="";
+		
+            var mySuccessFun = function (result) {
+				
+                if (result.Success) {
+					Obj.ID=result.Data;
+                    
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+			var that = this;
+
+            //提交教育背景
+            myAjax("post", "/Resume/SubmitEducationBackround", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            
+			that.educationLists.unshift(Obj);
+			that.educationDate.splice(0,1,{year:that.educationgraduate_year,month:that.educationgraduate_month});
+					
+			that.moduleActiveHide(type);
+			that.currentModule=0;
+			that.clickEnable=true;
+			that.headEditEnable=false;
+					
+			that.educationmajor="";
+			that.educationschool="";
+			that.educationbackground="";
+			that.educationgraduate_year="";
+			that.educationgraduate_month= "";
+			that.educationbackgroundid="";
 		},
-		educationDelete:function(index){
-			this.educationLists.splice(index,1);
-			this.educationShift();
+		educationDelete:function(index,ID){
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+                    app.educationLists.splice(index,1);
+					app.educationShift();
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+            }
+			myAjax("post", "/Resume/DeleteEducationBackround?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
 		},
-		awardselect:function(year){
-			this.awardgraduate=year;
+
+		awardselect_year:function(year){
+			this.awardgraduate_year=year;
 		},
+        awardselect_month:function(month){
+			this.awardgraduate_month=month;
+		},
+        //所获荣誉
 		awardSave:function(type){
 			if($.trim(this.awardname)===""){
 				return;
 			}
-			if($.trim(this.awardgraduate)===""){
+			if($.trim(this.awardgraduate_year)===""){
 				return;
 			}
 			
 			var Obj={
+				ResumeID:app.userEditInfo.ID,
 				HonorName:this.awardname,
-				GetTime:this.awardgraduate
+				GetTime:this.awardgraduate_year + "-" +this.awardgraduate_month
 			}
 			
-			this.awardLists.unshift(Obj);
-			this.moduleActiveHide(type);
-			this.currentModule=0;
-			this.clickEnable=true;
-			this.headEditEnable=false;
+			var mySuccessFun = function (result) {
+				
+                if (result.Success) {
+					Obj.ID=result.Data;
+                    
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+			var that = this;
+
+            //提交所获荣誉
+            myAjax("post", "/Resume/SubmitHonor", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+ 
+			that.awardLists.unshift(Obj);
+			that.moduleActiveHide(type);
+			that.currentModule=0;
+			that.clickEnable=true;
+			that.headEditEnable=false;
 			
-			this.awardname="";
-			this.awardgraduate="";
+			that.awardname="";
+			that.awardgraduate_year="";
+            that.awardgraduate_month= "";
 		},
 		awardCancel:function(type){
 			this.awardname="";
-			this.awardgraduate="";
+			this.awardgraduate_year="";
+            this.awardgraduate_month= "";
 			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
-		awardDelete:function(index){
-			this.awardLists.splice(index,1);
+		awardDelete:function(index,ID){
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					app.awardLists.splice(index,1);
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+            }
+			myAjax("post", "/Resume/DeleteHonor?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
+		
 		},
+		//实习经历
 		practiceSave:function(type){
 			if($.trim(this.practicecompanyname)===""){
 				return;
@@ -728,10 +768,10 @@ var app=new Vue({
 			if($.trim(this.practicesite)===""){
 				return;
 			}
-			if($.trim(this.practicebegin)===""){
+			if($.trim(this.practicebegin_year)===""){
 				return;
 			}
-			if($.trim(this.practiceend)===""){
+			if($.trim(this.practiceend_year)===""){
 				return;
 			}
 			if($.trim(this.practicecontent)===""){
@@ -739,15 +779,43 @@ var app=new Vue({
 			}
 			
 			var Obj={
-				url:"../../Content/img/position_head.png",
+				url:$("#CompanyLogoImg").attr('src'),
 				companyname:this.practicecompanyname,
 				positionname:this.practicepositionname,
 				site:this.practicesite,
-				begin:this.practicebegin,
-				end:this.practiceend,
+				begin:this.practicebegin_year +"-" + this.practicebegin_month,
+				end:this.practiceend_year+"-" + this.practiceend_month,
 				content:this.practicecontent
+				
+			}
+			//"../../Content/img/position_head.png"
+			var Objs={
+				CompanyLogo:$("#CompanyLogoImg").attr('src'),
+				ResumeID:app.userEditInfo.ID,
+				CompanyName:this.practicecompanyname,
+				PositionName:this.practicepositionname,
+				AddressInfo:this.practicesite,
+				BeginDate:this.practicebegin_year +"-" + this.practicebegin_month,
+				EndDate:this.practiceend_year+"-" + this.practiceend_month,
+				JobDescription:this.practicecontent
 			}
 
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					Obj.ID=result.Data;
+					$("#CompanyLogoImg").attr('src',"../../Content/img/position_head.png");
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+
+
+            
+            myAjax("post", "/Resume/SubmitInternshipExperience", JSON.stringify(Objs), mySuccessFun, myErrorFun);
+ 
 			this.practiceLists.unshift(Obj);
 			this.moduleActiveHide(type);
 			this.currentModule=0;
@@ -757,16 +825,20 @@ var app=new Vue({
 			this.practicecompanyname="";
 			this.practicepositionname="";
 			this.practicesite="";
-			this.practicebegin="";
-			this.practiceend="";
+			this.practicebegin_year="";
+            this.practicebegin_month="";
+			this.practiceend_year="";
+            this.practiceend_month="";
 			this.practicecontent="";
 		},
 		practiceCancel:function(type){
 			this.practicecompanyname="";
 			this.practicepositionname="";
 			this.practicesite="";
-			this.practicebegin="";
-			this.practiceend="";
+			this.practicebegin_year="";
+            this.practicebegin_month="";
+			this.practiceend_year="";
+            this.practiceend_month="";
 			this.practicecontent="";
 			
 			this.moduleActiveHide(type);
@@ -774,15 +846,34 @@ var app=new Vue({
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
-		practiceDelete:function(index){
-			this.practiceLists.splice(index,1);
+		practiceDelete:function(index,ID){
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					app.practiceLists.splice(index,1);
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+            }
+			myAjax("post", "/Resume/DeleteInternshipExperience?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
+			
 		},
-		practiceselectbegin:function(year){
-			this.practicebegin=year;
+		practiceselectbegin_year:function(year){
+			this.practicebegin_year=year;
 		},
-		practiceselectend:function(year){
-			this.practiceend=year;
+        practiceselectbegin_month:function(month){
+			this.practicebegin_month=month;
+		},        
+		practiceselectend_year:function(year){
+			this.practiceend_year=year;
 		},
+        practiceselectend_month:function(month){
+			this.practiceend_month=month;
+		},
+
+        //特殊技能
 		skillSave:function(type){
 			if($.trim(this.skillname)===""){
 				return;
@@ -792,11 +883,28 @@ var app=new Vue({
 			}
 			
 			var Obj={
+				ResumeID:app.userEditInfo.ID,
 				name:this.skillname,
+				SepciltyName:this.skillname,
+				ResumeID:app.userEditInfo.ID,
 				dec:this.skilldec,
-				bar:this.skillbar
+				SkillDescription:this.skilldec,
+				bar:this.skillbar,
+				Skilled:this.skillbar
 			}
-			
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					Obj.ID=result.Data;
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+
+            myAjax("post", "/Resume/SubmitSepcilty", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+ 
 			this.skillLists.unshift(Obj);
 			this.moduleActiveHide(type);
 			this.currentModule=0;
@@ -815,12 +923,29 @@ var app=new Vue({
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
-		skillDelete:function(index){
-			this.skillLists.splice(index,1);
+		skillDelete:function(index,ID){
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					app.skillLists.splice(index,1);
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+            }
+			myAjax("post", "/Resume/DeleteSepcilty?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
+		
 		},
-		activityselect:function(year){
-			this.activitydate=year;
+
+		//课外活动
+		activityselect_year:function(year){
+			this.activitydate_year=year;
 		},
+        activityselect_month:function(month){
+			this.activitydate_month=month;
+		},
+        
 		activitySave:function(type){
 			if($.trim(this.activityname)===""){
 				return;
@@ -831,17 +956,44 @@ var app=new Vue({
 			if($.trim(this.activitysite)===""){
 				return;
 			}
-			if($.trim(this.activitydate)===""){
+			if($.trim(this.activitydate_year)===""){
 				return;
 			}
 			
 			var Obj={
 				name:this.activityname,
+				
 				dec:this.activitydec,
-				date:this.activitydate,
-				site:this.activitysite
+				
+				date:this.activitydate_year+"-" + this.activitydate_month,
+				
+				site:this.activitysite,
+				
+			}
+			var Objs={
+				ResumeID:app.userEditInfo.ID,
+				ActivityName:this.activityname,
+				
+				Description:this.activitydec,
+				
+				AttendTime:this.activitydate_year+"-" + this.activitydate_month,
+				
+				AddressInfo:this.activitysite
 			}
 			
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					Obj.ID=result.Data;
+                } else {
+                    alert("网络出错了！");
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+
+            myAjax("post", "/Resume/SubmitActivity", JSON.stringify(Objs), mySuccessFun, myErrorFun);
+ 
 			this.activityLists.unshift(Obj);
 			this.moduleActiveHide(type);
 			this.currentModule=0;
@@ -850,37 +1002,45 @@ var app=new Vue({
 			
 			this.activityname="";
 			this.activitydec="";
-			this.activitydate="";
+			this.activitydate_year="";
+            this.activitydate_month ="";
 			this.activitysite="";
 		},
 		activityCancel:function(type){
 			this.activityname="";
 			this.activitydec="";
-			this.activitydate="";
+			this.activitydate_year="";
+            this.activitydate_month="";
 			this.activitysite="";
 			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
-		activityDelete:function(index){
-			this.activityLists.splice(index,1);
+		activityDelete:function(index,ID){
+			var mySuccessFun = function (result) {
+                if (result.Success) {
+					app.activityLists.splice(index,1);
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+            }
+			myAjax("post", "/Resume/DeleteActivity?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
+		
+
 		}
 	}
 })
 
 
-//图片没有成功加载出来时处理
-function nofind(){
-    var oImg=event.srcElement;
-    oImg.src="../../Content/img/head.png";
-    oImg.onerror=null;
-}
-
 $(function(){
 
+//	loadUserTitle();
 	//分页
-	(function($){
+	(function(){
 		$(".tcdPageCode1").createPage({
 	        pageCount:100,
 	        current:1,
@@ -896,9 +1056,9 @@ $(function(){
 	            console.log(p);
 	        }
 	    });
-	}(jQuery));
+	}());
 	
-	//拖动进度条
+    //拖动进度条
 	(function($){
 		var tag = false,ox = 0,left = 100,bgleft = 0,num=0;
         $('.skill-edit-progress_btn').mousedown(function(e) {
@@ -945,12 +1105,146 @@ $(function(){
 	(function(){
 		
 	}(jQuery));
-	
+
 	//事件注册
 	(function(){
-
+		//绑定简历基本信息
+//		BindResumeBasic(ResumeBasic);
+		//绑定教育背景
+//		BindEducationBackround();
+		//绑定所获荣誉
+//		BindAward();
+		//绑定实习经历
+//		BindPractice();
+		//绑定语言或技术
+//		BindSkill();
+		//绑定课外活动
+//		BindActivity();
 		$("body").on("click",".back-top",function(event){
-			$('body,html').animate({scrollTop:0},600);
+			$('body,html').animate({scrollTop:0},300);
+		})
+		
+//		$("body").on("click",".tag-cancel-btn",function(event){
+//			removeSelect();
+//			$(".flo-box").hide();
+//		})
+		
+//		$("body").on("click",".add-tag-btn",function(event){});
+
+//		$("body").on("click",".add-tag-btn",function(event){
+//			var myParams = {
+//             
+//          }
+//          var mySuccessFun = function (result) {
+//              if (result.Success) {
+//					var html="<div class=\"tag-cancel-btn\">\
+//								</div>\
+//								<div class=\"select-title\">\
+//									<span class=\"title-text\">标签选择</span> <span class=\"title-dec\">最多选择5个标签</span> <span class=\"tag-num-box\">共"+result.Data.length+"个标签</span>\
+//								</div>\
+//								<ul class=\"select-list\">\
+//									<li class=\"select-list-item\">\
+//										<div class=\"select-item-title\">\
+//											</div>\
+//										<ul class=\"select-item-list clearbox\">";
+//					$.each(result.Data,function(index,item){
+//						if(ResumeBasic.indexOf(item.TitleName)>0){
+//							html+="<li class=\"select-item selected\" data-id="+item.ID+">"+item.TitleName+"</li>";
+//						}else{
+//							html+="<li class=\"select-item\" data-id="+item.ID+">"+item.TitleName+"</li>";
+//						}
+//							
+//					});
+//					html+="</ul></li></ul>\
+//					<div class=\"select-btn-box clearbox\">\
+//						<div class=\"select-btn select-confirm-btn\">\
+//							<span class=\"select-icon\"><i class=\"material-icons\">&#xE5CA;</i></span> <span class=\"btn-text\">确定</span>\
+//						</div>\
+//						<div class=\"select-btn select-reset-btn\">\
+//							<span class=\"select-icon\"><i class=\"material-icons\">&#xE5D5;</i></span> <span class=\"btn-text\">\
+//								重置</span>\
+//						</div>\
+//					</div>";
+//                  $(".title-list").html(html);
+//					$(".flo-box").show();
+//              } else {
+//                  alert(result.Message);
+//              }
+//          }
+//          var myErrorFun = function () {
+//              alert("网络出错了！");
+//          }
+//			//发送请求获取标签列表
+//          myAjax("get", titleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+//		})
+		
+//		$("body").on("click",".select-confirm-btn",function(event){
+//			var ArrayTltleID=[];
+//			$.each($(".title-list .selected"),function(index,item){
+//				ArrayTltleID.push($(item).data("id"));
+//			});
+//			var myParams = {
+//				arrayTltleID:ArrayTltleID
+//          }
+//          var mySuccessFun = function (result) {
+//              if (result.Success) {
+//					$(".flo-box").hide();
+//					loadUserTitle();
+//				} else {
+//                  alert(result.Message);
+//              }
+//          }
+//          var myErrorFun = function () {
+//              alert("网络出错了！");
+//          }
+//			//提交用户选中的标签
+//          myAjax("Post", addTitleUrl,JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+//		})
+		
+//		$("body").on("click",".select-item",function(event){
+//			var oKey=$(this).hasClass("selected");
+//			if(oKey){
+//				$(this).removeClass("selected");
+//			}else{
+//				if($('.title-list .selected').length>=5){
+//					alert("最多选择5个标签");
+//				}
+//				else
+//				{
+//					$(this).addClass("selected");
+//				}
+//			}
+//				
+//		})
+		
+//		$("body").on("click",".select-reset-btn",function(event){
+//			removeSelect();
+//		})
+		
+		$("body").on("click",".resume-nav-item",function(event){
+			var oKey=$(this).hasClass("resume-nav-active");
+			var oList=$(".resume-nav-item");
+			if(!oKey){
+				for(var i=0;i<oList.length;i++){
+					if(oList.eq(i).hasClass("resume-nav-active")){
+						oList.eq(i).removeClass("resume-nav-active");
+						break;
+					}
+				}
+				$(this).addClass("resume-nav-active");
+			}
+		})
+		
+		$("body").on("click",".add-education-btn",function(event){
+			$(".education-edit-container").show();
+		})
+		
+		$("body").on("click",".education-save-btn",function(event){
+			$(".education-edit-container").hide();
+		})
+		
+		$("body").on("click",".education-cancel-btn",function(event){
+			$(".education-edit-container").hide();
 		})
 		
 		var oBack=false;
@@ -967,119 +1261,232 @@ $(function(){
 		})
 		
 		$("body").on("click",".background-item",function(event){
+			var oContent=$(this).text();
 			$(".background-select").css("border","1px solid #e3e3e3");
+			$(".background-content").text(oContent);
 			$(".background-select-list").hide();
 			oBack=false;
 		})
 		
-		var oGraduate=false;
-		$("body").on("click",".graduate-select",function(event){
-			if(!oGraduate){
+		var oGraduateYear=false;
+		$("body").on("click",".graduate-select-year",function(event){
+			if(!oGraduateYear){
 				$(this).css("borderColor","#ffbf00");
-				$(".graduate-select-list").show();
-				oGraduate=true;
+				$(".graduate-select-list-year").show();
+				oGraduateYear=true;
 			}else{
 				$(this).css("borderColor","#e3e3e3");
-				$(".graduate-select-list").hide();
-				oGraduate=false;
+				$(".graduate-select-list-year").hide();
+				oGraduateYear=false;
 			}
 		})
 		
-		$("body").on("click",".graduate-item",function(event){
-			$(".graduate-select").css("border","1px solid #e3e3e3");
-			$(".graduate-select-list").hide();
-			oGraduate=false;
+		$("body").on("click",".graduate-item-year",function(event){
+			$(".graduate-select-year").css("border","1px solid #e3e3e3");
+			$(".graduate-select-list-year").hide();
+			oGraduateYear=false;
 		})
-		
-		var oAward=false;
-		$("body").on("click",".award-select",function(event){
-			if(!oAward){
+
+        var oGraduateMonth=false;
+		$("body").on("click",".graduate-select-month",function(event){
+			if(!oGraduateMonth){
 				$(this).css("borderColor","#ffbf00");
-				$(".award-select-list").show();
-				oAward=true;
+				$(".graduate-select-list-month").show();
+				oGraduateMonth=true;
 			}else{
 				$(this).css("borderColor","#e3e3e3");
-				$(".award-select-list").hide();
-				oAward=false;
+				$(".graduate-select-list-month").hide();
+				oGraduateMonth=false;
 			}
 		})
 		
-		$("body").on("click",".award-year-item",function(event){
-			$(".award-select").css("border","1px solid #e3e3e3");
-			$(".award-select-list").hide();
-			oAward=false;
+		$("body").on("click",".graduate-item-month",function(event){
+			$(".graduate-select-month").css("border","1px solid #e3e3e3");
+			$(".graduate-select-list-month").hide();
+			oGraduateMonth=false;
 		})
 		
-		var oPracticeBegin=false;
-		$("body").on("click",".practice-select-begin",function(event){
-			if(!oPracticeBegin){
+//        所获荣誉
+		var oAwardYear=false;
+		$("body").on("click",".award-select-year",function(event){
+			if(!oAwardYear){
 				$(this).css("borderColor","#ffbf00");
-				$(".practice-date-list-begin").show();
-				oPracticeBegin=true;
+				$(".award-select-list-year").show();
+				oAwardYear=true;
 			}else{
 				$(this).css("borderColor","#e3e3e3");
-				$(".practice-date-list-begin").hide();
-				oPracticeBegin=false;
+				$(".award-select-list-year").hide();
+				oAwardYear=false;
 			}
 		})
 		
-		$("body").on("click",".practice-year-begin",function(event){
-			$(".practice-select-begin").css("border","1px solid #e3e3e3");
-			$(".practice-date-list-begin").hide();
-			oPracticeBegin=false;
+		$("body").on("click",".award-year-item-year",function(event){
+			$(".award-select-year").css("border","1px solid #e3e3e3");
+			$(".award-select-list-year").hide();
+			oAwardYear=false;
 		})
-		
-		var oPracticeEnd=false;
-		$("body").on("click",".practice-select-end",function(event){
-			if(!oPracticeEnd){
+
+        var oAwardMonth=false;
+		$("body").on("click",".award-select-month",function(event){
+			if(!oAwardMonth){
 				$(this).css("borderColor","#ffbf00");
-				$(".practice-date-list-end").show();
-				oPracticeEnd=true;
+				$(".award-select-list-month").show();
+				oAwardMonth=true;
 			}else{
 				$(this).css("borderColor","#e3e3e3");
-				$(".practice-date-list-end").hide();
-				oPracticeEnd=false;
+				$(".award-select-list-month").hide();
+				oAwardMonth=false;
 			}
 		})
 		
-		$("body").on("click",".practice-year-end",function(event){
-			$(".practice-select-end").css("border","1px solid #e3e3e3");
-			$(".practice-date-list-end").hide();
-			oPracticeEnd=false;
+		$("body").on("click",".award-year-item-month",function(event){
+			$(".award-select-month").css("border","1px solid #e3e3e3");
+			$(".award-select-list-month").hide();
+			oAwardMonth=false;
 		})
 		
-		var oActivity=false;
-		$("body").on("click",".activity-select",function(event){
-			if(!oActivity){
+	
+
+		//实习经历
+		var oPracticeBeginYear=false;
+		$("body").on("click",".practice-select-begin-year",function(event){
+			if(!oPracticeBeginYear){
 				$(this).css("borderColor","#ffbf00");
-				$(".activity-select-list").show();
-				oActivity=true;
+				$(".practice-date-list-begin-year").show();
+				oPracticeBeginYear=true;
 			}else{
 				$(this).css("borderColor","#e3e3e3");
-				$(".activity-select-list").hide();
-				oActivity=false;
+				$(".practice-date-list-begin-year").hide();
+				oPracticeBeginYear=false;
 			}
 		})
 		
-		$("body").on("click",".activity-year-item",function(event){
-			$(".activity-select").css("border","1px solid #e3e3e3");
-			$(".activity-select-list").hide();
-			oActivity=false;
+		$("body").on("click",".practice-year-begin-year",function(event){
+			$(".practice-select-begin-year").css("border","1px solid #e3e3e3");
+			$(".practice-date-list-begin-year").hide();
+			oPracticeBeginYear=false;
+		})
+
+        var oPracticeBeginMonth=false;
+		$("body").on("click",".practice-select-begin-month",function(event){
+			if(!oPracticeBeginMonth){
+				$(this).css("borderColor","#ffbf00");
+				$(".practice-date-list-begin-month").show();
+				oPracticeBeginMonth=true;
+			}else{
+				$(this).css("borderColor","#e3e3e3");
+				$(".practice-date-list-begin-month").hide();
+				oPracticeBeginMonth=false;
+			}
+		})
+		
+		$("body").on("click",".practice-year-begin-month",function(event){
+			$(".practice-select-begin-month").css("border","1px solid #e3e3e3");
+			$(".practice-date-list-begin-month").hide();
+			oPracticeBeginMonth=false;
+		})
+		
+		var oPracticeEndYear=false;
+		$("body").on("click",".practice-select-end-year",function(event){
+			if(!oPracticeEndYear){
+				$(this).css("borderColor","#ffbf00");
+				$(".practice-date-list-end-year").show();
+				oPracticeEndYear=true;
+			}else{
+				$(this).css("borderColor","#e3e3e3");
+				$(".practice-date-list-end-year").hide();
+				oPracticeEndYear=false;
+			}
+		})
+		
+		$("body").on("click",".practice-year-end-year",function(event){
+			$(".practice-select-end-year").css("border","1px solid #e3e3e3");
+			$(".practice-date-list-end-year").hide();
+			oPracticeEndYear=false;
+		})
+        
+		var oPracticeEndMonth=false;
+		$("body").on("click",".practice-select-end-month",function(event){
+			if(!oPracticeEndMonth){
+				$(this).css("borderColor","#ffbf00");
+				$(".practice-date-list-end-month").show();
+				oPracticeEndMonth=true;
+			}else{
+				$(this).css("borderColor","#e3e3e3");
+				$(".practice-date-list-end-month").hide();
+				oPracticeEndMonth=false;
+			}
+		})
+		
+		$("body").on("click",".practice-year-end-month",function(event){
+			$(".practice-select-end-month").css("border","1px solid #e3e3e3");
+			$(".practice-date-list-end-month").hide();
+			oPracticeEndMonth=false;
+		})
+
+		//课外活动
+		var oActivityYear=false;
+		$("body").on("click",".activity-select-year",function(event){
+			if(!oActivityYear){
+				$(this).css("borderColor","#ffbf00");
+				$(".activity-select-list-year").show();
+				oActivityYear=true;
+			}else{
+				$(this).css("borderColor","#e3e3e3");
+				$(".activity-select-list-year").hide();
+				oActivityYear=false;
+			}
+		})
+		
+		$("body").on("click",".activity-year-item-year",function(event){
+			$(".activity-select-year").css("border","1px solid #e3e3e3");
+			$(".activity-select-list-year").hide();
+			oActivityYear=false;
+		})
+
+
+        var oActivityMonth=false;
+		$("body").on("click",".activity-select-month",function(event){
+			if(!oActivityMonth){
+				$(this).css("borderColor","#ffbf00");
+				$(".activity-select-list-month").show();
+				oActivityMonth=true;
+			}else{
+				$(this).css("borderColor","#e3e3e3");
+				$(".activity-select-list-month").hide();
+				oActivityMonth=false;
+			}
+		})
+		
+		$("body").on("click",".activity-year-item-month",function(event){
+			$(".activity-select-month").css("border","1px solid #e3e3e3");
+			$(".activity-select-list-month").hide();
+			oActivityMonth=false;
 		})
 		
 		$(document).on("click",function(e){
 			var b1=$(e.target).hasClass("background-select");
 			var b2=$(e.target).hasClass("background-content");
-			var g1=$(e.target).hasClass("graduate-select");
-			var g2=$(e.target).hasClass("graduate-content");
-			var a1=$(e.target).hasClass("award-select");
-			var a2=$(e.target).hasClass("award-content");
-			var c1=$(e.target).hasClass("activity-select");
-			var c2=$(e.target).hasClass("activity-content");
-			var d1=$(e.target).hasClass("practice-select-begin");
-			var d2=$(e.target).hasClass("practice-content-begin");
-			var e1=$(e.target).hasClass("practice-select-end");
-			var e2=$(e.target).hasClass("practice-content-end");
+			var g1=$(e.target).hasClass("graduate-select-year");
+			var g2=$(e.target).hasClass("graduate-content-year");
+            var g1_month=$(e.target).hasClass("graduate-select-month");
+			var g2_month=$(e.target).hasClass("graduate-content-month");
+			var a1=$(e.target).hasClass("award-select-year");
+			var a2=$(e.target).hasClass("award-content-year");
+            var a1_month=$(e.target).hasClass("award-select-month");
+			var a2_month=$(e.target).hasClass("award-content-month");
+			var c1=$(e.target).hasClass("activity-select-year");
+			var c2=$(e.target).hasClass("activity-content-year");
+            var c1_month=$(e.target).hasClass("activity-select-month");
+			var c2_month=$(e.target).hasClass("activity-content-month");
+			var d1=$(e.target).hasClass("practice-select-begin-year");
+			var d2=$(e.target).hasClass("practice-content-begin-year");
+            var d1_month=$(e.target).hasClass("practice-select-begin-month");
+			var d2_month=$(e.target).hasClass("practice-content-begin-month");
+			var e1=$(e.target).hasClass("practice-select-end-year");
+			var e2=$(e.target).hasClass("practice-content-end-year");
+            var e1_month=$(e.target).hasClass("practice-select-end-month");
+			var e2_month=$(e.target).hasClass("practice-content-end-month");
 			
 			if(!(b1||b2)){
 				$(".background-select").css("border","1px solid #e3e3e3");
@@ -1088,33 +1495,65 @@ $(function(){
 			}
 			
 			if(!(g1||g2)){
-				$(".graduate-select").css("border","1px solid #e3e3e3");
-				$(".graduate-select-list").hide();
-				oGraduate=false;
+				$(".graduate-select-year").css("border","1px solid #e3e3e3");
+				$(".graduate-select-list-year").hide();
+				oGraduateYear=false;
+			}
+
+            if(!(g1_month||g2_month)){
+				$(".graduate-select-month").css("border","1px solid #e3e3e3");
+				$(".graduate-select-list-month").hide();
+				oGraduateMonth=false;
 			}
 			
 			if(!(a1||a2)){
-				$(".award-select").css("border","1px solid #e3e3e3");
-				$(".award-select-list").hide();
-				oAward=false;
+				$(".award-select-year").css("border","1px solid #e3e3e3");
+				$(".award-select-list-year").hide();
+				oAwardYear=false;
+			}
+
+            if(!(a1_month||a2_month)){
+				$(".award-select-month").css("border","1px solid #e3e3e3");
+				$(".award-select-list-month").hide();
+				oAwardMonth=false;
 			}
 			
 			if(!(c1||c2)){
-				$(".activity-select").css("border","1px solid #e3e3e3");
-				$(".activity-select-list").hide();
-				oActivity=false;
+				$(".activity-select-year").css("border","1px solid #e3e3e3");
+				$(".activity-select-list-year").hide();
+				oActivityYear=false;
 			}
+
+            if(!(c1_month||c2_month)){
+				$(".activity-select-month").css("border","1px solid #e3e3e3");
+				$(".activity-select-list-month").hide();
+				oActivityMonth=false;
+			}
+
 			
 			if(!(d1||d2)){
-				$(".practice-select-begin").css("border","1px solid #e3e3e3");
-				$(".practice-date-list-begin").hide();
-				oPracticeBegin=false;
+				$(".practice-select-begin-year").css("border","1px solid #e3e3e3");
+				$(".practice-date-list-begin-year").hide();
+				oPracticeBeginYear=false;
+			}
+
+            if(!(d1_month||d2_month)){
+				$(".practice-select-begin-month").css("border","1px solid #e3e3e3");
+				$(".practice-date-list-begin-month").hide();
+				oPracticeBeginMonth=false;
 			}
 			
 			if(!(e1||e2)){
-				$(".practice-select-end").css("border","1px solid #e3e3e3");
-				$(".practice-date-list-end").hide();
-				oPracticeEnd=false;
+				$(".practice-select-end-year").css("border","1px solid #e3e3e3");
+				$(".practice-date-list-end-year").hide();
+				oPracticeEndYear=false;
+			}
+
+            
+			if(!(e1_month||e2_month)){
+				$(".practice-select-end-month").css("border","1px solid #e3e3e3");
+				$(".practice-date-list-end-month").hide();
+				oPracticeEndMonth=false;
 			}
 		})
 		
@@ -1154,10 +1593,6 @@ $(function(){
 			}
 		})
 
-		$("body").on("click",".empty-btn",function(){
-			window.location.href="../Job/List.html";
-		})
-
 		function removeSelect(){
 			var oList=$(".select-item");
 			for(var i=0;i<oList.length;i++){
@@ -1182,7 +1617,7 @@ $(function(){
 		    	$(".resume-nav-box").removeClass("resume-nav-scroll");
 		    }
 		})
-		
+
 		//侧边导航滚动
 		$("body").on("click",".nav-href",function(event){
 			var oActive=$(this).parent(".resume-nav-item").hasClass("resume-nav-active");
@@ -1205,9 +1640,226 @@ $(function(){
 		    });
 		    return false;
 		})
-		
+
+		$("body").on("click",".empty-btn",function(){
+			window.location.href="../Job/List";
+		})
+
+		function removeSelect(){
+			var oList=$(".select-item");
+			for(var i=0;i<oList.length;i++){
+				if($(oList.eq(i).hasClass("selected"))){
+					$(oList.eq(i).removeClass("selected"));
+				}else{
+					
+				}
+			}
+		}
 	}());
+	
 	
 })
 
 
+function ShowUserTitle(Data){
+	UserTitleList = JSON.stringify(Data);
+	var html="";
+	$.each(Data,function(index,item){
+		html+="<li class=\"tag-item\">"+item.TitleName+"</li>";
+	});
+	
+	$('.user-title-list').html(html);
+}
+
+function loadUserTitle(){
+	var myParams = {
+		   
+	}
+	var mySuccessFun = function (result) {
+		if (result.Success) {
+			ShowUserTitle(result.Data);
+		} else {
+			alert(result.Message);
+		}
+	}
+	var myErrorFun = function () {
+		alert("网络出错了！");
+	}
+	//发送请求获取标签列表
+	myAjax("get", userTitleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+}
+
+//获取简历信息
+function getResumeBasicInfo(){
+	var myParams = {
+		   
+	}
+	var mySuccessFun = function (result) {
+		if (result.Success) {
+			BindResumeBasic(result.Data);
+		} else {
+			alert(result.Message);
+		}
+	}
+	var myErrorFun = function () {
+		alert("网络出错了！");
+	}
+	//发送请求获取简历信息
+	myAjax("get", "/Resume/GetResumeBasicInfo", JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+}
+
+//简历基本信息
+function BindResumeBasic(objstr){
+	if(objstr){
+		var obj = JSON.parse(objstr);
+		app.userEditInfo.AddressInfo = obj.AddressInfo;
+		app.userEditInfo.Email = obj.Email;
+		app.userEditInfo.Gender = obj.Gender;
+		app.userEditInfo.ID = obj.ID;
+		app.userEditInfo.Name = obj.Name;
+		app.userEditInfo.Tel = obj.Tel;
+		if(ResumeBasicPicturePaths){app.userInfo.PicturePath = ResumeBasicPicturePaths; }
+	}
+}
+
+//教育经历
+function BindEducationBackround(){
+	if(EducationBackround){
+		var objList = JSON.parse(EducationBackround);
+		
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				SchoolName:item.SchoolName,
+				Education:item.Education,
+				BeginDate:item.BeginDate.substr(0,10),
+				EndDate:item.EndDate.substr(0,10),
+				Major:item.Major
+			};
+			app.educationLists.push(obj);
+		})
+	}
+}
+
+//所获荣誉
+function BindAward(){
+	if(Award){
+		var objList = JSON.parse(Award);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				HonorName:item.HonorName,
+				GetTime:item.GetTime.substr(0,10)
+			};
+			app.awardLists.push(obj);
+		})
+	}
+}
+
+//实习经历
+function BindPractice(){
+	if(InternshipExperience){
+		var objList = JSON.parse(InternshipExperience);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				companyname:item.CompanyName,
+				url:!item.CompanyLogo?"../../Content/img/position_head.png":item.CompanyLogo,
+				site:item.AddressInfo,
+				positionname:item.PositionName,
+				begin:item.BeginDate.substr(0,10),
+				end:item.EndDate.substr(0,10),
+				content:item.JobDescription
+			};
+			app.practiceLists.push(obj);
+		})
+	}
+}
+
+//绑定语言或技术
+function BindSkill(){
+	if(Sepcilty){
+		var objList = JSON.parse(Sepcilty);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				name:item.SepciltyName,
+				bar:item.Skilled,
+				dec:item.SkillDescription
+			};
+			app.skillLists.push(obj);
+		})
+	}
+}
+
+//绑定课外活动
+function BindActivity(){
+
+	if(Activity){
+		var objList = JSON.parse(Activity);
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				name:item.ActivityName,
+				date:item.AttendTime.substr(0,7),
+				site:item.AddressInfo,
+				dec:item.Description
+			};
+			app.activityLists.push(obj);
+		})
+	}
+}
+
+function filePictureChange() {
+	if(document.getElementById("PictureFile").value.length<=0){
+		return false;
+	}
+	$.ajaxFileUpload({
+		url: "/Resume/UserPhotoImport", //用于文件上传的服务器端请求地址
+		type: "post",
+		secureuri: false, //一般设置为false
+		fileElementId: "PictureFile", //文件上传控件的id属性
+		dataType: "json", //返回值类型 一般设置为json
+		success: function (result) {
+			if (result.Success) {
+				app.userInfo.PicturePath = result.Data;
+			} else {
+				alert(result.Message);
+			}
+		},
+		error: function (data, status, e) { //服务器响应失败处理函数
+			alert(e);
+		}
+	});
+}
+
+function fileCompanyLogoChange() {
+	
+	if(document.getElementById("CompanyLogo").value.length<=0){
+		return false;
+	}
+	$.ajaxFileUpload({
+		url: "/Resume/CompanyLogoImport", //用于文件上传的服务器端请求地址
+		type: "post",
+		secureuri: false, //一般设置为false
+		fileElementId: "CompanyLogo", //文件上传控件的id属性
+		dataType: "json", //返回值类型 一般设置为json
+		success: function (result) {
+			if (result.Success) {
+				$("#CompanyLogoImg").attr('src',result.Data);
+			} else {
+				alert(result.Message);
+			}
+		},
+		error: function (data, status, e) { //服务器响应失败处理函数
+			alert(e);
+		}
+	});
+}
+
+function imgClick(){
+	$('#CompanyLogo').click();
+}
