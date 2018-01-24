@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="renderer" content="webkit|ie-comp|ie-stand">
-		<title>List</title>
+		<title>Index</title>
 		
 		<!-- Public Header -->
 		<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
@@ -17,8 +17,9 @@
 	    <![endif]-->
 	    
 	    <!-- Private Header -->
-	    <!--<link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>-->
-	    <link rel="stylesheet" href="../../Content/css/JobList2.css?v=20171221"/>
+	    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+	    <link rel="stylesheet" href="../../Content/lib/swiper-3.4.2.min.css" />
+	    <link rel="stylesheet" href="../../Content/css/HomeIndex2.css?v=20180124"/>
 		
 	</head>
 <body>
@@ -68,12 +69,242 @@
 		
 		<!--********************************************Page Private************************************-->
 		<!-- Banner-->
-		<div class="row top-banner"></div>
+		<div class="row top-banner">
+			<div class="top-title">最懂你的留学生求职网站</div>
+			<div class="top-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
+			<div class="top-view-btn">查看职位</div>
+			<div class="search-box">
+				<input type="text" class="search-input" placeholder="请输入您想要的职位"/>
+				<div class="search-btn">搜索</div>
+			</div>
+		</div>
+		<div class="row top-banner-tip"></div>
 		<!-- Content -->
 		<section class="row">
-			
-			
+			<!-- 职位查看 -->
+			<div class="position-container">
+				<div class="module-title position-title">您想从事的行业？</div>
+				<ul class="position-wrapper clearbox">
+					<li class="position-item">
+						<div class="position-num">2245个职位</div>
+						<div class="position-item-title">销售/客服/快消</div>
+						<div class="position-btn">查看职位</div>
+					</li>
+					<li class="position-item">
+						<div class="position-num">2245个职位</div>
+						<div class="position-item-title">银行/保险/证券/金融</div>
+						<div class="position-btn">查看职位</div>
+					</li>
+					<li class="position-item">
+						<div class="position-num">2245个职位</div>
+						<div class="position-item-title">产品/技术/IT互联科技</div>
+						<div class="position-btn">查看职位</div>
+					</li>
+					<li class="position-item">
+						<div class="position-num">2245个职位</div>
+						<div class="position-item-title">教育/法律/人力/咨询</div>
+						<div class="position-btn">查看职位</div>
+					</li>
+					<li class="position-item">
+						<div class="position-num">2245个职位</div>
+						<div class="position-item-title">房地产</div>
+						<div class="position-btn">查看职位</div>
+					</li>
+				</ul>
+				<div class="module-btn position-view-btn">查看全部职位</div>
+			</div>
+			<!-- 加速求职 -->
+			<div class="speed-box">
+				<div class="speed-container">
+					<div class="module-title speed-title">加速你的求职之旅</div>
+					<ul class="speed-wrapper clearbox">
+						<li class="speed-item">
+							<div class="speed-img"></div>
+							<div class="speed-item-title">职业雷达站</div>
+							<div class="speed-item-msg">快速提供个性画像，意向不到的惊喜体验。</div>
+						</li>
+						<li class="speed-item">
+							<div class="speed-img"></div>
+							<div class="speed-item-title">求职加油站</div>
+							<div class="speed-item-msg">锁定目标行业，聚焦心仪岗位，各个击破，精准赋能。</div>
+						</li>
+						<li class="speed-item">
+							<div class="speed-img"></div>
+							<div class="speed-item-title">职场达人堂</div>
+							<div class="speed-item-msg">真人真事真经验，进堂上座听分享。</div>
+						</li>
+						<li class="speed-item">
+							<div class="speed-img"></div>
+							<div class="speed-item-title">职位面对面</div>
+							<div class="speed-item-msg">快速提供个性画像，意向不到的惊喜体验。</div>
+						</li>
+					</ul>
+					<div class="module-btn speed-btn">关于career success</div>
+				</div>
+			</div>
+			<!-- 理想工作 -->
+			<div class="work-box">
+				<div class="work-container">
+					<div class="module-title work-title">理想工作怎么找</div>
+					<ul class="work-wrapper clearbox">
+						<li class="work-item">
+							<div class="work-item-title">最全面的行业名企覆盖</div>
+							<div class="work-item-msg">投行/银行/互联网公司/....你耳熟能详的名企，行业专家为你提供一对一辅导</div>
+						</li>
+						<li class="work-item">
+							<div class="work-item-title">最实用的求职技能辅导</div>
+							<div class="work-item-msg">模拟面试、行业技能、案例分析...，杜绝一切假大空，专家只讲行业FAQ</div>
+						</li>
+						<li class="work-item">
+							<div class="work-item-title">最深度的岗位知识分享</div>
+							<div class="work-item-msg">无论你希望从事什么岗位工作，我们专家将给你深度解析岗位的工作日常与前景</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 案例 -->
+			<div class="case-box">
+				<div class="case-container">
+					<div class="module-title case-title">万事俱备  只等你来</div>
+					<div class="case-content swiper-container">
+						<div class="swiper-wrapper case-wrapper">
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head01.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head02.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head03.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head01.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head02.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head03.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head01.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head02.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide case-slide">
+								<div class="case-text">伦敦大学市场营销毕业，作为一个在英国攻读的商科本科生，并不十分清楚国内哪些企业能有很好的发展，整个求职就业过程是CareerSuccess的专家耐心的辅导。受益匪浅也很感谢他们！！</div>
+								<div class="case-info clearbox">
+									<img src="../../Content/image/home_index_head03.png" class="case-img"/>
+									<div class="info-left clearbox">
+										<div class="case-name">Lee Li</div>
+										<div class="case-area">University of London </div>
+										<div class="case-position">3M | 销售经理助理</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 前进后退按钮 -->
+				    <div class="swiper-button-prev"></div>
+				    <div class="swiper-button-next"></div>
+				    
+					<div class="module-btn case-btn">关于career success</div>
+				</div>
+			</div>
+			<!-- 合作公司 -->
+			<div class="company-box">
+				<div class="company-container"></div>
+			</div>
+			<!-- 联系我们 -->
+			<div class="contact-box">
+				<div class="module-title contact-title">联系我们</div>
+				<div class="contact-wrapper">
+					<div class="contact-weixin"></div>
+					<div class="contact-item contact-address">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+						<span>地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
+					</div>
+					<div class="contact-item contact-phone">
+						<i class="material-icons">&#xE0B0;</i>
+						<span>电话：(+86) 021-31336975</span>
+					</div>
+					<div class="contact-item contact-email">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<span>mickeyge@knx.com.cn</span>
+					</div>
+					<div class="contact-btn">立即购买</div>
+				</div>
+			</div>
 		</section>
+		
+		<!-- 咨询 -->
+		<div class="consult">有疑问?点我问！</div>
+		
 		<!--********************************************Page Private End*********************************-->
 		
 		<!-- aside -->
@@ -198,13 +429,24 @@
 	<script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
 	<script src="../../Scripts/lib/vue.min.js"></script>
 	<script src="../../Scripts/lib/communication.js"></script>
-	<script src="../../Scripts/js/Template2.js?v=20171221"></script>
-	
+	<script src="../../Scripts/js/Template2.js?v=20180124"></script>
+	<script>
+		//注册登陆key值
+        var isLogin = "False";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+	</script>
 	<!-- Private JS -->
 	<script src="../../Scripts/lib/swiper-3.4.2.jquery.min.js"></script>
 	<script src="../../Scripts/js/HomeIndex2.js?v=20180122"></script>
 	
 </body>
 </html>
+
+
+
 
 
