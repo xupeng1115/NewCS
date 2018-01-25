@@ -37,17 +37,26 @@
 	width: 140px;
   	height: 45px;
   	line-height:45px;
-  	border-radius: 2px;
-  	background-color: #ffcf40;
-  	font-size:16px;
-  	color:#333;
-  	font-weight:500;
-  	text-align:center;
   	cursor:pointer;
 }
 
-.top-banner .top-view-btn:hover{
-	background:#f7c223;
+.top-banner .top-view-btn a{
+	display:block;
+	border-radius: 2px;
+  	background-color: #ffcf40;
+	font-size:16px;
+  	color:#333;
+  	font-weight:500;
+  	text-align:center;
+  	
+	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.top-banner .top-view-btn:hover a{
+	background:#ffb400;
 }
 
 .top-banner-tip{
@@ -65,7 +74,6 @@
 	margin-top:60px;
 	width:800px;
 	height:50px;
-	line-height:50px;
 	border:none;
 }
 
@@ -76,7 +84,7 @@
 	padding:8px 15px 8px 54px;
 	width:710px;
 	height:50px;
-	line-height:48px;
+	line-height:34px;
 	border:1px solid transparent;
 	border-right:none;
   	font-size: 16px;
@@ -128,6 +136,11 @@ textarea::-webkit-input-placeholder {
   	color: #fff;
   	cursor:pointer;
   	box-shadow:none;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
 }
 
 .search-box .search-btn:hover{
@@ -145,16 +158,25 @@ section .module-btn{
 	width: 260px;
   	height: 50px;
   	line-height:50px;
-  	background:#ffbf00;
+  	cursor:pointer;
+}
+
+section .module-btn a{
+	display:block;
+	background:#ffbf00;
   	font-size:15px;
   	font-weight:500;
   	letter-spacing:1px;
   	color:#fff;
   	text-align:center;
-  	cursor:pointer;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
 }
 
-section .module-btn:hover{
+section .module-btn:hover a{
 	background:#ffb400;
 }
 
@@ -169,7 +191,7 @@ section .module-title{
 /*****************************侧边咨询栏***************************/
 .consult{
 	position:fixed;
-	top:200px;
+	bottom:220px;
 	left:0;
 	z-index:100;
 	padding-top:30px;
@@ -210,38 +232,55 @@ section .position-title{
 	margin-bottom:25px;
 	width:398px;
 	height:225px;
+	cursor:pointer;
+	overflow:hidden;
+}
+
+.position-item a{
+	display:block;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+.position-item a img{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+	
+	transition:all 0.55s;
+	-webkit-transition:all 0.55s; /* Safari */
+	-moz-transition-duration:all 0.55s;
+	-o-transition-duration:all 0.55s;
 }
 
 .position-container .position-wrapper .position-item:first-child{
 	margin-bottom:0;
 	width:344px;
-	height:475px;
-	background:url(../image/home_index_industry01.png)no-repeat center center;
-	background-size:100% 100%;	
-}
-
-.position-container .position-wrapper .position-item:nth-child(2){
-	background:url(../image/home_index_industry02.png)no-repeat center center;
-	background-size:100% 100%;	
+	height:475px;	
 }
 
 .position-container .position-wrapper .position-item:nth-child(3){
 	margin-right:0;
-	background:url(../image/home_index_industry03.png)no-repeat center center;
-	background-size:100% 100%;	
 }
 
 .position-container .position-wrapper .position-item:nth-child(4){
 	margin-bottom:0;
-	background:url(../image/home_index_industry04.png)no-repeat center center;
-	background-size:100% 100%;	
 }
 
 .position-container .position-wrapper .position-item:last-child{
 	margin-right:0;
 	margin-bottom:0;
-	background:url(../image/home_index_industry05.png)no-repeat center center;
-	background-size:100% 100%;	
+}
+
+.position-item:hover a img{
+	transform:scale(1.1);
+	-ms-transform:scale(1.1); 	/* IE 9 */
+	-moz-transform:scale(1.1); 	/* Firefox */
+	-webkit-transform:scale(1.1); /* Safari 和 Chrome */
+	-o-transform:scale(1.1); 
 }
 
 .position-item .position-item-title{
@@ -259,13 +298,24 @@ section .position-title{
 
 .position-item .position-num{
 	position:absolute;
-	bottom:114px;
+	bottom:80px;
 	left:30px;
 	z-index:10;
   	font-size:14px;
   	color:#fff;
+  	opacity:0;
   	letter-spacing:0.9px;
   	cursor:pointer;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.position-item:hover .position-num{
+	bottom:110px;
+	opacity:1;
 }
 
 .position-item .position-btn{
@@ -275,17 +325,25 @@ section .position-title{
 	z-index:10;
 	width: 120px;
   	height: 35px;
+  	padding:0;
   	line-height:33px;
+  	cursor:pointer;
   	background-color: transparent;
   	border: solid 1px #ffcf40;
   	font-size:14px;
   	color:#ffbf00;
   	text-align:center;
   	letter-spacing:0.9px;
-  	cursor:pointer;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
 }
 
 .position-item:hover .position-btn{
+	border:none;
+	padding-top:1px;
 	background:#ffbf00;
 	color:#333;
 }
@@ -628,16 +686,25 @@ section .contact-box{
 	width: 330px;
   	height: 50px;
   	line-height:50px;
-  	background:#ffbf00;
+  	cursor:pointer;
+}
+
+.contact-wrapper .contact-btn a{
+	display:block;
+	background:#ffbf00;
   	font-size:15px;
   	font-weight:500;
   	letter-spacing:1px;
   	color:#fff;
   	text-align:center;
-  	cursor:pointer;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
 }
 
-.contact-wrapper .contact-btn:hover{
+.contact-wrapper .contact-btn:hover a{
 	background:#ffb400;
 }
 
@@ -658,6 +725,168 @@ section .contact-box{
     background-size: 100%;
     top: 47%;
     right: -60px;
+}
+
+/******************************咨询弹窗******************************/
+.flo-consult{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9999;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+	overflow:scroll;
+	overflow-x:hidden;
+}
+
+.flo-consult .flo-consult-container{
+	position:absolute;
+	top:116px;
+	left:50%;
+	margin-left:-425px;
+	margin-bottom:116px;
+	width:850px;
+	height:707px;
+	background:url(../image/home_dialog_bg.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.flo-consult-container .consult-close-btn{
+	position:absolute;
+	top:-10px;
+	right:-50px;
+	width:44px;
+	height:44px;
+	cursor:pointer;
+	background:transparent;
+}
+
+.consult-close-btn::before{
+	position:absolute;
+	top: 21px;
+    left: 9px;
+    content: "";
+    width: 27px;
+    height: 4px;
+	background:#b4b4b4;
+	
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+}
+
+.consult-close-btn::after{
+	position:absolute;
+	top: 10px;
+    left: 20px;
+    content: "";
+    width: 4px;
+    height: 27px;
+	background:#b4b4b4;
+	
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+}
+
+.flo-consult-container .flo-consult-left{
+	margin:45px 0 0 75px;
+	float:left;
+	width:343px;
+	height:643px;
+	background:url(../image/home_dialog_page.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.flo-consult-container .flo-consult-right{
+	margin:85px 50px 0 0;
+	float:right;
+}
+
+.flo-consult-right .flo-consult-title span{
+	display:block;
+	font-size:32px;
+	font-weight:500;
+	color:#ffbf00;
+	text-align:center;
+}
+
+.flo-consult-right .flo-consult-text{
+	padding-top:20px;
+	font-size:14px;
+	color:#fff;
+	text-align:center;
+}
+
+.flo-consult-right .flo-consult-weixin-box{
+	margin-top:125px;
+}
+
+.flo-consult-weixin-box .flo-consult-weixin{
+	float:left;
+	width:180px;
+	height:173px;
+	background:url(../image/home_erwei.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.flo-consult-weixin-box .flo-consult-msg{
+	float:left;
+	margin:0 0 20px 20px;
+	width:160px;
+	
+}
+
+.flo-consult-msg .flo-consult-msg01{
+	padding-bottom:20px;
+	font-size:22px;
+	font-weight:500;
+	color:#333;
+	text-align:left;
+}
+
+.flo-consult-msg .flo-consult-msg02{
+	padding-bottom:10px;
+	font-size:16px;
+	font-weight:500;
+	color:#50d1e3;
+	text-align:left;
+}
+
+.flo-consult-right .flo-consult-btn{
+	width: 367px;
+  	height: 45px;
+  	border-radius: 22.5px;
+  	font-size: 16px;
+  	font-weight: 500;
+  	text-align:center;
+  	cursor:pointer;
+}
+
+.flo-consult-right .consult-login-btn{
+	margin-top:45px;
+	line-height:45px;
+	background-image: -webkit-gradient(linear, 100% 0, 0 0, from(#ffbf20), to(#f9844e));
+	background-image: -webkit-linear-gradient(to right, #ffbf20, #f9844e);
+	background-image: -moz-linear-gradient(to right, #ffbf20, #f9844e);
+	background-image: -o-linear-gradient(to right, #ffbf20, #f9844e);
+	background-image: linear-gradient(to right, #ffbf20, #f9844e);
+	box-shadow: 0 2px 10px 0 rgba(255, 176, 0, 0.5);
+	color:#fff;
+}
+
+.flo-consult-right .consult-know-btn{
+	margin-top:10px;
+	line-height:43px;
+  	background-color: #ffffff;
+  	border: solid 1px #fb9a3c;
+  	color:#efa03c;
 }
 
 

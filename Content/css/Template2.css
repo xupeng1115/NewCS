@@ -130,6 +130,15 @@ img{
 	color:#0099e5;
 }
 
+.no-scroll-low{
+	padding-right:8px;
+	overflow:hidden;
+}
+
+.no-scroll-high{
+	overflow:hidden;
+}
+
 /***************************公用头部header***********************/
 
 header{
@@ -340,7 +349,7 @@ footer .foot-box{
 	position:fixed;
 	top:0;
 	left:0;
-	z-index:200;
+	z-index:9999;
 	width:100%;
 	height:100%;
 	background:rgba(0,0,0,0.5);
@@ -683,9 +692,9 @@ footer .foot-box{
 /********************************aside侧边栏************************************/
 aside{
 	position:fixed;
-	bottom:0;
+	bottom:50px;
 	right:0;
-	z-index:100;
+	z-index:5000;
 	width: 60px;
   	background-color: #ffffff;
   	box-shadow: 0 2px 12px 0 rgba(213, 213, 213, 0.5);

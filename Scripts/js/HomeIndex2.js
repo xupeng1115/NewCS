@@ -36,67 +36,25 @@ $(function(){
 	//事件注册
 	(function(){
 		
-		$("body").on("click",".flow-btn",function(event){
-			$(this).css("background","#fff");
-			$(".flow-content").show();
-			$(".standard-btn").css("background","#f1f5f9");
-			$(".standard-content").hide();
+		$("body").on("click",".consult",function(event){
+			showConsult();
 		})
 		
-		$("body").on("click",".standard-btn",function(event){
-			$(this).css("background","#fff");
-			$(".flow-content").hide();
-			$(".flow-btn").css("background","#f1f5f9");
-			$(".standard-content").show();
+		$("body").on("click",".consult-close-btn",function(event){
+			hideConsult();
+		})
+		
+		$("body").on("click",".consult-know-btn",function(){
+			hideConsult();
+		})
+		
+		$("body").on("click",".consult-login-btn",function(){
+			hideConsult();
+			$(".lr-container").show();
 		})
 		
 		$("body").on("click",".search-btn",function(){
 			window.location.href="../Job/List.html";
-		})
-		
-		$("body").on("click",".position-top-name",function(){
-			window.location.href="../Job/Index.html";
-		})
-		
-		$("body").on("click",".back-top",function(){
-			$('body,html').animate({scrollTop:0},500);
-		})
-		
-		$("body").on("click",".like-box",function(){
-			var oIcon=$(this).find(".like-icon").find("i");
-			var oKey=oIcon.hasClass("red");
-			if(oKey){
-				oIcon.removeClass("red");
-				$(this).attr("status","gray");
-			}else{
-				oIcon.addClass("red");
-				$(this).attr("status","red");
-			}
-		})
-		
-		$("body").on("click",".standard-btn",function(){
-			$(".standard-item").eq(0).find(".item-content").show();
-			$(".standard-item").eq(0).find(".item-bg").css("background-image","url(../../Content/img/standard_01_bg.png)");			
-		})
-		
-		$("body").on("mouseover",".standard-item",function(){
-			var oIndex=parseInt($(this).attr("index"));
-			if(oIndex!==1){
-				$(".first-bg").css("background-image","url(../../Content/img/standard_01.png)");
-				$(".first-content").hide();
-			}else{
-				$(".first-bg").css("background-image","url(../../Content/img/standard_01_bg.png)");
-				$(".first-content").show();
-			}
-		})
-		
-		$("body").on("mouseout",".item-first",function(){
-			$(".first-bg").css("background-image","url(../../Content/img/standard_01.png)");
-			$(".first-content").hide();
-		})
-		
-		$("body").on("click",".top-evaluation-btn",function(){
-			window.location.href="../Assessment/Index.html";
 		})
 		
 		$("body").on("click",".top-evaluation-btn",function(){
@@ -106,3 +64,36 @@ $(function(){
 	}());
 	
 })
+
+//显示侧边咨询弹窗
+function showConsult(){
+	var widthValue=document.body.clientWidth;
+	var browserType=BrowserType();
+	if(widthValue>1500){
+		$("html,body").addClass("no-scroll-high");
+	}else{
+		if(browserType==="IE9"||browserType==="Chrome"||browserType==="Safari"||browserType==="Opera"){
+			$("html,body").addClass("no-scroll-low");
+		}else{
+			$("html,body").addClass("no-scroll-high");
+		}
+	}
+	
+	$(".flo-consult").show();
+}
+//隐藏侧边咨询弹窗
+function hideConsult(){
+	var widthValue=document.body.clientWidth;
+	var browserType=BrowserType();
+	
+	$(".flo-consult").hide();
+	if(widthValue>1500){
+		$("html,body").removeClass("no-scroll-high");
+	}else{
+		if(browserType==="IE9"||browserType==="Chrome"||browserType==="Safari"||browserType==="Opera"){
+			$("html,body").removeClass("no-scroll-low");
+		}else{
+			$("html,body").removeClass("no-scroll-high");
+		}
+	}
+}
