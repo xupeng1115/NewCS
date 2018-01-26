@@ -956,6 +956,7 @@ input[type=radio]:checked:after {
 	padding-left:23px;
 	width:264px;
 	height:47px;
+	line-height:47px;
 	border-bottom:1px dashed #fff;
 	font-size:16px;
 	font-weight:bold;
@@ -963,9 +964,15 @@ input[type=radio]:checked:after {
 	text-align:center;
 }
 
-.recommend-top .recommend-title .recommend-title-text{
-	display:inline-block;
-	line-height:46px;
+.recommend-top .recommend-title:before{
+	position:absolute;
+	top:15px;
+	left:90px;
+	content: "";
+    width: 14px;
+    height: 17px;
+	background:url(../image/job_index_recommend.png)no-repeat center center;
+	background-size:100% 100%
 }
 
 .recommend-top .recommend-title .recommend-title-icon{

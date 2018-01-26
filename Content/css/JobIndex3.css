@@ -1,0 +1,229 @@
+/*********************评论部分**********************/
+section .reply-box{
+	width:100%;
+	background:#f9fafc;
+}
+
+.reply-box .reply-content{
+	margin:0 auto;
+	padding:60px 0 80px 0;
+	width:1200px;
+	
+}
+
+.reply-content .reply-area{
+	margin-bottom:10px;
+	width:1180px;
+	height:80px;
+}
+
+.reply-area textarea{
+	display:block;
+	float:left;
+	padding:15px 20px;
+	width:1067px;
+	height:100%;
+	background-color: #ffffff;
+  	border: solid 1px #dfdfdf;
+  	border-right:none;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #333;
+  	resize:none;
+}
+
+.reply-area .reply-btn{
+	float:left;
+	width:113px;
+	height:80px;
+	background:#ffbf00;
+	line-height:80px;
+  	font-size: 16px;
+  	text-align: center;
+  	color: #fff;
+  	cursor:pointer;
+}
+
+.reply-area .reply-btn:hover{
+	background-color:#ffb400;
+}
+
+.reply-content .commend-list{
+	margin-bottom:20px;
+	width:1180px;
+}
+
+
+.commend-list .commend-item{
+	position:relative;
+	margin-top:3px;
+	padding:20px 50px 0 130px;
+	background-color: #fff;
+}
+
+.commend-list .commend-item .commend-head{
+	position:absolute;
+	top:20px;
+	left:50px;
+	display:block;
+	width:50px;
+	height:50px;
+	border-radius:100px;
+}
+
+.commend-list .commend-item .commend-content{
+	position:relative;
+	padding-bottom:60px;
+}
+
+.commend-list .commend-item .commend-content .commend-name{
+  	font-size: 14px;
+  	text-align: left;
+  	color: #666;
+}
+
+.commend-list .commend-item .commend-content .commend-text{
+	padding-top:10px;
+	line-height:24px;
+  	font-size: 16px;
+  	text-align: left;
+  	color: #333;
+}
+
+.commend-list .commend-item .commend-content .commend-date{
+	display:inline-block;
+	position:absolute;
+	bottom:20px;
+	right:0;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #666666;
+}
+
+.commend-list .commend-item .commend-content .commend-item-reply-btn{
+	display:inline-block;
+	position:absolute;
+	bottom:20px;
+	left:0;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #69a2cd;
+  	cursor:pointer;
+}
+
+.commend-list .commend-item .item-reply-area{
+	display:block;
+	position:relative;
+	width:100%;
+	height:140px;
+}
+
+.commend-list .commend-item .item-reply-area textarea{
+	display:block;
+	padding:10px;
+	width:100%;
+	height:60px;
+	background-color: #fff;
+  	border: solid 1px #dfdfdf;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #333;
+  	resize:none;
+}
+
+.commend-list .commend-item .item-reply-area .item-reply-area-btn{
+	position:absolute;
+	bottom:20px;
+	right:0;
+	width: 88px;
+  	height: 45px;
+  	background-color: #505050;
+  	line-height:45px;
+  	font-size: 14px;
+  	text-align: center;
+  	color: #fff;
+  	cursor:pointer;
+}
+
+textarea{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+textarea:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.commend-list .commend-item .item-reply-area textarea:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+
+.commend-list .commend-item .item-comend-box{
+	padding-bottom:30px;
+}
+
+.commend-list .commend-item .item-comend-box .item-commend-list{
+	padding:0 30px;
+	margin-bottom:40px;
+	background-color: #f8f8f8;
+}
+
+.commend-list .commend-item .item-commend-list .item-commend-item{
+	position:relative;
+	padding:20px 0 10px 60px;
+	width:100%;
+	border-bottom:1px solid #dedede;
+}
+
+.commend-list .commend-item .item-commend-list .item-commend-item:last-child{
+	border:none;
+}
+
+.item-commend-list .item-commend-item .item-commend-head{
+	position:absolute;
+	top:20px;
+	left:0;
+	display:block;
+	width:50px;
+	height:50px;
+	border-radius:100px;
+}
+
+.item-commend-list .item-commend-item .item-commend-content{
+	position:relative;
+	padding-bottom:40px;
+}
+
+.item-commend-list .item-commend-item .item-commend-content .item-commend-name{
+  	font-size: 14px;
+  	text-align: left;
+  	color: #666;
+}
+
+.item-commend-list .item-commend-item .item-commend-content .item-commend-text{
+	padding-top:10px;
+	line-height:24px;
+  	font-size: 16px;
+  	text-align: left;
+  	color: #333;
+}
+
+.item-commend-list .item-commend-item .item-commend-content .item-commend-date{
+	display:inline-block;
+	position:absolute;
+	bottom:20px;
+	right:0;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #666666;
+}

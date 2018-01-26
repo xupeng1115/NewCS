@@ -1,0 +1,308 @@
+@{
+    ViewBag.Title = "Index";
+}
+
+@section header {
+    <link rel="stylesheet" href="~/Content/iconfont/material-icons.css"/>
+	<link rel="stylesheet" href="~/Content/css/JobIndex.css?v=20180126"/>
+}
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="banner-content">
+		<div class="company-name">上海肯耐珂萨人才服务股份有限公司</div>
+		<div class="position-name">
+			<span class="position-name-text">IT应用软件开发工程师</span>
+			<span class="weixin-img"></span>
+		</div>
+		<ul class="position-tag">
+			<li class="tag-item">研发类</li>
+			<li class="tag-item">吃苦耐劳</li>
+			<li class="tag-item">奉献精神</li>
+		</ul>
+		<div class="position-address">成都 | 上海</div>
+		<div class="pay-serve-btn">购买服务</div>
+				
+	</div>
+</div>
+
+<!-- Content -->
+<section class="row">
+    <!-- 中间悬停导航 -->
+    <div class="row content-nav">
+		<div class="content-nav-container">
+			<div class="content-nav-item content-nav-detail content-nav-active"><a href="#resume-detatil" class="nav-href">职位详情</a></div>
+			<div class="content-nav-item"><a href="#serve-content" class="nav-href">了解服务</a></div>
+		</div>
+	</div>
+	<div class="content-box">
+		<div class="position-box">
+            <!-- 简历详情 -->
+			<div class="position-left">
+				<div class="msg-item" style="display:none;" v-show="resumeDetail.Advantage!==''">
+					<div class="msg-icon"><i class="material-icons">&#xE885;</i></div>
+					<div class="msg-title">职位诱惑：</div>
+					<div class="msg-content">
+						<div class="msg-text" v-html="resumeDetail.Advantage"><!--扁平化管理、高成长互联网企业--></div>
+					</div>
+				</div>
+				<div class="msg-item" style="display:none;" v-show="resumeDetail.Dec!==''">
+					<div class="msg-icon"><i class="material-icons">&#xE150;</i></div>
+					<div class="msg-title">职位描述：</div>
+					<div class="msg-content">
+						<div class="msg-text" v-html="resumeDetail.Dec">
+							<!--1. 负责金融交易系统的开发及维护工作，定期完成量化的工作要求；
+							<br>
+							2. 负责功能模块的项目需求分析、设计、开发，配合测试人员对产品需求进行测试；
+ 							<br>
+							3. 主动发现问题，提出合理化建议，积极优化项目开发手段；
+ 							<br>
+							4. 能独立处理和解决所负责的任务，及时解决生产上的系统问题；-->
+						</div>
+					</div>
+				</div>
+				<div class="msg-item" style="display:none;" v-show="resumeDetail.Demand!==''">
+					<div class="msg-icon"><i class="material-icons">&#xE241;</i></div>
+					<div class="msg-title">岗位要求：</div>
+					<div class="msg-content">
+						<div class="msg-text" v-html="resumeDetail.Demand">
+							<!--1、3年以上工作经验，本科以上学历；
+ 							<br>
+							2、具有良好的团队合作能力，沟通能力强，较强的责任心和抗压能力；
+ 							<br>
+							3、Java基础扎实，熟练使用SpringMVC+mybatis/ibatis、SSH等主流JAVA框架，理解常用的设计模式；
+ 							<br>
+							4、熟练使用Junit(或者其他)进行测试用例的编写；
+ 							<br>
+							5、熟练掌握并使用mysql、oracle等数据库，并具有一定的SQL功底；
+ 							<br>
+							6、熟练使用Linux系统常用命令；
+ 							<br>
+							7、有实时高并发系统研发者优先；
+							<br>
+							8、对业内动态和发展方向有着敏锐的洞察力、并能够独立研究者优先；
+							<br>
+							9、有互联网金融行业、金融交易系统研发经验者优先；
+							<br>
+							10、身体健康，有良好的沟通表达能力和协调能力。-->
+						</div>
+					</div>
+				</div>
+				<div class="msg-item" style="display:none;" v-show="resumeDetail.Address!==''">
+					<div class="msg-icon"><i class="material-icons">&#xE55E;</i></div>
+					<div class="msg-title">工作地址：</div>
+					<div class="msg-content">
+						<div class="msg-text" v-html="resumeDetail.Address"><!--上海 - 徐汇区 - 漕宝路 - 桂平路391号Ａ座５楼（新漕河泾商务中心）--></div>
+					</div>
+				</div>
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_32x32">
+	                <a class="jiathis_button_tsina"></a>
+	                <a class="jiathis_button_weixin"></a>
+	                <a class="jiathis_button_qzone"></a>
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+			</div>
+			<!-- 推荐职位 -->
+			<div class="position-right">
+				<div class="degree-title">职位匹配度</div>
+				<div class="degree-box">
+					<div id="indicatorContainer"></div>
+					<div class="evaluation-btn">
+						<a href="/Assessment/Index">
+							<span class="evaluation-text">完成测评获取精确匹配度</span>
+						</a>
+					</div>
+				</div>
+				<div class="course-recommend">
+					<div class="recommend-title">职位匹配度</div>
+					<ul class="recommend-list">
+						<li class="recommend-item clearbox" v-for="item in recommendList" v-bind:key="item.ID" v-bind:index="item.ID">
+							<img class="recommend-company-img" v-bind:src="item.ImgUrl" v-on:error="ImgError"/>
+							<div class="recommend-name" v-html="item.Name"><!--海外广告投放--></div>
+							<div class="recommend-company" v-html="item.Company"><!--洋葱数学--></div>
+							<div class="recommend-msg">
+								<span class="demand-experience" v-html="'经验'+item.Experience"><!--经验3-5年--></span>
+								<span class="demand-education" v-html="item.Education?'/'+item.Education:''"><!--/本科--></span>
+								<span class="demand-area" v-html="item.Area?'/'+item.Area:''"><!--/北京-丰台区--></span>
+							</div>
+							<div class="recommend-operation clearbox">
+								<div class="recommend-detail-btn recommend-btn" v-bind:index="item.ID"><a class="position-detail-href" v-bind:href="'Index?ID='+item.ID">查看详情</a></div>
+								<div class="recommend-resume-btn recommend-btn" v-bind:index="item.ID"><a class="position-recommend-href" v-bind:href="'Index?ID='+item.ID">投递简历</a></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+    <!-- 理想工作 -->
+	<div class="work-box" id="serve-content">
+		<ul class="work-container clearbox">
+			<li class="work-item">
+				<div class="work-item-title">最全面的行业名企覆盖</div>
+				<div class="work-item-msg">投行/银行/互联网公司/....你耳熟能详的名企，行业专家为你提供一对一辅导</div>
+			</li>
+			<li class="work-item">
+				<div class="work-item-title">最实用的求职技能辅导</div>
+				<div class="work-item-msg">模拟面试、行业技能、案例分析...，杜绝一切假大空，专家只讲行业FAQ</div>
+			</li>
+			<li class="work-item">
+				<div class="work-item-title">最深度的岗位知识分享</div>
+				<div class="work-item-msg">无论你希望从事什么岗位工作，我们专家将给你深度解析岗位的工作日常与前景</div>
+			</li>
+		</ul>
+	</div>
+	<!-- 服务内容 -->
+	<div class="serve-box clearbox">
+		<div class="serve-title">有超过<span class="green">80,000</span>留学生选择我们</div>
+		<div class="serve-msg">我们的服务产品</div>
+		<ul class="serve-container clearbox">
+			<li class="serve-item">
+				<div class="serve-item-top">
+					<div class="serve-item-title">职业测评服务产品</div>
+					<div class="serve-item-price">￥12888</div>
+				</div>
+				<ul class="serve-list">
+					<li class="serve-list-item">全程1V1线上线下服务</li>
+					<li class="serve-list-item">职业兴趣发现</li>
+					<li class="serve-list-item">职业竞争力挖掘</li>
+					<li class="serve-list-item">报告解读</li>
+					<li class="serve-list-item">职业分析</li>
+					<li class="serve-list-item">职场定位</li>
+					<li class="serve-list-item">职业推荐</li>
+					<li class="serve-list-item">职业优势</li>
+					<li class="serve-list-item">发展建议</li>
+					<li class="serve-list-item">职业适配</li>
+				</ul>
+				<div class="serve-btn">了解详情</div>
+			</li>
+			<li class="serve-item">
+				<div class="serve-item-top">
+					<div class="serve-item-title">实习服务产品</div>
+					<div class="serve-item-price">￥12888</div>
+				</div>
+				<ul class="serve-list">
+					<li class="serve-list-item">全程1V1线上线下服务</li>
+					<li class="serve-list-item">职业兴趣发现</li>
+					<li class="serve-list-item">职业竞争力挖掘</li>
+					<li class="serve-list-item">报告解读</li>
+					<li class="serve-list-item">职业分析</li>
+					<li class="serve-list-item">职场定位</li>
+					<li class="serve-list-item">职业推荐</li>
+					<li class="serve-list-item">职业优势</li>
+					<li class="serve-list-item">发展建议</li>
+					<li class="serve-list-item">职业适配</li>
+				</ul>
+				<div class="serve-btn">了解详情</div>
+			</li>
+					
+			<li class="serve-item">
+				<div class="serve-item-top">
+					<div class="serve-item-title">全职服务产品</div>
+					<div class="serve-item-price">￥12888</div>
+				</div>
+				<ul class="serve-list">
+					<li class="serve-list-item">全程1V1线上线下服务</li>
+					<li class="serve-list-item">职业兴趣发现</li>
+					<li class="serve-list-item">职业竞争力挖掘</li>
+					<li class="serve-list-item">报告解读</li>
+					<li class="serve-list-item">职业分析</li>
+					<li class="serve-list-item">职场定位</li>
+					<li class="serve-list-item">职业推荐</li>
+					<li class="serve-list-item">职业优势</li>
+					<li class="serve-list-item">发展建议</li>
+					<li class="serve-list-item">职业适配</li>
+				</ul>
+				<div class="serve-btn">了解详情</div>
+			</li>
+			<li class="serve-item">
+				<div class="serve-item-top">
+					<div class="serve-item-title">职业+服务产品</div>
+					<div class="serve-item-price">￥12888</div>
+				</div>
+				<ul class="serve-list">
+					<li class="serve-list-item">全程1V1线上线下服务</li>
+					<li class="serve-list-item">职业兴趣发现</li>
+					<li class="serve-list-item">职业竞争力挖掘</li>
+					<li class="serve-list-item">报告解读</li>
+					<li class="serve-list-item">职业分析</li>
+					<li class="serve-list-item">职场定位</li>
+					<li class="serve-list-item">职业推荐</li>
+					<li class="serve-list-item">职业优势</li>
+					<li class="serve-list-item">发展建议</li>
+					<li class="serve-list-item">职业适配</li>
+				</ul>
+				<div class="serve-btn">了解详情</div>
+			</li>
+		</ul>
+	</div>
+	<div class="reply-box">
+		<div class="reply-content">
+			<div class="reply-area">
+				<textarea placeholder="请输入您的评论" id="textComment0"></textarea>
+				<div class="reply-btn" data-parentid="0" onclick="submitComment(this)">发表</div>
+			</div>
+			<ul id="Commendtlist" class="commend-list">
+				<!-- <li class="commend-item">
+					<img src="../../Content/img/flow_3.png" alt="评论" class="commend-head"/>
+					<div class="commend-content">
+						<div class="commend-name">_大利猫：</div>
+						<div class="commend-text">1作为一名研发人员，我们无法把控产品的战略方向和命运，唯一能做的就是把代码写成诗，每一个版本都是一篇有鉴赏价值的文章，尽量做出一些技术亮点。</div>
+						<div class="commend-date">2017-07-05 10:08:00</div>
+						<div class="commend-item-reply-btn">回复</div>
+					</div>
+				</li>
+				<li class="commend-item">
+					<img src="../../Content/img/flow_2.png" alt="评论" class="commend-head"/>
+					<div class="commend-content">
+						<div class="commend-name">_大利猫：</div>
+						<div class="commend-text">2作为一名研发人员，我们无法把控产品的战略方向和命运，唯一能做的就是把代码写成诗，每一个版本都是一篇有鉴赏价值的文章，尽量做出一些技术亮点。</div>
+						<div class="commend-date">2017-07-05 10:08:00</div>
+						<div class="commend-item-reply-btn">回复</div>
+					</div>
+					<div class="item-reply-area">
+						<textarea placeholder="回复 _大利猫："></textarea>
+						<div class="item-reply-area-btn">提交</div>
+					</div>
+					<div class="item-comend-box">
+						<ul class="item-commend-list">
+							<li class="item-commend-item">
+								<img src="../../Content/img/flow_3.png" alt="评论" class="item-commend-head"/>
+								<div class="item-commend-content">
+									<div class="item-commend-name">_大利猫：</div>
+									<div class="item-commend-text">3作为一名研发人员，我们无法把控产品的战略方向和命运，唯一能做的就是把代码写成诗，每一个版本都是一篇有鉴赏价值的文章，尽量做出一些技术亮点。</div>
+									<div class="item-commend-date">2017-07-05 10:08:00</div>
+								</div>
+							</li>
+							<li class="item-commend-item">
+								<img src="../../Content/img/flow_3.png" alt="评论" class="item-commend-head"/>
+								<div class="item-commend-content">
+									<div class="item-commend-name">_大利猫：</div>
+									<div class="item-commend-text">4作为一名研发人员，我们无法把控产品的战略方向和命运，唯一能做的就是把代码写成诗，每一个版本都是一篇有鉴赏价值的文章，尽量做出一些技术亮点。</div>
+									<div class="item-commend-date">2017-07-05 10:08:00</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+
+</section>
+@section scripts {
+    <script type="text/javascript">
+
+        var positionID = '@Html.Raw(ViewBag.PositionID)'; 
+
+    </script>
+    <script src="~/Scripts/mock/jobIndex_mock.js"></script>
+    <script src="~/Scripts/lib/radialIndicator.js"></script>
+	<script src="~/Scripts/js/JobIndex.js?v=20180126"></script>
+    <script src="~/Scripts/xss.js"></script>
+
+    
+}
+
