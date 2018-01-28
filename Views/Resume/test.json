@@ -1,4 +1,4 @@
 {
-	msg:true,
-	text:100000+" hello"
+	"msg":true,
+	"text":"1000 hello"
 }
