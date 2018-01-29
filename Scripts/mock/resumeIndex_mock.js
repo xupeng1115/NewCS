@@ -1,3 +1,4 @@
+//所有的标签
 var totalTags=[
 	{
 		"ID":1,
@@ -29,14 +30,14 @@ var totalTags=[
 	},
 	{
 		"ID":5,
-		"TitleName":"金融/投资/证券",
+		"TitleName":"测试工程师",
 		"TitleID":0,
 		"Remarks":null,
 		"UserID":0
 	},
 	{
 		"ID":6,
-		"TitleName":"理财顾问",
+		"TitleName":"网络推广",
 		"TitleID":0,
 		"Remarks":null,
 		"UserID":0
@@ -64,7 +65,7 @@ var totalTags=[
 	},
 	{
 		"ID":10,
-		"TitleName":"结构/设计",
+		"TitleName":"经济研究员",
 		"TitleID":0,
 		"Remarks":null,
 		"UserID":0
@@ -123,6 +124,7 @@ var UserTitleList = [
         "UserID":5
     }
 ]
+
 //个人基本信息
 var ResumeBasic = {
     "ID":2,
@@ -139,20 +141,8 @@ var ResumeBasic = {
     "ModifyUser":5,
     "ModifyTime":"2018-01-23T11:30:57.513"
 }
-//个人课外活动信息
-var Activity = [
-    {
-        "ID":12,
-        "ResumeID":2,
-        "ActivityName":"国际学生咨询委员会",
-        "AttendTime":"2013-03-01T00:00:00",
-        "AddressID":0,
-        "AddressInfo":"俄亥俄，美国",
-        "Description":"参与并策划多项国际学生交流研讨会",
-        "CreatedUser":5,
-        "CreatedTime":"2018-01-05T13:36:33.463"
-    }
-]
+
+
 //个人教育背景信息
 var EducationBackround = [
     {
@@ -161,8 +151,8 @@ var EducationBackround = [
         "SchoolName":"哥伦比亚大学教育学院",
         "Education":12,
         "Major":"应用统计",
-        "BeginDate":"2014-12-01T00:00:00",
-        "EndDate":"2016-12-01T00:00:00",
+        "BeginDate":"",
+        "EndDate":"2016-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:30:58.447"
     },
@@ -172,8 +162,8 @@ var EducationBackround = [
         "SchoolName":"迈阿密大学牛津分校",
         "Education":11,
         "Major":"金融专业",
-        "BeginDate":"2011-05-01T00:00:00",
-        "EndDate":"2015-05-01T00:00:00",
+        "BeginDate":"",
+        "EndDate":"2011-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:31:41.67"
     },
@@ -183,12 +173,13 @@ var EducationBackround = [
         "SchoolName":"迈阿密大学牛津分校",
         "Education":11,
         "Major":"会计专业",
-        "BeginDate":"2011-05-01T00:00:00",
-        "EndDate":"2015-05-01T00:00:00",
+        "BeginDate":"",
+        "EndDate":"2008-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:32:02.333"
     }
 ]
+
 //个人荣誉信息
 var Award = [
     {
@@ -208,6 +199,7 @@ var Award = [
         "CreatedTime":"2018-01-05T13:32:34.04"
     }
 ]
+
 //个人实习经历信息
 var InternshipExperience = [
     {
@@ -224,6 +216,7 @@ var InternshipExperience = [
         "CreatedTime":"2018-01-05T13:35:35.117"
     }
 ]
+
 //个人语言技能信息
 var Sepcilty = [
     {
@@ -237,5 +230,22 @@ var Sepcilty = [
     }
 ]
 
+//个人课外活动信息
+var Activity = [
+    {
+        "ID":12,
+        "ResumeID":2,
+        "ActivityName":"国际学生咨询委员会",
+        "AttendTime":"2013-03-01T00:00:00",
+        "AddressID":0,
+        "AddressInfo":"俄亥俄，美国",
+        "Description":"参与并策划多项国际学生交流研讨会",
+        "CreatedUser":5,
+        "CreatedTime":"2018-01-05T13:36:33.463"
+    }
+]
+
+
+//微信图片
 var ResumeBasicPicturePaths = '/UserPhoto/case021515158987801.png';
 //var ResumeBasicPicturePaths = '/UserPhoto/微信图片1515102349915.jpg';

@@ -31,7 +31,7 @@ var app=new Vue({
 		
 	},
 	watch:{
-		//监听对象和对象
+		//监听对象和数组
 		searchObj:{
 			handler(newVal){
 				this.postSearch();

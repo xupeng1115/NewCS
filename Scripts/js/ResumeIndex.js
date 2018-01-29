@@ -4,14 +4,71 @@ var titleUrl = "/My/GetTitles",
 	addTitleUrl = "/My/SubmitUserTitle",
 	userTitleUrl = "/My/GetUserTitles";
 
+function extendList(arr){
+	return $.extend([],arr);
+}
+
+function formatDate(arr){
+	var result=[];
+	$.each(arr,function(index,item){
+		var obj={};
+		obj.year=Number(item.EndDate.substr(0,4));
+		obj.month=formatMonth(item.EndDate.substr(5,2));
+		result.push(obj);
+	})
+	return result;
+}
+
+function formatMonth(month){
+	switch(month){
+		case "01":
+			month="1月";
+			break;
+		case "02":
+			month="2月";
+			break;
+		case "03":
+			month="3月";
+			break;
+		case "04":
+			month="4月";
+			break;
+		case "05":
+			month="5月";
+			break;
+		case "06":
+			month="6月";
+			break;
+		case "07":
+			month="7月";
+			break;
+		case "08":
+			month="8月";
+			break;
+		case "09":
+			month="9月";
+			break;
+		case "10":
+			month="10月";
+			break;
+		case "11":
+			month="11月";
+			break;
+		case "12":
+			month="12月";
+			break;
+	}
+	return month;
+}
+
 //Vue数据模型（交互逻辑和事件绑定）
 var app=new Vue({
 	el:'#app',
 	data:{							
 		tagBoxShow:false,
 		totalTags:[],
-		userTags:UserTitleList,
-		selectedTags:UserTitleList,
+		userTags:extendList(UserTitleList),
+		selectedTags:extendList(UserTitleList),
 		//个人基本信息
 		userInfoShow:ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!=="",
 		editOnce:!(ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!==""),
@@ -47,23 +104,8 @@ var app=new Vue({
 		
 		currrentDate:new Date().getFullYear(),
 		//教育经历模块
-		educationDate:[
-			{
-				year:2012,
-				month:"7月"
-			},
-			{
-				year:2015,
-				month:"7月"
-			},
-			{
-				year:2019,
-				month:"7月"
-			}
-		],
-		educationLists:[
-			
-		],
+		educationDate:formatDate(EducationBackround),
+		educationLists:EducationBackround,
 		educationEditBackgrounds:[
 			{
 				id:10,
@@ -82,7 +124,7 @@ var app=new Vue({
 				background:"博士"
 			},
 			{
-				id:143,
+				id:14,
 				background:"其他"
 			}
 		],
@@ -153,6 +195,7 @@ var app=new Vue({
 				graduate:"12",
 			}
 		],
+
 		educationmajor:"",
 		educationschool:"",
 		educationBackgroundid:"",
@@ -229,9 +272,7 @@ var app=new Vue({
 				month:"12",
 			}
 		],
-		awardLists:[
-			
-		],
+		awardLists:Award,
 		awardname:"",
 		awardgraduate_year:"",
         awardgraduate_month:"",
@@ -269,9 +310,7 @@ var app=new Vue({
 				year:2010
 			}
 		],
-		practiceLists:[
-			
-		],
+		practiceLists:InternshipExperience,
 		practicecompanyname:"",
 		practicepositionname:"",
 		practicesite:"",
@@ -282,17 +321,13 @@ var app=new Vue({
 		practicecontent:"",
 		
 		//技能模块
-		skillLists:[
-			
-		],
+		skillLists:Sepcilty,
 		skillname:"",
 		skillbar:"",
 		skilldec:"",
 		
 		//课外活动模块
-		activityLists:[
-			
-		],
+		activityLists:Activity,
 		activityYears:[
 			{
 				year:2019
@@ -333,6 +368,27 @@ var app=new Vue({
 		activityname:""
 		
 	},
+	watch:{
+		//监听对象和数组
+		totalTags:{
+			handler(newVal){
+				this.tagBoxShow=true;
+			},
+			deep:true
+		}
+	},
+	beforeMount:function(){
+		
+	},
+	mounted:function(){
+		
+	},
+	updated:function(){
+		//重新绘制带有用户标签的列表
+		if(this.tagBoxShow){
+			this.resetTags();
+		}
+	},
 	computed:{
 		phoneFilter:function(){
 			var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
@@ -372,17 +428,6 @@ var app=new Vue({
             var mySuccessFun = function(result){
             	if(result.Success){
             		app.totalTags=result.Data;
-            		console.log($(".select-item"));
-            		$.each(app.userTags,function(i,userItem){
-//          			console.log(userItem);
-            			$.each(app.totalTags,function(j,totalItem){
-            				if(userItem.ID===totalItem.ID){
-            					console.log($(".select-item"));
-//          					$(".select-item").eq(j).addClass("selected");
-            				}
-            			})
-            		})
-            		app.tagBoxShow=true;
             	}else{
             		alert(result.Message);
             	}
@@ -395,31 +440,71 @@ var app=new Vue({
             myAjax("get",titleUrl,JSON.stringify(myParams),mySuccessFun,myErrorFun);
 		},
 		tagConfirm:function(){
-			this.tagBoxShow=false;
+			
+			var addUrl='../../Scripts/mock/test.json';
+			var myParams = {};
+            var mySuccessFun = function(result){
+            	if(result.Success){
+            		app.userTags=$.extend([],app.selectedTags);
+					app.tagBoxShow=false;
+            	}else{
+            		alert(result.Message);
+            	}
+            }
+            var myErrorFun=function(){
+            	alert("网络出错了！");
+            }
+			
+			//发送请求获取标签列表
+            myAjax("get",addUrl,JSON.stringify(myParams),mySuccessFun,myErrorFun);
+			
 		},
 		tagClick:function(tag,event){
 			var oSelected=$(event.target).hasClass("selected");
-
-			if(oSelected){
-				var oIndex;
-				$(event.target).removeClass("selected");
-				$.each(this.selectedTags, function (index, item){
-					if(item.ID===tag.ID){
-						oIndex=index;
-						return;
+			
+			if(this.selectedTags.length<=5){
+				if(oSelected){
+					var oIndex;
+					$(event.target).removeClass("selected");
+					$.each(this.selectedTags, function (index, item){
+						if(item.ID===tag.ID){
+							oIndex=index;
+							return;
+						}
+					})
+					this.selectedTags.splice(oIndex,1);
+				}else{
+					if(this.selectedTags.length<5){
+						$(event.target).addClass("selected");
+						this.selectedTags.push(tag);
+					}else{
+						alert("最多选择5个标签");
 					}
-				})
-				this.selectedTags.splice(oIndex,0);
-			}else{
-				$(event.target).addClass("selected");
-				this.selectedTags.push(tag);
+				}
 			}
 		},
 		tagCancel:function(){
+			this.selectedTags=$.extend([],this.userTags);
 			this.tagBoxShow=false;
 		},
 		tagReset:function(){
-			this.tagBoxShow=false;
+			this.selectedTags=[];
+			$.each($(".select-item"),function(a,item){
+				$(item).removeClass("selected");
+			})
+		},
+		resetTags:function(){
+			$.each($(".select-item"),function(a,item){
+				$(item).removeClass("selected");
+			})
+			
+			$.each(app.userTags,function(i,userItem){
+    			$.each(app.totalTags,function(j,totalItem){
+    				if(userItem.ID===totalItem.ID){
+  						$(".select-item").eq(j).addClass("selected");
+    				}
+    			})
+    		})
 		},
 		infoEdit:function(){
 			if(!this.headEditEnable){
@@ -457,22 +542,25 @@ var app=new Vue({
 				return;
 			}
 			this.userInfo={
-				ID:this.userEditInfo.ID,
+				ID:app.userEditInfo.ID,
 				PicturePath:app.userInfo.PicturePath,
-				Name:this.userEditInfo.Name,
-				Gender:this.userEditInfo.Gender,							
-				AddressInfo:this.userEditInfo.AddressInfo,
-				Tel:this.userEditInfo.Tel,
-				Email:this.userEditInfo.Email
+				Name:app.userEditInfo.Name,
+				Gender:app.userEditInfo.Gender,							
+				AddressInfo:app.userEditInfo.AddressInfo,
+				Tel:app.userEditInfo.Tel,
+				Email:app.userEditInfo.Email
 			}
-			var that = this;
+			
+			var submitResumeBasic="../../Scripts/mock/post.json";
+			var myParams=app.userInfo;
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-					if(!that.userInfo.ID){
-						Obj.ID=result.Data;
+					if(!app.userInfo.ID){
+						app.userInfo.ID=result.Data;
 					}
-					
-                    getResumeBasicInfo();
+					app.editOnce=false;
+					app.clickEnable=true;
+					app.userInfoShow=true;
                 } else {
                     alert("网络出错了！");
                 }
@@ -480,14 +568,9 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
-			var that = this;
 
             //提交简历信息
-            myAjax("post", "/Resume/SubmitResumeBasic", JSON.stringify(this.userInfo), mySuccessFun, myErrorFun);
-            
-			this.editOnce=false;
-			this.clickEnable=true;
-			this.userInfoShow=true;
+            myAjax("get", submitResumeBasic, JSON.stringify(myParams), mySuccessFun, myErrorFun);
 		},
 		infoCancel:function(){
 			
@@ -609,41 +692,20 @@ var app=new Vue({
 			if($.trim(this.educationgraduate_year)===""){
 				return;
 			}
-            var _endDay= Number(this.educationgraduate_year);
-            var _beginDay = _endDay;
             
-            switch (this.educationbackgroundid) {
-            case 10:
-                _beginDay = _endDay - 3;
-                break;
-            case 11:
-                _beginDay = _endDay - 4;
-                break;
-            case 12:
-                _beginDay = _endDay - 2;
-                break;
-            case 13:
-                _beginDay = _endDay - 4;
-                break;
-            default:
-                _beginDay = _endDay - 2;
-                break;
-            }
-
 			var Obj={
 				ResumeID:app.userEditInfo.ID,
-				Major:this.educationmajor,
-				Education:this.educationbackgroundid,
-				SchoolName:this.educationschool,
-				BeginDate: _beginDay + "-" +this.educationgraduate_month, 
-				EndDate: _endDay + "-" +this.educationgraduate_month
+				Major:app.educationmajor,
+				Education:app.educationbackgroundid,
+				SchoolName:app.educationschool,
+				BeginDate:"", 
+				EndDate:app.educationgraduate_year+"-"+app.educationgraduate_month
 			}
 		
             var mySuccessFun = function (result) {
 				
                 if (result.Success) {
 					Obj.ID=result.Data;
-                    
                 } else {
                     alert("网络出错了！");
                 }
@@ -651,31 +713,29 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
-			var that = this;
 
             //提交教育背景
             myAjax("post", "/Resume/SubmitEducationBackround", JSON.stringify(Obj), mySuccessFun, myErrorFun);
             
-			that.educationLists.unshift(Obj);
-			that.educationDate.splice(0,1,{year:that.educationgraduate_year,month:that.educationgraduate_month});
-					
-			that.moduleActiveHide(type);
-			that.currentModule=0;
-			that.clickEnable=true;
-			that.headEditEnable=false;
-					
-			that.educationmajor="";
-			that.educationschool="";
-			that.educationbackground="";
-			that.educationgraduate_year="";
-			that.educationgraduate_month= "";
-			that.educationbackgroundid="";
+			app.educationLists.unshift(Obj);
+			app.educationDate.splice(0,1,{year:app.educationgraduate_year,month:formatMonth(app.educationgraduate_month)});
+						
+			app.moduleActiveHide(type);
+			app.currentModule=0;
+			app.clickEnable=true;
+			app.headEditEnable=false;
+					 
+			app.educationmajor="";
+			app.educationschool="";
+			app.educationbackground="";
+			app.educationgraduate_year="";
+			app.educationgraduate_month= "";
+			app.educationbackgroundid="";
 		},
 		educationDelete:function(index,ID){
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-                    app.educationLists.splice(index,1);
-					app.educationShift();
+                    
                 } else {
                     alert(result.Message);
                 }
@@ -684,6 +744,10 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteEducationBackround?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
+			
+			app.educationLists.splice(index,1);
+			app.educationShift();
+			
 		},
 
 		awardselect_year:function(year){
@@ -1029,8 +1093,6 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteActivity?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
-		
-
 		}
 	}
 })
@@ -1346,7 +1408,6 @@ $(function(){
 		})
 		
 	
-
 		//实习经历
 		var oPracticeBeginYear=false;
 		$("body").on("click",".practice-select-begin-year",function(event){

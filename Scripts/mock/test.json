@@ -31,19 +31,19 @@
 			"UserID":0
 		},
 		{
-			"ID":5,
-			"TitleName":"金融/投资/证券",
-			"TitleID":0,
-			"Remarks":null,
-			"UserID":0
-		},
-		{
-			"ID":6,
-			"TitleName":"理财顾问",
-			"TitleID":0,
-			"Remarks":null,
-			"UserID":0
-		},
+	        "ID":5,
+	        "TitleName":"测试工程师",
+	        "TitleID":3,
+	        "Remarks":"",
+	        "UserID":5
+	    },
+	    {
+	        "ID":6,
+	        "TitleName":"网络推广",
+	        "TitleID":4,
+	        "Remarks":"",
+	        "UserID":5
+	    },
 		{
 			"ID":7,
 			"TitleName":"风险控制",
@@ -66,12 +66,12 @@
 			"UserID":0
 		},
 		{
-			"ID":10,
-			"TitleName":"结构/设计",
-			"TitleID":0,
-			"Remarks":null,
-			"UserID":0
-		},
+	        "ID":10,
+	        "TitleName":"经济研究员",
+	        "TitleID":8,
+	        "Remarks":"",
+	        "UserID":5
+	    },
 		{
 			"ID":11,
 			"TitleName":"售后服务",
@@ -102,3 +102,10 @@
 		}
 	]
 }
+
+
+
+
+
+
+
