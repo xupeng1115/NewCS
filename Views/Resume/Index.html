@@ -36,13 +36,13 @@
 					<li class="top-nav-item"><a href="/Home/Serve">服务内容</a></li>
 					<li class="top-nav-item"><a href="/Home/About">关于我们</a></li>
                         <li class="top-nav-item lr-success">
-                            <a href="/Resume/Index"><img src="/UserPhoto/case021515158987801.png" class="success-img" onerror="nofind();"/></a>
+                            <a href="/Resume/Index"><img src="../../Content/img/head.png" class="success-img"/></a>
                             <div class="backstage-entrance-container">
                                 <!--<img src="../../Content/img/job_list_company03.png" class="bg-filter"/>-->
 							    <div class="backstage-entrance">
 								    <div class="entrance-wrapper">
 									    <div class="entrance-top clearbox">
-										    <img src="/UserPhoto/case021515158987801.png" class="entrance-img" onerror="nofind();"/>
+										    <img src="../../Content/img/head.png" class="entrance-img"/>
 										    <div class="entrance-name">13761646494</div>
 										    <div class="entrance-tag">数据分析&nbsp;&nbsp;数据分析&nbsp;&nbsp;吃苦耐劳 &nbsp;&nbsp;IT行业&nbsp;&nbsp;IT行业IT行业&nbsp;&nbsp;</div>
 									    </div>
@@ -180,7 +180,7 @@
 										</li>
 									</ul>
 									<div class="education-container">
-										<div class="module-edit-container education-edit-container clearbox" v-show="ModuleShow_1" style="display:none;">
+										<div class="module-edit-container education-edit-container clearbox" style="display:none;" v-show="ModuleShow_1">
 											<input type="text" class="module-input" placeholder="请输入学校名称" v-model="educationschool"/>
 											<div class="module-select background-select">
 												<div class="module-select-content background-content" v-html="educationbackground?educationbackground:'学历'"><!--学历--></div>
@@ -204,18 +204,17 @@
 													<li class="module-select-item graduate-item graduate-item-month" v-for="(item,index) in educationEditgraduatesMonth" v-bind:key="index" v-html="item.graduate" v-on:click="selectgraduatemonth(item.graduate)"><!--2019--></li>
 												</ul>
 											</div>
-											<div class="module-save-btn module-btn education-save-btn" v-on:click="educationSave(1)">保存</div>
-											<div class="module-cancel-btn module-btn education-cancel-btn" v-on:click="educationCancel(1)">取消</div>
+											<div class="module-save-btn module-btn education-save-btn" v-on:click.self.stop="educationSave(1)">保存</div>
+											<div class="module-cancel-btn module-btn education-cancel-btn" v-on:click.self.stop="educationCancel(1)">取消</div>
 										</div>
 										<ul class="education-list" style="display:none;" v-show="educationLists.length>0">
-											<li class="education-item" v-for="(item,index) in educationLists" :key="index">
+											<li class="education-item" v-for="(item,index) in educationLists" v-bind:key="index">
 												<input type="hidden" v-model="item.ID" value="0"/>
 												<span class="education-school" v-html="item.SchoolName"><!--哈佛大学--></span>
 												<span class="education-background" v-html="item.Education>=14?'其他':(item.Education>=13?'博士':(item.Education>=12?'硕士':(item.Education>=11?'本科':(item.Education>=10?'大专':''))))"><!--本科--></span>
 												<span class="education-major" v-html="item.Major"><!--机械及自动化专业--></span>
-												<!--<span class="date-begin" v-html="item.BeginDate">2012年6月1日</span>-->
 												<span class="date-end" v-html="item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'+'毕业'"><!--2015年6月19日--></span>
-												<span class="delete-btn" v-on:click="educationDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+												<span class="delete-btn" v-bind:class="{'education-btn-able':!ModuleShow_1&&currentModule===0}" v-on:click="educationDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 												<!--<span class="edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>-->
 											</li>
 										</ul>
@@ -235,19 +234,18 @@
 											
 		                                    <div class="module-select award-select award-select-year" style="width:100px;">
 												<div class="module-select-content award-content award-content-year" v-html="awardgraduate_year?awardgraduate_year:'年份'"><!--年份--></div>
-												<ul class="module-select-list award-select-list award-select-list-year" style="width:100px;"s>
+												<ul class="module-select-list award-select-list award-select-list-year" style="width:100px;">
 													<li class="module-select-item award-year-item  award-year-item-year" v-for="(item,index) in awardgraduates_year" :key="index" v-on:click="awardselect_year(item.year)" v-html="item.year"><!--2019--></li>
 												</ul>
 											</div>
 		
 		                                    <div class="module-select award-select award-select-month" style="width:100px;">
 												<div class="module-select-content award-content award-content-month" v-html="awardgraduate_month?awardgraduate_month:'月份'"><!--年份--></div>
-												<ul class="module-select-list award-select-list award-select-list-month" style="width:100px;"s>
+												<ul class="module-select-list award-select-list award-select-list-month" style="width:100px;">
 													<li class="module-select-item award-year-item  award-year-item-month" v-for="(item,index) in awardgraduates_month" :key="index" v-on:click="awardselect_month(item.month)" v-html="item.month"><!--2019--></li>
 												</ul>
 											</div>
-		                                 
-		
+		                                
 											<div class="module-save-btn module-btn award-save-btn" v-on:click="awardSave(2)">保存</div>
 											<div class="module-cancel-btn module-btn award-cancel-btn" v-on:click="awardCancel(2)">取消</div>
 										</div>
@@ -256,8 +254,8 @@
 											<li class="award-item" v-for="(item,index) in awardLists" v-bind:key="index" v-bind:index="item.ID">
 												<input type="hidden" v-model="item.ID" value="0"/>
 												<span class="award-name" v-html="item.HonorName"><!--外语系第十三届英语戏剧比赛一等奖--></span>
-												<span class="award-date" v-html="item.GetTime.substr(0,7)"><!--2015年6月19日--></span>
-												<span class="delete-btn" v-on:click="awardDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+												<span class="award-date" v-html="item.GetTime.substr(0,4)+'年'+item.GetTime.substr(5,2)+'月'"><!--2015年6月19日--></span>
+												<span class="delete-btn" v-bind:class="{'award-btn-able':!ModuleShow_2&&currentModule===0}" v-on:click="awardDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 												<!--<span class="edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>-->
 											</li>
 										</ul>
@@ -275,56 +273,41 @@
 										<div class="module-edit-container practice-edit-container clearbox" v-show="ModuleShow_3" style="display:none;">
 											<div class="uploader-box">
 												<img id="CompanyLogoImg" class="head-img" src="../../Content/img/position_head.png" onclick="imgClick()" width="100px" height="100px"/>
-												<!-- <span class="uploader-msg">上传公司logo</span> -->
+												<!--<span class="uploader-msg">上传公司logo</span>-->
 												<input style="display: none;" id="CompanyLogo" name="file"  accept=".jpg,.jpeg,.png,.bmp" onchange="fileCompanyLogoChange()" type="file" class="uploader-input"  placeholder="上传公司logo"/>
 											</div>
-		
-		
+
 		                                    <input type="text" style="width: 274px;" class="module-input" placeholder="请输入公司名称" v-model="practicecompanyname"/>
 											
 											<input type="text" style="width: 274px;" class="module-input practice-address" placeholder="实习职位名称" v-model="practicepositionname"/>
 											
-		                                    
 		                                    <div>
 		                                        <div class="module-select practice-select practice-select-begin-year" style="width:129px">
 												    <div class="module-select-content practice-content practice-content-begin-year" v-html="practicebegin_year?practicebegin_year:'开始年份'"><!--开始时间--></div>
-												    <ul class="module-select-list practice-select-list practice-date-list-begin-year" style="width:100px">
-													    <li class="module-select-item practice-year-item practice-year-begin-year" v-for="(item,index) in practiceYears" :key="index" v-html="item.year" v-on:click="practiceselectbegin_year(item.year)"><!--2019--></li>
+												    <ul class="module-select-list practice-select-list practice-date-list-begin-year" style="width:130px">
+													    <li class="module-select-item practice-year-item practice-year-begin-year" v-for="(item,index) in practiceYears" v-bind:key="index" v-html="item.year" v-on:click="practiceselectbegin_year(item.year)"><!--2019--></li>
 												    </ul>
 											    </div>
 		
-		                                         <div class="module-select practice-select practice-select-begin-month" style="width:129px">
+		                                        <div class="module-select practice-select practice-select-begin-month" style="width:129px">
 												    <div class="module-select-content practice-content practice-content-begin-month" v-html="practicebegin_month?practicebegin_month:'开始月份'"><!--开始时间--></div>
-												    <ul class="module-select-list practice-select-list practice-date-list-begin-month" style="width:100px">
-													    <li class="module-select-item practice-year-item practice-year-begin-month" v-for="(item,index) in awardgraduates_month" :key="index" v-html="item.month" v-on:click="practiceselectbegin_month(item.month)"><!--2019--></li>
+												    <ul class="module-select-list practice-select-list practice-date-list-begin-month" style="width:130px">
+													    <li class="module-select-item practice-year-item practice-year-begin-month" v-for="(item,index) in awardgraduates_month" v-bind:key="index" v-html="item.month" v-on:click="practiceselectbegin_month(item.month)"><!--2019--></li>
 												    </ul>
 											    </div>
-		
-		
-		
-		
-		
-		
-		
 		                                    
 		                                        <span style="float: left;  padding: 12px 15px;  display: block;">--</span>
 											    <div class="module-select practice-select practice-select-end-year" style="width:129px">
 												    <div class="module-select-content practice-content practice-content-end-year" v-html="practiceend_year?practiceend_year:'结束年份'"><!--结束时间--></div>
-												    <ul class="module-select-list practice-select-list practice-date-list-end-year" style="width:100px">
-													    <li class="module-select-item practice-year-item practice-year-end-year" v-for="(item,index) in practiceYears" :key="index" v-html="item.year" v-on:click="practiceselectend_year(item.year)"><!--2019--></li>
+												    <ul class="module-select-list practice-select-list practice-date-list-end-year" style="width:130px">
+													    <li class="module-select-item practice-year-item practice-year-end-year" v-for="(item,index) in practiceYears" v-bind:key="index" v-html="item.year" v-on:click="practiceselectend_year(item.year)"><!--2019--></li>
 												    </ul>
 											    </div>
 		
-		
-		
-		
-		
-		
-		
 		                                        <div class="module-select practice-select practice-select-end-month" style="width:129px">
 												    <div class="module-select-content practice-content practice-content-end-month" v-html="practiceend_month?practiceend_month:'结束月份'"><!--结束时间--></div>
-												    <ul class="module-select-list practice-select-list practice-date-list-end-month" style="width:100px">
-													    <li class="module-select-item practice-year-item practice-year-end-month" v-for="(item,index) in awardgraduates_month" :key="index" v-html="item.month" v-on:click="practiceselectend_month(item.month)"><!--2019--></li>
+												    <ul class="module-select-list practice-select-list practice-date-list-end-month" style="width:130px">
+													    <li class="module-select-item practice-year-item practice-year-end-month" v-for="(item,index) in awardgraduates_month" v-bind:key="index" v-html="item.month" v-on:click="practiceselectend_month(item.month)"><!--2019--></li>
 												    </ul>
 											    </div>
 		                                        <div style="clear: both;">                                       
@@ -348,7 +331,7 @@
 														</div>
 														<div class="msg-bottom">
 															<span class="msg-site" v-html="item.AddressInfo"><!--长沙-岳麓区--></span>
-															<span class="msg-date"><span class="date-begin" v-html="item.BeginDate.substr(0,7)"></span><span> ---- </span><span class="date-end" v-html="item.EndDate.substr(0,7)"></span></span>
+															<span class="msg-date"><span class="date-begin" v-html="item.BeginDate.substr(0,4)+'月'+item.BeginDate.substr(5,2)+'年'"></span><span>&nbsp;-&nbsp;</span><span class="date-end" v-html="item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'"></span></span>
 														</div>
 													</div>
 												</div>
@@ -369,7 +352,7 @@
 													<br>
 													8、其他临时任务。-->
 												</div>
-												<span class="delete-btn" v-on:click="practiceDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+												<span class="delete-btn" v-bind:class="{'practice-btn-able':!ModuleShow_3&&currentModule===0}" v-on:click="practiceDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 												<!--<span class="edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>-->
 											</li>
 										</ul>
@@ -404,7 +387,7 @@
 												<span class="skill-name overflow-text" v-html="item.SepciltyName"><!--英语CET-6--></span>
 												<span class="skill-bar-box"><span class="skill-bar" v-bind:style="{width:item.Skilled+'px'}"></span></span>
 												<span class="skill-dec overflow-text" v-html="item.SkillDescription"><!--熟练使用英语交流--></span>
-												<span class="delete-btn" v-on:click="skillDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+												<span class="delete-btn" v-bind:class="{'skill-btn-able':!ModuleShow_4&&currentModule===0}" v-on:click="skillDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 												<!--<span class="edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>-->
 											</li>
 										</ul>
@@ -448,11 +431,11 @@
 													<span class="name-text" v-html="item.ActivityName"><!--学术学术辩论--></span>
 												</div>
 												<div class="activity-msg">
-													<span class="msg-date" v-html="item.AttendTime.substr(0,7)"><!--2017年1月20日--></span>
+													<span class="msg-date" v-html="item.AttendTime.substr(0,4)+'年'+item.AttendTime.substr(5,2)+'月'"><!--2017年1月20日--></span>
 													<span class="msg-site" v-html="item.AddressInfo"><!--苏州--></span>
 												</div>
 												<div class="activity-dec" v-html="item.Description"><!--《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。--></div>
-												<span class="delete-btn" v-on:click="activityDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+												<span class="delete-btn" v-bind:class="{'activity-btn-able':!ModuleShow_5&&currentModule===0}" v-on:click="activityDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 												<!--<span class="edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>-->
 											</li>
 										</ul>

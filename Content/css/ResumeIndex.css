@@ -114,7 +114,7 @@ section{
 
 section .content-box{
 	margin:0 auto;
-	width:1200px;
+	width:1190px;
 	background:#fff;
 	text-align:center;
 }
@@ -1141,7 +1141,7 @@ input[type=radio]:checked:before {
   	cursor:pointer;
 }
 
-.education-container .education-list .education-item:hover .delete-btn{
+.education-container .education-list .education-item:hover .education-btn-able{
 	display:block;
 }
 
@@ -1176,7 +1176,6 @@ input[type=radio]:checked:before {
 	margin-bottom:10px;
 	padding:0 80px 0 20px;
 	width:100%;
-	height:30px;
 	line-height:30px;
 	background:#fff;
 	text-align:left;
@@ -1236,7 +1235,7 @@ input[type=radio]:checked:before {
 	border-left:1px solid #cdcdcd;
 }
 
-.award-item:hover .delete-btn{
+.award-item:hover .award-btn-able{
 	display:block;
 }
 
@@ -1372,7 +1371,7 @@ input[type=radio]:checked:before {
 	border-left:1px solid #cdcdcd;
 }
 
-.practice-item:hover .delete-btn{
+.practice-item:hover .practice-btn-able{
 	display:block;
 }
 
@@ -1457,11 +1456,8 @@ input[type=radio]:checked:before {
 .practice-edit-container .uploader-box .uploader-msg{
 	display:inline-block;
 	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	line-height:136px;
+	top:58px;
+    left: 14px;
   	font-size: 12px;
   	text-align: center;
   	color: #c3c3c3;
@@ -1485,7 +1481,6 @@ input[type=radio]:checked:before {
 	margin-bottom:10px;
 	padding:0 80px 0 20px;
 	width:100%;
-	height:30px;
 	line-height:30px;
 	background:#fff;
 	text-align:left;
@@ -1586,7 +1581,7 @@ input[type=radio]:checked:before {
 	border-left:1px solid #cdcdcd;
 }
 
-.skill-item:hover .delete-btn{
+.skill-item:hover .skill-btn-able{
 	display:block;
 }
 
@@ -1758,7 +1753,7 @@ input[type=radio]:checked:before {
 	border-left:1px solid #cdcdcd;
 }
 
-.activity-item:hover .delete-btn{
+.activity-item:hover .activity-btn-able{
 	display:block;
 }
 

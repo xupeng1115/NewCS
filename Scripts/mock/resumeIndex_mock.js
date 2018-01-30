@@ -129,7 +129,7 @@ var UserTitleList = [
 var ResumeBasic = {
     "ID":2,
     "UserID":5,
-    "Name":"黎承",
+    "Name":"xiaoxioa",
     "Tel":"13761646494",
     "Email":"lichxi1002@126.com",
     "Gender":1,"AddressID":0,
@@ -142,7 +142,6 @@ var ResumeBasic = {
     "ModifyTime":"2018-01-23T11:30:57.513"
 }
 
-
 //个人教育背景信息
 var EducationBackround = [
     {
@@ -151,7 +150,6 @@ var EducationBackround = [
         "SchoolName":"哥伦比亚大学教育学院",
         "Education":12,
         "Major":"应用统计",
-        "BeginDate":"",
         "EndDate":"2016-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:30:58.447"
@@ -162,7 +160,6 @@ var EducationBackround = [
         "SchoolName":"迈阿密大学牛津分校",
         "Education":11,
         "Major":"金融专业",
-        "BeginDate":"",
         "EndDate":"2011-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:31:41.67"
@@ -173,7 +170,6 @@ var EducationBackround = [
         "SchoolName":"迈阿密大学牛津分校",
         "Education":11,
         "Major":"会计专业",
-        "BeginDate":"",
         "EndDate":"2008-07",
         "CreatedUser":5,
         "CreatedTime":"2018-01-05T13:32:02.333"

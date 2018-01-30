@@ -1,46 +1,60 @@
 "use strict";
-//请求接口
-var titleUrl = "/My/GetTitles",
-	addTitleUrl = "/My/SubmitUserTitle",
-	userTitleUrl = "/My/GetUserTitles";
-//拖动技能进度条相关初始化变量
-var tag = false,
-	ox = 0,
-	left = 100,
-	bgleft = 0,
-	num=0;
 
-//格式化后的教育背景日期
-var dateList=formatDate(EducationBackround);
+var oUserInfo={
+	ID:0,
+	PicturePath:"",
+	Name:"",
+	Gender:"",							
+	AddressInfo:"",
+	Tel:"",
+	Email:""
+//	ID:1,
+//	PicturePath:'../../Content/img/head.png',
+//	Name:'Jessie Lai',
+//	Gender:'1',							
+//	AddressInfo:'上海市长宁区玛瑙路1438号国际古北财富中心二期',
+//	Tel:'15136677782',
+//	Email:'987239822@qq.com'
+}
 
 //Vue数据模型（交互逻辑和事件绑定）
 var app=new Vue({
 	el:'#app',
 	data:{							
-		tagBoxShow:false,
-		totalTags:[],
-		userTags:extendList(UserTitleList),
-		selectedTags:extendList(UserTitleList),
+		tagBoxShow:false,									
+		totalTags:[									
+			{ID:1,TitleName:"研发类"},
+			{ID:2,TitleName:"吃苦耐劳"},
+			{ID:3,TitleName:"奉献精神呵呵呵"},
+			{ID:4,TitleName:"研发类"},
+			{ID:5,TitleName:"吃苦耐劳"},
+			{ID:6,TitleName:"奉献精神呵呵呵"},
+			{ID:7,TitleName:"研发类"},
+			{ID:8,TitleName:"吃苦耐劳"},
+			{ID:9,TitleName:"奉献精神呵呵呵"}
+		],
+		userTags:[],
+		selectedTags:[],
 		//个人基本信息
-		userInfoShow:ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!=="",
-		editOnce:!(ResumeBasic.Name!==""&&ResumeBasic.Gender!==""&&ResumeBasic.Tel!==""&&ResumeBasic.AddressInfo!==""&&ResumeBasic.Email!==""),
+		userInfoShow:oUserInfo.Name!==""&&oUserInfo.Gender!==""&&oUserInfo.Tel!==""&&oUserInfo.AddressInfo!==""&&oUserInfo.Email!=="",
+		editOnce:!(oUserInfo.Name!==""&&oUserInfo.Gender!==""&&oUserInfo.Tel!==""&&oUserInfo.AddressInfo!==""&&oUserInfo.Email!==""),
 		userInfo:{
-			ID:ResumeBasic.ID,
-			PicturePath:ResumeBasic.PicturePath,
-			Name:ResumeBasic.Name,
-			Gender:ResumeBasic.Gender,							
-			AddressInfo:ResumeBasic.AddressInfo,
-			Tel:ResumeBasic.Tel,
-			Email:ResumeBasic.Email
+			ID:oUserInfo.ID,
+			PicturePath:oUserInfo.PicturePath,
+			Name:oUserInfo.Name,
+			Gender:oUserInfo.Gender,							
+			AddressInfo:oUserInfo.AddressInfo,
+			Tel:oUserInfo.Tel,
+			Email:oUserInfo.Email
 		},
 		userEditInfo:{
-			ID:ResumeBasic.ID,
-			PicturePath:ResumeBasic.PicturePath,
-			Name:ResumeBasic.Name,
-			Gender:ResumeBasic.Gender,							
-			AddressInfo:ResumeBasic.AddressInfo,
-			Tel:ResumeBasic.Tel,
-			Email:ResumeBasic.Email
+			ID:oUserInfo.ID,
+			PicturePath:oUserInfo.PicturePath,
+			Name:oUserInfo.Name,
+			Gender:oUserInfo.Gender,							
+			AddressInfo:oUserInfo.AddressInfo,
+			Tel:oUserInfo.Tel,
+			Email:oUserInfo.Email
 		},
 		userPhoneShow:false,
 		userEmailShow:false,
@@ -54,11 +68,25 @@ var app=new Vue({
 		ModuleShow_5:false,
 		currentModule:0,
 		
-		//教育经历模块
 		currrentDate:new Date().getFullYear(),
-		dateListKey:false,
-		educationDate:dateList,
-		educationLists:EducationBackround,
+		//教育经历模块
+		educationDate:[
+			{
+				year:2012,
+				month:"7月"
+			},
+			{
+				year:2015,
+				month:"7月"
+			},
+			{
+				year:2019,
+				month:"7月"
+			}
+		],
+		educationLists:[
+			
+		],
 		educationEditBackgrounds:[
 			{
 				id:10,
@@ -77,7 +105,7 @@ var app=new Vue({
 				background:"博士"
 			},
 			{
-				id:14,
+				id:143,
 				background:"其他"
 			}
 		],
@@ -148,8 +176,6 @@ var app=new Vue({
 				graduate:"12",
 			}
 		],
-		
-		//post教育背景参数
 		educationmajor:"",
 		educationschool:"",
 		educationBackgroundid:"",
@@ -188,7 +214,7 @@ var app=new Vue({
 				year:"2011",
 			}
 		],
-        awardgraduates_month:[
+         awardgraduates_month:[
 			{
 				month:"01",
 			},
@@ -226,8 +252,9 @@ var app=new Vue({
 				month:"12",
 			}
 		],
-		awardLists:Award,
-		//post荣誉参数
+		awardLists:[
+			
+		],
 		awardname:"",
 		awardgraduate_year:"",
         awardgraduate_month:"",
@@ -265,8 +292,9 @@ var app=new Vue({
 				year:2010
 			}
 		],
-		practiceLists:InternshipExperience,
-		//post实习经历参数
+		practiceLists:[
+			
+		],
 		practicecompanyname:"",
 		practicepositionname:"",
 		practicesite:"",
@@ -277,14 +305,17 @@ var app=new Vue({
 		practicecontent:"",
 		
 		//技能模块
-		skillLists:Sepcilty,
-		//post技能参数
+		skillLists:[
+			
+		],
 		skillname:"",
 		skillbar:"",
 		skilldec:"",
 		
 		//课外活动模块
-		activityLists:Activity,
+		activityLists:[
+			
+		],
 		activityYears:[
 			{
 				year:2019
@@ -317,33 +348,13 @@ var app=new Vue({
 				year:2010
 			}
 		],
-		//post课外活动参数
+		
 		activitysite:"",
 		activitydec:"",
 		activitydate_year:"",
         activitydate_month:"",
 		activityname:""
-	},
-	watch:{
-		//监听对象和数组
-		totalTags:{
-			handler(newVal){
-				this.tagBoxShow=true;
-			},
-			deep:true
-		}
-	},
-	beforeMount:function(){
 		
-	},
-	mounted:function(){
-		
-	},
-	updated:function(){
-		//重新绘制带有用户标签的列表
-		if(this.tagBoxShow){
-			this.resetTags();
-		}
 	},
 	computed:{
 		phoneFilter:function(){
@@ -372,95 +383,34 @@ var app=new Vue({
 		}
 	},
 	methods:{
-		imgError:function(){
-			console.log();
-			var oImg=event.srcElement;
-		    oImg.src="../../Content/img/head.png";
-		    oImg.onerror=null;
-		},
 		addTags:function(){
-			var titleUrl='../../Scripts/mock/test.json';
-			var myParams = {};
-            var mySuccessFun = function(result){
-            	if(result.Success){
-            		app.totalTags=result.Data;
-            	}else{
-            		alert(result.Message);
-            	}
-            }
-            var myErrorFun=function(){
-            	alert("网络出错了！");
-            }
-			
-			//发送请求获取标签列表
-            myAjax("get",titleUrl,JSON.stringify(myParams),mySuccessFun,myErrorFun);
+			this.tagBoxShow=true;
 		},
 		tagConfirm:function(){
-			
-			var addUrl='../../Scripts/mock/test.json';
-			var myParams = {};
-            var mySuccessFun = function(result){
-            	if(result.Success){
-            		app.userTags=$.extend([],app.selectedTags);
-					app.tagBoxShow=false;
-            	}else{
-            		alert(result.Message);
-            	}
-            }
-            var myErrorFun=function(){
-            	alert("网络出错了！");
-            }
-			
-			//发送请求获取标签列表
-            myAjax("get",addUrl,JSON.stringify(myParams),mySuccessFun,myErrorFun);
-			
+			this.tagBoxShow=false;
 		},
 		tagClick:function(tag,event){
 			var oSelected=$(event.target).hasClass("selected");
-			
-			if(this.selectedTags.length<=5){
-				if(oSelected){
-					var oIndex;
-					$(event.target).removeClass("selected");
-					$.each(this.selectedTags, function (index, item){
-						if(item.ID===tag.ID){
-							oIndex=index;
-							return;
-						}
-					})
-					this.selectedTags.splice(oIndex,1);
-				}else{
-					if(this.selectedTags.length<5){
-						$(event.target).addClass("selected");
-						this.selectedTags.push(tag);
-					}else{
-						alert("最多选择5个标签");
+			var oIndex;
+			if(oSelected){
+				$(event.target).removeClass("selected");
+				$.each(this.selectedTags, function (index, item){
+					if(item.ID===tag.ID){
+						oIndex=index;
+						return;
 					}
-				}
+				})
+				this.selectedTags.splice(oIndex,0);
+			}else{
+				$(event.target).addClass("selected");
+				this.selectedTags.push(tag);
 			}
 		},
 		tagCancel:function(){
-			this.selectedTags=$.extend([],this.userTags);
 			this.tagBoxShow=false;
 		},
 		tagReset:function(){
-			this.selectedTags=[];
-			$.each($(".select-item"),function(a,item){
-				$(item).removeClass("selected");
-			})
-		},
-		resetTags:function(){
-			$.each($(".select-item"),function(a,item){
-				$(item).removeClass("selected");
-			})
-			
-			$.each(app.userTags,function(i,userItem){
-    			$.each(app.totalTags,function(j,totalItem){
-    				if(userItem.ID===totalItem.ID){
-  						$(".select-item").eq(j).addClass("selected");
-    				}
-    			})
-    		})
+			this.tagBoxShow=false;
 		},
 		infoEdit:function(){
 			if(!this.headEditEnable){
@@ -469,7 +419,6 @@ var app=new Vue({
 			}
 		},
 		infoSave:function(){
-			
 			if(this.currentModule!==0){
 				return;
 			}
@@ -498,25 +447,22 @@ var app=new Vue({
 				return;
 			}
 			this.userInfo={
-				ID:app.userEditInfo.ID,
+				ID:this.userEditInfo.ID,
 				PicturePath:app.userInfo.PicturePath,
-				Name:app.userEditInfo.Name,
-				Gender:app.userEditInfo.Gender,							
-				AddressInfo:app.userEditInfo.AddressInfo,
-				Tel:app.userEditInfo.Tel,
-				Email:app.userEditInfo.Email
+				Name:this.userEditInfo.Name,
+				Gender:this.userEditInfo.Gender,							
+				AddressInfo:this.userEditInfo.AddressInfo,
+				Tel:this.userEditInfo.Tel,
+				Email:this.userEditInfo.Email
 			}
-			
-			var submitResumeBasic="../../Scripts/mock/post.json";
-			var myParams=app.userInfo;
+			var that = this;
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-					if(!app.userInfo.ID){
-						app.userInfo.ID=result.Data;
+					if(!that.userInfo.ID){
+						Obj.ID=result.Data;
 					}
-					app.editOnce=false;
-					app.clickEnable=true;
-					app.userInfoShow=true;
+					
+                    getResumeBasicInfo();
                 } else {
                     alert("网络出错了！");
                 }
@@ -524,9 +470,14 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
+			var that = this;
 
             //提交简历信息
-            myAjax("get", submitResumeBasic, JSON.stringify(myParams), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitResumeBasic", JSON.stringify(this.userInfo), mySuccessFun, myErrorFun);
+            
+			this.editOnce=false;
+			this.clickEnable=true;
+			this.userInfoShow=true;
 		},
 		infoCancel:function(){
 			
@@ -551,7 +502,7 @@ var app=new Vue({
 				if(this.currentModule===0){
 					this.moduleActiveShow(type);
 					if(type===1){
-						this.educationDate.unshift({year:"",month:""});
+						this.educationUnshift();
 					}
 					this.currentModule=type;
 					this.clickEnable=false;
@@ -559,25 +510,13 @@ var app=new Vue({
 				}
 			}else{
 				if(type===this.currentModule){
+					this.moduleActiveHide(type);
 					if(type===1){
-						app.educationCancel();
+						this.educationShift();
 					}
-					
-					if(type===2){
-						app.awardCancel();
-					}
-					
-					if(type===3){
-						app.practiceCancel();
-					}
-					
-					if(type===4){
-						app.skillCancel();
-					}
-					
-					if(type===5){
-						app.activityCancel();
-					}
+					this.currentModule=0;
+					this.clickEnable=true;
+					this.headEditEnable=false;
 				}
 			}
 		},
@@ -629,14 +568,19 @@ var app=new Vue({
 			this.educationbackground=background;
 			this.educationbackgroundid=id;
 		},
+		educationUnshift:function(){
+			this.educationDate.unshift({year:"",month:""});
+		},
+		educationShift:function(){
+			this.educationDate.shift();
+		},
 		educationCancel:function(type){
 			this.educationmajor="";
 			this.educationschool="";
-			this.educationbackground="";
 			this.educationgraduate_year="";
             this.educationgraduate_month="";
-			this.educationDate.splice(0,1);
-			this.moduleActiveHide(1);
+			this.educationShift();
+			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
@@ -655,27 +599,41 @@ var app=new Vue({
 			if($.trim(this.educationgraduate_year)===""){
 				return;
 			}
+            var _endDay= Number(this.educationgraduate_year);
+            var _beginDay = _endDay;
             
+            switch (this.educationbackgroundid) {
+            case 10:
+                _beginDay = _endDay - 3;
+                break;
+            case 11:
+                _beginDay = _endDay - 4;
+                break;
+            case 12:
+                _beginDay = _endDay - 2;
+                break;
+            case 13:
+                _beginDay = _endDay - 4;
+                break;
+            default:
+                _beginDay = _endDay - 2;
+                break;
+            }
+
 			var Obj={
 				ResumeID:app.userEditInfo.ID,
-				Major:app.educationmajor,
-				Education:app.educationbackgroundid,
-				SchoolName:app.educationschool,
-				EndDate:app.educationgraduate_year+"-"+app.educationgraduate_month+"-"+"01"
-			}
-			
-			var oYear=app.educationgraduate_year;
-			var oMonth=formatMonth(app.educationgraduate_month);
-			var oDate={
-				year:oYear,
-				month:oMonth
+				Major:this.educationmajor,
+				Education:this.educationbackgroundid,
+				SchoolName:this.educationschool,
+				BeginDate: _beginDay + "-" +this.educationgraduate_month, 
+				EndDate: _endDay + "-" +this.educationgraduate_month
 			}
 		
             var mySuccessFun = function (result) {
 				
                 if (result.Success) {
 					Obj.ID=result.Data;
-					
+                    
                 } else {
                     alert("网络出错了！");
                 }
@@ -683,17 +641,31 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
-			
+			var that = this;
+
             //提交教育背景
             myAjax("post", "/Resume/SubmitEducationBackround", JSON.stringify(Obj), mySuccessFun, myErrorFun);
-			app.educationCancel();
-			app.educationLists.unshift(Obj);
-			app.educationDate.unshift(oDate);
+            
+			that.educationLists.unshift(Obj);
+			that.educationDate.splice(0,1,{year:that.educationgraduate_year,month:that.educationgraduate_month});
+					
+			that.moduleActiveHide(type);
+			that.currentModule=0;
+			that.clickEnable=true;
+			that.headEditEnable=false;
+					
+			that.educationmajor="";
+			that.educationschool="";
+			that.educationbackground="";
+			that.educationgraduate_year="";
+			that.educationgraduate_month= "";
+			that.educationbackgroundid="";
 		},
 		educationDelete:function(index,ID){
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-                    
+                    app.educationLists.splice(index,1);
+					app.educationShift();
                 } else {
                     alert(result.Message);
                 }
@@ -702,9 +674,6 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteEducationBackround?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
-			
-			app.educationLists.splice(index,1);
-			app.educationDate.splice(index,1);
 		},
 
 		awardselect_year:function(year){
@@ -724,8 +693,8 @@ var app=new Vue({
 			
 			var Obj={
 				ResumeID:app.userEditInfo.ID,
-				HonorName:app.awardname,
-				GetTime:app.awardgraduate_year + "-" +app.awardgraduate_month
+				HonorName:this.awardname,
+				GetTime:this.awardgraduate_year + "-" +this.awardgraduate_month
 			}
 			
 			var mySuccessFun = function (result) {
@@ -740,18 +709,26 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
+			var that = this;
 
             //提交所获荣誉
             myAjax("post", "/Resume/SubmitHonor", JSON.stringify(Obj), mySuccessFun, myErrorFun);
- 			app.awardCancel();
-			app.awardLists.unshift(Obj);
+ 
+			that.awardLists.unshift(Obj);
+			that.moduleActiveHide(type);
+			that.currentModule=0;
+			that.clickEnable=true;
+			that.headEditEnable=false;
 			
+			that.awardname="";
+			that.awardgraduate_year="";
+            that.awardgraduate_month= "";
 		},
 		awardCancel:function(type){
 			this.awardname="";
 			this.awardgraduate_year="";
             this.awardgraduate_month= "";
-			this.moduleActiveHide(2);
+			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
@@ -792,14 +769,25 @@ var app=new Vue({
 			}
 			
 			var Obj={
+				url:$("#CompanyLogoImg").attr('src'),
+				companyname:this.practicecompanyname,
+				positionname:this.practicepositionname,
+				site:this.practicesite,
+				begin:this.practicebegin_year +"-" + this.practicebegin_month,
+				end:this.practiceend_year+"-" + this.practiceend_month,
+				content:this.practicecontent
+				
+			}
+			//"../../Content/img/position_head.png"
+			var Objs={
 				CompanyLogo:$("#CompanyLogoImg").attr('src'),
 				ResumeID:app.userEditInfo.ID,
-				CompanyName:app.practicecompanyname,
-				PositionName:app.practicepositionname,
-				AddressInfo:app.practicesite,
-				BeginDate:app.practicebegin_year +"-" + app.practicebegin_month,
-				EndDate:app.practiceend_year+"-" + app.practiceend_month,
-				JobDescription:app.practicecontent
+				CompanyName:this.practicecompanyname,
+				PositionName:this.practicepositionname,
+				AddressInfo:this.practicesite,
+				BeginDate:this.practicebegin_year +"-" + this.practicebegin_month,
+				EndDate:this.practiceend_year+"-" + this.practiceend_month,
+				JobDescription:this.practicecontent
 			}
 
 			var mySuccessFun = function (result) {
@@ -813,11 +801,25 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
+
+
             
-            myAjax("post", "/Resume/SubmitInternshipExperience", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitInternshipExperience", JSON.stringify(Objs), mySuccessFun, myErrorFun);
  
-			app.practiceLists.unshift(Obj);
-			app.practiceCancel();
+			this.practiceLists.unshift(Obj);
+			this.moduleActiveHide(type);
+			this.currentModule=0;
+			this.clickEnable=true;
+			this.headEditEnable=false;
+
+			this.practicecompanyname="";
+			this.practicepositionname="";
+			this.practicesite="";
+			this.practicebegin_year="";
+            this.practicebegin_month="";
+			this.practiceend_year="";
+            this.practiceend_month="";
+			this.practicecontent="";
 		},
 		practiceCancel:function(type){
 			this.practicecompanyname="";
@@ -829,7 +831,7 @@ var app=new Vue({
             this.practiceend_month="";
 			this.practicecontent="";
 			
-			this.moduleActiveHide(3);
+			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
@@ -846,7 +848,7 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteInternshipExperience?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
-			app.practiceLists.splice(index,1);
+			
 		},
 		practiceselectbegin_year:function(year){
 			this.practicebegin_year=year;
@@ -860,6 +862,7 @@ var app=new Vue({
         practiceselectend_month:function(month){
 			this.practiceend_month=month;
 		},
+
         //特殊技能
 		skillSave:function(type){
 			if($.trim(this.skillname)===""){
@@ -871,9 +874,13 @@ var app=new Vue({
 			
 			var Obj={
 				ResumeID:app.userEditInfo.ID,
-				SepciltyName:app.skillname,
-				SkillDescription:app.skilldec,
-				Skilled:app.skillbar
+				name:this.skillname,
+				SepciltyName:this.skillname,
+				ResumeID:app.userEditInfo.ID,
+				dec:this.skilldec,
+				SkillDescription:this.skilldec,
+				bar:this.skillbar,
+				Skilled:this.skillbar
 			}
 			var mySuccessFun = function (result) {
                 if (result.Success) {
@@ -886,35 +893,30 @@ var app=new Vue({
                 alert("网络出错了！");
 			}
 
-            //myAjax("post", "/Resume/SubmitSepcilty", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitSepcilty", JSON.stringify(Obj), mySuccessFun, myErrorFun);
  
-			app.skillLists.unshift(Obj);
-			app.skillCancel();
+			this.skillLists.unshift(Obj);
+			this.moduleActiveHide(type);
+			this.currentModule=0;
+			this.clickEnable=true;
+			this.headEditEnable=false;
+			
+			this.skillname="";
+			this.skilldec="";
 		},
 		skillCancel:function(type){
 			this.skillname="";
 			this.skilldec="";
-			app.skillBarInit();
 			
-			this.moduleActiveHide(4);
+			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
-		skillBarInit:function(){
-			$(".skill-edit-progress_bar").css("width","100px");
-			$(".skill-edit-progress_btn").css("left","100px");
-			$(".skill-edit-degree").html("一般");
-			tag = false;
-			ox = 0;
-			left = 100;
-			bgleft = 0;
-			num=0;
-		},
 		skillDelete:function(index,ID){
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-					
+					app.skillLists.splice(index,1);
                 } else {
                     alert(result.Message);
                 }
@@ -922,8 +924,8 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
             }
-			//myAjax("post", "/Resume/DeleteSepcilty?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
-			app.skillLists.splice(index,1);
+			myAjax("post", "/Resume/DeleteSepcilty?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
+		
 		},
 
 		//课外活动
@@ -947,13 +949,26 @@ var app=new Vue({
 			if($.trim(this.activitydate_year)===""){
 				return;
 			}
-
+			
 			var Obj={
+				name:this.activityname,
+				
+				dec:this.activitydec,
+				
+				date:this.activitydate_year+"-" + this.activitydate_month,
+				
+				site:this.activitysite,
+				
+			}
+			var Objs={
 				ResumeID:app.userEditInfo.ID,
-				ActivityName:app.activityname,
-				Description:app.activitydec,
-				AttendTime:app.activitydate_year+"-"+app.activitydate_month,
-				AddressInfo:app.activitysite
+				ActivityName:this.activityname,
+				
+				Description:this.activitydec,
+				
+				AttendTime:this.activitydate_year+"-" + this.activitydate_month,
+				
+				AddressInfo:this.activitysite
 			}
 			
 			var mySuccessFun = function (result) {
@@ -967,10 +982,19 @@ var app=new Vue({
                 alert("网络出错了！");
 			}
 
-            //myAjax("post", "/Resume/SubmitActivity", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitActivity", JSON.stringify(Objs), mySuccessFun, myErrorFun);
  
-			app.activityLists.unshift(Obj);
-			app.activityCancel();
+			this.activityLists.unshift(Obj);
+			this.moduleActiveHide(type);
+			this.currentModule=0;
+			this.clickEnable=true;
+			this.headEditEnable=false;
+			
+			this.activityname="";
+			this.activitydec="";
+			this.activitydate_year="";
+            this.activitydate_month ="";
+			this.activitysite="";
 		},
 		activityCancel:function(type){
 			this.activityname="";
@@ -978,13 +1002,12 @@ var app=new Vue({
 			this.activitydate_year="";
             this.activitydate_month="";
 			this.activitysite="";
-			this.moduleActiveHide(5);
+			this.moduleActiveHide(type);
 			this.currentModule=0;
 			this.clickEnable=true;
 			this.headEditEnable=false;
 		},
 		activityDelete:function(index,ID){
-			app.activityLists.splice(index,1);
 			var mySuccessFun = function (result) {
                 if (result.Success) {
 					app.activityLists.splice(index,1);
@@ -995,16 +1018,27 @@ var app=new Vue({
             var myErrorFun = function (error) {
                 alert("网络出错了！");
             }
-			//myAjax("post", "/Resume/DeleteActivity?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
-		},
-		imgClick:function(){
-			$('#CompanyLogo').click();
+			myAjax("post", "/Resume/DeleteActivity?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
+		
+
 		}
 	}
 })
 
+//图片没有成功加载出来时处理
+function nofind(){
+    var oImg=event.srcElement;
+    oImg.src="../../Content/img/head.png";
+    oImg.onerror=null;
+}
+
+var titleUrl = "/My/GetTitles",
+	addTitleUrl = "/My/SubmitUserTitle",
+	userTitleUrl = "/My/GetUserTitles";
 
 $(function(){
+
+	loadUserTitle();
 	//分页
 	(function(){
 		$(".tcdPageCode1").createPage({
@@ -1026,7 +1060,7 @@ $(function(){
 	
     //拖动进度条
 	(function($){
-		
+		var tag = false,ox = 0,left = 100,bgleft = 0,num=0;
         $('.skill-edit-progress_btn').mousedown(function(e) {
             ox = e.pageX-left;
             tag = true;
@@ -1074,8 +1108,118 @@ $(function(){
 
 	//事件注册
 	(function(){
+		//绑定简历基本信息
+		BindResumeBasic(ResumeBasic);
+		//绑定教育背景
+		BindEducationBackround();
+		//绑定所获荣誉
+		BindAward();
+		//绑定实习经历
+		BindPractice();
+		//绑定语言或技术
+		BindSkill();
+		//绑定课外活动
+		BindActivity();
 		$("body").on("click",".back-top",function(event){
 			$('body,html').animate({scrollTop:0},300);
+		})
+		
+		$("body").on("click",".tag-cancel-btn",function(event){
+			removeSelect();
+			$(".flo-box").hide();
+		})
+		
+		$("body").on("click",".add-tag-btn",function(event){});
+
+		$("body").on("click",".add-tag-btn",function(event){
+			var myParams = {
+               
+            }
+            var mySuccessFun = function (result) {
+				console.log(JSON.stringify(result.Data));
+                if (result.Success) {
+					var html="<div class=\"tag-cancel-btn\">\
+								</div>\
+								<div class=\"select-title\">\
+									<span class=\"title-text\">标签选择</span> <span class=\"title-dec\">最多选择5个标签</span> <span class=\"tag-num-box\">共"+result.Data.length+"个标签</span>\
+								</div>\
+								<ul class=\"select-list\">\
+									<li class=\"select-list-item\">\
+										<div class=\"select-item-title\">\
+											</div>\
+										<ul class=\"select-item-list clearbox\">";
+					$.each(result.Data,function(index,item){
+						if(UserTitleList.indexOf(item.TitleName)>0){
+							html+="<li class=\"select-item selected\" data-id="+item.ID+">"+item.TitleName+"</li>";
+						}else{
+							html+="<li class=\"select-item\" data-id="+item.ID+">"+item.TitleName+"</li>";
+						}
+							
+					});
+					html+="</ul></li></ul>\
+					<div class=\"select-btn-box clearbox\">\
+						<div class=\"select-btn select-confirm-btn\">\
+							<span class=\"select-icon\"><i class=\"material-icons\">&#xE5CA;</i></span> <span class=\"btn-text\">确定</span>\
+						</div>\
+						<div class=\"select-btn select-reset-btn\">\
+							<span class=\"select-icon\"><i class=\"material-icons\">&#xE5D5;</i></span> <span class=\"btn-text\">\
+								重置</span>\
+						</div>\
+					</div>";
+                    $(".title-list").html(html);
+					$(".flo-box").show();
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function () {
+                alert("网络出错了！");
+            }
+			//发送请求获取标签列表
+            myAjax("get", titleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+		})
+		
+		$("body").on("click",".select-confirm-btn",function(event){
+			var ArrayTltleID=[];
+			$.each($(".title-list .selected"),function(index,item){
+				ArrayTltleID.push($(item).data("id"));
+			});
+			var myParams = {
+				arrayTltleID:ArrayTltleID
+            }
+            var mySuccessFun = function (result) {
+                if (result.Success) {
+					$(".flo-box").hide();
+					loadUserTitle();
+				} else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function () {
+                alert("网络出错了！");
+            }
+			//提交用户选中的标签
+            myAjax("Post", addTitleUrl,JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+		})
+		
+		$("body").on("click",".select-item",function(event){
+			var oKey=$(this).hasClass("selected");
+			if(oKey){
+				$(this).removeClass("selected");
+			}else{
+				if($('.title-list .selected').length>=5){
+					alert("最多选择5个标签");
+				}
+				else
+				{
+					$(this).addClass("selected");
+				}
+			}
+				
+		})
+		
+		$("body").on("click",".select-reset-btn",function(event){
+			removeSelect();
 		})
 		
 		$("body").on("click",".resume-nav-item",function(event){
@@ -1103,7 +1247,7 @@ $(function(){
 		$("body").on("click",".education-cancel-btn",function(event){
 			$(".education-edit-container").hide();
 		})
-		//教育背景
+		
 		var oBack=false;
 		$("body").on("click",".background-select",function(event){
 			if(!oBack){
@@ -1203,6 +1347,7 @@ $(function(){
 		})
 		
 	
+
 		//实习经历
 		var oPracticeBeginYear=false;
 		$("body").on("click",".practice-select-begin-year",function(event){
@@ -1448,6 +1593,17 @@ $(function(){
 			
 			}
 		})
+
+		function removeSelect(){
+			var oList=$(".select-item");
+			for(var i=0;i<oList.length;i++){
+				if($(oList.eq(i).hasClass("selected"))){
+					$(oList.eq(i).removeClass("selected"));
+				}else{
+					
+				}
+			}
+		}
 		
 		//侧边导航
 		$(window).scroll(function() {
@@ -1456,7 +1612,7 @@ $(function(){
 		    var scrollHeight = $(document).height();
 　　			var windowHeight = $(this).height();
 
-		    if((top>=530)&&((scrollHeight-top-700)>=0)){
+		    if(top>=530&&scrollHeight-top-700>=0){
 		    	$(".resume-nav-box").addClass("resume-nav-scroll");
 		    }else{
 		    	$(".resume-nav-box").removeClass("resume-nav-scroll");
@@ -1489,11 +1645,197 @@ $(function(){
 		$("body").on("click",".empty-btn",function(){
 			window.location.href="../Job/List";
 		})
+
+		function removeSelect(){
+			var oList=$(".select-item");
+			for(var i=0;i<oList.length;i++){
+				if($(oList.eq(i).hasClass("selected"))){
+					$(oList.eq(i).removeClass("selected"));
+				}else{
+					
+				}
+			}
+		}
 	}());
+	
+	
 })
 
-//上传简历头像
-function filePictureChange(){
+//Ajax
+function myAjax(myType, myUrl, myParams, mySuccessFun, myErrorFun,myContentType) {
+	if(!myContentType){
+		myContentType = "application/json; charset=utf-8";
+	}
+	var params = {
+		"controller": myUrl,
+		data: myParams,
+		contentType:myContentType
+	};
+
+	var successFun = mySuccessFun;
+	var errorFun = myErrorFun;
+
+	if (myType.toLocaleUpperCase() === "GET") {
+		communication.get(params, successFun, errorFun);
+	} else {
+		communication.post(params, successFun, errorFun);
+	}
+
+}
+
+function ShowUserTitle(Data){
+	UserTitleList = JSON.stringify(Data);
+	var html="";
+	$.each(Data,function(index,item){
+		html+="<li class=\"tag-item\">"+item.TitleName+"</li>";
+	});
+	
+	$('.user-title-list').html(html);
+}
+
+function loadUserTitle(){
+	var myParams = {
+		   
+	}
+	var mySuccessFun = function (result) {
+		if (result.Success) {
+			ShowUserTitle(result.Data);
+		} else {
+			alert(result.Message);
+		}
+	}
+	var myErrorFun = function () {
+		alert("网络出错了！");
+	}
+	//发送请求获取标签列表
+	myAjax("get", userTitleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+}
+
+//获取简历信息
+function getResumeBasicInfo(){
+	var myParams = {
+		   
+	}
+	var mySuccessFun = function (result) {
+		if (result.Success) {
+			BindResumeBasic(result.Data);
+		} else {
+			alert(result.Message);
+		}
+	}
+	var myErrorFun = function () {
+		alert("网络出错了！");
+	}
+	//发送请求获取简历信息
+	myAjax("get", "/Resume/GetResumeBasicInfo", JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+}
+
+//简历基本信息
+function BindResumeBasic(objstr){
+	if(objstr){
+		var obj = JSON.parse(objstr);
+		app.userEditInfo.AddressInfo = obj.AddressInfo;
+		app.userEditInfo.Email = obj.Email;
+		app.userEditInfo.Gender = obj.Gender;
+		app.userEditInfo.ID = obj.ID;
+		app.userEditInfo.Name = obj.Name;
+		app.userEditInfo.Tel = obj.Tel;
+		if(ResumeBasicPicturePaths){app.userInfo.PicturePath = ResumeBasicPicturePaths; }
+	}
+}
+
+//教育经历
+function BindEducationBackround(){
+	if(EducationBackround){
+		var objList = JSON.parse(EducationBackround);
+		
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				SchoolName:item.SchoolName,
+				Education:item.Education,
+				BeginDate:item.BeginDate.substr(0,10),
+				EndDate:item.EndDate.substr(0,10),
+				Major:item.Major
+			};
+			app.educationLists.push(obj);
+		})
+	}
+}
+
+//所获荣誉
+function BindAward(){
+	if(Award){
+		var objList = JSON.parse(Award);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				HonorName:item.HonorName,
+				GetTime:item.GetTime.substr(0,10)
+			};
+			app.awardLists.push(obj);
+		})
+	}
+}
+
+//实习经历
+function BindPractice(){
+	if(InternshipExperience){
+		var objList = JSON.parse(InternshipExperience);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				companyname:item.CompanyName,
+				url:!item.CompanyLogo?"../../Content/img/position_head.png":item.CompanyLogo,
+				site:item.AddressInfo,
+				positionname:item.PositionName,
+				begin:item.BeginDate.substr(0,10),
+				end:item.EndDate.substr(0,10),
+				content:item.JobDescription
+			};
+			app.practiceLists.push(obj);
+		})
+	}
+}
+
+//绑定语言或技术
+function BindSkill(){
+	if(Sepcilty){
+		var objList = JSON.parse(Sepcilty);
+
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				name:item.SepciltyName,
+				bar:item.Skilled,
+				dec:item.SkillDescription
+			};
+			app.skillLists.push(obj);
+		})
+	}
+}
+
+//绑定课外活动
+function BindActivity(){
+
+	if(Activity){
+		var objList = JSON.parse(Activity);
+		$.each(objList,function(index,item){
+			var obj = {
+				ID:item.ID,
+				name:item.ActivityName,
+				date:item.AttendTime.substr(0,7),
+				site:item.AddressInfo,
+				dec:item.Description
+			};
+			app.activityLists.push(obj);
+		})
+	}
+}
+
+function filePictureChange() {
 	if(document.getElementById("PictureFile").value.length<=0){
 		return false;
 	}
@@ -1516,7 +1858,6 @@ function filePictureChange(){
 	});
 }
 
-//上传公司logo
 function fileCompanyLogoChange() {
 	
 	if(document.getElementById("CompanyLogo").value.length<=0){
@@ -1541,68 +1882,30 @@ function fileCompanyLogoChange() {
 	});
 }
 
-//触发点击上传图片
 function imgClick(){
 	$('#CompanyLogo').click();
 }
 
-//深拷贝数组
-function extendList(arr){
-	return $.extend([],arr);
-}
+(function(){
+	loadUserTitle();
+	function loadUserTitle(){
+        var myParams = {
+	        
+        }
+        var mySuccessFun = function (result) {
+	        if (result.Success) {
+                console.log(result.Data);
+		        app.userTags=$.extend([],result.Data);
+	        } else {
+		        alert(result.Message);
+	        }
+        }
+        var myErrorFun = function () {
+	        alert("网络出错了！");
+        }
+        //发送请求获取标签列表
+        myAjax("get", userTitleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+    }
+}());
 
-//格式化日期
-function formatDate(arr){
-	var result=[];
-	$.each(arr,function(index,item){
-		var obj={};
-		obj.year=Number(item.EndDate.substr(0,4));
-		obj.month=formatMonth(item.EndDate.substr(5,2));
-		result.push(obj);
-	})
-	return result;
-}
-
-//格式化月分
-function formatMonth(month){
-	switch(month){
-		case "01":
-			month="1月";
-			break;
-		case "02":
-			month="2月";
-			break;
-		case "03":
-			month="3月";
-			break;
-		case "04":
-			month="4月";
-			break;
-		case "05":
-			month="5月";
-			break;
-		case "06":
-			month="6月";
-			break;
-		case "07":
-			month="7月";
-			break;
-		case "08":
-			month="8月";
-			break;
-		case "09":
-			month="9月";
-			break;
-		case "10":
-			month="10月";
-			break;
-		case "11":
-			month="11月";
-			break;
-		case "12":
-			month="12月";
-			break;
-	}
-	return month;
-}
 
