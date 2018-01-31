@@ -546,40 +546,55 @@ var app=new Vue({
 				this.userInfoShow=true;
 			}
 		},
+		floClick:function(){
+			if(app.editOnce){
+                alert("请先完善个人简历基本信息");
+                return;
+            }
+		},
 		addModule:function(type){
-			if(this.clickEnable){
-				if(this.currentModule===0){
-					this.moduleActiveShow(type);
-					if(type===1){
-						this.educationDate.unshift({year:"",month:""});
+			if(app.editOnce){
+                alert("请先完善个人简历基本信息");
+                return;
+            }else{
+            	console.log(12);
+            	if(this.clickEnable){
+					if(this.currentModule===0){
+						this.moduleActiveShow(type);
+						if(type===1){
+							this.educationDate.unshift({year:"",month:""});
+						}
+						this.currentModule=type;
+						this.clickEnable=false;
+						this.headEditEnable=true;
 					}
-					this.currentModule=type;
-					this.clickEnable=false;
-					this.headEditEnable=true;
+				}else{
+					if(type===this.currentModule){
+						if(type===1){
+							app.educationCancel();
+						}
+						
+						if(type===2){
+							app.awardCancel();
+						}
+						
+						if(type===3){
+							app.practiceCancel();
+						}
+						
+						if(type===4){
+							app.skillCancel();
+						}
+						
+						if(type===5){
+							app.activityCancel();
+						}
+					}
 				}
-			}else{
-				if(type===this.currentModule){
-					if(type===1){
-						app.educationCancel();
-					}
-					
-					if(type===2){
-						app.awardCancel();
-					}
-					
-					if(type===3){
-						app.practiceCancel();
-					}
-					
-					if(type===4){
-						app.skillCancel();
-					}
-					
-					if(type===5){
-						app.activityCancel();
-					}
-				}
-			}
+            	
+            }
+			
+			
 		},
 		moduleActiveShow:function(type){
 			switch(type){

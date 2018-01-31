@@ -170,6 +170,8 @@
 									<span class="top-icon"><i class="material-icons">&#xE80C;</i></span>
 									<span class="top-title">教育背景</span>
 									<span class="add-module-btn add-education-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_1}" v-html="ModuleShow_1?'取消':'添加'" v-on:click="addModule(1)"></span>
+									<!-- 解决点击其他添加按钮同样可以可以点击教育背景添加按钮的问题（加一个浮动层覆盖掉按钮） -->
+                            		<span class="education-btn-flo" style="display:none;" v-show="(!clickEnable&&!ModuleShow_1)||editOnce" v-bind:style="{cursor:editOnce?'pointer':'default'}" v-on:click.stop.self="floClick"></span>  
 								</div>
 								<div class="module-wrapper education-wrapper clearbox" v-bind:style="{paddingTop:educationLists.length>0?'30px':'20px'}">
 									<ul class="education-date-box" style="display:none;" v-show="educationDate.length>0">

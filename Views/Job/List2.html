@@ -152,7 +152,7 @@
 									<span class="position-commend" v-html="item.Comment+'已学习'"><!--24324人已学习--></span>
 								</div>
 								<div class="position-like">
-									<span class="like-icon no-like" v-bind:index="item.ID" v-on:click="likeCut(item.ID,$event)"></span>
+									<span class="like-icon" v-bind:class="{'yes-like':item.IsList==1,'no-like':item.IsList==0}" v-bind:index="item.ID" v-on:click="likeCut(item.ID,item.IsList,$event)"></span>
 									<span class="like-num" v-html="item.Like"><!--78867--></span>
 								</div>
 							</div>

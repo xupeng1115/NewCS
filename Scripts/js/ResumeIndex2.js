@@ -1886,26 +1886,26 @@ function imgClick(){
 	$('#CompanyLogo').click();
 }
 
-(function(){
-	loadUserTitle();
-	function loadUserTitle(){
-        var myParams = {
-	        
-        }
-        var mySuccessFun = function (result) {
-	        if (result.Success) {
-                console.log(result.Data);
-		        app.userTags=$.extend([],result.Data);
-	        } else {
-		        alert(result.Message);
-	        }
-        }
-        var myErrorFun = function () {
-	        alert("网络出错了！");
-        }
-        //发送请求获取标签列表
-        myAjax("get", userTitleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
-    }
-}());
+//(function(){
+//	loadUserTitle();
+//	function loadUserTitle(){
+//      var myParams = {
+//	        
+//      }
+//      var mySuccessFun = function (result) {
+//	        if (result.Success) {
+//              console.log(result.Data);
+//		        app.userTags=$.extend([],result.Data);
+//	        } else {
+//		        alert(result.Message);
+//	        }
+//      }
+//      var myErrorFun = function () {
+//	        alert("网络出错了！");
+//      }
+//      //发送请求获取标签列表
+//      myAjax("get", userTitleUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun,"application/json; charset=utf-8");
+//  }
+//}());
 
 

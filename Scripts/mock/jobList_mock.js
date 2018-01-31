@@ -22,6 +22,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:1,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -49,6 +50,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -76,6 +78,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:1,
 		Star:2,
 		Comment:20232,
 		Like:23423,
@@ -103,6 +106,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:3,
 		Comment:20232,
 		Like:23423,
@@ -130,6 +134,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -157,6 +162,7 @@ var positionList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -188,6 +194,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -215,6 +222,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -242,6 +250,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:2,
 		Comment:20232,
 		Like:23423,
@@ -269,6 +278,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:3,
 		Comment:20232,
 		Like:23423,
@@ -296,6 +306,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,
@@ -323,6 +334,7 @@ var recommendList=[
 				TagName:'微信开发'
 			}
 		],
+		IsList:0,
 		Star:5,
 		Comment:20232,
 		Like:23423,

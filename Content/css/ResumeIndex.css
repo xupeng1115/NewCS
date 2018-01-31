@@ -555,6 +555,19 @@ section .nav-content{
   	resize:none;
 }
 
+.resume-module .resume-module-top .education-btn-flo{
+    position:absolute;
+	top:-3px;
+	right:-3px;
+	padding-left:20px;
+	width:86px;
+	height:36px;
+	background:transparent;
+	border-radius:15px;
+	cursor:default;
+	z-index:30;
+}
+
 .info-edit-container input:focus{
 	border-color:#ffbf00;
 }

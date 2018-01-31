@@ -70,25 +70,49 @@ var app=new Vue({
 		emptyLogin:function(){
 			$(".lr-container").show();
 		},
-		likeCut:function(ID,event){
-			var yesKey=$(event.target).hasClass("yes-like");
-			var noKey=$(event.target).hasClass("no-like")
+		likeCut:function(ID,IS,event){
+            var oEle=$(event.target);
 			if(this.loginKey){
-				if(yesKey){
-					$(event.target).removeClass("yes-like");
-					$(event.target).addClass("no-like");
-					this.positionList[ID].Like--;
-					this.positionList=this.positionList;
-				}else{
-					$(event.target).removeClass("no-like");
-					$(event.target).addClass("yes-like");
-					this.positionList[ID].Like++;
-					this.positionList=this.positionList;
-				}
+                app.collectPosition(ID,IS,oEle);
 			}else{
 				$(".lr-container").show();
 			}
 		},
+        collectPosition:function(ID,IS,Ele){
+            var Obj={
+//              type:IS,
+//				PositionID:ID
+			}
+		
+            var mySuccessFun = function (result) {
+				
+                if (result.Success) {
+                    if(IS==1){
+                        //取消收藏
+					    Ele.removeClass("yes-like");
+					    Ele.addClass("no-like");
+					    app.positionList[ID].Like--;
+					    app.positionList[ID].IsList=0;
+					    app.positionList=app.positionList;
+				    }else{
+                        //进行收藏
+					    Ele.removeClass("no-like");
+					    Ele.addClass("yes-like");
+					    app.positionList[ID].Like++;
+					    app.positionList[ID].IsList=1;
+					    app.positionList=app.positionList;
+				    }
+                } else {
+                    alert(result.Message);
+                }
+            }
+            var myErrorFun = function (error) {
+                alert("网络出错了！");
+			}
+
+            //是否收藏职位
+            myAjax("get", "../../Scripts/mock/test.json", JSON.stringify(), mySuccessFun, myErrorFun);
+        },
 		searchArea:function(){
 			this.industryKey=false;
 			this.positionKey=false;
