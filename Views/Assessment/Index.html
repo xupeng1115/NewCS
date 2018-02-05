@@ -23,7 +23,7 @@
 	</head>
 <body>
 	<!--Page Public -->
-	<div class="container-fluid">
+	<div class="container-fluid" id="app">
 		
 		<!-- Top -->
 		<header class="row">
@@ -67,140 +67,70 @@
 					</div>
 				</div>
 			</div>
+			<!-- 测评题目进度导航 -->
+			<div class="row content-nav" style="display:none;" v-show="examShow">
+				<div class="assessment-nav-container">
+					<span class="assessment-nav-title">职业兴趣测评</span>
+					<div id="indicatorContainer"></div>
+					<span class="assessment-back-btn"><a href="../Home/Index.html">返回首页</a></span>
+				</div>
+			</div>
 		    <!-- 测评内容 -->
 			<div class="content-box clearbox">
-				<div class="content-wrapper">
+				<div class="content-wrapper" v-bind:class="{'content-wrapper-width':!examShow}">
 		        <!-- 测评题目 -->
-					<div class="content-container">
+					<div class="content-container" style="display:none;" v-show="examShow">
 						<div class="content-header">
 							<span>您喜欢从事下列活动吗？（请选择是或否）</span>
 							<span class="question-num">共60题</span>
 							<span class="notice-btn">注意事项</span>
 						</div>
-						<ul class="assessment-list">
-							<li class="assessment-item">
-								<span class="assessment-index">1.</span>
-								<span class="assessment-text">装配、修理电器或玩具。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">2.</span>
-								<span class="assessment-text">修理自行车。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">3.</span>
-								<span class="assessment-text">用木头做东西（做木工）。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">4.</span>
-								<span class="assessment-text">开车或摩托车。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">5.</span>
-								<span class="assessment-text">用机器做东西。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">6.</span>
-								<span class="assessment-text">参加木工技术学习班（如工艺雕刻等）。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">7.</span>
-								<span class="assessment-text">参加制图、绘图学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">8.</span>
-								<span class="assessment-text">参加制图、的过多少个的风格学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">9.</span>
-								<span class="assessment-text">参绘图多少个梵蒂冈的奉公如法带个人发到个人负担感人的发班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">10.</span>
-								<span class="assessment-text">参加制图、绘图都是过多少个的是个大放送学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">11.</span>
-								<span class="assessment-text">参加少打观点说服个生日换个人山人海图学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">12.</span>
-								<span class="assessment-text">参加制第三个人的个班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">13.</span>
-								<span class="assessment-text">参加少打观点说服个生日换个人山人海图学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">14.</span>
-								<span class="assessment-text">参加制图第三个人的个绘图学习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
-							</li>
-							<li class="assessment-item">
-								<span class="assessment-index">15.</span>
-								<span class="assessment-text">参加的说过房东习班。</span>
-								<input type="checkbox" name="checkbox" class="assessment-no assessment-checkbox" />
-								<input type="checkbox" name="checkbox" class="assessment-yes assessment-checkbox" />
+						<ul class="asssessment-list-total">
+							<li class="assessment-list-page" v-for="(page,index) in assessmentList" v-bind:key="index" v-bind:index="index" style="display:none;" v-show="currentPage===index">
+								<ul class="assessment-list">
+									<li class="assessment-item"  v-for="(item,num) in page" v-bind:key="num" v-bind:index="item.ID">
+										<span class="assessment-index" v-html="(item.Num+1)+'.'"><!--1.--></span>
+										<span class="assessment-text" v-html="item.SubjectName"><!--装配、修理电器或玩具。--></span>
+										<input type="radio" name="radio1" class="assessment-no assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" value='0' v-on:click="radioCheck(item.ID,item.TypeID)"/>
+										<div class="radio-text no-text">否</div>
+										<input type="radio" name="radio1" class="assessment-yes assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" value='1' v-on:click="radioCheck(item.ID,item.TypeID)"/>
+										<div class="radio-text yes-text">是</div>
+									</li>
+								</ul>
 							</li>
 						</ul>
-								
+					
 						<div class="tcdPageCode"></div>
-						<div class="assessment-btn assessment-submit-btn">提交</div>
-						<div class="assessment-btn assessment-reset-btn">重置</div>
+						<div class="assessment-btn assessment-submit-btn" v-on:click="submitBtn">提交</div>
+						<div class="assessment-btn assessment-reset-btn" v-on:click="resetBtn">重置</div>
 					</div>
 					
 		            <!-- 引导登录 -->
-					<div class="prompt-login">
+					<div class="prompt-login" style="display:none;" v-show="guideShow">
 						<div class="prompt-title">恭喜您完成职业兴趣测评！</div>
 						<div class="prompt-bg"></div>
 						<div class="prompt-msg">您尚未登录，登录后系统将根据您的测评结果，为您推荐合适职位。</div>
 						<div class="prompt-login-btn">立即登录</div>
-						<div class="prompt-back-btn">返回测评</div>
+						<div class="prompt-back-btn" v-on:click="backAssessment">返回测评</div>
 					</div>
 					
 		            <!-- 测评结果报告 -->
-					<div class="assessment-report">
+					<div class="assessment-report" style="display:none;" v-show="resultShow">
 						<div class="report-title">职业兴趣测评结果</div>
 						<div class="report-msg">有关资料表明，如果一个人对某个工作有兴趣，就能够发挥他全部才能的80%-90%，并且能较长时间保持高效率而不感到疲劳；而对工作缺乏兴趣的人，只能发挥其全部才能的20%-30%，也容易疲劳、厌倦。查看以下结果，看看你的职业兴趣是什么。</div>
 						<div class="report-box clearbox">
 							<ul class="report-left">
 								<li class="report-item">
 									<div class="item-title">测评得分：</div>
-									<div class="item-content">100分</div>
+									<div class="item-content" v-html="Score"><!--100分--></div>
 								</li>
 								<li class="report-item">
 									<div class="item-title">职业兴趣类型：</div>
-									<div class="item-content">现实型</div>
+									<div class="item-content" v-html="TypeName"><!--现实型--></div>
 								</li>
 								<li class="report-item">
 									<div class="item-title">霍兰德职业代码：</div>
-									<div class="item-content">ERI</div>
+									<div class="item-content" v-html="Code"><!--ERI--></div>
 								</li>
 							</ul>
 							<div class="report-right">
@@ -208,19 +138,19 @@
 							</div>
 						</div>
 						<div class="report-theme">
-							<div class="theme-title">现实型</div>
-							<div class="theme-content">
-								现实型的人是栽培者，乐于促进事物的增长和繁荣。现实型的人对成功所带来的名望或金钱奖励兴趣不大，他们只是单纯的喜欢把事完成。
+							<div class="theme-title" v-html="TypeName"><!--现实型--></div>
+							<div class="theme-content" v-html="TypeDescribe">
+								<!--现实型的人是栽培者，乐于促进事物的增长和繁荣。现实型的人对成功所带来的名望或金钱奖励兴趣不大，他们只是单纯的喜欢把事完成。
 								<br>
-								他们对创新和尝试理解复杂信息缺乏兴趣。而且，他们享受于容易被感觉、品尝、听到或闻到的事物。现实型的人在职场上追求稳定和安全感。他们可靠、固执、自觉且不食言。
+								他们对创新和尝试理解复杂信息缺乏兴趣。而且，他们享受于容易被感觉、品尝、听到或闻到的事物。现实型的人在职场上追求稳定和安全感。他们可靠、固执、自觉且不食言。-->
 							</div>
 						</div>
 						<div class="report-theme">
-							<div class="theme-title">ERI</div>
+							<div class="theme-title" v-html="Code"><!--ERI--></div>
 							<div class="theme-msg">根据您的兴趣匹配，您适合的典型职业有：</div>
-							<div class="theme-content">建筑物管理员、工业工程师、农场管理员、护士长、农业经营管理人员、化学设备销售工程师、机械设备销售工程师、设备保养工程师、油库经理、税务代理、钻井或生产班组长、土木工程队工头、伐木工头、电厂主管、测绘主管、维护保养主管、彩陶主管、现场工程师、燃料系统维护主管、业务评估经理、洗衣店经理、路况检测官、调度员、日程业务员、菜蔬生产主管、机器运作监察员、碳电极监察员、胶合板工等。</div>
+							<div class="theme-content" v-html="CodeDescribe"><!--建筑物管理员、工业工程师、农场管理员、护士长、农业经营管理人员、化学设备销售工程师、机械设备销售工程师、设备保养工程师、油库经理、税务代理、钻井或生产班组长、土木工程队工头、伐木工头、电厂主管、测绘主管、维护保养主管、彩陶主管、现场工程师、燃料系统维护主管、业务评估经理、洗衣店经理、路况检测官、调度员、日程业务员、菜蔬生产主管、机器运作监察员、碳电极监察员、胶合板工等。--></div>
 						</div>
-						<div class="report-back-btn">返回首页</div>
+						<div class="report-back-btn"><a href="../Home/Index.html">返回首页</a></div>
 					</div>
 							
 					<div class="flo-piece line five"></div>
@@ -231,7 +161,7 @@
 				</div>
 		
 		        <!-- 测评注意事项 -->
-				<div class="content-tip">
+				<div class="content-tip" style="display:none;" v-show="examShow">
 					<div class="tip-header">
 						<span>注意事项</span>
 						<span class="tip-cancel"></span>
@@ -251,14 +181,7 @@
 						
 			</div>
 			
-		     <!-- 测评题目进度导航 -->
-			<div class="row content-nav">
-				<div class="assessment-nav-container">
-					<span class="assessment-nav-title">职业兴趣测评</span>
-					<div id="indicatorContainer"></div>
-					<span class="assessment-back-btn">返回首页</span>
-				</div>
-			</div>
+		    
 		</section>
 		
 		<!--********************************************Private结构End*********************************-->
@@ -374,8 +297,17 @@
 	<script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
 	<script src="../../Scripts/lib/vue.min.js"></script>
 	<script src="../../Scripts/js/Template.js?v=20171221"></script>
-	
+	<script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "False";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
 	<!-- Private JS -->
+	<script src="../../Scripts/mock/assessmentIndex_mock.js"></script>
 	<script src="../../Scripts/lib/radialIndicator.js"></script>
 	<script src="../../Scripts/lib/jquery.page.js"></script>
 	<script src="../../Scripts/lib/highcharts.js"></script>
