@@ -88,7 +88,8 @@
 /***************************Content***********************/
 section{
 	position:relative;
-	background:#fff;
+	background:url(../img/assessment_index_bg.jpg)no-repeat center center;
+	background-size:100% 100%;
 }
 
 section .content-top{
@@ -169,6 +170,11 @@ section .content-box{
  	height: 340px;
   	background-color: #ffffff;
   	z-index:10;
+  	overflow:hidden;
+}
+
+.content-box .content-tip-show{
+	width:0;
 }
 
 .content-tip .tip-header{
@@ -249,6 +255,10 @@ section .content-box{
   	background-color: #ffffff;
   	box-shadow: 0 2px 6px 0 rgba(209, 209, 209, 0.5);
 	z-index:10;
+}
+
+.content-box .content-wrapper-show{
+	width:1000px;
 }
 
 .content-box .content-wrapper-width{

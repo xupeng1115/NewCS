@@ -83,7 +83,7 @@
 						<div class="content-header">
 							<span>您喜欢从事下列活动吗？（请选择是或否）</span>
 							<span class="question-num">共60题</span>
-							<span class="notice-btn">注意事项</span>
+							<span class="notice-btn" v-on:click="openTip">注意事项</span>
 						</div>
 						<ul class="asssessment-list-total">
 							<li class="assessment-list-page" v-for="(page,index) in assessmentList" v-bind:key="index" v-bind:index="index" style="display:none;" v-show="currentPage===index">
@@ -161,10 +161,10 @@
 				</div>
 		
 		        <!-- 测评注意事项 -->
-				<div class="content-tip" style="display:none;" v-show="examShow">
+				<div class="content-tip" style="display:none;" v-show="tipShow">
 					<div class="tip-header">
 						<span>注意事项</span>
-						<span class="tip-cancel"></span>
+						<span class="tip-cancel" v-on:click="closeTip"></span>
 					</div>
 					<ul class="tip-list">
 						<li class="tip-text">1.请根据您的实际情况作答，并以最快速度完成每道试题。</li>

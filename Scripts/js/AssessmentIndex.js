@@ -13,6 +13,7 @@ var app=new Vue({
 		examShow:true,
 		resultShow:false,
 		guideShow:false,
+		tipShow:true,
 		
 		Code:"",
 		TypeName:"",
@@ -22,6 +23,27 @@ var app=new Vue({
 		
 	},
 	methods:{
+		//关闭注意事项
+		closeTip:function(){
+			app.tipShow=false;
+			$(".content-wrapper").animate({
+				"width":"1000px"
+			},1000);
+		},
+		openTip:function(){
+			if(!app.tipShow){
+				app.tipShow=false;
+				$(".content-wrapper").animate({
+					"width":"776px"
+				},1000);
+				setTimeout(function(){
+					app.tipShow=true;
+				},1000)
+			}else{
+				
+			}
+			
+		},
 		//点击题目选项答题
 		radioCheck:function(ID,typeid){
 			var val = $('input[name="'+ID+'"]:checked').val();
