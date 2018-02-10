@@ -1,4 +1,3 @@
-
 //Vue数据绑定与事件绑定
 var app=new Vue({
 	el:"#app",
@@ -46,8 +45,8 @@ var app=new Vue({
 		},
 		pageCount:function(val){
 			this.getPage(val);
-		}
 	},
+		}
 	mounted:function(){
 		
 	},

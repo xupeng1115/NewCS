@@ -39,78 +39,78 @@ $(function () {
 
 		$("body").on("click",".aside-back-top",function(event){
 			$('body,html').animate({scrollTop:0},300);
-		})
+		});
 
         $("body").on("click", ".login-phone", function () {
             $(".login-phone-tips").text("手机号不能为空");
             $(".login-phone-tips").show();
 
-        })
+        });
 
         $("body").on("click", ".login-password", function () {
             $(".login-password-tips").text("密码不能为空");
             $(".login-password-tips").show();
-        })
+        });
 
         $("body").on("click", ".rp-no", function () {
             $(this).hide();
             $(".rp-yes").show();
             remeberKey=true;
-        })
+        });
 
         $("body").on("click", ".rp-yes", function () {
             $(this).hide();
             $(".rp-no").show();
             remeberKey=false;
-        })
+        });
 
         $("body").on("click", ".lr-cancel", function () {
             $(".lr-container").hide();
-        })
+        });
 
         $("body").on("click", ".login-register", function () {
             $(".lr-container").show();
-        })
+        });
 
         $("body").on("click", ".forget-password-box", function () {
             window.location.href = "../User/FindPassword";
-        })
+        });
 
         $("body").on("click", ".register-username", function () {
             $(".register-username-tips").text("用户名不能为空");
             $(".register-username-tips").show();
-        })
+        });
 
         $("body").on("click", ".test-code", function () {
             $(".code-tips").text("验证码不能为空");
             $(".code-tips").show();
-        })
+        });
 
         $("body").on("click", ".register-phone", function () {
             $(".register-phone-tips").text("手机号码不能为空");
             $(".register-phone-tips").show();
-        })
+        });
 
         $("body").on("click", ".register-password", function () {
             $(".register-password-tips").text("密码不能为空");
             $(".register-password-tips").show();
-        })
+        });
 
         $("body").on("click", ".protocol-no", function () {
             $(this).hide();
             $(".protocol-yes").show();
             protocolKey=true;
-        })
+        });
 
         $("body").on("click", ".protocol-yes", function () {
             $(this).hide();
             $(".protocol-no").show();
             protocolKey=false;
-        })
+        });
 
         $("body").on("click", ".lr-cancel", function () {
             $(".lr-container").hide();
-        })
+        });
 
         //登陆
         $("body").on("click", ".lr-login-btn", function () {
@@ -142,7 +142,7 @@ $(function () {
             var myParams = {
                 Tel: oPhone,
                 Password:oPassword
-            }
+            };
             var mySuccessFun = function (result) {
                 console.log(result);
                 if (result.Success) {
@@ -156,11 +156,11 @@ $(function () {
                     alert(result.Message);
                     loginKey = false;
                 }
-            }
+            };
             var myErrorFun = function () {
                 alert("网络出错了！");
                 loginKey = false;
-            }
+            };
             //发送登陆信息
             if (!loginKey) {
                 loginKey = true;
@@ -169,7 +169,7 @@ $(function () {
                 
             }
 
-        })
+        });
 
         //获取验证码
         $("body").on("click", ".get-code-btn", function () {
@@ -187,7 +187,7 @@ $(function () {
 
             var myParams = {
                 Phone: oPhone,
-            }
+            };
             var mySuccessFun = function (result) {
                 console.log(result);
                 if (result.Success) {
@@ -196,11 +196,11 @@ $(function () {
                     alert(result.Message);
                     codeKey = false;
                 }
-            }
+            };
             var myErrorFun = function () {
                 alert("网络出错了！");
                 codeKey = false;
-            }
+            };
             //发送验证码信息
             if (!codeKey) {
                 codeKey = true;
@@ -209,7 +209,7 @@ $(function () {
                 
             }
             
-        })
+        });
 
         //注册
         $("body").on("click", ".lr-register-btn", function () {
@@ -256,7 +256,7 @@ $(function () {
                 VerificationCode: oFormatNum,
                 Tel: oPhone,
                 Password: oPassword
-            }
+            };
             var mySuccessFun = function (result) {
                 console.log(result);
                 if (result.Success) {
@@ -270,11 +270,11 @@ $(function () {
                     alert(result.Message);
                     registerKey = false;
                 }
-            }
+            };
             var myErrorFun = function (error) {
                 alert("网络出错了！");
                 registerKey = false;
-            }
+            };
             //发送注册信息
             if (!registerKey) {
                 registerKey = true;
@@ -283,7 +283,7 @@ $(function () {
 
             }
 
-        })
+        });
 
         $("body").on("click", ".login-btn", function () {
             $(this).css("color", "#ffbf00");
@@ -292,7 +292,7 @@ $(function () {
             $(".register-btn").find(".btn-line").hide();
             $(".register-box").hide();
             $(".login-box").show();
-        })
+        });
 
         $("body").on("click", ".register-btn", function () {
             $(this).css("color", "#ffbf00");
@@ -301,7 +301,7 @@ $(function () {
             $(".login-btn").find(".btn-line").hide();
             $(".login-box").hide();
             $(".register-box").show();
-        })
+        });
         
 //      $(window).scroll(function() {
 //			//获取文档滚动高度
@@ -314,7 +314,7 @@ $(function () {
 //		})
 
     } ());
-})
+});
 
 //Ajax
 function myAjax(myType, myUrl, myParams, mySuccessFun, myErrorFun) {
@@ -354,8 +354,8 @@ function BrowserType(){
 
 	if(isIE){
 		var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
-		reIE.test(userAgent);
-		var fIEVersion = parseFloat(RegExp["$1"]);
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
 		if(fIEVersion == 7){ 
 			return "IE7";
 		}else if(fIEVersion == 8){
@@ -367,7 +367,7 @@ function BrowserType(){
 		}else if(fIEVersion == 11){
 			return "IE11";
 		}else{ 
-			return "0"
+			return "0";
 		}//IE版本过低
 	}//isIE end
 	
