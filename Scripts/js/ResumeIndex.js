@@ -383,6 +383,7 @@ var app=new Vue({
 			var myParams = {};
             var mySuccessFun = function(result){
             	if(result.Success){
+					console.log(result.Data);
             		app.totalTags=result.Data;
             	}else{
             		alert(result.Message);
