@@ -66,14 +66,10 @@ img{max-width: 100%;}
 	white-space:nowrap;
 }
 
-.clearfix{
-	visibility:hidden;
+.clearbox::after{
 	display:block;
-	font-size:0;
-	content:" ";
+	content:"";
 	clear:both;
-	height:0;
-	*zoom:1;
 }
 
 /***************************Content部分*********************************************/
@@ -102,6 +98,7 @@ img{max-width: 100%;}
     width:100%;
     padding:15px 15px 10px 15px;
     background:#fff;
+    border-bottom:10px solid #f7f7f7;
 }
 
 .top .title{
@@ -139,7 +136,7 @@ img{max-width: 100%;}
 
 .top .tags{
     position:relative;
-    width:100%;
+    max-width:80%;
 }
 
 .top .tags .tag-item{
@@ -159,8 +156,7 @@ img{max-width: 100%;}
 .content{
     position:relative;
     width:100%;
-    border-top:10px solid #f7f7f7;
-    
+    background:#fff;
 }
 
 
