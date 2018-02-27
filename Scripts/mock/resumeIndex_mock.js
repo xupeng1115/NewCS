@@ -129,7 +129,7 @@ var UserTitleList = [
 var ResumeBasic = {
     "ID":2,
     "UserID":5,
-    "Name":"",
+    "Name":"小明",
     "Tel":"13761646494",
     "Email":"lichxi1002@126.com",
     "Gender":1,"AddressID":0,
