@@ -173,9 +173,22 @@ img{max-width: 100%;}
 }
 
 .content .item{
+    position:relative;
     width:100%;
     padding:15px 0;
-    border-bottom:1px solid #dfdfdf;
+}
+
+.content .item:after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color:#dfdfdf;
+    -webkit-transform: scaleY(.5);
+    -ms-transform: scaleY(.5);
+    transform:scaleY(.5);
 }
 
 .content .item .item-title{
@@ -196,6 +209,10 @@ img{max-width: 100%;}
     border-bottom:10px solid #f7f7f7;
 }
 
+.content .demand:after{
+    display:none;
+}
+
 .content .item .item-content{
     padding:10px 15px 0 15px;
     width:100%;
@@ -207,6 +224,10 @@ img{max-width: 100%;}
 
 .address .item-content{
     margin-bottom:10px;
+}
+
+.content .address:after{
+    display:none;
 }
 
 .address #address-container{

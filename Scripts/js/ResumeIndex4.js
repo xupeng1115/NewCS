@@ -54,11 +54,6 @@ var app=new Vue({
 		ModuleShow_5:false,
 		currentModule:0,
 		
-		//编辑简历
-		resumeEditKey:false,
-		resumeEditIndex:-1,
-		resumeEditID:-1,
-
 		//教育经历模块
 		currrentDate:new Date().getFullYear(),
 		dateListKey:false,
@@ -584,7 +579,6 @@ var app=new Vue({
             }
 		},
 		addModule:function(type){
-			
             if(app.editOnce){
                 alert("请先完善个人简历基本信息");
                 return;
@@ -662,11 +656,6 @@ var app=new Vue({
 				break;
 			}
 		},
-		resumeEditInit:function(){
-			app.resumeEditKey=false;
-			app.resumeEditIndex=-1;
-			app.resumeEditID=-1;
-		},
 		selectgraduateyear:function(graduate){
 			this.educationgraduate_year=graduate;
 		},
@@ -691,7 +680,6 @@ var app=new Vue({
 		},
 		//教育背景
 		educationSave:function(type){
-
 			if($.trim(this.educationmajor)===""){
 				return;
 			}
@@ -704,7 +692,7 @@ var app=new Vue({
 			if($.trim(this.educationgraduate_year)===""){
 				return;
 			}
-
+            
 			var Obj={
 				ResumeID:app.userEditInfo.ID,
 				Major:app.educationmajor,
@@ -712,39 +700,21 @@ var app=new Vue({
 				SchoolName:app.educationschool,
 				EndDate:app.educationgraduate_year+"-"+app.educationgraduate_month+"-"+"01"
 			}
+			
 			var oYear=app.educationgraduate_year;
 			var oMonth=formatMonth(app.educationgraduate_month);
 			var oDate={
 				year:oYear,
 				month:oMonth
 			}
-			
-			app.educationCancel();
-			if(app.resumeEditKey){
-				Obj.ID=app.resumeEditID;
-				app.educationLists.splice(app.educationEditIndex,1,Obj);
-				app.educationDate.splice(app.educationEditIndex,1,oDate);
-				app.resumeEditInit();
-			}else{
-				Obj.ID=1000;
-				app.educationLists.unshift(Obj);
-				app.educationDate.unshift(oDate);
-			}
-			
             var mySuccessFun = function (result) {
 				
                 if (result.Success) {
+					Obj.ID=result.Data;
+
 					app.educationCancel();
-					if(app.resumeEditKey){
-						Obj.ID=app.educationEditID;
-						app.educationLists.splice(app.educationEditIndex,1,Obj);
-						app.educationDate.splice(app.educationEditIndex,1,oDate);
-						app.resumeEditInit();
-					}else{
-						Obj.ID=result.Data;
-						app.educationLists.unshift(Obj);
-						app.educationDate.unshift(oDate);
-					}
+			        app.educationLists.unshift(Obj);
+			        app.educationDate.unshift(oDate);
                 } else {
                     alert(result.Message);
                 }
@@ -754,7 +724,7 @@ var app=new Vue({
 			}
 			
             //提交教育背景
-            //myAjax("post", "/Resume/SubmitEducationBackround", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitEducationBackround", JSON.stringify(Obj), mySuccessFun, myErrorFun);
 			
 		},
 		educationDelete:function(index,ID){
@@ -770,22 +740,6 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteEducationBackround?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
-		},
-		educationEdit:function(item,index){
-
-			app.addModule(1);
-			app.resumeEditKey=true;
-			app.resumeEditIndex=index;
-			app.resumeEditID=item.ID;
-
-			app.userEditInfo.ID=item.ResumeID;
-			app.educationmajor=item.Major;
-			app.educationbackground=item.Education>=14?'其他':(item.Education>=13?'博士':(item.Education>=12?'硕士':(item.Education>=11?'本科':(item.Education>=10?'大专':''))));
-			app.educationbackgroundid=item.Education;
-			app.educationschool=item.SchoolName;
-			app.educationgraduate_year=item.EndDate.substr(0,4);
-			app.educationgraduate_month=item.EndDate.substr(5,2);
-
 		},
 		awardselect_year:function(year){
 			this.awardgraduate_year=year;
@@ -807,29 +761,14 @@ var app=new Vue({
 				HonorName:app.awardname,
 				GetTime:app.awardgraduate_year + "-" +app.awardgraduate_month
 			}
-
-			app.awardCancel();
-			if(app.resumeEditKey){
-				Obj.ID=app.resumeEditID;
-				app.awardLists.splice(app.resumeEditIndex,1,Obj);
-				app.resumeEditInit();
-			}else{
-				Obj.ID=1000;
-				app.awardLists.unshift(Obj);
-			}
 			
 			var mySuccessFun = function (result) {
 				
                 if (result.Success) {
-					app.awardCancel();
-					if(app.resumeEditKey){
-						Obj.ID=app.resumeEditID;
-						app.awardLists.splice(app.resumeEditIndex,1,Obj);
-						app.resumeEditInit();
-					}else{
-						Obj.ID=result.Data;
-						app.awardLists.unshift(Obj);
-					}
+					Obj.ID=result.Data;
+                    
+                    app.awardCancel();
+			        app.awardLists.unshift(Obj);
                 } else {
                     alert(result.Message);
                 }
@@ -839,7 +778,7 @@ var app=new Vue({
 			}
 
             //提交所获荣誉
-            //myAjax("post", "/Resume/SubmitHonor", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitHonor", JSON.stringify(Obj), mySuccessFun, myErrorFun);
  			
 			
 		},
@@ -865,19 +804,6 @@ var app=new Vue({
             }
 			myAjax("post", "/Resume/DeleteHonor?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
 		
-		},
-		awardEdit:function(item,index){
-
-			app.addModule(2);
-			app.resumeEditKey=true;
-			app.resumeEditIndex=index;
-			app.resumeEditID=item.ID;
-
-			app.userEditInfo.ID=item.ResumeID;
-			app.awardname=item.HonorName;
-			app.awardgraduate_year=item.GetTime.substr(0,4);
-			app.awardgraduate_month=item.GetTime.substr(5,2);
-
 		},
 		//实习经历
 		practiceSave:function(type){
@@ -911,36 +837,21 @@ var app=new Vue({
 				JobDescription:app.practicecontent
 			}
 
-			app.practiceCancel();
-			if(app.resumeEditKey){
-				Obj.ID=app.resumeEditID;
-				$("#CompanyLogoImg").attr('src',"../../Content/img/position_head.png");
-				app.practiceLists.splice(app.resumeEditIndex,1,Obj);
-				app.resumeEditInit();
-			}else{
-				Obj.ID=1000;
-				$("#CompanyLogoImg").attr('src',"../../Content/img/position_head.png");
-				app.practiceLists.unshift(Obj);
-			}
-
 			var mySuccessFun = function (result) {
-                app.practiceCancel();
-				if(app.resumeEditKey){
-					Obj.ID=app.resumeEditID;
-					$("#CompanyLogoImg").attr('src',"../../Content/img/position_head.png");
-					app.practiceLists.splice(app.resumeEditIndex,1,Obj);
-					app.resumeEditInit();
-				}else{
+                if (result.Success) {
 					Obj.ID=result.Data;
 					$("#CompanyLogoImg").attr('src',"../../Content/img/position_head.png");
-					app.practiceLists.unshift(Obj);
-				}
+                    app.practiceLists.unshift(Obj);
+			        app.practiceCancel();
+                } else {
+                    alert(result.Message);
+                }
             }
             var myErrorFun = function (error) {
                 alert("网络出错了！");
 			}
             
-            //myAjax("post", "/Resume/SubmitInternshipExperience", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitInternshipExperience", JSON.stringify(Obj), mySuccessFun, myErrorFun);
  
 			
 		},
@@ -972,24 +883,6 @@ var app=new Vue({
             }
 			myAjax("post", "/Resume/DeleteInternshipExperience?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);
 		},
-		practiceEdit:function(item,index){
-			app.addModule(3);
-			app.resumeEditKey=true;
-			app.resumeEditIndex=index;
-			app.resumeEditID=item.ID;
-
-			$("#CompanyLogoImg").attr('src',item.CompanyLogo);
-			app.userEditInfo.ID=item.ResumeID;
-			app.practicecompanyname=item.CompanyName;
-			app.practicepositionname=item.PositionName;
-			app.practicesite=item.AddressInfo;
-			app.practicebegin_year=item.BeginDate.substr(0,4);
-			app.practicebegin_month=item.BeginDate.substr(5,2);
-			app.practiceend_year=item.EndDate.substr(0,4);
-			app.practiceend_month=item.EndDate.substr(5,2);
-			app.practicecontent=item.JobDescription;
-
-		},
 		practiceselectbegin_year:function(year){
 			this.practicebegin_year=year;
 		},
@@ -1017,28 +910,12 @@ var app=new Vue({
 				SkillDescription:app.skilldec,
 				Skilled:app.skillbar
 			}
-
-			app.skillCancel();
-			if(app.resumeEditKey){
-				Obj.ID=app.resumeEditID;
-				app.skillLists.splice(app.resumeEditIndex,1,Obj);
-				app.resumeEditInit();
-			}else{
-				Obj.ID=1000;
-				app.skillLists.unshift(Obj);
-			}
-
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-					app.skillCancel();
-					if(app.resumeEditKey){
-						Obj.ID=app.resumeEditID;
-						app.skillLists.splice(app.resumeEditIndex,1,Obj);
-						app.resumeEditInit();
-					}else{
-						Obj.ID=result.Data;
-						app.skillLists.unshift(Obj);
-					}
+					Obj.ID=result.Data;
+
+                    app.skillLists.unshift(Obj);
+			        app.skillCancel();
                 } else {
                     alert(result.Message);
                 }
@@ -1047,7 +924,7 @@ var app=new Vue({
                 alert("网络出错了！");
 			}
 
-            //myAjax("post", "/Resume/SubmitSepcilty", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitSepcilty", JSON.stringify(Obj), mySuccessFun, myErrorFun);
 		},
 		skillCancel:function(type){
 			this.skillname="";
@@ -1082,38 +959,7 @@ var app=new Vue({
             }
 			myAjax("post", "/Resume/DeleteSepcilty?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
 		},
-		skillEdit:function(item,index){
-			app.addModule(4);
-			app.resumeEditKey=true;
-			app.resumeEditIndex=index;
-			app.resumeEditID=item.ID;
-			
-			//写入程度条
-			$(".skill-edit-progress_bar").css("width",item.Skilled+"px");
-			$(".skill-edit-progress_btn").css("left",item.Skilled+"px");
-			if(item.Skilled>=0&&item.Skilled<200){
-				$(".skill-edit-degree").html("一般");
-			}
-			if(item.Skilled>=200&&item.Skilled<300){
-				$(".skill-edit-degree").html("熟练");
-			}
-			if(item.Skilled>=300&&item.Skilled<350){
-				$(".skill-edit-degree").html("良好");
-			}
-			if(item.Skilled>=350){
-				$(".skill-edit-degree").html("优秀");
-			}
-			tag = false;
-			ox = 0;
-			left = item.Skilled;
-			bgleft = 0;
-			num=0;
 
-			app.userEditInfo.ID=item.ResumeID;
-			app.skillname=item.SepciltyName;
-			app.skilldec=item.SkillDescription;
-			app.skillbar=item.Skilled;
-		},
 		//课外活动
 		activityselect_year:function(year){
 			this.activitydate_year=year;
@@ -1144,27 +990,12 @@ var app=new Vue({
 				AddressInfo:app.activitysite
 			}
 			
-			app.activityCancel();
-			if(app.resumeEditKey){
-				Obj.ID=app.resumeEditID;
-				app.activityLists.splice(app.resumeEditIndex,1,Obj);
-				app.resumeEditInit();
-			}else{
-				Obj.ID=1000;
-				app.activityLists.unshift(Obj);
-			}
-
 			var mySuccessFun = function (result) {
                 if (result.Success) {
-					app.activityCancel();
-					if(app.resumeEditKey){
-						Obj.ID=app.resumeEditID;
-						app.activityLists.splice(app.resumeEditIndex,1,Obj);
-						app.resumeEditInit();
-					}else{
-						Obj.ID=result.Data;
-						app.activityLists.unshift(Obj);
-					}
+					Obj.ID=result.Data;
+
+                    app.activityLists.unshift(Obj);
+			        app.activityCancel();
                 } else {
                     alert(result.Message);
                 }
@@ -1173,7 +1004,7 @@ var app=new Vue({
                 alert("网络出错了！");
 			}
 
-            //myAjax("post", "/Resume/SubmitActivity", JSON.stringify(Obj), mySuccessFun, myErrorFun);
+            myAjax("post", "/Resume/SubmitActivity", JSON.stringify(Obj), mySuccessFun, myErrorFun);
  
 			
 		},
@@ -1201,19 +1032,6 @@ var app=new Vue({
                 alert("网络出错了！");
             }
 			myAjax("post", "/Resume/DeleteActivity?Id="+ID, JSON.stringify(), mySuccessFun, myErrorFun);	
-		},
-		activityEdit:function(item,index){
-			app.addModule(5);
-			app.resumeEditKey=true;
-			app.resumeEditIndex=index;
-			app.resumeEditID=item.ID;
-			
-			app.userEditInfo.ID=item.ResumeID;
-			app.activityname=item.ActivityName;
-			app.activitydec=item.Description;
-			app.activitydate_year=item.AttendTime.substr(0,4);
-			app.activitydate_month=item.AttendTime.substr(5,2);
-			app.activitysite=item.AddressInfo;
 		},
 		imgClick:function(){
 			$('#CompanyLogo').click();
@@ -1614,7 +1432,7 @@ $(function(){
 			//获取文档滚动高度
 		    var top = $(document).scrollTop();
 		    var scrollHeight = $(document).height();
-　　			var windowHeight = $(this).height();
+　　		var windowHeight = $(this).height();
 
 		    if(top>=530){
 		    	$(".resume-nav-box").addClass("resume-nav-scroll");
@@ -1767,4 +1585,5 @@ function formatMonth(month){
 	}
 	return month;
 }
+
 

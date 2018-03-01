@@ -86,12 +86,12 @@ var app=new Vue({
                             
         //                 })
         //             }else{
-        //                 var map = new AMap.Map('address-container',{
-        //                     resizeEnable: true,
-        //                     zoom: 10,
-        //                     center: [121.48,31.22]
-        //                 });
-        //                 alert("获取工作地址信息失败了！");
+        //                 // var map = new AMap.Map('address-container',{
+        //                 //     resizeEnable: true,
+        //                 //     zoom: 10,
+        //                 //     center: [121.48,31.22]
+        //                 // });
+        //                 // alert("获取工作地址信息失败了！");
         //             }
         //         });
         //     });
