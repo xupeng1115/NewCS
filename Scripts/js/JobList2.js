@@ -23,7 +23,6 @@ var app=new Vue({
 		},
 		payFrom:3000,
 		payTo:13000,
-		
 		pageCount:pageCount1
 	},
 	computed:{
@@ -45,10 +44,7 @@ var app=new Vue({
 		},
 		pageCount:function(val){
 			this.getPage(val);
-	},
 		}
-	mounted:function(){
-		
 	},
 	updated:function(){
 		//职位列表生成元素并数据更新后重新绘制匹配度进度条
@@ -278,7 +274,7 @@ var app=new Vue({
 			myAjax("get", pageUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun);
 		}
 	}
-})
+});
 
 $(function(){
 	

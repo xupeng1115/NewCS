@@ -4,7 +4,7 @@
 var app=new Vue({
 	el:"#app",
 	data:{
-		loginKey:isLogin
+		loginKey:true
 	}
 })
 

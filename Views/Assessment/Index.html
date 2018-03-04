@@ -9,7 +9,7 @@
 		<!-- Public Header -->
 		<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
 		<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
-		<link rel="stylesheet" href="../../Content/css/Template.css?v=20171221"/>
+		<link rel="stylesheet" href="../../Content/css/Template2.css?v=20171221"/>
 		
 		<!--[if lt IE 9]>
 	      <script src="../../Scripts/lib/html5shiv.min.js"></script>
@@ -28,14 +28,40 @@
 		<!-- Top -->
 		<header class="row">
 			<div class="row top-box top-width">
-				<div class="top-logo"></div>
+				<div class="top-logo"><a href="../Home/Index2.html"></a></div>
 				<ul class="top-nav">
-					<li class="top-nav-item"><a href="../Home/Index.html">首页</a></li>
-					<li class="top-nav-item"><a href="../Job/List.html">职位兴趣</a></li>
-					<li class="top-nav-item"><a href="../Resume/Index.html">我的职位</a></li>
-					<li class="top-nav-item"><a href="../Resume/Index.html">服务内容</a></li>
-					<li class="top-nav-item"><a href="#">关于我们</a></li>
-					<li class="top-nav-item login-register"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List2.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+					<li class="top-nav-item login-register" style="display:none;" v-show="!loginKey"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item lr-success" style="display:none;" v-show="loginKey">
+                        <a href="../Resume/Index.html"><img src="../../Content/img/head.png" class="success-img" onerror="nofind();"/></a>
+                        <div class="backstage-entrance-container">
+                        	<!--<img src="../../Content/image/black.png" class="bg-filter"/>-->
+						    <div class="backstage-entrance">
+							    <div class="entrance-wrapper">
+								    <div class="entrance-top clearbox">
+									    <img src="../../Content/img/head.png" class="entrance-img" onerror="nofind();"/>
+									    <div class="entrance-name">小明</div>
+									    <div class="entrance-tag">数据分析&nbsp;&nbsp;数据分析&nbsp;&nbsp;吃苦耐劳 &nbsp;&nbsp;IT行业&nbsp;&nbsp;IT行业IT行业&nbsp;&nbsp;</div>
+								    </div>
+								    <ul class="entrance-href-box clearbox">
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">收藏职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">投递职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">有关留言</a></li>
+									    <li class="entrance-href-item"><a href="../Assessment/Index.html">我的测评</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+								    </ul>
+								    <div class="entrance-back-btn login-exit">安全退出</div>
+							    </div>
+						    </div>
+					    </div>
+                    </li>
+					<li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
 				</ul>
 			</div>
 		</header>
@@ -72,7 +98,7 @@
 				<div class="assessment-nav-container">
 					<span class="assessment-nav-title">职业兴趣测评</span>
 					<div id="indicatorContainer"></div>
-					<span class="assessment-back-btn"><a href="../Home/Index.html">返回首页</a></span>
+					<span class="assessment-back-btn"><a href="../Home/Index2.html">返回首页</a></span>
 				</div>
 			</div>
 		    <!-- 测评内容 -->
@@ -150,7 +176,7 @@
 							<div class="theme-msg">根据您的兴趣匹配，您适合的典型职业有：</div>
 							<div class="theme-content" v-html="CodeDescribe"><!--建筑物管理员、工业工程师、农场管理员、护士长、农业经营管理人员、化学设备销售工程师、机械设备销售工程师、设备保养工程师、油库经理、税务代理、钻井或生产班组长、土木工程队工头、伐木工头、电厂主管、测绘主管、维护保养主管、彩陶主管、现场工程师、燃料系统维护主管、业务评估经理、洗衣店经理、路况检测官、调度员、日程业务员、菜蔬生产主管、机器运作监察员、碳电极监察员、胶合板工等。--></div>
 						</div>
-						<div class="report-back-btn"><a href="../Home/Index.html">返回首页</a></div>
+						<div class="report-back-btn"><a href="../Home/Index2.html">返回首页</a></div>
 					</div>
 							
 					<div class="flo-piece line five"></div>

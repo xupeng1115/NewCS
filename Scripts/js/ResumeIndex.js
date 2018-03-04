@@ -16,7 +16,8 @@ var dateList=formatDate(EducationBackround);
 //Vue数据模型（交互逻辑和事件绑定）
 var app=new Vue({
 	el:'#app',
-	data:{							
+	data:{		
+		loginKey:true,			
 		tagBoxShow:false,
 		totalTags:[],
 		userTags:extendList(UserTitleList),

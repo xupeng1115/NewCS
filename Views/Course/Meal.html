@@ -29,14 +29,40 @@
 		<!-- Top -->
 		<header class="row">
 			<div class="row top-box top-width">
-				<div class="top-logo"></div>
+				<div class="top-logo"><a href="../Home/Index2.html"></a></div>
 				<ul class="top-nav">
-					<li class="top-nav-item"><a href="../Home/Index.html">首页</a></li>
-					<li class="top-nav-item"><a href="../Job/List.html">职位兴趣</a></li>
-					<li class="top-nav-item"><a href="../Resume/Index.html">我的职位</a></li>
-					<li class="top-nav-item"><a href="../Resume/Index.html">服务内容</a></li>
-					<li class="top-nav-item"><a href="#">关于我们</a></li>
-					<li class="top-nav-item login-register"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Sever.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+					<li class="top-nav-item login-register" style="display:none;" v-show="loginKey"><a href="#">注册/登录</a></li>
+					<li class="top-nav-item lr-success" style="display:none;" v-show="!loginKey">
+                        <a href="../../Resume/Index.html"><img src="../../Content/img/head.png" class="success-img" onerror="nofind();"/></a>
+                        <div class="backstage-entrance-container">
+                        	<!--<img src="../../Content/image/black.png" class="bg-filter"/>-->
+						    <div class="backstage-entrance">
+							    <div class="entrance-wrapper">
+								    <div class="entrance-top clearbox">
+									    <img src="../../Content/img/head.png" class="entrance-img" onerror="nofind();"/>
+									    <div class="entrance-name">小明</div>
+									    <div class="entrance-tag">数据分析&nbsp;&nbsp;数据分析&nbsp;&nbsp;吃苦耐劳 &nbsp;&nbsp;IT行业&nbsp;&nbsp;IT行业IT行业&nbsp;&nbsp;</div>
+								    </div>
+								    <ul class="entrance-href-box clearbox">
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">收藏职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">投递职位</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">有关留言</a></li>
+									    <li class="entrance-href-item"><a href="../Assessment/Index.html">我的测评</a></li>
+									    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+								    </ul>
+								    <div class="entrance-back-btn login-exit">安全退出</div>
+							    </div>
+						    </div>
+					    </div>
+                    </li>
+					<li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
 				</ul>
 			</div>
 		</header>

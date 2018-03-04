@@ -5,7 +5,7 @@ var radialObj=null;
 var app=new Vue({
 	el:"#app",
 	data:{
-		lokinKey:true,
+		loginKey:true,
 		assessmentList:getAssessment(assessmentList),
 		currentPage:0,
 		pageNum:Math.ceil(assessmentList.length/15),

@@ -13,7 +13,7 @@ var oVideo={
 var app=new Vue({
 	el:"#app",
 	data:{
-		
+		loginKey:true
 	}
 })
 

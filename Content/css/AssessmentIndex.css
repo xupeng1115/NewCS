@@ -601,6 +601,7 @@ section .content-nav{
 	margin:0 auto;
 	width:1000px;
 	height:60px;
+	z-index:10;
 }
 
 .assessment-nav-container span{
