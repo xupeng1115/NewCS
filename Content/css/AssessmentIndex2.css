@@ -278,7 +278,7 @@ section .content-box{
 	height:90px;
 	text-align:center;
 	line-height:90px;
-	border-bottom: border 1px #e1e1e1;
+	border-bottom: dashed 1px #e1e1e1;
 	font-size:20px;
 	color:#0099e5;
 }
@@ -332,19 +332,16 @@ section .content-box{
 .assessment-list .assessment-item{
 	position:relative;
 	margin-bottom:5px;
+	padding:0 15px;
 	width:100%;
+	height: 45px;
   	border-radius: 4px;
   	background-color: rgba(0, 0, 0, 0);
-  	border-bottom: dashed 1px #dfdfdf;
+  	border: solid 1px #dfdfdf;
   	line-height:45px;
   	font-size:14px;
   	text-align:left;
   	color:#6d6d6d;
-}
-
-.assessment-item .assessment-item-title{
-	height:30px;
-	line-height:30px;
 }
 
 .content-container .assessment-btn{
@@ -372,24 +369,18 @@ section .content-box{
 	right:220px;
   	background-color: #cbcbcb;
 }
-
-.assessment-item .input-container{
-	width:100%;
-}
-
-.assessment-item .input-container .input-box{
-	float:left;
-	position:relative;
-	margin-bottom:10px;
-	width:50%;
-	height:30px;
-	line-height:30px;
+.assessment-item .input-box{
+    display:inline;
+    margin-left:10px;
+    position:relative;
+    float:right;
+    width:60px;
+    height:43px;
     background:transparent;
     cursor:pointer;
     z-index:40;
 }
-
-.assessment-item .input-container .input-box .assessment-radio{
+.assessment-item .input-box .assessment-radio{
 	display:block;
 	position:relative;
     margin-top:15px;
@@ -403,11 +394,11 @@ section .content-box{
     font-size:12px;
 }
 
-.assessment-item .input-container .input-box .assessment-no{
+.assessment-item .input-box .assessment-no{
 	margin-right:20px;
 }
 
-.assessment-item .input-container .input-box:before{
+.assessment-item .input-box:before{
     position:absolute;
     top:0px;
     right:14px;
@@ -417,12 +408,12 @@ section .content-box{
     z-index:20;
 }
 
-.assessment-item .input-container .input-box:before{
-    /* content:"否"; */
+.assessment-item .input-box:before{
+    content:"否";
 }
 
-.assessment-item .input-container .input-box:last-child:before{
-    /* content:"是"; */
+.assessment-item .input-box:last-child:before{
+    content:"是";
 }
 
 input[type=radio]{
@@ -442,7 +433,7 @@ input[type=radio]{
     transition: all .3s;
 }
 
-.assessment-item .input-container .input-box input[type=radio]:checked {
+.assessment-item .input-box input[type=radio]:checked {
     background-color: #108cee;
 }
 
@@ -901,7 +892,7 @@ section .content-nav{
 	height: 35px;
 	line-height: 35px;
 	background-color: #ffffff;
-  	border: solid 1px #e5e5e5;
+  	border: solid 1px #0a0202;
   	font-size: 16px;
   	letter-spacing: 1px;
   	text-align: center;

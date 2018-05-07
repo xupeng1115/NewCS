@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../Scripts/lib/vue.min.js"></script>
+    <script src="../Scripts/lib/babel.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../Scripts/lib/html5shiv.min.js"></script>
+        <script src="../Scripts/lib/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        html { font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;}
+        * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        html,body{background:#fff;text-align: center;width:100%;max-width:1440px;margin:0 auto;}
+        .overflow-text{
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+
+        .clearbox::after{
+            display:block;
+            content:"";
+            clear:both;
+        }
+
+        header{
+            width:100%;
+            
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="contaienr" id="app">
+        <header>
+            <div class="head-top"></div>
+            <div class="head-title"></div>
+            <div class="head-msg">TEST SAMPLE</div>
+            <div class="head-msg">2018.04.19</div>
+            <div class="head-bottom"></div>
+        </header>
+    </div>
+
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            
+        }
+    })
+</script>
+    
+</body>
+</html>
