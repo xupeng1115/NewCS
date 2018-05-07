@@ -8,25 +8,38 @@
     <title>智慧生涯--职位列表</title>
 
     <!-- Public Header -->
-	<link rel="stylesheet" href="/Content/lib/bootstrap.min.css" />
-	<link rel="stylesheet" href="/Content/lib/font-awesome.min.css"/>
-	<link rel="stylesheet" href="/Content/css/Template.css?v=20180122"/>
-    <link rel="stylesheet" href="/Content/iconfont/material-icons.css"/>
-
-    <script src="/Scripts/lib/jquery-1.11.3.min.js"></script>
-	<script src="/Scripts/lib/vue.min.js"></script>
-    <script src="/Scripts/lib/communication.js"></script>
-	<script src="/Scripts/js/Template.js?v=20180301"></script>
-	<script src="/Scripts/lib/babel.min.js"></script>
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+    <script>
+            //图片没有成功加载出来时处理
+            function nofind(){
+                var oImg=event.srcElement;
+                oImg.src="../../Content/img/head.png";
+                oImg.onerror=null;
+            }
+            //图片没有成功加载出来时处理
+            function noFindLogo(){
+                var oImg=event.srcElement;
+                oImg.src="../../Content/img/head.png";
+                oImg.onerror=null;
+            }
+    </script>
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template2.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
 
 	<!--[if lt IE 9]>
-	    <script src="/Scripts/lib/html5shiv.min.js"></script>
-	    <script src="/Scripts/lib/respond.min.js"></script>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
 	<![endif]-->
 
     <!-- Private Header -->
     
-    <link rel="stylesheet" href="/Content/css/JobList3.css?v=20180505" />
+    <link rel="stylesheet" href="../../Content/css/JobList3.css?v=20180505" />
 
 </head>
 <body>
@@ -35,14 +48,14 @@
         <!-- Top -->
 		<header class="row">
 			<div class="row top-box top-width">
-				<div class="top-logo"><a href="/Home/Index"></a></div>
+				<div class="top-logo"><a href="../Home/Index"></a></div>
 				<ul class="top-nav clearbox">
-					<li class="top-nav-item"><a href="/Assessment/Index">职位兴趣</a></li>
-					<li class="top-nav-item"><a href="/Job/List">我的职位</a></li>
-					<li class="top-nav-item"><a href="/Home/Serve">服务内容</a></li>
-					<li class="top-nav-item"><a href="/Home/About">关于我们</a></li>
+					<li class="top-nav-item"><a href="../Assessment/Index">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About">关于我们</a></li>
                         <li class="top-nav-item lr-success">
-                            <a href="/Resume/Index">
+                            <a href="../Resume/Index">
                             <img src="/UserPhoto/Desert1521719452733.jpg" class="success-img" onerror="nofind();"/>
                             </a>
                             <div class="backstage-entrance-container">
@@ -51,14 +64,14 @@
 									    <div class="entrance-top clearbox">
 										    <img src="/UserPhoto/Desert1521719452733.jpg" class="entrance-img" onerror="nofind();"/>
 										    <div class="entrance-name overflow-text">13761646494</div>
-										    <div class="entrance-edit-btn"><a href="/Resume/Index" id="entrance-edit-href">修改资料</a></div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index" id="entrance-edit-href">修改资料</a></div>
 									    </div>
 									    <ul class="entrance-href-box clearbox">
-										    <li class="entrance-href-item"><a href="/My/MyCollection">我的收藏</a></li>
-										    <li class="entrance-href-item"><a href="/My/MyJob">我的投递</a></li>
-										    <li class="entrance-href-item"><a href="/Resume/Index">我的简历</a></li>
-                                            <li class="entrance-href-item"><a href="/My/MyAssessment">我的测评</a></li>
-                                            <li class="entrance-href-item"><a href="/My/MyOrder">我的订单</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyCollection">我的收藏</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob">我的投递</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder">我的订单</a></li>
 									    </ul>
 									    <div class="entrance-back-btn login-exit">安全退出</div>
 								    </div>
@@ -259,7 +272,7 @@
             <div class="send-title">简历投递成功！</div>
             <div class="send-msg">你可以购买我们的服务，我们将有专业的指导老师帮你职业规划和辅导，让你的前程无忧。</div>
             <div class="send-btn-box">
-                <div class="send-serve-btn send-btn"><a href="/Home/Serve">查看服务详情</a></div>
+                <div class="send-serve-btn send-btn"><a href="../Home/Serve">查看服务详情</a></div>
                 <div class="send-back-btn send-btn" v-on:click="colseSend">返回</div>
             </div>
         </div>
@@ -592,12 +605,12 @@
 
 
     </script>
-    <script src="/Scripts/mock/jobList_mock.js"></script>
-    <script src="/Scripts/lib/spin.min.js"></script>
-    <script src="/Scripts/lib/job_radialIndicator.js"></script>
-    <script src="/Scripts/lib/jquery.page3.js?v=20180505"></script>
-    <script src="/Scripts/lib/ion.rangeSlider.min.js"></script>
-    <script src="/Scripts/js/JobList3.js?v=20180326" type="text/babel">
+    <script src="../../Scripts/mock/jobList_mock.js"></script>
+    <script src="../../Scripts/lib/spin.min.js"></script>
+    <script src="../../Scripts/lib/job_radialIndicator.js"></script>
+    <script src="../../Scripts/lib/jquery.page3.js?v=20180505"></script>
+    <script src="../../Scripts/lib/ion.rangeSlider.min.js"></script>
+    <script src="../../Scripts/js/JobList3.js?v=20180326" type="text/babel">
     </script>
 
 

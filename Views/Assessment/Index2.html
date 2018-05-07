@@ -8,25 +8,32 @@
     <title>智慧生涯--职业测评</title>
 
     <!-- Public Header -->
-	<link rel="stylesheet" href="/Content/lib/bootstrap.min.css" />
-	<link rel="stylesheet" href="/Content/lib/font-awesome.min.css"/>
-	<link rel="stylesheet" href="/Content/css/Template.css?v=20180122"/>
-    <link rel="stylesheet" href="/Content/iconfont/material-icons.css"/>
-
-    <script src="/Scripts/lib/jquery-1.11.3.min.js"></script>
-	<script src="/Scripts/lib/vue.min.js"></script>
-    <script src="/Scripts/lib/communication.js"></script>
-	<script src="/Scripts/js/Template.js?v=20180301"></script>
-	<script src="/Scripts/lib/babel.min.js"></script>
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+    <script>
+        //图片没有成功加载出来时处理
+        function nofind(){
+            var oImg=event.srcElement;
+            oImg.src="../../Content/img/head.png";
+            oImg.onerror=null;
+        }
+    </script>
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
 
 	<!--[if lt IE 9]>
-	    <script src="/Scripts/lib/html5shiv.min.js"></script>
-	    <script src="/Scripts/lib/respond.min.js"></script>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
 	<![endif]-->
 
     <!-- Private Header -->
     
-    <link rel="stylesheet" href="/Content/css/AssessmentIndex2.css?v=20180205" />
+    <link rel="stylesheet" href="../../Content/css/AssessmentIndex2.css?v=20180205" />
 
 </head>
 <body>
@@ -35,30 +42,30 @@
         <!-- Top -->
 		<header class="row">
 			<div class="row top-box top-width">
-				<div class="top-logo"><a href="/Home/Index"></a></div>
+				<div class="top-logo"><a href="../Home/Index"></a></div>
 				<ul class="top-nav clearbox">
-					<li class="top-nav-item"><a href="/Assessment/Index">职位兴趣</a></li>
-					<li class="top-nav-item"><a href="/Job/List">我的职位</a></li>
-					<li class="top-nav-item"><a href="/Home/Serve">服务内容</a></li>
-					<li class="top-nav-item"><a href="/Home/About">关于我们</a></li>
+					<li class="top-nav-item"><a href="./Assessment/Index">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About">关于我们</a></li>
                         <li class="top-nav-item lr-success">
-                            <a href="/Resume/Index">
-                            <img src="/UserPhoto/Desert1521719452733.jpg" class="success-img" onerror="nofind();"/>
+                            <a href="../Resume/Index">
+                            <img src="../UserPhoto/Desert1521719452733.jpg" class="success-img" onerror="nofind();"/>
                             </a>
                             <div class="backstage-entrance-container">
 							    <div class="backstage-entrance">
 								    <div class="entrance-wrapper">
 									    <div class="entrance-top clearbox">
-										    <img src="/UserPhoto/Desert1521719452733.jpg" class="entrance-img" onerror="nofind();"/>
+										    <img src="../UserPhoto/Desert1521719452733.jpg" class="entrance-img" onerror="nofind();"/>
 										    <div class="entrance-name overflow-text">13761646494</div>
-										    <div class="entrance-edit-btn"><a href="/Resume/Index" id="entrance-edit-href">修改资料</a></div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index" id="entrance-edit-href">修改资料</a></div>
 									    </div>
 									    <ul class="entrance-href-box clearbox">
-										    <li class="entrance-href-item"><a href="/My/MyCollection">我的收藏</a></li>
-										    <li class="entrance-href-item"><a href="/My/MyJob">我的投递</a></li>
-										    <li class="entrance-href-item"><a href="/Resume/Index">我的简历</a></li>
-                                            <li class="entrance-href-item"><a href="/My/MyAssessment">我的测评</a></li>
-                                            <li class="entrance-href-item"><a href="/My/MyOrder">我的订单</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyCollection">我的收藏</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob">我的投递</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder">我的订单</a></li>
 									    </ul>
 									    <div class="entrance-back-btn login-exit">安全退出</div>
 								    </div>
@@ -108,7 +115,7 @@
         <div class="assessment-nav-container">
             <span class="assessment-nav-title">职业兴趣测评</span>
             <div id="indicatorContainer"></div>
-            <span class="assessment-back-btn"><a href="/Home/Index">返回首页</a></span>
+            <span class="assessment-back-btn"><a href="../Home/Index">返回首页</a></span>
         </div>
     </div>
     <!-- 测评内容 -->
@@ -124,14 +131,18 @@
                 <ul class="asssessment-list-total">
                     <li class="assessment-list-page" v-for="(page,index) in assessmentList" v-bind:key="index" v-bind:index="index" style="display:none;" v-show="currentPage===index">
                         <ul class="assessment-list">
-                            <li class="assessment-item" v-for="(item,num) in page" v-bind:key="num" v-bind:index="item.ID">
-                                <span class="assessment-index" v-html="(item.Num+1)+'.'"><!--1.--></span>
-                                <span class="assessment-text" v-html="item.SubjectName"><!--装配、修理电器或玩具。--></span>
-                                <div class="input-box" v-on:click="getCheck(item.ID,item.TypeID,$event)">
-                                    <input type="radio" name="radio1" class="assessment-no assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID"  v-bind:value="item.SubjectOptionList[0].TypeCode" />                   
+                            <li class="assessment-item clearbox" v-for="(item,num) in page" v-bind:key="num" v-bind:index="item.ID">
+                                <div class="assessment-item-title">
+                                    <span class="assessment-index" v-html="(item.Num+1)+'.'"><!--1.--></span>
+                                    <span class="assessment-text" v-html="item.SubjectName"><!--装配、修理电器或玩具。--></span>
                                 </div>
-                                <div class="input-box" v-on:click="getCheck(item.ID,item.TypeID,$event)">
-                                    <input type="radio" name="radio1" class="assessment-yes assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" v-bind:value="item.SubjectOptionList[1].TypeCode" />
+                                <div class="input-container clearbox">
+                                    <div class="input-box" v-on:click="getCheck(item.ID,item.TypeID,$event)">
+                                        <input type="radio" name="radio1" class="assessment-no assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID"  v-bind:value="item.SubjectOptionList[0].TypeCode" />                   
+                                    </div>
+                                    <div class="input-box" v-on:click="getCheck(item.ID,item.TypeID,$event)">
+                                        <input type="radio" name="radio1" class="assessment-yes assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" v-bind:value="item.SubjectOptionList[1].TypeCode" />
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -189,7 +200,7 @@
                     <div class="theme-msg">根据您的兴趣匹配，您适合的典型职业有：</div>
                     <div class="theme-content" v-html="CodeDescribe"><!--建筑物管理员、工业工程师、农场管理员、护士长、农业经营管理人员、化学设备销售工程师、机械设备销售工程师、设备保养工程师、油库经理、税务代理、钻井或生产班组长、土木工程队工头、伐木工头、电厂主管、测绘主管、维护保养主管、彩陶主管、现场工程师、燃料系统维护主管、业务评估经理、洗衣店经理、路况检测官、调度员、日程业务员、菜蔬生产主管、机器运作监察员、碳电极监察员、胶合板工等。--></div>
                 </div>
-                <div class="report-back-btn"><a href="/Home/Index">返回首页</a></div>
+                <div class="report-back-btn"><a href="../Home/Index">返回首页</a></div>
             </div>
 
             <div class="flo-piece line five"></div>
@@ -429,7 +440,7 @@
 							<div class="protocol-box lr-checkbox-box">
 								<div class="yes protocol-yes lr-checkbox"></div>
 								<div class="no protocol-no lr-checkbox"></div>
-								<div class="lr-text">同意《<a href="/Registration.htm" target="_blank">Career Success注册协议</a>》</div>
+								<div class="lr-text">同意《<a href="../Registration.htm" target="_blank">Career Success注册协议</a>》</div>
 							</div>
                             <div class="register-protocol-tips lr-tips"></div>
 							<div class="lr-register-btn-box clearbox">
@@ -492,13 +503,13 @@
         //完成测评基数
         var baseNum = '33868';
     </script>
-    <script src="/Scripts/lib/radialIndicator.js"></script>
-    <script src="/Scripts/lib/jquery.page_assessment.js"></script>
-    <script src="/Scripts/lib/highcharts.js"></script>
-    <script src="/Scripts/lib/highcharts-more.js"></script>
-    <script src="/Scripts/lib/exporting.js"></script>
-    <script src="/Scripts/lib/highcharts-zh_CN.js"></script>
-    <script src="/Scripts/js/AssessmentIndex2.js?v=20171226" type="text/babel">
+    <script src="../../Scripts/lib/radialIndicator.js"></script>
+    <script src="../../Scripts/lib/jquery.page.js"></script>
+    <script src="../../Scripts/lib/highcharts.js"></script>
+    <script src="../../Scripts/lib/highcharts-more.js"></script>
+    <script src="../../Scripts/lib/exporting.js"></script>
+    <script src="../../Scripts/lib/highcharts-zh_CN.js"></script>
+    <script src="../../Scripts/js/AssessmentIndex2.js?v=20171226" type="text/babel">
     </script>
 
 

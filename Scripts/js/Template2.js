@@ -334,6 +334,23 @@ function myAjax(myType, myUrl, myParams, mySuccessFun, myErrorFun) {
     }
 }
 
+function getAjax(myType, myUrl, myParams, mySuccessFun, myErrorFun) {
+    var params = {
+        "controller": myUrl,
+        data: myParams,
+        contentType:"application/json; charset=utf-8"
+    };
+
+    var successFun = mySuccessFun;
+    var errorFun = myErrorFun;
+
+    if (myType.toLocaleUpperCase() === "GET") {
+        communication.get(params, successFun, errorFun);
+    } else {
+        communication.post(params, successFun, errorFun);
+    }
+}
+
 //图片没有成功加载出来时处理
 function nofind(){
     var oImg=event.srcElement;
@@ -386,5 +403,13 @@ function BrowserType(){
 	if (isEdge) { 
 		return "Edge";
 	}
+}
+
+function hasPlaceholderSupport(){
+
+}
+
+function g_alert(msg){
+    
 }
 

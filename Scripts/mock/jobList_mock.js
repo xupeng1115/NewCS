@@ -408,4 +408,11 @@ var pageCount1=100;
 var pageCount2=50;
 
 
+var areaObj={
+	cityList:[
 
+	],
+	provinceList:[
+		
+	]
+}
