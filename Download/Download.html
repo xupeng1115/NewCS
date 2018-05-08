@@ -5,20 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>性格与职业测评</title>
+
+    <link rel="stylesheet" href="../Content/download/css/normalize.css">
+    <link rel="stylesheet" href="../Content/download/css/download.css">
 
     <script src="../Scripts/lib/jquery-1.11.3.min.js"></script>
-	<script src="../Scripts/lib/vue.min.js"></script>
-    <script src="../Scripts/lib/babel.min.js"></script>
 
-    <!--[if lt IE 9]>
-        <script src="../Scripts/lib/html5shiv.min.js"></script>
-        <script src="../Scripts/lib/respond.min.js"></script>
-    <![endif]-->
     <style>
-        html { font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;}
-        * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-        html,body{background:#fff;text-align: center;width:100%;max-width:1440px;margin:0 auto;}
+    /***************************Noramilize css*********************************/
+        html { 
+            font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+        }
+        * { 
+            -webkit-box-sizing: border-box; 
+            -moz-box-sizing: border-box; 
+            box-sizing: border-box; 
+        }
+        html,body{
+            background:#fff;
+            text-align: center;
+            width:100%;
+            margin:0 auto;
+        }
+
+        *{
+            margin:0px;
+            padding:0px;
+            list-style:none;
+        }
+
+        a,a:hover{
+            text-decoration:none;
+        }
+
         .overflow-text{
             overflow:hidden;
             text-overflow:ellipsis;
@@ -31,164 +51,422 @@
             clear:both;
         }
 
-        header{
+        /***********************Content****************************/
+        .container{
             position:relative;
-            width:100%;
-            height:700
+            margin:0 auto;
+            width:1125px;
         }
-        header .head-top{
-            width:100%;
-            height:600px;
-            background:url(../Content/download/backage01.png)no-repeat center center;
-            background-size:cover;
-        }
-        header .head-title{
-            width:100%;
-            height:200px;
-            background:url(../Content/download/title.png)no-repeat center center;
-            background-size:cover;
-        }
-        header .head-msg{
-            margin-top:30px;
-            padding-left:200px;
-            width:100%;
-            height:80px;
+
+        .container .item{
+            position:relative;
+            margin:0 auto;
+            width:1125px;
+            height:1560px;
             text-align:left;
-            font-size:45px;
-            color:#000;
+            page-break-after:always;
+        }
+        .item .bg{
+            width:100%;
+            height:375px;
+        }
+
+        .item .title{
+            padding:112px 0 16px 90px;
+            line-height: 77px;
+            font-size: 52px;
+            font-weight: bold;
+            color: #4270c2;
+        }
+
+        .item .line{
+            margin:0 auto;
+            width: 973px;
+            border-top: solid 1px #8c94af;
+        }
+
+        .item .part{
+            padding:50px 60px 0 90px;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 1.57;
+            letter-spacing: 0.2px;
+            color: #333333;
+        }
+
+        .item .list{
+            padding:50px 50px 90px 100px;
+            font-size: 28px;
+            line-height: 1.86;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            color: #333333;
+        }
+
+        .item .list .part_li{
+            position:relative;
+        }
+
+        .item .list .part_li:before{
+            position:absolute;
+            top: -5px;
+            left: -23px;
+            z-index:300;
+            content:".";
+            line-height:40px;
+            font-size:40px;
+        }
+
+        .item .box{
+            padding:50px 85px 10px 70px;
+            width:100%;
+            line-height: 52px;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.86;
+            text-align: left;
+            color: #333333;
+        }
+
+        .item .box .box_left{
+            float:left;
+            width:150px;
+            line-height:52px;
+            font-weight:bold;
+        }
+
+        .item .box .box_right{
+            margin-left:150px;
+        }
+
+        .item .content{
+            position:relative;
+            padding:0 80px 10px 77px;
+            width:100%;
+        }
+
+        .item .content .wrapper{
+            position:relative;
+            height: 956px;
+            background-color: #dbe3f3;
+        }
+
+        .wrapper .table_box{
+            margin-left:58px;
+            width:818px;
+            height:549px;
+            background-color: #ebebf5;
+            border: solid 1px #547bc7;
+        }
+
+        .wrapper .table_box .table_item{
+            float:left;
+            height:548px;
+            border-left:solid 1px #547bc7;
+            font-size: 28px;
+            font-weight: 500;
+            text-align: left;
+            color: #333333;
+        }
+
+        .table_item .table_title{
+            padding:20px;
+        }
+
+        /****************One*****************/
+        .item .bg_top{
+            position:relative;
+            background:url(../Content/download/img/backage01.png)no-repeat center center;
+            background-size:100% 100%;
+        }
+
+        .item .bg_bottom{
+            position:absolute;
+            left:0;
+            bottom:0;
+            z-index:10;
+            background:url(../Content/download/img/backage02.png)no-repeat center center;
+            background-size:100% 100%;
+        }
+
+        .item .name{
+            padding:90px 0 0 156px;
+            line-height: 133px;
+            font-size: 90px;
+            font-weight: 500;
+            letter-spacing: 4.1px;
+            color: #3e72c5;
+        }
+
+        .item .dec{
+            padding:0 0 127px 156px;
+            line-height: 56px;
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: 3.2px;
+            color: #3e72c5;
+        }
+
+        .item .text{
+            padding-left:155px;
+            line-height: 56px;
+            font-size: 38px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .item .date{
+            padding-top:25px;
+        }
+
+        /*****************Three*****************/
+        .item3 .draw-wrapper{
+            position:relative;
+            margin:0 auto;
+            margin-top:90px;
+            width:223px;
+            height:262px;
+            border-left:1px solid #e1ecf9;
+            border-right:1px solid #e1ecf9;
+        }
+
+        .draw-wrapper .draw-slide{
+            position:absolute;
+            z-index:200;
+            height:25px;
+            width:400px;
             background:#fff;
         }
-        header .head-dec{
-            padding-top:100px;
-        }
-        header .head-date{
-            margin-top:100px;
-        }
-        header .head-bottom{
-            margin-top:100px;
-            width:100%;
-            height:600px;
-            background:url(../Content/download/backage02.png)no-repeat center center;
-            background-size:cover;
+
+        .draw-wrapper .draw-left{
+            right:222px;
         }
 
-        section{
-            width:100%;
-            padding:100px;
+        .draw-wrapper .draw-right{
+            left:222px;
         }
-        section .item{
-            padding-top:100px;
-            width:100%;
-            font-size:40px;
-            color:#333;
-            line-height:60px;
+
+        .draw-wrapper .draw-slide .draw-item{
+            position:relative;
+            height:25px;
+            font-size: 20px;
+            color:#fff;
+            line-height:25px;
+        }
+
+        .draw-wrapper .draw-left .draw-item{
+            float:right;
+            padding-left:20px;
+            background:#4672c4;
+            border-radius:12px 0 0 12px;
             text-align:left;
         }
 
-        .item .item-title{
-            font-size:50px;
-            font-weight:bold;
-            color:#4472C4;
-            line-height:100px;
-        }
-        
-        .item .item-content{
-            font-size:32px;
-            padding:20px;
-            border-top:1px solid #4472C4;
-            text-align:left; 
-        }
-        
-        .item-content .item-text{
-            padding-top:20px;
+        .draw-wrapper .draw-right .draw-item{
+            float:left;
+            padding-right:20px;
+            background:#70ac47;
+            border-radius:0 12px 12px 0;
+            text-align:right;
         }
 
-        .item .item-container{
-            margin:0 auto;
-            padding-top:50px;
-            width:1000px;
+        .draw-wrapper .draw-slide .draw-name{
+            position:absolute;
+            top:-5px;
+            width:85px;
+            font-size: 26px;
         }
 
-        .item-container .item-slide{
-            width:495px;
+        .draw-wrapper .draw-left .draw-name{
+            text-align:left;
+            right:-102px;
+            color:#4270c2;
         }
 
+        .draw-wrapper .draw-right .draw-name{
+            text-align:right;
+            left:-102px;
+            color:#70AD47;
+        }
 
+        .draw-wrapper .draw-i{
+            top:45px;
+        }
+
+        .draw-wrapper .draw-t{
+            top:95px;
+        }
+
+        .draw-wrapper .draw-s{
+            top:145px;
+        }
+
+        .draw-wrapper .draw-j{
+            top:195px;
+        }
+
+        .draw-wrapper .draw-e{
+            top:45px;
+        }
+
+        .draw-wrapper .draw-n{
+            top:95px;
+        }
+
+        .draw-wrapper .draw-f{
+            top:145px;
+        }
+
+        .draw-wrapper .draw-p{
+            top:195px;
+        }
     </style>
 
 </head>
 <body>
-    <div class="contaienr" id="app">
-        <header>
-            <div class="head-top"></div>
-            <div class="head-title"></div>
-            <div class="head-msg head-dec">TEST SAMPLE</div>
-            <div class="head-msg head-date">2018.04.19</div>
-            <div class="head-bottom"></div>
-        </header>
-        <section>
-            <div class="item">
-                <div class="item-title">前言</div>
-                <div class="item-content">
-                    <div class="item-text">
-                        对于刚刚进入社会的职场新人来说找对职业发展方向是十分重要的，只有第一步开始的好之后的路才能越来越顺利。在选择职业时除了要考虑自己的能不能胜任这份工作前，最应当关注的问题应该是自己到底适不适合这类工作，这样才能有针对性的选择工作。
-                    </div>
-                    <div class="item-text">
-                        不仅如此，充分的了解自己的性格特点才能在日常生活中有意的磨练自己，改变自己，培养自己。只有通过对自己不断地完善才能成为更具有竞争力的候选人，成为受各大企业欢迎的人才。
-                    </div>
-                    <div class="item-text">
-                        本测评是当今国际上最为流行的职业人格评估工具，通过四大维度，八个方面进行分析和评估。在本报告中，你将了解到自己主要的性格特点，所属性格类型，独特的性格优势及潜在可能需要改善的问题及职业选择建议等。希望你能通过参考本测评结果，对你的职业选择和发展有所助益。祝你成功！
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-title">您的性格特点</div>
-                <div class="item-container">
-                    <div class="item-slide item-left">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-left">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-left">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-left">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-right">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-right">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-right">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                    <div class="item-slide item-right">
-                        <div class="slide-left"></div>
-                        <div class="slide-right"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    <div class="container" id="app">
 
-<script>
-    var app=new Vue({
-        el:"#app",
-        data:{
-            
-        }
-    })
-</script>
+        <div class="item item1">
+            <div class="bg bg_top"></div>
+            <div class="name">性格与职业测评</div>
+            <div class="dec">Personality and Career Assessment</div>
+            <div class="text">TEST SAMPLE</div>
+            <div class="text date">2018.04.19</div>
+            <div class="bg bg_bottom"></div>
+        </div>
+
+        <div class="item item2">
+            <div class="title">前言</div>
+            <div class="line"></div>
+            <div class="part">对于刚刚进入社会的职场新人来说找对职业发展方向是十分重要的,只有第一步开始的好之后的路才能越来越顺利。在选择职业时除了要考虑自己的能不能胜任这份工作前,最应当关注的问题应该是自己到底适不适合这类工作,这样才能有针对性的选择工作。</div>
+            <div class="part">不仅如此,充分的了解自己的性格特点才能在日常生活中有意的磨练自己, 改变自己,培养自己。只有通过对自己不断地完善才能成为更具有竞争力 的候选人,成为受各大企业欢迎的人才。</div>
+            <div class="part">本测评是当今国际上最为流行的职业人格评估工具,通过四大维度,八个方面进行分析和评估。在本报告中,你将了解到自己主要的性格特点,所属性格类型,独特的性格优势及潜在可能需要改善的问题及职业选择建议等。希望你能通过参考本测评结果,对你的职业选择和发展有所助益。祝你成功!</div>
+        </div>
+
+        <div class="item item3">
+            <div class="title">您的性格特点</div>
+            <div class="line"></div>
+            <div class="draw-wrapper">
+                <div class="draw-slide draw-left draw-i">
+                    <div class="draw-name">I 内心</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-left draw-s">
+                    <div class="draw-name">T 思考</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-left draw-t">
+                    <div class="draw-name">S 感觉</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-left draw-j">
+                    <div class="draw-name">J 判断</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-right draw-e">
+                    <div class="draw-name">外向 E</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-right draw-n">
+                    <div class="draw-name">直觉 N</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-right draw-f">
+                    <div class="draw-name">情感 F</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+                <div class="draw-slide draw-right draw-p">
+                    <div class="draw-name">感知 P</div>
+                    <div class="draw-item" style="width:90%">90</div>
+                </div>
+            </div>
+            <div class="title" style="padding-top:149px;">INTP</div>
+            <div class="title" style="padding-top:15px;">思考者</div>
+            <div class="part"  style="padding-top:40px;">
+                内向/直觉/思考/感知
+                <br>
+                理性地解决问题,追求才智和创造性的展现。   
+            </div>
+            <div class="part" style="padding-top:60px;">对任何感兴趣的事物,都期望去探索一个合理的解释。喜欢理论和抽象的事情,喜欢理论思考要多于社交活动。沉静、满足、有弹性,对他们感兴趣的领域,有极强的专注力去深入地解决问题。有怀疑精神,有时喜欢批评,常常善于分析。</div>
+        </div>
     
+        <div class="item item4">
+            <div class="title">您的独特优势</div>
+            <div class="line"></div>
+            <ul class="list">
+                <li class="part_li">能够专注而深入地探索自己感兴趣的领域,并能理解复杂和抽象的概念</li>
+                <li class="part_li">富有好奇心,具有探险精神和创造意识,因此能够创造性地解决问题</li>
+                <li class="part_li">思考的习惯能够帮助他们清晰的理解问题,并准确表达自己的想法</li>
+                <li class="part_li">善于综合考虑和运用多种信息,因此随着经验的积累,常常能够成长为各</li>
+                <li class="part_li">稳定而平和,对于人际关系不会过分追求,因此与他们相处较为轻松</li>
+            </ul>
+            <div class="title" style="padding-top:60px;">您的潜在问题</div>
+            <div class="line"></div>
+            <ul class="list">
+                <li class="part_li">对于不符合自己逻辑的事物,会看低其价值并抗拒</li>
+                <li class="part_li">做事欠缺条理性,遭遇挫折或丧失兴趣时,可能会难以坚持</li>
+                <li class="part_li">不擅于把复杂的思想用简明的形式表现出来,过于理论化</li>
+                <li class="part_li">对于无法迅速理解自己想法的人缺乏耐心,有时无意中就伤害了别人的感情</li>
+                <li class="part_li">难以恰当地表达感受和展露内心,因此对他人的情感、批评和要求显得反应迟钝</li>
+                <li class="part_li">社会意识淡薄,对于基本的社会规则也可能会不认可,有时会显得格格不入</li>
+            </ul>
+        </div>
+
+        <div class="item item5">
+            <div class="title">反思问题</div>
+            <div class="line"></div>
+            <ul class="list" style="padding-bottom:80px;">
+                <li class="part_li">动手工作前,是否认真进行了计划,并制定了明确的目标? </li>
+                <li class="part_li">当感到工作无趣而想放弃时,是否有思考其他的价值?</li>
+                <li class="part_li">在批评质疑他人时,是否有先理解了他人的意思?</li>
+                <li class="part_li">对自己来说非常清晰的逻辑,对他人来说是否也是如此?</li>
+            </ul>
+            <div class="title" style="padding-top:0;">发展建议</div>
+            <div class="line"></div>
+            <ul class="list">
+                <li class="part_li">理念和现实同样重要,注意提升自己的行动力,推动自己理念的落实 </li>
+                <li class="part_li">提升条理性,试着运用各种计划工具和方法来提升效率</li>
+                <li class="part_li">尝试尽量简明地表达自己的想法,不要将简单的事情复杂化</li>
+                <li class="part_li">学习如何表达自己的感受,并体会他人的感受,增进人际交往</li>
+            </ul>
+            <div class="title" style="padding-top:0;">职业建议</div>
+            <div class="line"></div>
+            <div class="box">
+                <div class="box_left">适合领域:</div>
+                <div class="box_right">计算机技术、理论研究、学术领域、专业技术领域、创造性领域等</div>
+            </div>
+            <div class="box">
+                <div class="box_left">推荐职业:</div>
+                <div class="box_right">软件设计师、电脑工程师、金融规划师、数据分析师、物理学家、药剂师、生物学家、律师、经济学者、心理学者、建筑师、商业分析、情报专家、口笔译人员、摄影师、发明家、天文工作者、制片人、音乐组织者、美编等</div>
+            </div>
+        </div>
+
+        <div class="item item6">
+            <div class="title">选择最合适的职业</div>
+            <div class="line"></div>
+            <div class="part" style="padding:50px 100px 30px 75px;">通过阅读以上测评结果想必你对自己已经有了详细的了解,请结合以下问题总结你对自己的认识以及对比你想选择的岗位所需具备的特征。希望通过这个练习你能对自己的性格特点与所选职业有更清晰的认识,以帮助你选择最合适的职业。</div>
+            <div class="content">
+                <div class="wrapper">
+                    <ul class="list" style="padding:1px 50px 30px 30px;">
+                        <li class="part_li" style="margin:50px 0 10px 30px;">总结你最突出的性格特征:</li>
+                        <li class="part_li" style="margin:60px 0 10px 30px;">你最想要选择的工作岗位(请列出1到3个):</li>
+                        <li class="part_li" style="margin:60px 0 10px 30px;">你所选择的工作岗位需要具备性格特征:</li>
+                    </ul>
+                    <div class="table_box">
+                        <div class="table_item" style="width:384px;border:none;">
+                            <div class="table_title">工作岗位要求</div>
+                        </div>
+                        <div class="table_item" style="width:216px;">
+                            <div class="table_title">达到</div>
+                        </div>
+                        <div class="table_item" style="width:216px;">
+                            <div class="table_title">需提升</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
