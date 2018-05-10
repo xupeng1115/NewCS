@@ -1112,6 +1112,7 @@ position-box .position-empty-box{
 }
 
 .recommend-item .recommend-name{
+	display:block;
     position: absolute;
     top: 15px;
     left: 80px;
@@ -1120,6 +1121,10 @@ position-box .position-empty-box{
 	font-size:14px;
 	color:#333;
 	font-weight:bold;
+}
+
+.recommend-item .recommend-name:hover{
+    color:#ffbf00;
 }
 
 .recommend-item .recommend-company{

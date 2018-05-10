@@ -228,7 +228,7 @@
                     <div class="recommend-img-box">
                         <img class="recommend-company-img" v-bind:src="(item.ImgUrl!=='')&&(item.ImgUrl!==undefined)?item.ImgUrl:'../../Content/img/empty.png'" onerror="noFindLogo();" />
                     </div>
-                    <div class="recommend-name overflow-text" v-html="item.Name"><!--海外广告投放--></div>
+                    <a class="recommend-name overflow-text" target="_blank" v-html="item.Name" v-bind:index="item.ID" v-bind:href="'Index?ID='+item.ID+'&Match='+item.PlatForm"><!--新媒体运营--></a>                   
                     <div class="recommend-company overflow-text" v-html="item.Company"><!--洋葱数学--></div>
                     <div class="recommend-msg">
                         <span class="demand-experience" v-html="item.Experience"><!--经验3-5年--></span>
