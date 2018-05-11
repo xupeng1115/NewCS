@@ -57,7 +57,7 @@
 <body>
     <div class="container" id="app">
     	<header class="top">
-			<div class="top-back"></div>
+			<a href="m_Welcome.html" class="top-back"></a>
 			<div class="top-title">职业性格测评</div>
 			<div class="top-table" v-on:click="getPageList">题表</div>
     	</header>
@@ -96,7 +96,7 @@
             <div class="btn-submit" v-bind:class="{'btn-submit-able':currentItem===Len}" v-on:click="submitBtn">提交</div>
         </section>
         <section class="pages-container" style="display:none;" v-show="pageShow">
-			<ul class="pages">
+			<ul class="pages overflow-text">
         		<li class="page" v-for="index in Len+1" v-bind:key="index" v-bind:index="index" v-bind:class="{'page-last':index===Len+1}" v-html="index!==Len+1?index:'注册信息'" v-on:click="getPage(index)"></li>
 	        </ul>
         </section>

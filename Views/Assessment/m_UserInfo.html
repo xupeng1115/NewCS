@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_UserInfo.css">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+
+    <script>
+        //禁止用户缩放页面
+        window.onload=function () {  
+            document.addEventListener('touchstart',function (event) {  
+                if(event.touches.length>1){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+            })  
+            var lastTouchEnd=0;  
+            document.addEventListener('touchend',function (event) {  
+                var now=(new Date()).getTime();  
+                if(now-lastTouchEnd<=300){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+                lastTouchEnd=now;  
+            },false)  
+        }
+        
+        
+    </script>
+</head>
+<body>
+    <div class="container" id="app">
+    	<header class="top">
+			<a href="m_Index.html" class="top-back"></a>
+			<div class="top-title">填写信息</div>
+    	</header>
+        <section class="banner-container">
+            <div class="banner">恭喜完成测评!</div>
+        </section>
+        
+        <section>
+        	<div class="tip">填写信息将立即获得职业匹配报告</div>
+        	<div class="input-container">
+        		<div class="input-box">
+        			<span class="input-text">姓名</span>
+        			<input type="text" placeholder="请输入您的姓名" v-model="inputObj.Name"/>
+        		</div>
+        		<div class="input-box">
+        			<span class="input-text">邮箱</span>
+        			<input type="text" placeholder="请输入您的邮箱地址" v-model="inputObj.Eamil"/>
+        		</div>
+        		<div class="input-box">
+        			<span class="input-text">手机号</span>
+        			<input type="text" placeholder="请输入您的手机号" v-model="inputObj.Phone"/>
+        		</div>
+        		<div class="input-box">
+        			<span class="input-text">学校</span>
+        			<input type="text" placeholder="请输入您的学校名称" v-model="inputObj.School"/>
+        		</div>
+        		<div class="input-box">
+        			<span class="input-text">专业</span>
+        			<input type="text" placeholder="请输入您的专业名称" v-model="inputObj.Professional"/>
+        		</div>
+        	</div>
+        </section>
+        
+        <footer>
+        	<div class="view-report" v-on:click="viewReport">查看报告</div>
+        </footer>
+        
+    </div>
+
+    <script src="../../Scripts/js/m_UserInfo.js"></script>
+
+</body>
+</html>

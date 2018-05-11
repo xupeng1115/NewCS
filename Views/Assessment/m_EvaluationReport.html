@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_EvaluationReport.css">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+
+    <script>
+        //禁止用户缩放页面
+        window.onload=function () {  
+            document.addEventListener('touchstart',function (event) {  
+                if(event.touches.length>1){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+            })  
+            var lastTouchEnd=0;  
+            document.addEventListener('touchend',function (event) {  
+                var now=(new Date()).getTime();  
+                if(now-lastTouchEnd<=300){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+                lastTouchEnd=now;  
+            },false)  
+        }
+        
+        
+    </script>
+</head>
+<body>
+    <div class="container" id="app">
+    	<header class="top">
+			<a href="m_UserInfo.html" class="top-back"></a>
+			<div class="top-title">测评报告</div>
+    	</header>
+        <section class="banner-container">
+            <div class="banner">有关资料表明，如果一个人对某个工作有兴趣，就能够发挥他全部才能的80%-90%，并且能较长时间保持高效率而不感到疲劳；而对工作缺乏兴趣的人，只能发挥其全部才能20%-30%，也容易疲劳、厌倦。查看以下结果，看看你的职业兴趣是什么。</div>
+        </section>
+        
+        <section>
+        	<div class="item">
+        		<div class="item-top">
+        			<span class="square"></span>
+        			<span class="text">测评分析</span>
+        			<span class="square"></span>
+        		</div>
+        		<div class="theme-wrapper">
+                    <div class="theme-item theme-i theme-left"></div>
+                    <div class="theme-item theme-s theme-left"></div>
+                    <div class="theme-item theme-t theme-left"></div>
+                    <div class="theme-item theme-j theme-left"></div>
+                    <div class="theme-item theme-e theme-right"></div>
+                    <div class="theme-item theme-n theme-right"></div>
+                    <div class="theme-item theme-f theme-right"></div>
+                    <div class="theme-item theme-p theme-right"></div>
+                </div>
+        	</div>
+        	<div class="item">
+        		<div class="item-top">
+        			<span class="square"></span>
+        			<span class="text">类型</span>
+        			<span class="square"></span>
+        		</div>
+        		<div class="content">
+        			<div class="item-title" v-html="userExam.Code+' '+userExam.Name"><!--INPT  思考者：--></div>
+        			<div class="item-text" v-html="userExam.Character"><!--你对任何感兴趣的事物,都期望去探索一个合理的解释。喜欢理论和抽象的事情,喜欢理论思考要多于社交活动。沉静、满足、有弹性,对他们感兴趣的领域,有极强的专注力去深入地解决问题。有怀疑精神,有时喜欢批评,常常善于分析。--></div>
+        		</div>
+        	</div>
+        	<div class="item">
+        		<div class="item-top">
+        			<span class="square"></span>
+        			<span class="text">适合领域</span>
+        			<span class="square"></span>
+        		</div>
+        		<div class="content">
+        			<div class="item-text" v-html="userExam.CodeDescribe"><!--计算机技术   计算机技术   计算机技术   计算机技术    计算机技术  计算机技术--></div>
+        		</div>
+        	</div>
+        </section>
+        
+        <footer>
+        	<div class="view-report" v-on:click="viewReport">查看详细报告</div>
+        </footer>
+        
+    </div>
+	<script>
+		//替换回车和换行符
+		function TransferString(content) {
+		    var string = content;
+		    try {
+		        string = string.replace(/\r\n/g, "<br>")
+		        string = string.replace(/\n/g, "<br>");
+		    } catch (e) {
+		        console.log(e.message);
+		    }
+		    return string;
+		}
+		var UserExam = '{"ID":10,"UserExaminationsID":68,"Code":"INFJ","Name":"保护者","EnglishName":"The Protectors","Summary":"内向/直觉/情感/判断\r\n\r\n正直且愿意为他人奉献自己，对自己认定的想法和预期坚定不移。有信仰，安静且无私。","Character":"非常有洞察力，希望了解他人以及探索是什么激励了他人。喜欢帮助他人且愿意为了帮助他人而奉献和牺牲自己。对自己的信念和价值观坚定不移。有创造力，想象力，敏感且坚定，为了创造一种平衡的生活环境。","Advantage":"· 有创造力和想象力，善于寻找新的方式或途径来解决问题，因此他们往往是很好的提建议者和咨询者。\r\n· 有很好的洞察事物的能力，正因为他们敏锐，因此通常很善于发展良好的人际关系。\r\n· 善于说服他人，他们在表达观点时充满激情，能够迅速的感染到其他人的情绪。\r\n· 果断且坚决，不论对简单的任务还是困难的任务都能够从一而终。\r\n· 真诚且认真，愿意了解他人并帮助有需要的人。","PotentialProblems":"· 对某些问题或方法有时会过于执着，可能会显得有些死板或不灵活。\r\n· 坚持承诺是好的，但有时可能会不管事情的发展情况或利弊，仍要坚持下去。\r\n· 在给他人意见或建议时可能过于直接，没有考虑到对方的感受。\r\n· 当观点受到挑战时可能会有些过于敏感或反应激烈。\r\n· 百分百的相信别人对于他们来说是很困难的，因此他们通常不太会完全的坦承自己。","ReflectionProblem":"· 新的方法是不是真的就很不好，还是因为你没接触过所以不敢去尝试？\r\n· 是否过于纠结于承诺而忽略了现实情况，因此显得有点不懂得变通？\r\n· 是否在给他人提出意见时没有考虑对方的接受程度？\r\n· 是否过于保护或执着于自己的观点而忽略了他人好的想法？\r\n· 是否时常担心他人的动机，不敢与他人建立人际关系？","SuggestionsForDevelopment":"· 在否定新的方法之前先尝试一下或与他人一起探讨可行性再做决定。\r\n· 以更开放的态度对待不能完成的事情，提醒自己事情总是在变化的，要结合当前的情况考虑问题。\r\n· 提醒自己以他人能够接受的方式提出建议不是忽略了事情的重要性，而是为了更快的解决问题。\r\n· 当遇到他人指出自己观点中的问题时，先冷静下来思考一下为什么对方会提出这种观点，提醒自己不要直接拒绝对方的意见。\r\n· 当他人在和你谈论自己的生活或烦恼时，尝试着去谈论自己的生活或烦恼，并体会关系促进的好处。","Field":"咨询、教育、科研、文化、艺术、设计、公共关系、政治等领域。","RecommendedProfession":"心理咨询工作者、心理诊疗师、职业指导顾问、大学教师（人文学科、艺术类）、心理学、教育学、社会学、哲学及其它领域的研究人员、高校辅导员、教导员等；人力资源经理、事业发展顾问、市场营销人员、企业组织发展顾问、职位分析人员、人才测评师、员工培训主管、媒体特约规划师、编辑／艺术指导（杂志）、口译人员、社会科学工作者、临床医学家；作家、诗人、剧作家、电影编剧、电影导演、画家、雕塑家、音乐家、艺术顾问、建筑师、设计师等。 ","IsEnable":1,"ExaminationsResult":"","TypeName":"传统型","CodeDescribe":"咨询、教育、科研、文化、艺术、设计、公共关系、政治等领域。","TypeDescribe":"传统型的人喜欢与数据、信息而不是与人或观点打交道。他们有很强的文书和计算能力，也通常被认为可靠和可信。这类人常在办公室里扮演的角色是数据整理、分析、记录保存。<br/>他们实际且努力工作，享受于解决问题、遵守规则。传统型的人通常基于事实地估计成功，并尽最大的努力去获得成功。他们尽责、稳定、周密、保守且享受于按计划做事。","GUID":null,"DownloadSrc":""}';
+        var ResultPictrue = '{"F":9,"J":9,"I":8,"N":6,"S":5,"E":3,"T":2,"P":2}';
+	</script>
+    <script src="../../Scripts/js/m_EvaluationReport.js"></script>
+
+</body>
+</html>

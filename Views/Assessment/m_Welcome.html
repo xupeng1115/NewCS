@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title>职业性格测评</title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Welcome.css">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+
+    <script>
+        //禁止用户缩放页面
+        window.onload=function () {  
+            document.addEventListener('touchstart',function (event) {  
+                if(event.touches.length>1){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+            })  
+            var lastTouchEnd=0;  
+            document.addEventListener('touchend',function (event) {  
+                var now=(new Date()).getTime();  
+                if(now-lastTouchEnd<=300){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+                lastTouchEnd=now;  
+            },false)  
+        }
+        
+        
+    </script>
+</head>
+<body>
+    <div class="container" id="app">
+    	<header>
+    		<div class="title">职业性格测评</div>
+    		<div class="dec">本测评是当今国际上最为流行的职业人格估工具，通过四大维度八个方面进行分析和评估。在本报告中。</div>
+    		<div class="tip">注意事项</div>
+    	</header>
+        <section>
+        	<div class="text">请根据您的实际情况作答，并以最快速度完成每道试题。</div>
+        	<div class="text">选项没有对与错之分。</div>
+        	<div class="text">请选择更接近你平时感受或行为的那项。</div>
+        	<div class="text">请选择你是怎么样的，而不要选择你想要怎样、以为会怎样、或者认为哪样更好。</div>
+        </section>
+        <footer>
+        	<a href="m_Index.html" class="start-evaluation">开始测评</a>
+            <a href="../Home/Index.html" class="start-index">返回首页</a>
+        </footer>
+        
+    </div>
+
+    <script src="../../Scripts/js/m_Welcome.js"></script>
+
+</body>
+</html>
