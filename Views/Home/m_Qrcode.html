@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Qrcode.css?v=20180514">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+    
+    <script>
+        //禁止用户缩放页面
+        window.onload=function () {  
+            document.addEventListener('touchstart',function (event) {  
+                if(event.touches.length>1){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+            })  
+            var lastTouchEnd=0;  
+            document.addEventListener('touchend',function (event) {  
+                var now=(new Date()).getTime();  
+                if(now-lastTouchEnd<=300){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+                lastTouchEnd=now;  
+            },false)  
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="container" id="app">
+    	<header class="top">
+			<a href="m_Index.html" class="top-back"></a>
+			<div class="top-title">测评报告</div>
+    	</header>
+        <section class="banner-container">
+            <div class="banner">查看详细报告</div>
+        </section>
+
+        <section class="qrcode">
+        	<div class="bg"></div>
+        	<div class="tip">您刚看到的是免费简版报告，若想获得职业匹配详版报告，与职业顾问交流获得求职机会，请长按以下二维码添加好友。</div>
+        	<div id="qrcode-container"></div>
+        	<div class="logo"></div>
+        	<div class="text">加好友请注明：申请报告解读。</div>
+        </section>
+        
+        
+    </div>
+
+</body>
+</html>
