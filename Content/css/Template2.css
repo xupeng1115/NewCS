@@ -313,11 +313,13 @@ footer .foot-box{
 }
 
 .foot-box .foot-right{
+	position:relative;
 	margin-top:30px;
 	float:right;
 }
 
 .foot-box .foot-right .foot-right-item{
+	position:relative;
 	display:inline-block;
 	margin-right:20px;
 	float:left;
@@ -333,6 +335,19 @@ footer .foot-box{
 .foot-box .foot-right .foot-weixin i{
 	padding:12px;
 }
+
+.foot-box .foot-right .foot-weixin .foot-weixin-box{
+	position:absolute;
+	top:-130px;
+	left:20px;
+	z-index:200;
+	width:120px;
+	height:120px;
+	background:url(../img/erwei.png)no-repeat center center;
+	background-size:100% 100%;
+	
+}
+
 
 .foot-box .foot-right .foot-recommend i{
 	padding:10px;
