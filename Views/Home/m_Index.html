@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/css/m_HomeIndex.css?v=20180528">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+
+    <script>
+        //禁止用户缩放页面
+        window.onload=function () {  
+            document.addEventListener('touchstart',function (event) {  
+                if(event.touches.length>1){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+            })  
+            var lastTouchEnd=0;  
+            document.addEventListener('touchend',function (event) {  
+                var now=(new Date()).getTime();  
+                if(now-lastTouchEnd<=300){  
+                    event.preventDefault();  
+                    event.stopPropagation();
+                }  
+                lastTouchEnd=now;  
+            },false)  
+        }
+        
+    </script>
+</head>
+<body>
+    <ul class="container" id="app">
+    	<header class="top">
+			<a href="../Assessment/m_Index.html" class="top-search"></a>
+            <div class="top-logo"></div>
+            <div class="top-user"><i class="material-icons">perm_identity</i></div>
+            <div class="top-menu"><i class="material-icons">menu</i></div>
+    	</header>
+        <section class="banner-container">
+            <div class="banner-title">最懂你的留学生求职网站</div>
+            <div class="banner-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
+            <div class="banner-view-btn"><a href="../Home/Serve.html">求职服务</a></div>
+        </section>
+        
+        <section class="banner-two"></section>
+
+        <section class="position-container">
+            <div class="position-title">您想从事的行业</div>
+            <div class="position-wrapper">
+                <ul class="position-box">
+                    <li class="position-item">
+                        <a href="../Job/List?Industry=银行/证券/金融行业">
+                            <div class="position-logo logo-one"></div>
+                            <div class="position-item-title">银行/证券/金融</div>
+                            <div class="position-num">2245个职位</div>
+                        </a>
+                    </li>
+                    <li class="position-item">
+                        <a href="../Job/List?Industry=销售/客服/快消房产行业">
+                            <div class="position-logo logo-two"></div>
+                            <div class="position-item-title">销售/客服/快消房产</div>
+                            <div class="position-num">3846个职位</div> 
+                        </a>
+                    </li>
+                    <li class="position-item">
+                        <a href="../Job/List?Industry=产品/技术/IT互联科技行业">
+                            <div class="position-logo logo-three"></div>
+                            <div class="position-item-title">产品/技术/IT互联网</div>
+                            <div class="position-num">2958个职位</div>
+                        </a>
+                    </li>
+                    <li class="position-item">
+                        <a href="../Job/List?Industry=会计/教育/法律/咨询行业">
+                            <div class="position-logo logo-four"></div>
+                            <div class="position-item-title">会计/教育/法律/咨询</div>
+                            <div class="position-num">3615个职位</div>
+                        </a>
+                    </li>
+                    <li class="position-item">
+                        <a href="../Job/List?Industry=汽车/医药/化工/制造行业">
+                            <div class="position-logo logo-five"></div>
+                            <div class="position-item-title">汽车/医药/化工/制造</div>
+                            <div class="position-num">3054个职位</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module-btn position-view-btn"><a href="../Job/List">查看全部职位</a></div>
+        </section>
+
+        <footer>
+        	
+        </footer>
+        
+    </div>
+
+    <script src="../../Scripts/js/m_HomeIndex.js?v=20180528"></script>
+
+</body>
+</html>

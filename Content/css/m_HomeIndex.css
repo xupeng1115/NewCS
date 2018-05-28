@@ -1,0 +1,295 @@
+@charset "utf-8";
+/**********************Content***********************/
+html,body{
+    position:relative;
+    width:100%;
+    background:#fff;
+    overflow-x:hidden;
+    overflow-y:auto; 
+}
+
+input:-moz-placeholder,   
+textarea:-moz-placeholder {   
+    color: #a1a1a1;
+    letter-spacing: 1px;   
+}   
+
+input:-ms-input-placeholder,   
+textarea:-ms-input-placeholder {   
+    color: #a1a1a1;
+    letter-spacing: 1px;   
+}   
+
+input::-webkit-input-placeholder,   
+textarea::-webkit-input-placeholder {   
+    color: #a1a1a1;
+    letter-spacing: 1px;   
+}  
+
+.container{
+    position:relative;
+    width:100%;
+    padding:40px 0 20px 0;
+}
+
+header{
+	position:relative;
+	width:100%;
+}
+
+section{
+    position:relative;
+    width:100%;
+}
+
+footer{
+	position:relative;
+	width:100%;
+}
+
+.top{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:600;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	background:#fff;
+	/* box-shadow: 0 2px 0 0 rgba(228, 228, 228, 0.5); */
+}
+
+.top a.top-search{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:40px;
+	height:40px;
+	cursor:pointer;
+}
+
+.top a.top-search:before{
+	position:absolute;
+	top: 11px;
+    left: 11px;
+	content:"";
+	width:18px;
+    height:18px;
+    background:url(../m_img/m_search.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+.top .top-logo{
+    margin:12px auto;
+    position:relative;
+	width:100px;
+    height:16px;
+    background:url(../m_img/m_logo.png)no-repeat center center;
+    background-size:100% 100%;
+	font-size:16px;
+	cursor:pointer;
+}
+
+.top .top-menu{
+    position:absolute;
+	top:0;
+	right:10px;
+	z-index:10;
+	width:26px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+	font-size:16px;
+	cursor:pointer;
+}
+
+.top .top-menu i{
+    color:#6d6d6d;
+    line-height:40px;
+}
+
+.top .top-user{
+    position:absolute;
+	top:0;
+	right:40px;
+	z-index:10;
+	width:26px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+	font-size:16px;
+	cursor:pointer;
+}
+
+.top .top-user i{
+    color:#6d6d6d;
+    line-height:40px;
+}
+/******************************banner************************************/
+section.banner-container{
+    width:100%;
+    height:156px;
+    background:url(../m_img/m_home_banner.png)no-repeat center center;
+    background-size:cover;
+}
+
+.banner-container .banner-title{
+    padding-top:35px;
+    font-size: 18px;
+    line-height:27px;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    color: #ffbf00;
+}
+
+.banner-container .banner-msg{
+    font-size: 12px;
+    line-height:18px;
+    letter-spacing: 0.9px;
+    color: #fff;
+}
+
+.banner-container .banner-msg span {
+    display: inline-block;
+    padding: 0 3px;
+}
+
+.banner-container .banner-view-btn {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    line-height:30px;
+    border-radius: 2px;
+    background-color: #ffcf40;
+    cursor:pointer;
+}
+
+.banner-container .banner-view-btn a {
+    display: block;
+    border-radius: 2px;
+    background-color: #ffcf40;
+    font-size: 11px;
+    font-weight: 500;
+    color: #333;
+    cursor:pointer;
+}
+
+section.banner-two{
+    position:relative;
+    width:900px;
+    height:40px;
+    background:url(../m_img/m_home_banner2.png)no-repeat center center;
+    background-size:cover;
+}
+
+/************************************position*********************************/
+section.position-container{
+    position:relative;
+    width:100%;
+}
+
+section.position-container .position-title{
+    padding:20px 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #333;
+}
+
+section.position-container .position-wrapper{
+    position:relative;
+    width:100%;
+    overflow:scroll;
+}
+
+section.position-container .position-wrapper ul.position-box{
+    position:relative;
+    margin-left:0;
+    width:794px;
+    text-align:left;
+    overflow:scroll;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item{
+    display:block;
+    float:left;
+    position:relative;
+    margin-right:15px;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item:first-child{
+    margin-left:15px;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a{
+    display:block;
+    position:relative;
+    overflow:hidden;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .position-logo{
+    position:relative;
+    width:140px;
+    height:82px;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .logo-one{
+    background:url(../../Content/img/home_index_industry01.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .logo-two{
+    background:url(../../Content/img/home_index_industry02.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .logo-three{
+    background:url(../../Content/img/home_index_industry03.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .logo-four{
+    background:url(../../Content/img/home_index_industry04.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .logo-five{
+    background:url(../../Content/img/home_index_industry05.png)no-repeat center center;
+    background-size:cover;
+}
+section.position-container .position-wrapper ul.position-box li.position-item a .position-item-title{
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #333;
+}
+
+section.position-container .position-wrapper ul.position-box li.position-item a .position-num{
+    padding-top:10px;
+    font-size: 11px;
+    letter-spacing: 0.7px;
+    text-align: left;
+    color: #808080;
+}
+
+
+
+/*********************Media Query********************/
+@media (max-device-width: 800px) and (orientation:landscape){
+    
+}
+
+@media screen and (max-width:360px){
+	
+}
+
+@media screen and (max-width:320px){
+	
+}
+
+
