@@ -1,8 +1,10 @@
 @charset "utf-8";
 /**********************Content***********************/
 html,body{
+    margin:0 auto;
     position:relative;
     width:100%;
+    max-width:800px;
     background:#fff;
     overflow-x:hidden;
     overflow-y:auto; 
@@ -29,7 +31,7 @@ textarea::-webkit-input-placeholder {
 .container{
     position:relative;
     width:100%;
-    padding:40px 0 20px 0;
+    padding:40px 0 0 0;
 }
 
 header{
@@ -179,7 +181,7 @@ section.banner-container{
 
 section.banner-two{
     position:relative;
-    width:900px;
+    width:100%;
     height:40px;
     background:url(../m_img/m_home_banner2.png)no-repeat center center;
     background-size:cover;
@@ -188,11 +190,11 @@ section.banner-two{
 /************************************position*********************************/
 section.position-container{
     position:relative;
-    width:100%;
 }
 
 section.position-container .position-title{
     padding:20px 0;
+    line-height:24px;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.7px;
@@ -200,68 +202,71 @@ section.position-container .position-title{
     color: #333;
 }
 
-section.position-container .position-wrapper{
+section.position-container .swiper-container1{
     position:relative;
     width:100%;
-    overflow:scroll;
+    height:140px;
 }
 
-section.position-container .position-wrapper ul.position-box{
+section.position-container .swiper-container1 .swiper-wrapper{
     position:relative;
-    margin-left:0;
-    width:794px;
-    text-align:left;
-    overflow:scroll;
+    width:100%;
+    height:100%;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item{
-    display:block;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide{
+    position:relative;
+    padding-left:15px;
     float:left;
-    position:relative;
-    margin-right:15px;
+    width:165px;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item:first-child{
-    margin-left:15px;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide:last-child{
+    width:180px;
+    padding-right:15px;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a{
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a{
     display:block;
     position:relative;
-    overflow:hidden;
+    text-align:left;
+    width:150px;
+    height:140px;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .position-logo{
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .position-logo{
     position:relative;
-    width:140px;
-    height:82px;
+    width:150px;
+    height:90px;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .logo-one{
-    background:url(../../Content/img/home_index_industry01.png)no-repeat center center;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .logo-one{
+    background:url(../../Content/m_img/m_home_industry1.png)no-repeat center center;
     background-size:cover;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .logo-two{
-    background:url(../../Content/img/home_index_industry02.png)no-repeat center center;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .logo-two{
+    background:url(../../Content/m_img/m_home_industry2.png)no-repeat center center;
     background-size:cover;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .logo-three{
-    background:url(../../Content/img/home_index_industry03.png)no-repeat center center;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .logo-three{
+    background:url(../../Content/m_img/m_home_industry3.png)no-repeat center center;
     background-size:cover;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .logo-four{
-    background:url(../../Content/img/home_index_industry04.png)no-repeat center center;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .logo-four{
+    background:url(../../Content/m_img/m_home_industry4.png)no-repeat center center;
     background-size:cover;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .logo-five{
-    background:url(../../Content/img/home_index_industry05.png)no-repeat center center;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .logo-five{
+    background:url(../../Content/m_img/m_home_industry5.png)no-repeat center center;
     background-size:cover;
 }
-section.position-container .position-wrapper ul.position-box li.position-item a .position-item-title{
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .position-item-title{
+    padding-top:5px;
+    line-height:20px;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -269,27 +274,388 @@ section.position-container .position-wrapper ul.position-box li.position-item a 
     color: #333;
 }
 
-section.position-container .position-wrapper ul.position-box li.position-item a .position-num{
-    padding-top:10px;
+section.position-container .swiper-container1 .swiper-wrapper .swiper-slide a .position-num{
+    padding-top:4px;
+    line-height:17px;
     font-size: 11px;
     letter-spacing: 0.7px;
     text-align: left;
     color: #808080;
 }
 
+section.position-container .position-view-btn{
+    margin-top:20px;
+    position:relative;
+    width:100%;
+    height: 37px;
+    text-align:center;
+    background-color: #ffffff;
+    border-top: solid 1px #f4f3f3;
+}
 
+section.position-container .position-view-btn a{
+    display:inline-block;
+    width:100px;
+    height:36px;
+    line-height:36px;
+    background:#fff;
+    font-size:11px;
+    text-align:center;
+    color:#faba46;
+    letter-spacing:0.7px;
+}
+
+/*******************************speed**********************************/
+section.speed-container{
+    padding:20px 0;
+    background-color: #f3f5f7;
+}
+
+section.speed-container .speed-title{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #333;
+}
+
+section.speed-container .speed-wrapper{
+    position:relative;
+    width:100%;
+    text-align:center;
+}
+
+section.speed-container .speed-wrapper .speed-item{
+    display:inline-block;
+    position:relative;
+    padding:15px 10px 0 10px;
+    text-align:center;
+    max-width:160px;
+}
+
+section.speed-container .speed-wrapper .speed-item .speed-icon{
+    margin:0 auto;
+    width:80px;
+    height:80px;
+}
+
+section.speed-container .speed-wrapper .speed-item:nth-child(1) .speed-icon{
+    background:url(../m_img/m_home_speed1.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+section.speed-container .speed-wrapper .speed-item:nth-child(2) .speed-icon{
+    background:url(../m_img/m_home_speed2.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+section.speed-container .speed-wrapper .speed-item:nth-child(3) .speed-icon{
+    background:url(../m_img/m_home_speed3.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+section.speed-container .speed-wrapper .speed-item:nth-child(4) .speed-icon{
+    background:url(../m_img/m_home_speed4.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+section.speed-container .speed-wrapper .speed-item .speed-title{
+    line-height:20px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #6d6d6d;
+}
+
+section.speed-container .speed-wrapper .speed-item .speed-dec{
+    padding-top:5px;
+    line-height:17px;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #8b8b8b;
+}
+
+section.speed-container .speed-about-btn{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 120px;
+    height: 32px;
+    line-height:32px;
+    border-radius: 2px;
+    background-color: #ffbf00;
+    cursor:pointer;
+}
+
+section.speed-container .speed-about-btn a{
+    display: block;
+    border-radius: 2px;
+    background: #ffbf00;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+}
+
+/******************************work******************************/
+
+section.work-container{
+    padding-bottom:10px;
+    position:relative;
+    background-color: #5fbfc9;
+}
+
+section.work-container .work-title{
+    padding:20px 0;
+    line-height:24px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #fff;
+}
+
+section.work-container .swiper-container2{
+    position:relative;
+    width:100%;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper{
+    position:relative;
+    width:100%;
+    padding-bottom:15px;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide{
+    position:relative;
+    width:100%;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box{
+    margin:0 auto;
+    position:relative;
+    padding-left:40px;
+    width:300px;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .work-logo{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:10;
+    width:30px;
+    height:30px;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .logo-one{
+    background:url(../../Content/m_img/m_home_work1.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .logo-two{
+    background:url(../../Content/m_img/m_home_work2.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .logo-three{
+    background:url(../../Content/m_img/m_home_work3.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .work-item-title{
+    line-height:20px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #fff;
+}
+
+section.work-container .swiper-container2 .swiper-wrapper .swiper-slide .item-box .work-dec{
+    padding-top:5px;
+    line-height:16px;
+    font-size: 11px;
+    letter-spacing: 0.7px;
+    text-align: left;
+    color: #fff;
+}
+
+.swiper-pagination-bullet{
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fff;
+}
+
+/******************************COmpany******************************/
+
+section.company-container{
+    padding-bottom:10px;
+    position:relative;
+    background-color: #ffffff;
+}
+
+section.company-container .swiper-container3{
+    position:relative;
+    width:100%;
+}
+
+section.company-container .swiper-container3 .swiper-wrapper{
+    position:relative;
+    width:100%;
+}
+
+section.company-container .swiper-container3 .swiper-wrapper .swiper-slide{
+    position:relative;
+    height:80px;
+    padding:20px;
+}
+
+section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+    margin:0 auto;
+    position:relative;
+    width:340px;
+    height:40px;
+    background:url(../m_img/m_home_company.png)no-repeat center center;
+    background-size:100% 100%;
+}
+
+section.company-container .swiper-container-free-mode>.swiper-wrapper {
+    -webkit-transition-timing-function: linear; /*之前是ease-out*/
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    margin: 0 auto;
+}
+
+/**********************************************contact********************************************/
+section.contact-container{
+    height:260px;
+    padding:15px 0 40px 0;
+    background:url(../m_img/m_home_contact.png)no-repeat center center;
+    background-size:cover;
+}
+
+section.contact-container .contact-wrapper{
+    margin:0 auto;
+    padding-bottom:20px;
+    width:345px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 11px 0 rgba(206, 206, 206, 0.5);
+}
+
+section.contact-container .contact-wrapper .contact-title{
+    line-height:50px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #333;
+    border-bottom:1px dashed #e1e8ef;
+}
+
+section.contact-container .contact-wrapper .contact-item{
+    position:relative;
+    padding-left:55px;
+    padding-top:10px;
+    line-height:20px;
+    font-size: 12px;
+    text-align: left;
+    color: #6d6d6d;
+}
+
+section.contact-container .contact-wrapper .contact-item i{
+    display:block;
+    position:absolute;
+    top:13px;
+    left:25px;
+    z-index:10;
+    font-size:16px;
+}
+
+
+section.contact-container .contact-serve-btn{
+    margin: 0 auto;
+    width: 120px;
+    margin-top:20px;
+    height: 32px;
+    line-height:32px;
+    border-radius: 2px;
+    background-color: #ffbf00;
+    cursor:pointer;
+}
+
+section.contact-container .contact-serve-btn a{
+    display: block;
+    border-radius: 2px;
+    background: #ffbf00;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+}
 
 /*********************Media Query********************/
 @media (max-device-width: 800px) and (orientation:landscape){
     
 }
 
+@media screen and (max-width:414px){
+	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+        width:390px;
+    }
+}
+
+@media screen and (max-width:384px){
+	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+        width:360px;
+    }
+}
+
+@media screen and (max-width:375px){
+	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+        width:350px;
+    }
+}
+
 @media screen and (max-width:360px){
-	
+	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+        width:340px;
+    }
 }
 
 @media screen and (max-width:320px){
-	
+    section.speed-container .speed-wrapper .speed-item {
+        padding: 15px 7px 0 7px;
+        max-width: 156px;
+    }
+
+	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
+        width:305px;
+    }
+
+    section.contact-container .contact-wrapper {
+        width: 300px;
+    }
+
+    section.contact-container .contact-wrapper .contact-item {
+        padding-left: 25px;
+    }
+
+    section.contact-container .contact-wrapper .contact-item i {
+        top: 14px;
+        left: 6px;
+        z-index: 10;
+        font-size: 14px;
+    }
 }
 
 
