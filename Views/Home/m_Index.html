@@ -58,156 +58,169 @@
 </head>
 <body>
     <div class="container" id="app">
-    	<header class="top">
-			<a href="../Assessment/m_Index.html" class="top-search"></a>
+        <header class="top">
+            <a href="../Assessment/m_Index.html" class="top-search"></a>
             <div class="top-logo"></div>
             <div class="top-user"><i class="material-icons">perm_identity</i></div>
-            <div class="top-menu"><i class="material-icons">menu</i></div>
-    	</header>
-        <section class="banner-container">
-            <div class="banner-title">最懂你的留学生求职网站</div>
-            <div class="banner-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
-            <div class="banner-view-btn"><a href="../Home/Serve.html">求职服务</a></div>
-        </section>
-        
-        <section class="banner-two"></section>
-
-        <section class="position-container">
-            <div class="position-title">您想从事的行业</div>
-            <div class="position-box swiper-container1">
-                <div class="position-wrapper swiper-wrapper">
-                    <div class="swiper-slide position-item">
-                        <a href="../Job/List?Industry=银行/证券/金融行业">
-                            <div class="position-logo logo-one"></div>
-                            <div class="position-item-title">银行/证券/金融</div>
-                            <div class="position-num">2245个职位</div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide position-item">
-                        <a href="../Job/List?Industry=销售/客服/快消房产行业">
-                            <div class="position-logo logo-two"></div>
-                            <div class="position-item-title">销售/客服/快消房产</div>
-                            <div class="position-num">3846个职位</div> 
-                        </a>
-                    </div>
-                    <div class="swiper-slide position-item">
-                        <a href="../Job/List?Industry=产品/技术/IT互联科技行业">
-                            <div class="position-logo logo-three"></div>
-                            <div class="position-item-title">产品/技术/IT互联网</div>
-                            <div class="position-num">2958个职位</div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide position-item">
-                        <a href="../Job/List?Industry=会计/教育/法律/咨询行业">
-                            <div class="position-logo logo-four"></div>
-                            <div class="position-item-title">会计/教育/法律/咨询</div>
-                            <div class="position-num">3615个职位</div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide position-item">
-                        <a href="../Job/List?Industry=汽车/医药/化工/制造行业">
-                            <div class="position-logo logo-five"></div>
-                            <div class="position-item-title">汽车/医药/化工/制造</div>
-                            <div class="position-num">3054个职位</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="position-view-btn"><a href="../Job/List">查看全部职位</a></div>
-        </section>
-
-        <section class="speed-container">
-            <div class="speed-title">加速你的求职之旅</div>
-            <div class="speed-wrapper clearbox">
-                <span class="speed-item">
-                    <div class="speed-icon"></div>
-                    <div class="speed-title">职业雷达站</div>
-                    <div class="speed-dec">快速提供个性画像，意向不到的惊喜体验。</div>
-                </span>
-                <span class="speed-item">
-                    <div class="speed-icon"></div>
-                    <div class="speed-title">求职加油站</div>
-                    <div class="speed-dec">锁定目标行业，聚焦心仪岗位，各个击破，精准赋能。</div>
-                </span>
-                <span class="speed-item">
-                    <div class="speed-icon"></div>
-                    <div class="speed-title">职场达人堂</div>
-                    <div class="speed-dec">真人真事真经验，进堂上座听分享。</div>
-                </span>
-                <span class="speed-item">
-                    <div class="speed-icon"></div>
-                    <div class="speed-title">职位面对面</div>
-                    <div class="speed-dec">快速提供个性画像，意向不到的惊喜体验。</div>
-                </span>
-            </div>
-            <div class="speed-about-btn"><a href="../Home/About.html">关于我们</a></div>
-        </section>
-
-        <section class="work-container">
-            <div class="work-title">您想从事的行业</div>
-            <div class="work-box swiper-container2">
-                <div class="work-wrapper swiper-wrapper">
-                    <div class="swiper-slide work-item">
-                        <div class="item-box">
-                            <div class="work-logo logo-one"></div>
-                            <div class="work-item-title">银行/证券/金融</div>
-                            <div class="work-dec">投行/银行/互联网公司/....你耳熟能详的名企，行业专家为你提供一对一辅导</div>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div class="wrapper" id="panel">
+            <section class="banner-container">
+                <div class="banner-title">最懂你的留学生求职网站</div>
+                <div class="banner-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
+                <div class="banner-view-btn"><a href="../Home/m_Serve.html">求职服务</a></div>
+            </section>
+            
+            <section class="banner-two"></section>
+    
+            <section class="position-container">
+                <div class="position-title">您想从事的行业</div>
+                <div class="position-box swiper-container1">
+                    <div class="position-wrapper swiper-wrapper">
+                        <div class="swiper-slide position-item">
+                            <a href="../Job/List?Industry=银行/证券/金融行业">
+                                <div class="position-logo logo-one"></div>
+                                <div class="position-item-title">银行/证券/金融</div>
+                                <div class="position-num">2245个职位</div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="swiper-slide work-item">
-                        <div class="item-box">
-                            <div class="work-logo logo-one"></div>
-                            <div class="work-item-title">银行/证券/金融</div>
-                            <div class="work-dec">模拟面试、行业技能、案例分析...，杜绝一切假大空，专家只讲行业FAQ</div>
+                        <div class="swiper-slide position-item">
+                            <a href="../Job/List?Industry=销售/客服/快消房产行业">
+                                <div class="position-logo logo-two"></div>
+                                <div class="position-item-title">销售/客服/快消房产</div>
+                                <div class="position-num">3846个职位</div> 
+                            </a>
                         </div>
-                    </div>
-                    <div class="swiper-slide work-item">
-                        <div class="item-box">
-                            <div class="work-logo logo-one"></div>
-                            <div class="work-item-title">银行/证券/金融</div>
-                            <div class="work-dec">无论你希望从事什么岗位工作，我们专家将给你深度解析岗位的工作日常与前景</div>
+                        <div class="swiper-slide position-item">
+                            <a href="../Job/List?Industry=产品/技术/IT互联科技行业">
+                                <div class="position-logo logo-three"></div>
+                                <div class="position-item-title">产品/技术/IT互联网</div>
+                                <div class="position-num">2958个职位</div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="../Job/List?Industry=会计/教育/法律/咨询行业">
+                                <div class="position-logo logo-four"></div>
+                                <div class="position-item-title">会计/教育/法律/咨询</div>
+                                <div class="position-num">3615个职位</div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="../Job/List?Industry=汽车/医药/化工/制造行业">
+                                <div class="position-logo logo-five"></div>
+                                <div class="position-item-title">汽车/医药/化工/制造</div>
+                                <div class="position-num">3054个职位</div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-pagination2"></div>
-            </div>
-        </section>
-
-        <section class="company-container">
-            <div class="company-box swiper-container3">
-                <div class="company-wrapper swiper-wrapper">
-                    <div class="swiper-slide company-item">
-                        <div class="item-box"></div>
+                <div class="position-view-btn"><a href="../Job/m_List">查看全部职位</a></div>
+            </section>
+    
+            <section class="speed-container">
+                <div class="speed-title">加速你的求职之旅</div>
+                <div class="speed-wrapper clearbox">
+                    <span class="speed-item">
+                        <div class="speed-icon"></div>
+                        <div class="speed-title">职业雷达站</div>
+                        <div class="speed-dec">快速提供个性画像，意向不到的惊喜体验。</div>
+                    </span>
+                    <span class="speed-item">
+                        <div class="speed-icon"></div>
+                        <div class="speed-title">求职加油站</div>
+                        <div class="speed-dec">锁定目标行业，聚焦心仪岗位，各个击破，精准赋能。</div>
+                    </span>
+                    <span class="speed-item">
+                        <div class="speed-icon"></div>
+                        <div class="speed-title">职场达人堂</div>
+                        <div class="speed-dec">真人真事真经验，进堂上座听分享。</div>
+                    </span>
+                    <span class="speed-item">
+                        <div class="speed-icon"></div>
+                        <div class="speed-title">职位面对面</div>
+                        <div class="speed-dec">快速提供个性画像，意向不到的惊喜体验。</div>
+                    </span>
+                </div>
+                <div class="speed-about-btn"><a href="../Home/m_About.html">关于我们</a></div>
+            </section>
+    
+            <section class="work-container">
+                <div class="work-title">您想从事的行业</div>
+                <div class="work-box swiper-container2">
+                    <div class="work-wrapper swiper-wrapper">
+                        <div class="swiper-slide work-item">
+                            <div class="item-box">
+                                <div class="work-logo logo-one"></div>
+                                <div class="work-item-title">银行/证券/金融</div>
+                                <div class="work-dec">投行/银行/互联网公司/....你耳熟能详的名企，行业专家为你提供一对一辅导</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide work-item">
+                            <div class="item-box">
+                                <div class="work-logo logo-one"></div>
+                                <div class="work-item-title">银行/证券/金融</div>
+                                <div class="work-dec">模拟面试、行业技能、案例分析...，杜绝一切假大空，专家只讲行业FAQ</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide work-item">
+                            <div class="item-box">
+                                <div class="work-logo logo-one"></div>
+                                <div class="work-item-title">银行/证券/金融</div>
+                                <div class="work-dec">无论你希望从事什么岗位工作，我们专家将给你深度解析岗位的工作日常与前景</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </section>
+    
+            <section class="company-container">
+                <div class="company-box swiper-container3">
+                    <div class="company-wrapper swiper-wrapper">
+                        <div class="swiper-slide company-item">
+                            <div class="item-box"></div>
+                        </div>
                     </div>
                 </div>
+            </section>
+    
+            <section class="contact-container clearbox">
+                <div class="contact-wrapper clearbox">
+                    <div class="contact-title">联系我们</div>
+                    <div class="contact-address contact-item">
+                        <i class="material-icons">room</i>
+                        <span class="contact-text">地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
+                    </div>
+                    <div class="contact-tel contact-item">
+                        <i class="material-icons">call</i>
+                        <span class="contact-text">电话: (+86) 021-31336975</span>
+                    </div>
+                    <div class="contact-email contact-item">
+                        <i class="material-icons">email</i>
+                        <span class="contact-text">mickeyge@knx.com.cn</span>
+                    </div>
+                </div>
+                <div class="contact-serve-btn"><a href="../Home/m_Serve.html">购买服务</a></div>
+            </section>
+        </div>
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="../Assessment/m_Index.html">职位兴趣</a></li>
+                    <li class="slider-item"><a href="../Job/m_List.html">我的职位</a></li>
+                    <li class="slider-item"><a href="../Home/m_Serve.html">服务产品</a></li>
+                    <li class="slider-item"><a href="../Home/m_About.html">关于我们</a></li>
+                </ul>
             </div>
-        </section>
-
-        <section class="contact-container clearbox">
-            <div class="contact-wrapper clearbox">
-                <div class="contact-title">联系我们</div>
-                <div class="contact-address contact-item">
-                    <i class="material-icons">room</i>
-                    <span class="contact-text">地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
-                </div>
-                <div class="contact-tel contact-item">
-                    <i class="material-icons">call</i>
-                    <span class="contact-text">电话: (+86) 021-31336975</span>
-                </div>
-                <div class="contact-email contact-item">
-                    <i class="material-icons">email</i>
-                    <span class="contact-text">mickeyge@knx.com.cn</span>
-                </div>
-            </div>
-            <div class="contact-serve-btn"><a href="../Home/Serve.html">购买服务</a></div>
-        </section>
-
-        <footer>
-        	
-        </footer>
+        </aside>
         
     </div>
-
+    
+    <script src="../../Scripts/lib/slideout.min.js"></script>
     <script src="../../Scripts/lib/swiper-3.4.2.jquery.min.js"></script>
     <script src="../../Scripts/js/m_HomeIndex.js?v=20180528"></script>
 

@@ -1,3 +1,19 @@
+var app=new Vue({
+    el:"#app",
+    data:{
+        menuKey:false
+    },
+    methods:{
+        menuHandle:function(event){
+            if(app.menuKey){
+                app.menuKey=false;
+            }else{
+                app.menuKey=true;
+            }
+        }
+    }
+})
+
 $(function(){
 
     //“想从事的行业”
@@ -23,6 +39,7 @@ $(function(){
         paginationHide :true,
     });
 
+    //“合作企业”
     var mySwiper3 = new Swiper('.swiper-container3', {
         loop:true,
         autoplay:1,
@@ -34,4 +51,32 @@ $(function(){
         freeModeMomentum : true,
     });
 
+    //侧滑导航
+    var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 190,
+        'tolerance': 70,
+        'side':"right"
+    });
+
+    $("body").on("click",".top-menu",function(){
+        slideout.toggle();
+    });
+
+    slideout.on('beforeclose', function() {
+        app.menuKey=false;
+    });
+
+    slideout.on('beforeopen', function() {
+        app.menuKey=true;
+    });
+
+    slideout.on('close', function() {
+        app.menuKey=false;
+    });
+
+    slideout.on('open', function() {
+        app.menuKey=true;
+    });
 })
