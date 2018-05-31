@@ -24,89 +24,72 @@
     <link rel="stylesheet" href="../../Content/css/m_Base.css">
     <link rel="stylesheet" href="../../Content/lib/animate.css">
     <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
 
     <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
-    <link rel="stylesheet" href="../../Content/lib/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="../../Content/lib/swiper-4.2.6.min.css">
     <link rel="stylesheet" href="../../Content/css/m_HomeIndex.css?v=20180528">
     
     <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
     <script src="../../Scripts/lib/vue.min.js"></script>
     <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
     <script src="../../Scripts/lib/babel.min.js"></script>
 
-    <script>
-        //禁止用户缩放页面
-        window.onload=function () {  
-            document.addEventListener('touchstart',function (event) {  
-                if(event.touches.length>1){  
-                    event.preventDefault();  
-                    event.stopPropagation();
-                }  
-            })  
-            var lastTouchEnd=0;  
-            document.addEventListener('touchend',function (event) {  
-                var now=(new Date()).getTime();  
-                if(now-lastTouchEnd<=300){  
-                    event.preventDefault();  
-                    event.stopPropagation();
-                }  
-                lastTouchEnd=now;  
-            },false)  
-        }
-        
-    </script>
 </head>
 <body>
     <div class="container" id="app">
         <header class="top">
-            <a href="../Assessment/m_Index.html" class="top-search"></a>
+            <a href="../Job/m_List.html" class="top-search"></a>
             <div class="top-logo"></div>
             <div class="top-user"><i class="material-icons">perm_identity</i></div>
             <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
         </header>
-        <div class="wrapper" id="panel">
+        <div id="panel" class="wrapper">
             <section class="banner-container">
                 <div class="banner-title">最懂你的留学生求职网站</div>
                 <div class="banner-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
                 <div class="banner-view-btn"><a href="../Home/m_Serve.html">求职服务</a></div>
             </section>
-            
+    
             <section class="banner-two"></section>
     
             <section class="position-container">
                 <div class="position-title">您想从事的行业</div>
-                <div class="position-box swiper-container1">
+                <div class="position-box swiper-container" id="swiper1">
                     <div class="position-wrapper swiper-wrapper">
                         <div class="swiper-slide position-item">
-                            <a href="../Job/List?Industry=银行/证券/金融行业">
+                            <a href="/Job/m_List?Industry=银行/证券/金融行业">
                                 <div class="position-logo logo-one"></div>
                                 <div class="position-item-title">银行/证券/金融</div>
                                 <div class="position-num">2245个职位</div>
                             </a>
                         </div>
                         <div class="swiper-slide position-item">
-                            <a href="../Job/List?Industry=销售/客服/快消房产行业">
+                            <a href="/Job/m_List?Industry=销售/客服/快消房产行业">
                                 <div class="position-logo logo-two"></div>
                                 <div class="position-item-title">销售/客服/快消房产</div>
-                                <div class="position-num">3846个职位</div> 
+                                <div class="position-num">3846个职位</div>
                             </a>
                         </div>
                         <div class="swiper-slide position-item">
-                            <a href="../Job/List?Industry=产品/技术/IT互联科技行业">
+                            <a href="/Job/m_List?Industry=产品/技术/IT互联科技行业">
                                 <div class="position-logo logo-three"></div>
                                 <div class="position-item-title">产品/技术/IT互联网</div>
                                 <div class="position-num">2958个职位</div>
                             </a>
                         </div>
                         <div class="swiper-slide position-item">
-                            <a href="../Job/List?Industry=会计/教育/法律/咨询行业">
+                            <a href="/Job/m_List?Industry=会计/教育/法律/咨询行业">
                                 <div class="position-logo logo-four"></div>
                                 <div class="position-item-title">会计/教育/法律/咨询</div>
                                 <div class="position-num">3615个职位</div>
                             </a>
                         </div>
                         <div class="swiper-slide position-item">
-                            <a href="../Job/List?Industry=汽车/医药/化工/制造行业">
+                            <a href="/Job/m_List?Industry=汽车/医药/化工/制造行业">
                                 <div class="position-logo logo-five"></div>
                                 <div class="position-item-title">汽车/医药/化工/制造</div>
                                 <div class="position-num">3054个职位</div>
@@ -114,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="position-view-btn"><a href="../Job/m_List">查看全部职位</a></div>
+                <div class="position-view-btn"><a href="../Job/m_List.html">查看全部职位</a></div>
             </section>
     
             <section class="speed-container">
@@ -146,7 +129,7 @@
     
             <section class="work-container">
                 <div class="work-title">您想从事的行业</div>
-                <div class="work-box swiper-container2">
+                <div class="work-box swiper-container" id="swiper2">
                     <div class="work-wrapper swiper-wrapper">
                         <div class="swiper-slide work-item">
                             <div class="item-box">
@@ -175,7 +158,7 @@
             </section>
     
             <section class="company-container">
-                <div class="company-box swiper-container3">
+                <div class="company-box swiper-container" id="swiper3">
                     <div class="company-wrapper swiper-wrapper">
                         <div class="swiper-slide company-item">
                             <div class="item-box"></div>
@@ -202,6 +185,8 @@
                 </div>
                 <div class="contact-serve-btn"><a href="../Home/m_Serve.html">购买服务</a></div>
             </section>
+    
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
         </div>
         <aside id="menu" class="slider-container">
             <div class="slider-wrapper">
@@ -210,18 +195,18 @@
                     <div class="tip-num">+86 400 123 4567</div>
                 </div>
                 <ul class="slider-box">
-                    <li class="slider-item"><a href="../Assessment/m_Index.html">职位兴趣</a></li>
+                    <li class="slider-item"><a href="../Assessment/m_Welcome.html">职位兴趣</a></li>
                     <li class="slider-item"><a href="../Job/m_List.html">我的职位</a></li>
                     <li class="slider-item"><a href="../Home/m_Serve.html">服务产品</a></li>
                     <li class="slider-item"><a href="../Home/m_About.html">关于我们</a></li>
                 </ul>
             </div>
         </aside>
-        
+    
     </div>
     
     <script src="../../Scripts/lib/slideout.min.js"></script>
-    <script src="../../Scripts/lib/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../../Scripts/lib/swiper-4.2.6.min.js"></script>
     <script src="../../Scripts/js/m_HomeIndex.js?v=20180528"></script>
 
 </body>

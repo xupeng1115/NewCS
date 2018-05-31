@@ -52,13 +52,10 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
 .clearfix{*zoom:1;}
 .flex{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-box-pack: center;}
 
-html,body{background:#ffff;text-align: center;width:100%;margin:0;padding:0;border:0;}
+html,body{background:#fff;text-align: center;width:100%;margin:0 auto;}
 
 img{max-width: 100%;}
 .red{color:#ff6060;}
-
-/*.g_alert{max-width:280px;text-align:center;padding:10px;color:#fff;border-radius:5px;background: rgba(0,0,0,0.8);display:block;position: fixed;z-index: 200;bottom:40px;left:50%;font-size:0.75rem;}*/
-/* .g_alert_video{max-width:160px;text-align:center;padding:12px 30px;color:#fff;border-radius:7px;background: rgba(0,0,0,0.8);display:block;position: fixed;z-index: 2000;top:45%;left:50%;font-size:16px;} */
 
 .overflow-text{
 	overflow:hidden;

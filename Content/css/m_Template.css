@@ -1,15 +1,5 @@
 @charset "utf-8";
 /**********************Content***********************/
-html,body{
-    margin:0 auto;
-    position:relative;
-    width:100%;
-    max-width:800px;
-    background:#fff;
-    overflow-x:hidden;
-    overflow-y:scroll; 
-}
-
 input:-moz-placeholder,   
 textarea:-moz-placeholder {   
     color: #a1a1a1;
@@ -32,15 +22,8 @@ textarea::-webkit-input-placeholder {
     position:relative;
     width:100%;
     z-index:1;
-
-    transition:all 0.3s;
-    -moz-transition: all 0.3s; 
-    -webkit-transition: all 0.3s; 
-    -o-transition: all 0.3s; 
-}
-
-.container-left{
-    margin-left:-190px;
+    overflow-x:hidden;
+    overflow-y:scroll;
 }
 
 .container .wrapper{
@@ -165,7 +148,6 @@ footer{
     right: 0;
     top: 40px;
     bottom: 0;
-    right: 0;
     z-index: 0;
     width: 190px;
     height:100%;
