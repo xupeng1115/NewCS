@@ -43,29 +43,87 @@
     <div class="container" id="app">
         <header class="top">
             <a href="m_Index.html" class="top-back"></a>
-            <div class="top-title">登录</div>
-            <div class="top-btn">注册</div>
+            <div class="top-title" v-html="title"><!--登录--></div>
+            <div class="top-btn" v-on:click="switchType" v-html="right"><!--注册--></div>
         </header>
         <div class="wrapper">
-            <section class="title">欢迎登录Career Success</section>
-            <section class="login-container">
+            <section class="title" v-html="head"><!--欢迎登录Career Success--></section>
+
+            <section class="login-container form-container" style="display:none;" v-show="switchKey===0">
                 <div class="form-group">
-                    <div class="input-box">
-                        <input type="text" placeholder="请输入登录手机号">
+                    <div class="input-box login-box">
+                        <input type="text" class="login-phone" placeholder="请输入登录手机号" v-model="loginInfo.Phone" v-on:focus="loginPhF" v-on:input="loginPhF" v-on:blur="loginPhBlur">
+                        <span class="input-clear" style="display:none;" v-show="loginCS.PhS" v-on:click="loginPhClear"></span>
                     </div>
-                    <div class="input-box">
-                        <input type="password" placeholder="6-16位密码，区分大小写，不能用空格">
+                    <div class="input-box login-box">
+                        <input type="text" class="login-password" placeholder="6-16位密码，区分大小写，不能用空格" v-model="loginInfo.Password" v-on:focus="loginPdF" v-on:input="loginPdF" v-on:blur="loginPdBlur">
+                        <span class="input-visible" v-on:click="loginPdType" v-bind:class="{'input-disable':loginPdKey}"><i class="material-icons">visibility</i></span>
+                        <span class="input-clear login-clear" style="display:none;" v-show="loginCS.PdS" v-on:click="loginPdClear"></span>
                     </div>
                 </div>
                 <div class="password-box clearbox">
                     <div class="remember">
-                        <input type="checkbox" class="remember-input">
+                        <input type="checkbox" class="remember-input" v-model="rememberKey">
                         <span class="remember-text">记住密码</span>
                     </div>
-                    <div class="find">忘记密码？</div>
+                    <div class="find" v-on:click="findPassword">忘记密码？</div>
                 </div>
-                <div class="btn-login">登录</div>
+                <div class="btn btn-login" v-bind:class="{'btn-login-able':loginBtnAble}" v-on:click="login">登录</div>
             </section>
+
+            <section class="register-container form-container" style="display:none;" v-show="switchKey===1">
+                <div class="form-group">
+                    <div class="input-box register-box">
+                        <input type="text" class="register-Name" placeholder="请输入用户名" v-model="registerInfo.Name" v-on:focus="rgNameF" v-on:input="rgNameF" v-on:blur="rgNameBlur">
+                        <span class="input-clear" style="display:none;" v-show="rgCS.NameS" v-on:click="rgNameClear"></span>
+                    </div>
+                    <div class="input-box register-box">
+                        <input type="text" class="register-phone" placeholder="请输入注册手机号" v-model="registerInfo.Phone" v-on:focus="rgPhF" v-on:input="rgPhF" v-on:blur="rgPhBlur">
+                        <span class="input-clear" style="display:none;" v-show="rgCS.PhS" v-on:click="rgPhClear"></span>
+                    </div>
+                    <div class="input-box register-box code-box">
+                        <input type="text" class="form-code register-code" placeholder="请输入您收到的验证码" v-model="registerInfo.Code" v-on:focus="rgCodeF" v-on:input="rgCodeF" v-on:blur="rgCodeBlur">
+                        <span class="code-btn" v-html="codeText"></span>
+                        <span class="input-clear" style="display:none;" v-show="rgCS.CodeS" v-on:click="rgCodeClear"></span>
+                    </div>
+                    <div class="input-box register-box">
+                        <input type="password" class="register-password" placeholder="6-16位密码，区分大小写，不能用空格" v-model="registerInfo.Password" v-on:focus="rgPdF" v-on:input="rgPdF" v-on:blur="rgPdBlur">
+                        <span class="input-clear register-clear" style="display:none;" v-show="rgCS.PdS" v-on:click="rgPdClear"></span>
+                    </div>
+                    <div class="input-box register-box">
+                        <input type="password" class="register-pdconfirm" placeholder="请再次输入确认密码" v-model="registerInfo.PasswordConfirm" v-on:focus="rgPdCF" v-on:input="rgPdCF" v-on:blur="rgPdCBlur">
+                        <span class="input-clear register-clear" style="display:none;" v-show="rgCS.PdCS" v-on:click="rgPdConfirmClear"></span>
+                    </div>
+                </div>
+                <div class="register-tip">
+                    温馨提示：注册Career Success平台账号，即代表您已同意<a href="m_Control.html">《Career Success注册协议》</a>
+                </div>
+                <div class="btn btn-register" v-bind:class="{'btn-register-able':registerBtnAble}" v-on:click="register">注册</div>
+            </section>
+
+            <section class="find-container form-container" style="display:none;" v-show="switchKey===2">
+                <div class="form-group">
+                    <div class="input-box find-box">
+                        <input type="text" class="find-phone" placeholder="请输入注册手机号" v-model="findInfo.Phone" v-on:focus="findPhF" v-on:input="findPhF" v-on:blur="findPhBlur">
+                        <span class="input-clear" style="display:none;" v-show="findCS.PhS" v-on:click="findPhClear"></span>
+                    </div>
+                    <div class="input-box find-box code-box">
+                        <input type="text" class="form-code find-code" placeholder="请输入您收到的验证码" v-model="findInfo.Code" v-on:focus="rgCodeF" v-on:input="findCodeF" v-on:blur="findCodeBlur">
+                        <span class="code-btn" v-html="codeText"></span>
+                        <span class="input-clear" style="display:none;" v-show="findCS.CodeS" v-on:click="findCodeClear"></span>
+                    </div>
+                    <div class="input-box find-box">
+                        <input type="password" class="find-password" placeholder="6-16位新密码，区分大小写，不能用空格" v-model="findInfo.Password" v-on:focus="findPdF" v-on:input="findPdF" v-on:blur="findPdBlur">
+                        <span class="input-clear find-clear" style="display:none;" v-show="findCS.PdS" v-on:click="findPdClear"></span>
+                    </div>
+                    <div class="input-box find-box">
+                        <input type="password" class="find-pdconfirm" placeholder="请再次输入新密码" v-model="findInfo.PasswordConfirm" v-on:focus="findPdCF" v-on:input="findPdCF" v-on:blur="findPdCBlur">
+                        <span class="input-clear find-clear" style="display:none;" v-show="findCS.PdCS" v-on:click="findPdConfirmClear"></span>
+                    </div>
+                </div>
+                <div class="btn btn-find" v-bind:class="{'btn-find-able':findBtnAble}" v-on:click="find">确认</div>
+            </section>
+
         </div>
     </div>
     

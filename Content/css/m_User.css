@@ -1,8 +1,11 @@
 @charset "utf-8";
 /**********************Content***********************/
 html,body{
-    /* height:100%; */
-    overflow:hidden;
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow-x: hidden;
+    overflow-y:scroll;
 }
 
 input:-moz-placeholder,   
@@ -27,12 +30,13 @@ textarea::-webkit-input-placeholder {
 } 
 
 .container{
-    /* height:100%; */
-    overflow:hidden;
+    width:100%;
+    height:100%;
 }
 
 .container .wrapper{
-    /* height:100%; */
+    width:100%;
+    height:100%;
     background:url(../m_img/m_user_bg.jpg)no-repeat center center;
     background-size:100% 100%;
 }
@@ -41,7 +45,7 @@ textarea::-webkit-input-placeholder {
     box-shadow: 0 2px 6px 0 rgba(228, 228, 228, 0.5);
 }
 
-/**************************Login*****************************/
+/******************************Form*************************************/
 section.title{
     padding:30px 0;
     line-height:24px;
@@ -52,28 +56,29 @@ section.title{
     font-weight:500;
 }
 
-section.login-container{
+section.form-container{
     margin:0 auto;
+    padding-bottom:10px;
     width:345px;
     background:transparent;
 }
 
-section.login-container .form-group{
+section .form-group{
     position:relative;
     width:100%;
 }
 
-section.login-container .form-group .input-box{
+section .form-group .input-box{
     position:relative;
     margin-bottom:10px;
     width:100%;
     height:36px;
 }
 
-section.login-container .form-group .input-box input{
+section .form-group .input-box input{
     display:block;
     position:relative;
-    padding:9px 50px 9px 10px;
+    padding:9px 70px 9px 10px;
     width:100%;
     height:36px;
     line-height:18px;
@@ -89,11 +94,119 @@ section.login-container .form-group .input-box input{
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-section.login-container .form-group .input-box input:focus{
+section .form-group .input-box input:focus{
     border-color: #009aec;
-    outline: 0;
+    outline:none;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,154,236,0.45);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,154,236,0.45);
+}
+
+section .form-group .input-box .input-clear{
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:10;
+    width:17px;
+    height:17px;
+    background:rgba(0,0,0,0.3);
+    border-radius:100%;
+    cursor:pointer;
+}
+
+section .form-group .input-box .input-clear:before{
+    position:absolute;
+    top: 4px;
+    left: 8px;
+    content:"";
+    height:9px;
+    width:0;
+    border-left:1px solid #f1f1f1;
+
+    transform:rotate(-45deg);
+    -webkit-transform:rotate(-45px);
+}
+
+section .form-group .input-box .input-clear:after{
+    position:absolute;
+    top: 8px;
+    left: 4px;
+    content:"";
+    width:9px;
+    height:0;
+    border-top:1px solid #f1f1f1;
+
+    transform:rotate(-45deg);
+    -webkit-transform:rotate(-45px);
+}
+
+section .form-group .input-box .input-visible{
+    position:absolute;
+    top:9px;
+    right:10px;
+    z-index:10;
+    width:20px;
+    height:20px;
+    color:#333;
+    cursor:pointer;
+}
+
+section .form-group .input-box .input-disable{
+    color:#a1a1a1;
+}
+
+section .form-group .input-box .input-visible i{
+    font-size:20px;
+}
+
+section .btn{
+    width: 345px;
+    height: 40px;
+    line-height:40px;
+    border-radius: 20px;
+    background-color: #ffbf00;
+    font-size:14px;
+    letter-spacing:0.9px;
+    opacity:0.55;
+    color:#fff;
+    -webkit-box-shadow: inset 0 -4px 0 #e4b936;
+    box-shadow: inset 0 -4px 0 #e4b936; 
+}
+
+section.form-container .form-group .code-box .code-btn{
+    display:block;
+    position:absolute;
+    top:1px;
+    right:1px;
+    width:70px;
+    height:34px;
+    line-height:34px;
+    background:#fff;
+    font-size:12px;
+    color:#63abff;
+    text-align:center;
+}
+
+section.form-container .form-group .code-box .code-btn:before{
+    position:absolute;
+    top:8px;
+    left:0px;
+    content:"";
+    width:0;
+    height:20px;
+    border-left:1px solid #e8e8e8;
+}
+
+section.form-container .form-group .code-box .form-code{
+    padding-right:95px;
+}
+
+section.form-container .form-group .code-box .input-clear{
+    right:75px;
+}
+
+/**************************Login****************************/
+section.login-container .form-group .login-box .login-clear{
+    right:45px;
 }
 
 section.login-container .password-box{
@@ -130,8 +243,8 @@ section.login-container .password-box .remember input[type=checkbox].remember-in
     float:left;
     margin: 3px;
     padding: 0;
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
     outline: 0 !important;
     cursor: pointer;
     border: 1px solid #e8e8e8;
@@ -150,7 +263,7 @@ section.login-container .password-box .remember input[type=checkbox]:checked.rem
 
 input[type=checkbox]:checked:before{
 	position: absolute;
-    top: 1px;
+    top: 2px;
     left: 1px;
     width: 7px;
     height: 3px;
@@ -168,73 +281,127 @@ input[type=checkbox]:checked:before{
     transform: rotate(-45deg);
 }
 
-section.login-container .btn-login{
-    margin-bottom:20px;
-    width: 345px;
-    height: 40px;
-    line-height:40px;
-    border-radius: 20px;
-    background-color: #ffbf00;
-    font-size:14px;
-    letter-spacing:0.9px;
-    color:#fff;
-    -webkit-box-shadow: inset 0 -4px 0 #e4b936;
-    box-shadow: inset 0 -4px 0 #e4b936; 
+section.login-container .btn-login-able{
+    opacity:1;
 }
 
+/**********************************************Register******************************************/
+section.register-container .register-tip{
+    padding:5px 0 25px 0;
+    margin:0 auto;
+    line-height:20px;
+    font-size:13px;
+    color:#6d6d6d;
+    text-align:left;
+}
+
+section.register-container .register-tip a{
+    color:#63abff;
+}
+
+section.register-container .btn-register-able{
+    opacity:1;
+}
+
+/*******************************************Find********************************************/
+section.find-container .btn-find{
+    margin-top:20px;
+}
+
+section.find-container .btn-find-able{
+    opacity:1;
+}
 
 /*******************************************Media Query******************************************/
 @media (max-device-width: 800px) and (orientation:landscape){
-    
+    html,body{
+        height:600px;
+    }
 }
 
 @media screen and (max-width:414px){
-	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
-        width:390px;
-    }
+	
 }
 
 @media screen and (max-width:384px){
-	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
-        width:360px;
-    }
+	
 }
 
 @media screen and (max-width:375px){
-	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
-        width:350px;
-    }
+	
 }
 
 @media screen and (max-width:360px){
-	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
-        width:340px;
-    }
+	
 }
 
 @media screen and (max-width:320px){
-    section.speed-container .speed-wrapper .speed-item {
-        padding: 15px 7px 0 7px;
-        max-width: 156px;
+    section.title {
+        padding: 20px 0;
+        line-height: 20px;
+        font-size: 15px;
     }
 
-	section.company-container .swiper-container3 .swiper-wrapper .swiper-slide .item-box{
-        width:305px;
+    section.form-container{
+        margin:0 auto;
+        width:300px;
+        background:transparent;
     }
 
-    section.contact-container .contact-wrapper {
+    section .form-group .input-box{
+        position: relative;
+        margin-bottom: 7px;
+        width: 100%;
+        height: 32px;
+    }
+
+    section .form-group .input-box input {
+        padding: 8px 60px 8px 10px;
+        width: 100%;
+        height: 32px;
+        line-height: 16px;
+    }
+
+    section .form-group .input-box .input-clear {
+        top: 8px;
+    }
+
+    section .form-group .input-box .input-visible {
+        top: 6px;
+    }
+
+    section.register-container .register-tip {
+        padding-bottom:15px;
+        margin: 0 auto;
+        line-height: 16px;
+        font-size: 12px;
+    }
+
+    section .btn {
         width: 300px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 18px;
+        font-size: 13px;
     }
 
-    section.contact-container .contact-wrapper .contact-item {
-        padding-left: 25px;
+    section.login-container .form-group .login-box .login-clear {
+        right: 40px;
     }
 
-    section.contact-container .contact-wrapper .contact-item i {
-        top: 14px;
-        left: 6px;
-        z-index: 10;
-        font-size: 14px;
+    section.form-container .form-group .code-box .code-btn {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    section.form-container .form-group .code-box .code-btn:before{
+        position: absolute;
+        top: 8px;
+        height:16px;
+    }
+    
+    section .form-group .find-box input.find-password{
+        padding: 8px 50px 8px 10px;
     }
 }
 
