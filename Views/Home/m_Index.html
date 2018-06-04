@@ -44,7 +44,8 @@
         <header class="top">
             <a href="../Job/m_List.html" class="top-search"></a>
             <div class="top-logo"></div>
-            <div class="top-user"><i class="material-icons">perm_identity</i></div>
+            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
+            <a href="m_User.html" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/user_default.png" class="top-login-img"/></a>
             <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
         </header>
         <div id="panel" class="wrapper">
@@ -200,6 +201,7 @@
                     <li class="slider-item"><a href="../Home/m_Serve.html">服务产品</a></li>
                     <li class="slider-item"><a href="../Home/m_About.html">关于我们</a></li>
                 </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey" v-on:click="exit">安全退出</div>
             </div>
         </aside>
     

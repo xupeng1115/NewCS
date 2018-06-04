@@ -27,7 +27,7 @@ var app = new Vue({
             PdS:false,
             PdCS:false
         },
-        codeText:"获取验证码",
+        codeRegisterText:"获取验证码",
         
         //找到密码
         findInfo:{
@@ -42,6 +42,7 @@ var app = new Vue({
             PdS:false,
             PdCS:false
         },
+        codeFindText:"获取验证码",
 
         //切换0:登陆，1:注册，2:修改密码 
         switchKey:0,
@@ -51,8 +52,12 @@ var app = new Vue({
         rememberKey:true,
         //手机号是否注册过 true:未注册，false:已注册
         onlyPhone:true,
+        //用户名是否注册过，true:未注册，false:已注册
+        onlyName:true,
         //验证码返回值
         smsID:0,
+        //是否可以点击获取验证码
+        isSendCode:true
     },
     computed:{
         loginBtnAble:function(){
@@ -122,6 +127,8 @@ var app = new Vue({
             }else{
                 app.rgCS.NameS=false;
             }
+            //验证是否唯一用户名；
+            app.isOnlyName();
         },
         rgPhF:function(){
             if(app.registerInfo.Phone!==''){
@@ -257,6 +264,115 @@ var app = new Vue({
             app.switchKey=2;
         },
 
+        //获取验证码
+        getCode:function(type){
+            if(app.isSendCode){
+                return false;
+            }
+            if(type===1){
+                if(app.onlyPhone){
+                    app.isOnlyPhone();
+                    if(app.onlyPhone){
+                        var myParams = {
+                            tel: app.registerInfo.Phone,
+                            type: "Register"
+                        } 
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }
+            if(type===2){
+                var myParams = {
+                    tel:  app.findInfo.Phone,
+                    type: "FindPassword"
+                }
+            }
+
+            var mySuccessFun = function (result) {
+                if (result.Success) {
+                    showMessage("验证码已发送");
+                    smsID = result.Data;
+                    app.isSendCode = true;
+                    app.getTime(type);
+                } else {
+                    showMessage(result.Message);
+                    app.isSendCode = false;
+                }
+            }
+            var myErrorFun = function () {
+                showMessage("网络出错了！");
+                app.isSendCode = false;
+            }
+            //发送验证码信息
+            myAjax("post", "/User/SendVerificationCode", JSON.stringify(myParams), mySuccessFun, myErrorFun);
+        },
+        //60秒倒计时
+        getTime:function(type){
+            var oTime=60;
+            setTimeout(function(){
+                if(oTime>0){
+                    if(type===1){
+                        app.codeRegisterText=oTime+'s后重新获取';
+                    };
+                    if(type===2){
+                        app.codeFindText=oTime+'s后重新获取';
+                    }
+                    
+                    oTime--;
+                }
+                
+            },1000);
+        },
+
+        //是否唯一用户名
+        isOnlyName:function(){
+            var myParams = {
+                userName: $.trim(app.registerInfo.Phone)
+            };
+            var mySuccessFun = function (result) {
+                if (result.Success) {
+                    app.onlyName=true;
+                } else {
+                    showMessage("该用户名已经注册过！");
+                    app.onlyName=false;
+                }
+            };
+            var myErrorFun = function () {
+                showMessage("网络出错了！");
+            };
+    
+            //发送注册用户名信息
+            myAjax("post", "/User/IsExistUserName", JSON.stringify(myParams), mySuccessFun, myErrorFun);
+        },
+        //是否唯一手机号
+        isOnlyPhone:function(type){
+            if(app.phoneReg.test(app.registerInfo.Phone)){
+                var myParams = {
+                    tel:app.registerInfo.Phone
+                };
+                var mySuccessFun = function (result) {
+                    if (result.Success) {
+                        app.onlyPhone = true;
+                    } else {
+                        showMessage("该手机号已经注册过！");
+                        app.onlyPhone = false;
+                    }
+                };
+                var myErrorFun = function () {
+                    app.onlyPhone = false;
+                    showMessage("网络出错了！");
+                };
+        
+                //发送注册手机号信息
+                myAjax("post", "/User/IsExistTel", JSON.stringify(myParams), mySuccessFun, myErrorFun);
+            }else{
+                showMessage("请输入有效的手机号！");
+            }
+            
+        },
         //Click登录
         login:function(){
             if(app.loginBtnAble){

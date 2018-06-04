@@ -83,7 +83,7 @@
                     </div>
                     <div class="input-box register-box code-box">
                         <input type="text" class="form-code register-code" placeholder="请输入您收到的验证码" v-model="registerInfo.Code" v-on:focus="rgCodeF" v-on:input="rgCodeF" v-on:blur="rgCodeBlur">
-                        <span class="code-btn" v-html="codeText"></span>
+                        <span class="code-btn" v-html="codeRegisterText" v-on:click="getCode(1)"></span>
                         <span class="input-clear" style="display:none;" v-show="rgCS.CodeS" v-on:click="rgCodeClear"></span>
                     </div>
                     <div class="input-box register-box">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="input-box find-box code-box">
                         <input type="text" class="form-code find-code" placeholder="请输入您收到的验证码" v-model="findInfo.Code" v-on:focus="rgCodeF" v-on:input="findCodeF" v-on:blur="findCodeBlur">
-                        <span class="code-btn" v-html="codeText"></span>
+                        <span class="code-btn" v-html="codeFindText" v-on:click="getCode(2)"></span>
                         <span class="input-clear" style="display:none;" v-show="findCS.CodeS" v-on:click="findCodeClear"></span>
                     </div>
                     <div class="input-box find-box">

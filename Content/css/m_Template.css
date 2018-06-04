@@ -152,7 +152,8 @@ footer{
     line-height:40px;
 }
 
-.top .top-user{
+.top a.top-user{
+    display:block;
     position:absolute;
 	top:0;
 	right:40px;
@@ -164,9 +165,27 @@ footer{
 	font-size:16px;
 }
 
-.top .top-user i{
+.top a.top-user i{
     color:#6d6d6d;
     line-height:40px;
+}
+
+.top a.top-login{
+    display:block;
+    position:absolute;
+	top:0;
+	right:40px;
+	z-index:10;
+	width:26px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    font-size:16px;
+}
+.top a.top-login img{
+    display:block;
+    width:26px;
+    margin-top:8px;
 }
 
 .top .top-btn{
@@ -286,4 +305,15 @@ aside.slider-container .slider-wrapper .slider-box li.slider-active a{
     color:#ffbf00;
 }
 
-
+aside.slider-container .slider-wrapper .btn-exit{
+    margin:0 auto;
+    margin-top:20px;
+    width:140px;
+    height:36px;
+    line-height:36px;
+    background:#ffbf00;
+    border-radius:3px;
+    font-size:12px;
+    color:#333;
+    cursor:pointer;
+}
