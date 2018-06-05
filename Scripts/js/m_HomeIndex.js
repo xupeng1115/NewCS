@@ -1,10 +1,12 @@
 var app = new Vue({
     el: "#app",
     data: {
-        loginKey:true,
+        loginKey: isLogin,
+        loginPicture: loginPicture,
         menuKey: false
     },
     methods: {
+        //切换顶部菜单栏
         menuHandle: function (event) {
             if (app.menuKey) {
                 app.menuKey = false;
@@ -12,13 +14,14 @@ var app = new Vue({
                 app.menuKey = true;
             }
         },
-        exit:function(){
+        //退出登陆
+        exit: function () {
             var myParams = {
 
             };
             var mySuccessFun = function (result) {
                 if (result.Success) {
-                    location.href = "/Home/m_Index";
+                    location.href = "/Home/Index";
                 } else {
                     showMessage(result.Message);
                     loginKey = false;
@@ -28,7 +31,7 @@ var app = new Vue({
                 showMessage("网络出错了！");
                 loginKey = false;
             };
-            myAjax("post", oLoginExitUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun);
+            myAjax("post", "/User/LoginExit", JSON.stringify(myParams), mySuccessFun, myErrorFun);
         }
     }
 })

@@ -177,7 +177,7 @@ section.form-container .form-group .code-box .code-btn{
     position:absolute;
     top:1px;
     right:1px;
-    width:70px;
+    width:80px;
     height:34px;
     line-height:34px;
     background:#fff;
@@ -197,11 +197,11 @@ section.form-container .form-group .code-box .code-btn:before{
 }
 
 section.form-container .form-group .code-box .form-code{
-    padding-right:95px;
+    padding-right:110px;
 }
 
 section.form-container .form-group .code-box .input-clear{
-    right:75px;
+    right:90px;
 }
 
 /**************************Login****************************/

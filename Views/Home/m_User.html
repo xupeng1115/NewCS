@@ -42,13 +42,13 @@
 <body>
     <div class="container" id="app">
         <header class="top">
-            <a href="m_Index.html" class="top-back"></a>
+            <a href="/Home/Index" class="top-back"></a>
             <div class="top-title" v-html="title"><!--登录--></div>
             <div class="top-btn" v-on:click="switchType" v-html="right"><!--注册--></div>
         </header>
         <div class="wrapper">
             <section class="title" v-html="head"><!--欢迎登录Career Success--></section>
-
+    
             <section class="login-container form-container" style="display:none;" v-show="switchKey===0">
                 <div class="form-group">
                     <div class="input-box login-box">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="btn btn-login" v-bind:class="{'btn-login-able':loginBtnAble}" v-on:click="login">登录</div>
             </section>
-
+    
             <section class="register-container form-container" style="display:none;" v-show="switchKey===1">
                 <div class="form-group">
                     <div class="input-box register-box">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="btn btn-register" v-bind:class="{'btn-register-able':registerBtnAble}" v-on:click="register">注册</div>
             </section>
-
+    
             <section class="find-container form-container" style="display:none;" v-show="switchKey===2">
                 <div class="form-group">
                     <div class="input-box find-box">
@@ -108,7 +108,7 @@
                         <span class="input-clear" style="display:none;" v-show="findCS.PhS" v-on:click="findPhClear"></span>
                     </div>
                     <div class="input-box find-box code-box">
-                        <input type="text" class="form-code find-code" placeholder="请输入您收到的验证码" v-model="findInfo.Code" v-on:focus="rgCodeF" v-on:input="findCodeF" v-on:blur="findCodeBlur">
+                        <input type="text" class="form-code find-code" placeholder="请输入您收到的验证码" v-model="findInfo.Code" v-on:focus="findCodeF" v-on:input="findCodeF" v-on:blur="findCodeBlur">
                         <span class="code-btn" v-html="codeFindText" v-on:click="getCode(2)"></span>
                         <span class="input-clear" style="display:none;" v-show="findCS.CodeS" v-on:click="findCodeClear"></span>
                     </div>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="btn btn-find" v-bind:class="{'btn-find-able':findBtnAble}" v-on:click="find">确认</div>
             </section>
-
+    
         </div>
     </div>
     

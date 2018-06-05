@@ -1,3 +1,22 @@
+var oList=[
+    {
+        ID:1,
+        Score:0.9
+    },
+    {
+        ID:2,
+        Score:0.3
+    },
+    {
+        ID:3,
+        Score:0.7
+    },
+    {
+        ID:4,
+        Score:0.2
+    }
+]
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -29,57 +48,62 @@ var app = new Vue({
                 loginKey = false;
             };
             myAjax("post", oLoginExitUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun);
-        }
+        },
+        //绘制进度圆
+        getCircle: function (list) {
+            if (app.loginKey) {
+                var percents = app.getPercents(list);
+                $.each(percents, function (index, item) {
+                    $('#indicatorContainer' + item.ID).radialIndicator({
+                        barColor: '#ffbf00',
+                        barWidth: 7,
+                        initValue: 0,
+                        fontFamily: '"PingFang SC","Microsoft Yahei"',
+                        fontWeight: 'normal',
+                        fontSize: 22,
+                        fontColor: "#333",
+                        roundCorner: true,
+                        percentage: true
+                    });
+
+                    //进度从零运动到指定位置
+                    var radObj = $('#indicatorContainer' + item.ID).data('radialIndicator');
+                    if ($('#indicatorContainer' + item.ID).length === 1) {
+                        radObj.animate(item.Score);
+                    }
+                })
+            }
+        },
+        //序列化百分比
+        getPercents: function (list) {
+            var arr = [];
+            $.each(list, function (index, item) {
+                var obj = {};
+                obj.ID = item.ID;
+                obj.Score = item.Score * 100;
+                arr.push(obj);
+            })
+            return arr;
+        },
     }
 })
 
 $(function () {
+
+    //绘制进度圆
+    app.getCircle(oList);
+
     //“想从事的行业”
     var mySwiper1 = new Swiper('#swiper1', {
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: true,
-        },
+        // autoplay: {
+        //     delay: 2000,
+        //     disableOnInteraction: true,
+        // },
         speed: 500,
         slidesPerView: "auto",
         slidesPerGroup: 1,
         freeMode: true,
         freeModeMomentum: true,
-        });
-
-    //“理想工作怎么找”
-    var mySwiper2 = new Swiper('#swiper2', {
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: true,
-        },
-        speed:700,
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        freeMode: true,
-        freeModeMomentum: true,
-
-        pagination: {
-            el: '.swiper-pagination2',
-            bulletElement: 'li',
-            clickable: true,
-        }
-        
-    });
-
-    //“合作企业”
-    var mySwiper3 = new Swiper('#swiper3', {
-        loop:true,
-        autoplay: {
-            delay:0,
-            disableOnInteraction: true,
-        },
-        speed:5000,
-        slidesPerView: "auto",
-        slidesPerGroup: 1,
-        loopedSlides :1,
-        freeMode : true,
-        freeModeMomentum : true,
     });
 
     //侧滑导航

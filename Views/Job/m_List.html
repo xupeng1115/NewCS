@@ -22,11 +22,12 @@
     <title></title>
 	
     <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
     <link rel="stylesheet" href="../../Content/lib/animate.css">
     <link rel="stylesheet" href="../../Content/lib/toast.css">
     <link rel="stylesheet" href="../../Content/css/m_Template.css">
 
-    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    
     <link rel="stylesheet" href="../../Content/lib/swiper-4.2.6.min.css">
     <link rel="stylesheet" href="../../Content/css/m_List.css?v=20180604">
     
@@ -42,7 +43,7 @@
 <body>
     <div class="container" id="app">
         <header class="top">
-            <a href="../Job/m_List.html" class="top-search"></a>
+            <div class="top-search-btn"></div>
             <div class="top-logo"></div>
             <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
             <a href="m_User.html" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/user_default.png" class="top-login-img"/></a>
@@ -50,7 +51,229 @@
         </header>
         <div id="panel" class="wrapper">
             
+            <section class="banner-container">
+                <div class="banner-name overflow-text">研发工程师</div>
+                <div class="btn-banner-show">展开选项</div>
+            </section>
             
+            <section class="recommend-container">
+                <div class="recommend-title"><span><i class="material-icons recommend-title-icon">&#xE80E;</i></span><span>推荐职位</span></div>
+                <div class="recommend-dec">根据您的测评和简历进行大数据分析推荐更适合您的职位。</div>
+                <div class="recommend-box swiper-container" id="swiper1">
+                    <div class="recommend-wrapper swiper-wrapper">
+                        <div class="swiper-slide recommend-item">
+                            <a href="/Job/m_List?Industry=银行/证券/金融行业">
+                                <div class="logo-box">
+                                    <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                                </div>
+                                <div class="name">研发工程师</div>
+                                <div class="company">苹果</div>
+                                <div class="demand overflow-text">
+                                    <span class="experience">经验3-5年</span> 
+                                    <span class="education">/本科</span>
+                                    <span class="area">/北京-丰台区</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="/Job/m_List?Industry=销售/客服/快消房产行业">
+                                <div class="logo-box">
+                                    <img src="../../Content/m_img/m_list_logo2.png" class="logo">
+                                </div>
+                                <div class="name">研发工程师</div>
+                                <div class="company">苹果</div>
+                                <div class="demand overflow-text">
+                                    <span class="experience">经验3-5年</span> 
+                                    <span class="education">/本科</span>
+                                    <span class="area">/北京-丰台区</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="/Job/m_List?Industry=产品/技术/IT互联科技行业">
+                                <div class="logo-box">
+                                    <img src="../../Content/m_img/m_list_logo3.png" class="logo">
+                                </div>
+                                <div class="name overflow-text">研发工程师</div>
+                                <div class="company">苹果</div>
+                                <div class="demand overflow-text">
+                                    <span class="experience">经验3-5年</span> 
+                                    <span class="education">/本科</span>
+                                    <span class="area">/北京-丰台区</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="/Job/m_List?Industry=会计/教育/法律/咨询行业">
+                                <div class="logo-box">
+                                    <img src="../../Content/m_img/m_list_logo4.png" class="logo">
+                                </div>
+                                <div class="name">研发工程师</div>
+                                <div class="company">苹果</div>
+                                <div class="demand overflow-text">
+                                    <span class="experience">经验3-5年</span> 
+                                    <span class="education">/本科</span>
+                                    <span class="area">/北京-丰台区</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide position-item">
+                            <a href="/Job/m_List?Industry=汽车/医药/化工/制造行业">
+                                <div class="logo-box">
+                                    <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                                </div>
+                                <div class="name">研发工程师</div>
+                                <div class="company">苹果</div>
+                                <div class="demand overflow-text">
+                                    <span class="experience">经验3-5年</span> 
+                                    <span class="education">/本科</span>
+                                    <span class="area">/北京-丰台区</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="list-container">
+                <div class="list-top"><span class="text">职位列表</span><span class="dec">根据您的搜索找到的职位</span></div>
+                <ul class="list-box">
+                    <li class="item">
+                        <div class="name">研发工程师</div>
+                        <div class="demand overflow-text">
+                            <span class="experience">经验3-5年</span> 
+                            <span class="education">/本科</span>
+                            <span class="area">/北京-丰台区</span>
+                        </div>
+                        <ul class="tags">
+                            <li class="tag">研发类</li>
+                            <li class="tag">吃苦耐劳</li>
+                            <li class="tag">研发类</li>
+                        </ul>
+                        <div class="company-box">
+                            <div class="company-logo">
+                                <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                            </div>
+                            <div class="company-name">阿里巴巴</div>
+                            <div class="comment clearbox">
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="comment-num">234条评论</span>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <span class="num">2288832</span>
+                            <span class="icon yes"><i class="material-icons">favoriter</i></span>
+                            <span class="icon no"><i class="material-icons">favorite_border</i></span>
+                        </div>
+                        <div class="match" id="indicatorContainer1"></div>
+                    </li>
+                    <li class="item">
+                        <div class="name">研发工程师</div>
+                        <div class="demand overflow-text">
+                            <span class="experience">经验3-5年</span> 
+                            <span class="education">/本科</span>
+                            <span class="area">/北京-丰台区</span>
+                        </div>
+                        <ul class="tags">
+                            <li class="tag">研发类</li>
+                            <li class="tag">吃苦耐劳</li>
+                            <li class="tag">研发类</li>
+                        </ul>
+                        <div class="company-box">
+                            <div class="company-logo">
+                                <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                            </div>
+                            <div class="company-name">阿里巴巴</div>
+                            <div class="comment clearbox">
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="comment-num">234条评论</span>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <span class="num">2288832</span>
+                            <span class="icon yes"><i class="material-icons">favoriter</i></span>
+                            <span class="icon no"><i class="material-icons">favorite_border</i></span>
+                        </div>
+                        <div class="match" id="indicatorContainer2"></div>
+                    </li>
+                    <li class="item">
+                        <div class="name">研发工程师</div>
+                        <div class="demand overflow-text">
+                            <span class="experience">经验3-5年</span> 
+                            <span class="education">/本科</span>
+                            <span class="area">/北京-丰台区</span>
+                        </div>
+                        <ul class="tags">
+                            <li class="tag">研发类</li>
+                            <li class="tag">吃苦耐劳</li>
+                            <li class="tag">研发类</li>
+                        </ul>
+                        <div class="company-box">
+                            <div class="company-logo">
+                                <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                            </div>
+                            <div class="company-name">阿里巴巴</div>
+                            <div class="comment clearbox">
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="comment-num">234条评论</span>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <span class="num">2288832</span>
+                            <span class="icon yes"><i class="material-icons">favoriter</i></span>
+                            <span class="icon no"><i class="material-icons">favorite_border</i></span>
+                        </div>
+                        <div class="match" id="indicatorContainer3"></div>
+                    </li>
+                    <li class="item">
+                        <div class="name">研发工程师</div>
+                        <div class="demand overflow-text">
+                            <span class="experience">经验3-5年</span> 
+                            <span class="education">/本科</span>
+                            <span class="area">/北京-丰台区</span>
+                        </div>
+                        <ul class="tags">
+                            <li class="tag">研发类</li>
+                            <li class="tag">吃苦耐劳</li>
+                            <li class="tag">研发类</li>
+                        </ul>
+                        <div class="company-box">
+                            <div class="company-logo">
+                                <img src="../../Content/m_img/m_list_logo1.png" class="logo">
+                            </div>
+                            <div class="company-name">阿里巴巴</div>
+                            <div class="comment clearbox">
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="star"><i class="material-icons">grade</i></span>
+                                <span class="comment-num">234条评论</span>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <span class="num">2288832</span>
+                            <span class="icon yes"><i class="material-icons">favoriter</i></span>
+                            <span class="icon no"><i class="material-icons">favorite_border</i></span>
+                        </div>
+                        <div class="match" id="indicatorContainer4"></div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
         </div>
         <aside id="menu" class="slider-container">
             <div class="slider-wrapper">
@@ -69,7 +292,18 @@
         </aside>
     
     </div>
-    
+    <script>
+        //注册登陆key值
+        var isLogin = "False";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+        var loginPicture='';
+    </script>
+    <script src="../../Scripts/lib/job_radialIndicator.js"></script>
     <script src="../../Scripts/lib/slideout.min.js"></script>
     <script src="../../Scripts/lib/swiper-4.2.6.min.js"></script>
     <script src="../../Scripts/js/m_List.js?v=20180604"></script>
