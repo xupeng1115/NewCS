@@ -71,3 +71,17 @@ window.onload = function () {
         lastTouchEnd = now;
     }, false)
 }
+
+//头像没有成功加载出来时处理
+function nofind() {
+    var oImg = event.srcElement;
+    oImg.src = "../../Content/m_img/m_head.png";
+    oImg.onerror = null;
+}
+
+//公司logo没有成功加载出来时处理
+function nofind() {
+    var oImg = event.srcElement;
+    oImg.src = "../../Content/m_img/m_empty.png";
+    oImg.onerror = null;
+}

@@ -5,6 +5,21 @@ var app = new Vue({
         loginPicture: loginPicture,
         menuKey: false
     },
+    watch:{
+        menuKey:function(val){
+            if(val){
+                $("html,body,.container,#panel").css({
+                    'height':"100%",
+                    'overflowY':"hidden"
+                })
+            }else{
+                $("html,body,.container,#panel").css({
+                    'height':"auto",
+                    'overflowY':"scroll"
+                })
+            }
+        }
+    },
     methods: {
         //切换顶部菜单栏
         menuHandle: function (event) {
@@ -95,7 +110,7 @@ $(function () {
         'touch': false
     });
 
-    $("body").on("click",".top-menu",function(){
+    $("body").on("touchstart",".top-menu",function(){
         slideout.toggle();
     });
 
