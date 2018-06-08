@@ -48,10 +48,26 @@
             <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
         </header>
         <div id="panel" class="wrapper">
-            
+
+            <section class="tip-container" style="display:none;" v-show="loginKey">
+                <div class="text">登录并完成测评，可根据您的大数据分析推荐职位，匹配率最高可达99%!</div>
+                <div class="btn-login-tip"><a href="../home/m_User.html">登录</a></div>
+            </section>
+
             <section class="banner-container">
                 <div class="banner-name overflow-text">研发工程师</div>
                 <div class="btn-banner-show">展开选项</div>
+                <div class="filter-box">
+                    <div class="filter-item type">
+                        <div class="title">工作类型</div>
+                        <div class="filter-box">
+                            <input type="radio">
+                        </div>
+                        <div class="filter-box">
+                            <input type="radio">
+                        </div>
+                    </div>
+                </div>
             </section>
             
             <section class="recommend-container">

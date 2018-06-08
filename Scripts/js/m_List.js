@@ -2,11 +2,22 @@
 var app = new Vue({
     el: "#app",
     data: {
+        //是否登录
         loginKey:true,
+        //是否显示侧边菜单  
         menuKey: false,
+        //当前页码
         currentPage:0,
+        //职位列表
         positionList:positionList,
-        recommendList:recommendList
+        //推荐列表
+        recommendList:recommendList,
+        //是否显示加载组件
+        loadKey:false,
+        //加载的列表
+        addList:[],
+        //筛选列表是否展开
+        filterKey:false
     },
     watch:{
         menuKey:function(val){
@@ -24,10 +35,13 @@ var app = new Vue({
         }
     },
     updated: function () {
-        $.each($(".match").find("canvas"), function (index, item) {
-            $(item).remove();
-        })
-        this.getCircle(this.positionList);
+        if(this.loadKey){
+            $.each($(".match").find("canvas"), function (index, item) {
+                $(item).remove();
+            })
+            this.getCircle(this.positionList);
+            this.loadKey=false;
+        }
     },
     methods: {
         //是否显示侧边菜单
@@ -233,7 +247,7 @@ var app = new Vue({
                 showMessage("网络出错了！");
             }
             getAjax("post", pageUrl, myParams, mySuccessFun, myErrorFun);
-        },
+        }
     }
 })
 
@@ -290,11 +304,13 @@ $(function () {
         slideout.close();
     });
 
+    //滚动加载
     $(window).scroll(function(event){
         var oLen=$(window).height();
         var oHeight=$(document).height();  
         var oTop=$(document).scrollTop(); 
         if((oHeight-oTop-oLen)<40){
+            app.loadKey=true;
             $.each(addList,function(index,item){
                 app.positionList.push(item);
             })
@@ -309,8 +325,7 @@ $(function () {
 function dataFormat(lists) {
     var data = [];
     for (var i = 0; i < lists.length; i++) {
-        var obj = {
-        };
+        var obj = {};
         for (var j in lists[i]) {
             if (j == "logoUrl") {
                 obj["ImgUrl"] = lists[i][j];
