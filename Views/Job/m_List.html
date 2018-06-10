@@ -56,17 +56,38 @@
 
             <section class="banner-container">
                 <div class="banner-name overflow-text">研发工程师</div>
-                <div class="btn-banner-show">展开选项</div>
-                <div class="filter-box">
+                <div class="btn-banner-show" v-html="filterKey?'收起选项':'展开选项'" v-on:click="filterShow"><!--展开选项--></div>
+                <div class="filter-box" v-bind:class="{'filter-box-show':filterKey}">
                     <div class="filter-item type">
                         <div class="title">工作类型</div>
-                        <div class="filter-box">
-                            <input type="radio" class="">
+                        <div class="input-box">
+                            <input type="radio" class="filter-radio" name="radio" value="全职" v-model="filterType">
+                            <span class="text" v-bind:class="{'text-active':filterType==='全职'}">全职</span>
+                            <span class="flo" v-on:click="searchType(1)"></span>
                         </div>
-                        <div class="filter-box">
-                            <input type="radio" class="">
+                        <div class="input-box">
+                            <input type="radio" class="filter-radio" name="radio" value="实习" v-model="filterType">
+                            <span class="text" v-bind:class="{'text-active':filterType==='实习'}">实习</span>
+                            <span class="flo" v-on:click="searchType(0)"></span>
                         </div>
                     </div>
+                    <div class="filter-item city">
+                        <div class="title">选择城市</div>
+                        <div class="content">请选择</div>
+                    </div>
+                    <div class="filter-item pay">
+                        <div class="title">期望薪资</div>
+                        <div class="content">请选择</div>
+                    </div>
+                    <div class="filter-item industry">
+                        <div class="title">选择行业</div>
+                        <div class="content">请选择</div>
+                    </div>
+                    <div class="filter-item position">
+                        <div class="title">热门职位</div>
+                        <div class="content">请选择</div>
+                    </div>
+                    <div class="btn-filter-clear" v-on:click="filterClear">清空选择</div>
                 </div>
             </section>
             

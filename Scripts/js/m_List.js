@@ -16,8 +16,12 @@ var app = new Vue({
         loadKey:false,
         //加载的列表
         addList:[],
+
         //筛选列表是否展开
-        filterKey:false
+        filterKey:false,
+
+        //类型筛选
+        filterType:'',
     },
     watch:{
         menuKey:function(val){
@@ -247,6 +251,31 @@ var app = new Vue({
                 showMessage("网络出错了！");
             }
             getAjax("post", pageUrl, myParams, mySuccessFun, myErrorFun);
+        },
+        //切换显示筛选列表
+        filterShow:function(){
+            if(app.filterKey){
+                app.filterKey=false;
+            }else{
+                app.filterKey=true;
+            }
+        }, 
+        //类型筛选
+        searchType:function(type){
+            console.log(type);
+            if(type===1){
+                if(app.filterType!=='全职'){
+                    app.filterType='全职';
+                }
+            }else{
+                if(app.filterType!=='实习'){
+                    app.filterType='实习';
+                }
+            }
+        },
+        //清空筛选项
+        filterClear:function(){
+
         }
     }
 })
@@ -319,6 +348,16 @@ $(function () {
         }
     });
     
+    //全屏触发事件
+    $(document).on("touchstart", function (e) {
+
+        //收起选项列表
+        // if (e.target.className.indexOf("btn-banner-show") < 0) {
+        //     app.filterKey = false;
+        // }
+    })
+
+
 });
 
 //部分替换职位数据源列表
