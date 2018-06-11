@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_Label.css?v=20180611">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="/Home/Index" class="top-back"></a>
+            <div class="top-title">标签选择</div>
+            <div class="top-save-btn" v-on:click="tagConfirm">保存</div>
+        </header>
+        <div id="panel" class="wrapper">
+            <section class="tip-container">
+                <div class="left" v-html="'最多选择5个，共'+Len+'个标签'"><!--最多选择5个，共2297个标签--></div>
+                <div class="right" v-html="currentLen+'/5'"><!--2/5--></div>
+            </section>
+            <section class="tags-container">
+                <ul class="select-list clearbox">
+                    <li class="select-item" v-for="(item,index) in tagList" v-bind:key="item.ID" v-bind:index="item.ID" v-on:click="tagClick(item,$event)" v-html="item.TitleName"></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "False";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+        var UserTitleList = JSON.parse('[{"ID":23,"TitleName":"网络推广","TitleID":4,"Remarks":"","UserID":100003},{"ID":24,"TitleName":"风险控制","TitleID":7,"Remarks":"","UserID":100003},{"ID":25,"TitleName":"Java开发","TitleID":2,"Remarks":"","UserID":100003},{"ID":26,"TitleName":"互联网/电子商务","TitleID":1,"Remarks":"","UserID":100003}]');
+	    var UserName = '';
+        var UserID = '100003';
+        var UserKey = '4be2950f-4390-4d1c-bcbe-f0d8f1dd7978';
+    </script>
+
+    <script src="../../Scripts/js/Label.js?v=20180604"></script>
+
+</body>
+</html>

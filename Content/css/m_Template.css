@@ -223,178 +223,41 @@ footer{
     color:#333;
 }
 
-/************************************flo***************************************/
-section.flo-container{
-    position:fixed;
-    top:40px;
-    right:0;
-    z-index:-10;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0);
-
-    transition:all 0.2s;
-    -webkit-transition:all 0.2s;
-}
-
-section.flo-container-show{
-    z-index:1000;
-    background:rgba(0,0,0,0.5);
-}
-
-
-/******************************侧滑导航*******************************/
-.slideout-menu {
-    position: fixed;
+.top .top-table{
+    position: absolute;
+    top: 0;
     right: 0;
-    top: 40px;
-    bottom: 0;
-    z-index: 0;
-    width: 190px;
-    height:100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    display: none;
-    border-top:1px solid #f3f5f7;
-}
-  
-.slideout-panel {
-    position:relative;
-    z-index: 1;
-}
-
-.slideout-open,
-.slideout-open body,
-.slideout-open .slideout-panel {
-    overflow: hidden;
-}
-
-.slideout-open .slideout-menu {
-    display: block;
-}
-
-.slideout-menu-right {
-    right: 0;
-}
-
-aside.slider-container{
-    height:100%;
-}
-
-aside.slider-container .slider-wrapper{
-    position:relative;
-    width:100%;
-    overflow-y:scroll;
-    padding-bottom:100px;
-}
-
-aside.slider-container .slider-wrapper .slider-tip{
-    margin:10px auto;
-    width: 170px;
-    height: 70px;
-    border-radius: 4px;
-    background-color: #3f444a;
-    box-shadow: 0 2px 4px 0 rgba(166, 166, 166, 0.5);
-}
-
-aside.slider-container .slider-wrapper .slider-tip .tip-text{
-    padding-top:15px;
-    line-height:20px;
+    z-index: 10;
+    width: 56px;
+    height: 40px;
+    line-height: 40px;
     font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-align: center;
-    color: #ffbf00;
-}
-
-aside.slider-container .slider-wrapper .slider-tip .tip-num{
-    padding-top:2px;
-    line-height:18px;
-    font-size: 12px;
-    font-weight: 500;
     letter-spacing: 0.9px;
     text-align: center;
-    color: #fff;
+    color: #0099e5;
+    cursor: pointer;
 }
 
-aside.slider-container .slider-wrapper .slider-box{
-    position:relative;
-    width:100%;
+.top .top-save-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 56px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    letter-spacing: 0.9px;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
 }
 
-aside.slider-container .slider-wrapper .slider-box li.slider-item{
-    display:block;
-    height:40px;
-    width:100%;
-    line-height:39px;
-    text-align:center;
-    border-bottom:1px solid #f3f5f7;
-    cursor:pointer;
-}
 
-aside.slider-container .slider-wrapper .slider-box li.slider-item a{
-    display:block;
-    height:39px;
-    width:100%;
-    line-height:39px;
-    font-size:14px;
-    color:#6d6d6d;
-    text-align:center;
-}
-
-aside.slider-container .slider-wrapper .slider-box li.slider-active a{
-    color:#ffbf00;
-}
-
-aside.slider-container .slider-wrapper .btn-exit{
-    margin:0 auto;
-    margin-top:20px;
-    width:140px;
-    height:36px;
-    line-height:36px;
-    background:#ffbf00;
-    border-radius:3px;
-    font-size:12px;
-    color:#333;
-    cursor:pointer;
-}
 
 /*******************************************Media Query******************************************/
 @media (max-device-width: 800px) and (orientation:landscape){
-    aside.slider-container .slider-wrapper .slider-tip {
-        margin: 5px auto;
-        width: 140px;
-        height: 50px;
-    }
-
-    aside.slider-container .slider-wrapper .slider-tip .tip-text {
-        padding-top: 9px;
-        line-height: 16px;
-        font-size: 12px;
-    }
-
-    aside.slider-container .slider-wrapper .slider-box li.slider-item {
-        display: block;
-        height: 32px;
-    }
-
-    aside.slider-container .slider-wrapper .slider-box li.slider-item a {
-        height: 31px;
-        line-height: 31px;
-        font-size: 13px;
-    }
-
-    aside.slider-container .slider-wrapper .slider-tip .tip-num {
-        line-height: 16px;
-        font-size: 10px;
-    }
-
-    aside.slider-container .slider-wrapper .btn-exit {
-        margin-top: 12px;
-        width: 130px;
-        height: 32px;
-        line-height: 32px;
-    }
+    
 }
 
 @media screen and (max-width:414px){
