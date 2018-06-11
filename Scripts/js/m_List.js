@@ -1,4 +1,3 @@
-
 var app = new Vue({
     el: "#app",
     data: {
@@ -22,6 +21,24 @@ var app = new Vue({
 
         //类型筛选
         filterType:'',
+        //薪酬筛选
+        filterPay:'',
+        payBegin:6000,
+        payEnd:30000,
+        //行业筛选
+        filterCity:'',
+        //行业筛选
+        filterIndustry:'',
+        //职位筛选
+        filterPosition:'',
+        //职位名称
+        positionName:'',
+        //搜索关键字
+        searchName:'',
+
+        //搜索类型：0：公司，1：职位
+        inputKey: inputKey === '' ? 1 : window.Number(inputKey),
+
     },
     watch:{
         menuKey:function(val){
@@ -35,6 +52,18 @@ var app = new Vue({
                     'height':"auto",
                     'overflowY':"scroll"
                 })
+            }
+        },
+        filterPay:function(newVal,oldVa){
+            if(newVal!==oldVal){
+                if(newVal!==''){
+                    var oArr=this.filterPay.split('-');
+                    this.payBegin=oArr[0];
+                    this.payEnd=oArr[1];
+                }else{
+                    this.payBegin=6000;
+                    this.payEnd=30000;
+                }
             }
         }
     },
@@ -146,32 +175,31 @@ var app = new Vue({
         getList: function (p) {
 
             var myParams = {
-                Title: app.positionName,
-                JobType: app.selectType,
-                Area: app.areaValue,
-                PositionName: app.positionValue,
-                Industry: app.industryValue,
-                BeginPay: app.payFrom,
-                EndPay: app.payTo,
+                Title: app.searchName,
+                JobType: app.filterType,
+                Area: app.filterCity,
+                PositionName: app.positionName,
+                Industry: app.filterIndustry,
+                BeginPay: app.payBegin,
+                EndPay: app.payEnd,
                 PageIndex: p,
                 PageSize: pageSize,
                 UserID: UserID == "" ? 0 : UserID,
                 UserKey: UserKey,
                 st: app.inputKey
             }
-
+            console.log(myParams);
             //var pageUrl="/Job/PositionList";
             var pageUrl = "http://47.104.130.19:8085/knx/job_query.do";
+
+            //公共加载图案
+            g_loading();
             var mySuccessFun = function (result) {
                 if (result !== null) {
+                    //删除公共加载
+                    remove_loading();
                     //app.positionList = result.Data;
                     app.positionList = dataFormat(result.data);
-                    if (p === 0) {
-                        //app.pageCount = result.PageCount;
-                        app.pageCount = Math.ceil(result.total / pageSize);
-                        app.getPage(Math.ceil(result.total / pageSize));
-                    }
-
                 }
             }
             var myErrorFun = function (error) {
@@ -273,9 +301,32 @@ var app = new Vue({
                 }
             }
         },
+        //城市选择
+        getCity:function(){
+            app.getList(0);
+        },
+        //职位类型选择
+        getType:function(){
+            app.getList(0);
+        },
+        //薪酬选择
+        getPay:function(){
+            app.getList(0);
+        },
+        //行业选择
+        getIndustry:function(){
+            app.getList(0);
+        },
         //清空筛选项
         filterClear:function(){
+            app.filterType='',
+            app.filterCity='',
+            app.positionName='',
+            app.filterIndustry='',
+            app.payBegin=6000;
+            app.payEnd=30000;
 
+            app.getList(0);
         }
     }
 })
@@ -287,10 +338,10 @@ $(function () {
 
     //“想从事的行业”
     var mySwiper1 = new Swiper('#swiper1', {
-        // autoplay: {
-        //     delay: 2000,
-        //     disableOnInteraction: true,
-        // },
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: true,
+        },
         speed: 500,
         slidesPerView: "auto",
         slidesPerGroup: 1,
@@ -356,7 +407,6 @@ $(function () {
         //     app.filterKey = false;
         // }
     })
-
 
 });
 

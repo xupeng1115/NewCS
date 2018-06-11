@@ -73,19 +73,132 @@
                     </div>
                     <div class="filter-item city">
                         <div class="title">选择城市</div>
-                        <div class="content">请选择</div>
+                        <div class="content" v-html="filterCity!==''?filterCity:'请选择'" v-bind:class="{'content-active':filterCity!==''}"><!--请选择--></div>
+                        <select id="filter-city" v-model="filterCity" v-on:change='getCity'>
+                            <option value="" selected>不限</option>
+                            <option value="全国" class="hot-city">全国</option>
+                            <option value="北京">北京</option>
+                            <option value="上海">上海</option>
+                            <option value="广州">广州</option>
+                            <option value="深圳">深圳</option>
+                            <option value="武汉">武汉</option>
+                            <option value="西安">西安</option>
+                            <option value="杭州">杭州</option>
+                            <option value="南京">南京</option>
+                            <option value="成都">成都</option>
+                            <option value="重庆">重庆</option>
+                            <option value="东莞">东莞</option>	
+                            <option value="大连">大连</option>
+                            <option value="沈阳">沈阳</option>
+                            <option value="苏州">苏州</option>
+                            <option value="昆明">昆明</option>
+                            <option value="长沙">长沙</option>
+                            <option value="合肥">合肥</option>
+                            <option value="宁波">宁波</option>
+                            <option value="郑州">郑州</option>
+                            <option value="天津">天津</option>
+                            <option value="青岛">青岛</option>
+                            <option value="济南">济南</option>
+                            <option value="哈尔滨">哈尔滨</option>
+                            <option value="长春">长春</option>
+                            <option value="福州">福州</option>
+                            <option value="广东省">广东省</option>
+                            <option value="江苏省">江苏省</option>
+                            <option value="浙江省">浙江省</option>
+                            <option value="四川省">四川省</option>
+                            <option value="海南省">海南省</option>
+                            <option value="福建省">福建省</option>
+                            <option value="山东省">山东省</option>
+                            <option value="江西省">江西省</option>
+                            <option value="广西">广西</option>
+                            <option value="安徽省">安徽省</option>
+                            <option value="河北省">河北省</option>	
+                            <option value="河南省">河南省</option>
+                            <option value="湖北省">湖北省</option>
+                            <option value="湖南省">湖南省</option>
+                            <option value="陕西省">陕西省</option>
+                            <option value="山西省">山西省</option>
+                            <option value="黑龙江省">黑龙江省</option>
+                            <option value="辽宁省">辽宁省</option>
+                            <option value="吉林省">吉林省</option>
+                            <option value="云南省">云南省</option>
+                            <option value="贵州省">贵州省</option>
+                            <option value="甘肃省">甘肃省</option>
+                            <option value="内蒙古">内蒙古</option>
+                            <option value="宁夏">宁夏</option>
+                            <option value="西藏">西藏</option>
+                            <option value="新疆">新疆</option>
+                            <option value="青海省">青海省</option>
+                            <option value="香港">香港</option>
+                            <option value="澳门">澳门</option>
+                            <option value="台湾">台湾</option>			
+                        </select>
                     </div>
                     <div class="filter-item pay">
                         <div class="title">期望薪资</div>
-                        <div class="content">请选择</div>
+                        <div class="content" v-html="filterPay!==''?filterPay:'请选择'" v-bind:class="{'content-active':filterPay!==''}"><!--请选择--></div>
+                        <select id="filter-pay" v-model="filterPay">
+                            <option value="" selected>不限</option>
+                            <option value="6000-8000">6000-8000</option>
+                            <option value="8000-9000">8000-9000</option>
+                            <option value="9000-10000">9000-10000</option>
+                            <option value="10000-12000">10000-12000</option>
+                            <option value="12000-15000">12000-15000</option>
+                            <option value="15000-18000">15000-18000</option>
+                            <option value="18000-20000">18000-20000</option>
+                            <option value="20000-25000">20000-25000</option>
+                            <option value="25000-30000">25000-300000</option>					
+                        </select>
                     </div>
                     <div class="filter-item industry">
                         <div class="title">选择行业</div>
-                        <div class="content">请选择</div>
+                        <div class="content" v-html="filterIndustry!==''?filterIndustry:'请选择'" v-bind:class="{'content-active':filterIndustry!==''}"><!--请选择--></div>
+                        <select id="filter-industry" v-model="filterIndustry">
+                            <option value="" selected>不限</option>
+                            <option value="销售/客服/快消房产行业">销售/客服/快消房产行业</option>
+                            <option value="产品/技术/IT互联科技行业">产品/技术/IT互联科技行业</option>
+                            <option value="银行/证券/金融行业">银行/证券/金融行业</option>
+                            <option value="会计/教育/法律/咨询行业">会计/教育/法律/咨询行业</option>
+                        </select>
                     </div>
                     <div class="filter-item position">
                         <div class="title">热门职位</div>
-                        <div class="content">请选择</div>
+                        <div class="content" v-html="filterPosition!==''?filterPosition:'请选择'" v-bind:class="{'content-active':filterPosition!==''}"><!--请选择--></div>
+                        <select id="filter-position" v-model="filterPosition">
+                            <option value="" selected>不限</option>
+                            <option value="会计">会计</option>
+                            <option value="销售代表">销售代表</option>
+                            <option value="出纳">出纳</option>
+                            <option value="销售经理">销售经理</option>
+                            <option value="客户经理">客户经理</option>
+                            <option value="财务经理">财务经理</option>
+                            <option value="客服专员">客服专员</option>
+                            <option value="法务专员">法务专员</option>
+                            <option value="产品经理">产品经理</option>
+                            <option value="人事专员">人事专员</option>
+                            <option value="市场专员">市场专员</option>
+                            <option value="课程顾问">课程顾问</option>	
+                            <option value="财务助理">财务助理</option>
+                            <option value="Java开发工程师">Java开发工程师</option>
+                            <option value="证券经纪人">证券经纪人</option>
+                            <option value="销售顾问">销售顾问</option>
+                            <option value="投资顾问">投资顾问</option>
+                            <option value="财务总监">财务总监</option>
+                            <option value="销售总监">销售总监</option>
+                            <option value="储备干部">储备干部</option>
+                            <option value="文案策划">文案策划</option>
+                            <option value="理财顾问">理财顾问</option>
+                            <option value="行政前台">行政前台</option>
+                            <option value="法务主管">法务主管</option>
+                            <option value="总经理助理">总经理助理</option>
+                            <option value="前端开发工程师">前端开发工程师</option>
+                            <option value="行政助理">行政助理</option>
+                            <option value="平面设计">平面设计</option>
+                            <option value="JAVA开发工程师">JAVA开发工程师</option>
+                            <option value="软件工程师">软件工程师</option>
+                            <option value="外贸业务员">外贸业务员</option>
+                            <option value="Android开发工程师">Android开发工程师</option>		
+                        </select>
                     </div>
                     <div class="btn-filter-clear" v-on:click="filterClear">清空选择</div>
                 </div>
@@ -182,6 +295,12 @@
         }
 
         var loginPicture='';
+        var inputKey='';
+        var pageSize = 6;
+        var PositionTitle = '';
+        var IndustryValue = '';
+        var UserID='';
+        var UserKey = '4be2950f-4390-4d1c-bcbe-f0d8f1dd7978';
         var positionList=[
             {
                 "CompId":"5Xk7hTorTWDEDWN2ACZ5y7XNZsQmeB",

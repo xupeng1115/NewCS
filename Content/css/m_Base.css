@@ -68,3 +68,6 @@ img{max-width: 100%;}
 	content:"";
 	clear:both;
 }
+
+/**********公共加载***************/
+.g_loading{position: fixed;top:0;left:0;width:100%;height: 100%;z-index: 999;background:url("../m_img/ajax-loader.gif") no-repeat center center rgba(255,255,255,.5);}
