@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_MyJob.css?v=20180613">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <div class="top-search-btn"></div>
+            <div class="top-title">我的后台管理</div>
+            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
+            <a href="/Home/m_User" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/m_user_default.png" class="top-login-img" /></a>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div id="panel" class="wrapper">
+
+            <section class="backage-nav-container">
+                <a href="/my/MyCollection" class="nav-item">我的收藏</a>
+                <a href="/my/MyCollection" class="nav-item nav-active-item">我的投递</a>
+                <a href="/my/MyCollection" class="nav-item">我的简历</a>
+                <a href="/my/MyCollection" class="nav-item">我的测评</a>
+                <a href="/my/MyCollection" class="nav-item">我的订单</a>
+            </section>
+            <section class="list-container">
+                <ul class="list-box" style="display:none;" v-show="jobList.length>0">
+                    <li class="item" v-for="(item,index) in jobList" v-bind:key="index" v-on:index="item.ID">
+                        <a v-bind:href="'Index?ID='+item.ID+'&Match='+item.PlatForm">
+                            <div class="name overflow-text" v-html="item.Name" v-bind:index="item.ID"><!--研发工程师--></div>
+                            <div class="demand overflow-text">
+                                <span class="experience" v-html="item.Experience"><!--经验3-5年--></span>
+                                <span class="education" v-html="(item.Education!==undefined)&&(item.Education!=='')?((item.Experience!==undefined)&&(item.Experience!=='')?'/ '+item.Education:item.Education):''"><!--/本科--></span>
+                                <span class="area" v-html="(item.Area!==undefined)&&(item.Area!=='')?((item.Education!==undefined)&&(item.Education!=='')?'/ '+item.Area:item.Area):''"><!--/北京-丰台区--></span>
+                            </div>
+                            <ul class="tags overflow-text clearbox">
+                                <li class="tag" style="display:none;" v-show="(item.TagName!=='')&&(item.TagName!==undefined)" v-html="item.TagName"><!--研发类--></li>
+                            </ul>
+                            <div class="company-box">
+                                <div class="company-logo">
+                                    <img v-bind:src="(item.ImgUrl!=='')&&(item.ImgUrl!==undefined)?item.ImgUrl:'../../Content/m_img/m_empty.png'" onerror="noFindLogo();" class="logo">
+                                </div>
+                                <div class="company-name overflow-text" v-html="item.Company"><!--阿里巴巴--></div>
+                            </div>
+                            <div class="like-container">
+                                <span class="like-box" v-on:click.prevent="likeCut(item.ID,item.IsLike,item.PlatForm,item.Name,item.CompId,item.JID, index)">
+                                    <span class="icon yes" style="display:none;" v-show="item.IsLike" v-bind:index="item.ID"><i class="material-icons">favoriter</i></span>
+                                    <span class="icon no" style="display:none;" v-show="!item.IsLike" v-bind:index="item.ID"><i class="material-icons">favorite_border</i></span>
+                                    <span class="num" v-html="item.Like"><!--2288832--></span>
+                                </span>
+                            </div>
+                            <div class="match"  v-bind:id="'indicatorContainer'+item.ID" v-show="loginKey" ></div>
+                            <div class="empty" style="display:none;" v-show="!loginKey" v-bind:index="item.ID" v-on:click.prevent="goLogin">登录查看匹配度</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="job-empty empty-wrapper" style="display:none;" v-show="jobList.length===0">
+                    <div class="empty-img"></div>
+                    <div class="empty-msg">您还没投递职位，快去搜索职位看看吧</div>
+                    <div class="empty-btn job-empty-btn"><a href="/Job/List">搜索职位</a></div>
+                </div>
+            </section>
+    
+            <section class="load-container">
+                <span class="load-text" v-html="currentPage<pageCount?'点击加载更多职位':'没有更多职位了'" v-on:click="addPosition"></span>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
+            
+        </div>
+
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="/Assessment/m_Welcome">职位兴趣</a></li>
+                    <li class="slider-item"><a href="/Job/List">我的职位</a></li>
+                    <li class="slider-item"><a href="/Home/Serve">服务产品</a></li>
+                    <li class="slider-item"><a href="/Home/About">关于我们</a></li>
+                </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey">安全退出</div>
+            </div>
+        </aside>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var UserName = '黎';
+        var pageSize = 6;
+        var UserID = '100003';
+        var UserKey = 'd958c0ab-f207-422d-ba74-8df0c7214548';
+        var jobList=[
+            {
+                "CompId":"5Xk7hTorTWDEDWN2ACZ5y7XNZsQmeB",
+                "Company":"暴风集团",
+                "Education":"本科",
+                "TagName":"",
+                "ID":"5afad5918653ed5c634d585e",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"北京 ",
+                "ImgUrl":"http://www.lgstatic.com/thumbnail_300x300/i/image2/M00/1E/B8/CgoB5loLuACAQPOTAAIW688lOFQ72.jpeg",
+                "Name":"业务部门助理",
+                "PlatForm":"lagou",
+                "Score":0.9589714666514674,
+                "Like":0
+            },
+            {
+                "CompId":"ToQ5FU0ROBxftJhvurSXw0U8JJv4QF",
+                "Company":"宁波学大教育培训学校",
+                "Education":"",
+                "TagName":"中学教师",
+                "ID":"5af732b2f3ec0813c7f5d949",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"宁波",
+                "ImgUrl":"http://img.jdzj.com/UserDocument/2015c/linantp/Picture/2016121133117.jpg",
+                "Name":"镇海学大招聘初中语文数学教师",
+                "PlatForm":"qiancheng",
+                "Score":0.8134660990767303,
+                "Like":0
+            },
+            {
+                "CompId":"CObzvUbw9F70MViGFTCJegItqTHXrV",
+                "Company":"携程旅行网支持区",
+                "Education":"",
+                "TagName":"网站运营专员",
+                "ID":"5af74d39f3ec0813c6f5e9ea",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"上海-长宁区",
+                "ImgUrl":"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=152751…src=http://www.lvyoukan.com/wp-content/uploads/2015/03/2015.03.31.1.13.jpg",
+                "Name":"运营策划/活动策划",
+                "PlatForm":"qiancheng",
+                "Score":0.8871328054393092,
+                "Like":0
+            },
+            {
+                "CompId":"0jUwHlQlckbaOLjJZ4jdLGCTsroC0c",
+                "Company":"字节跳动",
+                "Education":"本科",
+                "TagName":"",
+                "ID":"5b0be25b52977603c13f0148",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"北京 ",
+                "ImgUrl":"http://47.104.130.19:8085/static/logos/CgpEMlrUDpCAa0PVAAUIaNb-8lc161.png",
+                "Name":"广告优化师",
+                "PlatForm":"lagou",
+                "Score":0.8257421748699133,
+                "Like":0
+            },
+            {
+                "CompId":"MADCqX0y0CaAWIf5etmg9zviLLIXph",
+                "Company":"TCL通讯惠州研发中心",
+                "Education":"本科",
+                "TagName":"家用电器/数码产品研发",
+                "ID":"5af716a4f3ec0813c7f5be0b",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"惠州",
+                "ImgUrl":"http://www.aacnn.com/wp-content/uploads/photo/2014/04/0208383XE.jpg",
+                "Name":"硬件工程师(2018届应届生)",
+                "PlatForm":"qiancheng",
+                "Score":0.8526902275302352,
+                "Like":0
+            },
+            {
+                "CompId":"tJQ4dFYR88KgwBJSAHPa6h5oyvnOTP",
+                "Company":"平安证券股份有限公司",
+                "Education":"本科",
+                "TagName":"其他",
+                "ID":"5af77adcf3ec0813c6f6109c",
+                "IsLike":false,
+                "IsMailings":false,
+                "Area":"苏州",
+                "ImgUrl":"https://img01.51jobcdn.com/fansImg/CompLogo/3/2380/2379353/2379353_120.gif?635700460218527466",
+                "Name":"苏州营业部（筹）业务受理岗",
+                "PlatForm":"qiancheng",
+                "Score":0.8304757926793278,
+                "Like":0
+            }
+        ];
+    </script>
+    <script src="../../Scripts/lib/job_radialIndicator.js"></script>
+    <script src="../../Scripts/lib/slideout.min.js"></script>
+    <script src="../../Scripts/js/m_MyJob.js?v=20180613"></script>
+
+</body>
+</html>

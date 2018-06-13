@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_MyOrder.css?v=20180613">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <div class="top-search-btn"></div>
+            <div class="top-title">我的后台管理</div>
+            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
+            <a href="/Home/m_User" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/m_user_default.png" class="top-login-img" /></a>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div id="panel" class="wrapper">
+
+            <section class="backage-nav-container">
+                <a href="/my/MyCollection" class="nav-item">我的收藏</a>
+                <a href="/my/MyJob" class="nav-item ">我的投递</a>
+                <a href="/Resume/Index" class="nav-item">我的简历</a>
+                <a href="/my/MyAssessment" class="nav-item">我的测评</a>
+                <a href="/my/MyOrder" class="nav-item nav-active-item">我的订单</a>
+            </section>
+            <section class="order-container">
+                <ul class="list-box" style="display:none;" v-show="orderList.length>0">
+                    <li class="item" v-for="(item,index) in orderList" v-bind:key="index" v-on:index="item.ID">
+                        <div class="index" v-html="'NO.'+(index+1)"></div>
+                        <div class="msg-box">
+                            <div class="title overflow-text" v-html="item.ProductName"><!--职业测评服务产品--></div>
+                            <div class="name overflow-text" v-html="'姓名：'+item.userName"><!--斯塔克--></div>
+                            <div class="tel overflow-text" v-html="'电话：'+item.Tel"><!--13412342342--></div>
+                            <div class="email overflow-text" v-html="'邮箱：'+item.Email"><!--sdsldfsd@23.com--></div>
+                            <div class="price" v-html="'￥'+item.Price"><!--￥224234.00--></div>
+                        </div>
+                        <div class="date overflow-text" v-html="'购买时间：'+item.CreatedTime"><!--购买时间：2018-03-20   17:39:20.467--></div>
+                        <div class="num overflow-text" v-html="'订单号：'+item.OrderNo"><!--订单号：2018032017392000000156543--></div>
+                        
+                        <div class="btn-copy" v-on:click.prevent="copy(item)">复制</div>
+                    </li>
+                </ul>
+                <div class="order-empty empty-wrapper" style="display:none;" v-show="orderList.length===0">
+                    <div class="empty-img"></div>
+                    <div class="empty-msg">你还没有订单，快去寻找喜欢和需要的服务!</div>
+                    <div class="empty-btn order-empty-btn"><a href="/My/MyOrder">去服务看看</a></div>
+                </div>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
+            
+        </div>
+
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="/Assessment/m_Welcome">职位性格</a></li>
+                    <li class="slider-item"><a href="/Job/List">我的职位</a></li>
+                    <li class="slider-item"><a href="/Home/Serve">服务产品</a></li>
+                    <li class="slider-item"><a href="/Home/About">关于我们</a></li>
+                </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey">安全退出</div>
+            </div>
+        </aside>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var UserTitleList = JSON.parse('[{"ID":54,"TitleName":"测试工程师","TitleID":3,"Remarks":"","UserID":100003}]');
+	    var UserName = '黎';
+	    var IsOrder = '';
+	    var UserOrderList = JSON.parse('[]');
+        var orderList=[
+            {
+                "ID":1,
+                "OrderNo":"988882342432342342",
+                "PID":1,
+                "ProductName":"职业性格测评",
+                "userName":"斯塔克",
+                "Tel":"15136723391",
+                "Email":"kkkk@knx.com.cn",
+                "Price":"1000000",
+                "CreatedTime":"2018-16-13 12:00:00",
+            },
+            {
+                "ID":2,
+                "OrderNo":"2342324234234234",
+                "PID":0,
+                "ProductName":"职业智力测评",
+                "userName":"快快快快",
+                "Tel":"15136723391",
+                "Email":"kkkk@knx.com.cn",
+                "Price":"1000000",
+                "CreatedTime":"2018-16-13 12:00:00",
+            },
+            {
+                "ID":3,
+                "OrderNo":"34545555566655566",
+                "PID":1,
+                "ProductName":"职业情商测评",
+                "userName":"sdfsdfsd",
+                "Tel":"15136723391",
+                "Email":"kkkk@knx.com.cn",
+                "Price":"1000000",
+                "CreatedTime":"2018-16-13 12:00:00",
+            },
+            {
+                "ID":4,
+                "OrderNo":"8888882234234234234234",
+                "PID":0,
+                "ProductName":"职业性格测评",
+                "userName":"斯塔克",
+                "Tel":"15136723391",
+                "Email":"kkkk@knx.com.cn",
+                "Price":"1000000",
+                "CreatedTime":"2018-16-13 12:00:00",
+            }
+        ];
+    </script>
+    <script src="../../Scripts/lib/slideout.min.js"></script>
+    <script src="../../Scripts/js/m_MyOrder.js?v=20180613"></script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_MyAssessment.css?v=20180613">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <div class="top-search-btn"></div>
+            <div class="top-title">我的后台管理</div>
+            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
+            <a href="/Home/m_User" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/m_user_default.png" class="top-login-img" /></a>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div id="panel" class="wrapper">
+
+            <section class="backage-nav-container">
+                <a href="/my/MyCollection" class="nav-item">我的收藏</a>
+                <a href="/my/MyCollection" class="nav-item nav-active-item">我的投递</a>
+                <a href="/my/MyCollection" class="nav-item">我的简历</a>
+                <a href="/my/MyCollection" class="nav-item">我的测评</a>
+                <a href="/my/MyCollection" class="nav-item">我的订单</a>
+            </section>
+            <section class="back-assessment-container">
+                <ul class="assessment-list clearbox" style="display:none;" v-show="isShow==='True'">
+                    <li class="assessment-item" v-bind:index="assessmentObj.ID">
+                        <div class="title" v-html="assessmentObj.Name"><!--EPA职业性格全画像测评--></div>
+                        <div class="item-stars clearbox">
+                            <span class="stars" style="display:none;" v-show="assessmentObj.Star>=1"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="stars" style="display:none;" v-show="assessmentObj.Star>=2"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="stars" style="display:none;" v-show="assessmentObj.Star>=3"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="stars" style="display:none;" v-show="assessmentObj.Star>=4"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="stars" style="display:none;" v-show="assessmentObj.Star>=5"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="stars stars-half" style="display:none;" v-show="assessmentObj.Star>=6"><i class="fa fa-star-half-o" aria-hidden="true"></i></span>
+                            <span class="stars-num" v-html="assessmentObj.Num+'人已测'"><!--579人已测--></span>
+                        </div>
+                        <div class="item-text clearbox" v-html="assessmentObj.Msg"><!--找到性格亮点，区别对待，客观评价。找到性格亮点客观性格亮点，区别对待，客观评价。找到性格亮点。--></div>
+                    </li>
+                </ul>
+                <div class="assessment-empty empty-wrapper" style="display:none;" v-show="isShow!=='True'">
+                    <div class="empty-img"></div>
+                    <div class="empty-msg">您还没做测评，快去试一试，匹配更多求职机会吧</div>
+                    <div class="empty-btn assessment-empty-btn"><a href="/Assessment/Index">去测评看看</a></div>
+                </div>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
+            
+        </div>
+
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="/Assessment/m_Welcome">职位兴趣</a></li>
+                    <li class="slider-item"><a href="/Job/List">我的职位</a></li>
+                    <li class="slider-item"><a href="/Home/Serve">服务产品</a></li>
+                    <li class="slider-item"><a href="/Home/About">关于我们</a></li>
+                </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey">安全退出</div>
+            </div>
+        </aside>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var UserName = '黎';
+        var pageSize = 6;
+        var UserID = '100003';
+        var UserKey = 'd958c0ab-f207-422d-ba74-8df0c7214548';
+        var assessmentObj = {
+	        ID: 0,
+	        ImgUrl: "../../Content/img/assessment_banner.png",
+	        Name: "PCA职业性格全画像测评",
+	        Dec: "全面了解职业性格",
+	        Msg:"在本报告中，您将了解到自己主要的性格特点，所属性格类型，独特的性格优势及潜在可能需要改善的问题及职业选择建议等。",
+	        Num: '1534',
+	        Star: 6
+        };
+        var IsAssessment = 'True';
+    </script>
+    <script src="../../Scripts/lib/slideout.min.js"></script>
+    <script src="../../Scripts/js/m_MyAssessment.js?v=20180613"></script>
+
+</body>
+</html>

@@ -194,3 +194,121 @@ function remove_loading(){
     $('.g_loading').remove();
 }
 
+//部分替换职位数据源列表
+function dataFormat(lists) {
+    var data = [];
+    for (var i = 0; i < lists.length; i++) {
+        var obj = {};
+        for (var j in lists[i]) {
+            if (j == "logoUrl") {
+                obj["ImgUrl"] = lists[i][j];
+            }
+            if (j == "id") {
+                obj["ID"] = lists[i][j];
+            }
+            if (j == "edu") {
+                obj["Education"] = lists[i][j];
+            }
+            //新增公司ID
+            if (j == "compId") {
+                obj["CompId"] = lists[i][j];
+            }
+            //新增jid
+            if (j == "jid") {
+                obj["JID"] = lists[i][j];
+            }
+            if (j == "company") {
+                obj["Company"] = lists[i][j];
+            }
+            if (j == "location") {
+                obj["Area"] = lists[i][j];
+            }
+            if (j == "name") {
+                obj["Name"] = lists[i][j];
+            }
+            if (j == "funType") {
+                obj["TagName"] = lists[i][j];
+            }
+            if (j == "platform") {
+                obj["PlatForm"] = lists[i][j];
+            }
+            if (j == "IsMailings") {
+                obj["IsMailings"] = 0;
+            }
+            if (j == "score") {
+                obj["Score"] = lists[i][j];
+            }
+            if (j == "isDelivered") {
+                obj["IsMailings"] = lists[i][j];
+            }
+            if (j == "isCollected") {
+                obj["IsLike"] = lists[i][j];
+            }
+            if (j == "totalCollection") {
+                obj["Like"] = lists[i][j];
+            }
+        }
+        data.push(obj);
+    }
+    return data;
+}
+
+
+//上传logo
+function fileCompanyLogoChange() {
+
+    if (document.getElementById("CompanyLogo").value.length <= 0) {
+        return false;
+    }
+    $.ajaxFileUpload({
+        url: "/Resume/CompanyLogoImport", //用于文件上传的服务器端请求地址
+        type: "post",
+        secureuri: false, //一般设置为false
+        fileElementId: "CompanyLogo", //文件上传控件的id属性
+        dataType: "json", //返回值类型 一般设置为json
+        success: function (result) {
+            if (result.Success) {
+                $("#CompanyLogoImg").attr('src', result.Data);
+            } else {
+                g_alert(result.Message);
+            }
+        },
+        error: function (data, status, e) { //服务器响应失败处理函数
+            g_alert(e);
+        }
+    });
+}
+
+//触发点击上传图片
+function imgClick() {
+    $('#CompanyLogo').click();
+}
+
+//上传简历头像
+function filePictureChange() {
+    console.log(ResumeBasic);
+    if (document.getElementById("PictureFile").value.length <= 0) {
+        return false;
+    }
+    $.ajaxFileUpload({
+        url: "/Resume/UserPhotoImport", //用于文件上传的服务器端请求地址
+        type: "post",
+        data: { resumeId: ResumeBasic.ID },
+        secureuri: false, //一般设置为false
+        fileElementId: "PictureFile", //文件上传控件的id属性
+        dataType: "json", //返回值类型 一般设置为json
+        success: function (result) {
+            console.log(result);
+            if (result.Success) {
+                app.userInfo.PicturePath = result.Data;
+                $(".success-img").attr("src", result.Data);
+                $(".entrance-img").attr("src", result.Data);
+            } else {
+                showMessage(result.Message);
+            }
+        },
+        error: function (data, status, e) { //服务器响应失败处理函数
+            showMessage("提交基本上信息后,再上传图片");
+        }
+    });
+}
