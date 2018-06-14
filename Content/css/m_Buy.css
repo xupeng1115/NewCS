@@ -15,6 +15,27 @@ section{
     z-index:auto;
 }
 
+input:-moz-placeholder,   
+textarea:-moz-placeholder {   
+    color: #939393;
+    letter-spacing: 1px;   
+    font-size:12px;
+}   
+
+input:-ms-input-placeholder,   
+textarea:-ms-input-placeholder {   
+    color: #939393;
+    letter-spacing: 1px;  
+    font-size:12px; 
+}   
+
+input::-webkit-input-placeholder,   
+textarea::-webkit-input-placeholder {   
+    color: #939393;
+    letter-spacing: 1px;   
+    font-size:12px;
+}  
+
 /***********************************Pay************************************/
 section.pay-container{
     padding:10px;
@@ -23,9 +44,11 @@ section.pay-container{
 
 section.pay-container .pay-item{
     position:relative;
-    padding:15px;
+    padding:47px 15px 15px 15px;
+    margin-bottom:10px;
     width:100%;
     background:#fff;
+
 }
 
 section.pay-container .pay-item .title{
@@ -35,6 +58,7 @@ section.pay-container .pay-item .title{
     z-index:10;
     width:73px;
     height:22px;
+    padding-right:5px;
     line-height:22px;
     background:#0099e5;
     font-size:12px;
@@ -50,6 +74,343 @@ section.pay-container .pay-item .title:before{
     z-index:20;
     width:0;
     height:0;
+
+    border-top:11px solid transparent;
+    border-right:9px solid #fff;
+    border-bottom:11px solid transparent;
+}
+
+section.pay-container .pay-item .msg-box{
+    position:relative;
+    width:100%;
+    height:100%;
+    padding:0 10px;
+    background:#f8f8f8;
+}
+
+section.pay-container .pay-item .msg-box .name{
+    position:relative;
+    padding-left:10px;
+    width:100%;
+    height:100%;
+    height:45px;
+    line-height:45px;
+}
+
+section.pay-container .pay-item .msg-box .name:before{
+    content:"";
+    position:absolute;
+    top:20px;
+    left:1px;
+    z-index:10;
+    width:5px;
+    height:5px;
+    background:#0099e5;
+    border-radius:100%;
+}
+
+section.pay-container .pay-item .msg-box .name span{
+    display:block;
+}
+
+section.pay-container .pay-item .msg-box .name .name-val{
+    position:relative;
+    float:left;
+    width:60%;
+    font-size:14px;
+    color:#333;
+    font-weight:500;
+    text-align:left;
+}
+
+section.pay-container .pay-item .msg-box .name .name-dec{
+    position:relative;
+    float:right;
+    width:40%;
+    font-size:12px;
+    color:#939393;
+    text-align:right;
+}
+
+section.pay-container .pay-item .msg-box .line{
+    position:relative;
+    width:100%;
+    height:0;
+    border-bottom:1px dashed #e3e3e3;
+
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5);
+}
+
+section.pay-container .pay-item .msg-box .line:before{
+    display:block;
+    content:"";
+    position:absolute;
+    top:-4px;
+    left:-15px;
+    z-index:20;
+    width:12px;
+    height:12px;
+    border-radius:6px ;
+    background:#fff;
+
+    transform:scaleY(2);
+    -webkit-transform:scaleY(2);
+}
+
+section.pay-container .pay-item .msg-box .line:after{
+    display:block;
+    content:"";
+    position:absolute;
+    top:-4px;
+    right:-15px;
+    z-index:20;
+    width:12px;
+    height:12px;
+    border-radius:6px;
+    background:#fff;
+
+    transform:scaleY(2);
+    -webkit-transform:scaleY(2);
+}
+
+section.pay-container .pay-item .msg-box .price{
+    width:100%;
+    height:100%;
+    height:45px;
+    line-height:45px;
+}
+
+section.pay-container .pay-item .msg-box .price span{
+    display:block;
+}
+
+section.pay-container .pay-item .msg-box .price .price-text{
+    float:left;
+    font-size:14px;
+    color:#6d6d6d;
+    text-align:left;
+}
+
+section.pay-container .pay-item .msg-box .price .price-val{
+    float:right;
+    font-size:14px;
+    font-weight:500;
+    color:#ee5c54;
+    text-align:right;
+}
+
+section.pay-container .pay-item .input-box{
+    position:relative;
+    margin-bottom:10px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+section.pay-container .pay-item .input-box input{
+    display:block;
+    padding:11px 40px 11px 10px;
+    width:100%;
+    height:40px;
+    line-height:18px;
+    font-size:13px;
+    border:none;
+    outline:none;
+    border:1px solid #dfdfdf;
+
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+section.pay-container .pay-item .input-box input:focus{
+    border-color: #009aec;
+    outline:none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,154,236,0.45);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,154,236,0.45);
+}
+
+section.pay-container .pay-item .input-box .input-clear{
+    display:block;
+    position:absolute;
+    top:11px;
+    right:15px;
+    z-index:10;
+    width:17px;
+    height:17px;
+    background:rgba(0,0,0,0.3);
+    border-radius:100%;
+    cursor:pointer;
+}
+
+section.pay-container .pay-item .input-box .input-clear:before{
+    position:absolute;
+    top: 4px;
+    left: 8px;
+    content:"";
+    height:9px;
+    width:0;
+    border-left:1px solid #f1f1f1;
+
+    transform:rotate(-45deg);
+    -webkit-transform:rotate(-45px);
+}
+
+section.pay-container .pay-item .input-box .input-clear:after{
+    position:absolute;
+    top: 8px;
+    left: 4px;
+    content:"";
+    width:9px;
+    height:0;
+    border-top:1px solid #f1f1f1;
+
+    transform:rotate(-45deg);
+    -webkit-transform:rotate(-45px);
+}
+
+section.pay-container .pay-item .contact-item{
+    position:relative;
+    padding-left:18px;
+    padding-top:5px;
+    line-height:20px;
+    font-size: 12px;
+    text-align: left;
+    color: #6d6d6d;
+}
+
+section.pay-container .pay-item .contact-item i{
+    display:block;
+    position:absolute;
+    top:8px;
+    left:-5px;
+    z-index:10;
+    font-size:16px;
+}
+
+section.pay-container .tip{
+    line-height:20px;
+    font-size:12px;
+    color:#6d6d6d;
+    text-align:left;
+}
+
+section.pay-container .control{
+    position: relative;
+    margin-top:20px;
+    margin-bottom:60px;
+    float:left;
+    width:100%;
+    height:20px;
+    line-height:22px;
+    color:#333;
+    font-size:14px;
+    text-align:left;
+}
+
+section.pay-container .control .agree-text{
+    position: relative;
+    margin-left:5px;
+    float:left;
+}
+
+section.pay-container .control input[type=checkbox].agree-input{
+    display:block;
+    position: relative;
+    float:left;
+    margin: 3px;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    border-radius:2px;
+    outline: 0 !important;
+    cursor: pointer;
+    border: 1px solid #6d6d6d;
+    resize:none;
+    
+    -webkit-appearance: none;
+    -webkit-transition: all .15s;
+    -moz-transition: all .15s;
+    transition: all .15s;
+}
+
+section.pay-container .control input[type=checkbox]:checked.agree-input{
+    border:1px solid #20a0ff;
+    background-color: #20a0ff;
+}
+
+input[type=checkbox]:checked:before{
+	position: absolute;
+    top: 2px;
+    left: 1px;
+    width: 9px;
+    height: 4px;
+    content: '';
+    color: #fff;
+    border-bottom: solid 2px #fff;
+    border-left: solid 2px #fff;
+    outline:none;
+    resize:none;
+    
+    -ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+    transform: rotate(-45deg);
+}
+
+section.submit-container{
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index:100;
+    width:100%;
+    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 -1px 6px 0 #eee;
+}
+
+section.submit-container .charge{
+    float:left;
+    height:40px;
+    max-width:150px;
+    line-height:40px;
+    padding-left:15px;
+    text-align:left;
+    font-size:12px;
+    color:#6d6d6d;
+}
+
+section.submit-container .total{
+    float:right;
+    height:40px;
+    max-width:150px;
+    padding-right:10px;
+    line-height:40px;
+    text-align:left;
+    font-size:12px;
+    color:#6d6d6d;
+}
+
+section.submit-container .btn-order-submit{
+    float:right;
+    width: 100px;
+    height: 40px;
+    line-height:40px;
+    background-color: #ffbf00;
+    box-shadow: 0 -1px 6px 0 #eeeeee;
+    text-align:center;
+    font-size:12px;
+    color:#333;
+    opacity:1;
+
+    transition:all 0.3s;
+    -webkit-transition:all 0.3s;
+}
+
+section.submit-container .btn-disable{
+    opacity:0.6;
 }
 
 
@@ -76,6 +437,12 @@ section.pay-container .pay-item .title:before{
 }
 
 @media screen and (max-width:320px){
-    
+    section.pay-container .pay-item .contact-item{
+        font-size: 11px;
+    }
+    section.pay-container .tip{
+        line-height:18px;
+        font-size:11px;
+    }
 }
 

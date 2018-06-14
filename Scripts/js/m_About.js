@@ -6,31 +6,9 @@ var app = new Vue({
         //是否显示侧边菜单  
         menuKey: false,
         
-        //产品详情
-        positionDetail:{
-            PositionID: Product.ID,
-            Price: Product.Price,
-            Name: Product.ProductName,
-            Remark: Product.Remark
-        },
-
-        //个人信息验证
-        nameShow:false,
-        telShow:false,
-        emailShow:false,
-
-        //个人信息
-        Name:UserName,
-        Tel:Tel,
-        Email:Email,
-        
-        //是否同意协议
-        controlKey:true,
     },
     computed:{
-        submitBtnAble:function(){
-            return ($.trim(this.Name)!=='')&&($.trim(this.Tel)!=='')&&($.trim(this.Email)!=='')&&this.controlKey;
-        }
+
     },
     watch:{
         menuKey:function(val){
@@ -77,72 +55,6 @@ var app = new Vue({
                 loginKey = false;
             };
             myAjax("post", oLoginExitUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun);
-        },
-        //信息验证
-        NameF:function(){
-            if(app.Name!==''){
-                app.nameShow=true;
-            }else{
-                app.nameShow=false;
-            }
-        },
-        TelF:function(){
-            if(app.Tel!==''){
-                app.telShow=true;
-            }else{
-                app.telShow=false;
-            }
-        },
-        EmailF:function(){
-            if(app.Email!==''){
-                app.emailShow=true;
-            }else{
-                app.emailShow=false;
-            }
-        },
-        NameBlur:function(){
-            app.nameShow = false;
-        },
-        TelBlur:function(){
-            app.telShow = false;
-        },
-        EmailBlur:function(){
-            app.emailShow = false;
-        },
-        nameClear:function(){
-            app.Name="";
-            $("input.input-name").focus();
-        },
-        telClear:function(){
-            app.Tel="";
-            $("input.input-tel").focus();
-        },
-        emailClear:function(){
-            app.Email="";
-            $("input.input-email").focus();
-        },
-        orderSubmit:function(){
-            if(app.submitBtnAble){
-                document.myform.submit();
-            }else{
-                if($.trim(app.Name)===''){
-                    showMessage("请先填写您的姓名");
-                    return;
-                }
-                
-                if($.trim(app.Tel)===''){
-                    showMessage("请先填写您的联系电话");
-                    return;
-                }
-
-                if($.trim(app.Email)===''){
-                    showMessage("请先填写您的联系地址");
-                }
-
-                if(!app.controlKey){
-                    showMessage("请先同意我们的服务协议");
-                }
-            }
         }
     }
 })
@@ -150,6 +62,34 @@ var app = new Vue({
 
 $(function () {
 
+    //轮播滚动
+    var mySwiper1 = new Swiper ('.swiper-container1', {
+        autoplay: true,
+        speed:1000,
+        loop : true,
+        slidesPerView: "auto",
+        slidesPerGroup: 1,
+        freeMode: true,
+        freeModeMomentum: true,
+        pagination: {
+            el: '.swiper-pagination1',
+        },
+    })
+    
+    //轮播滚动
+    var mySwiper2 = new Swiper ('.swiper-container2', {
+        autoplay: true,
+        speed:800,
+        loop : true,
+        slidesPerView: "auto",
+        slidesPerGroup: 1,
+        freeMode: true,
+        freeModeMomentum: true,
+        pagination: {
+            el: '.swiper-pagination2',
+        },
+    })
+    
     //侧滑导航
     var slideout = new Slideout({
         'panel': document.getElementById('panel'),
@@ -194,8 +134,31 @@ $(function () {
         // }
     })
 
-});
+    //模块导航滚动
+    $("body").on("click",".nav-item",function(event){
+        var oActive=$(this).hasClass("active-nav-item");
+        var oList=$(".nav-item");
+        var oTop=45;
+        if(!oActive){
+            $.each(oList,function(index,item){
+                if($(item).hasClass("active-nav-item")){
+                    $(item).removeClass("active-nav-item");
+                    return;
+                }
+            })
+            $(this).addClass("active-nav-item");
+        }
 
+        $("html, body").animate({
+            scrollTop: ($($(this).attr("href")).offset().top -oTop)+ "px"
+        }, {
+            duration: 300,
+            easing: "swing"
+        });
+        return false;
+    })
+
+});
 
 //公司logo没有成功加载出来时处理
 function nofind() {

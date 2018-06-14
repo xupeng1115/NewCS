@@ -45,42 +45,66 @@
             <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
         </header>
         <div id="panel" class="wrapper">
-
+            
             <section class="pay-container">
+                <form action="/Order/SubmitToAli" method="get" target="_blank" name="myform">
                 <div class="pay-item">
                     <div class="title">购买产品</div>
                     <div class="msg-box">
-                        <div class="name"></div>
-                        <div class="price"></div>
+                        <div class="name">
+                            <span class="name-val" v-html="positionDetail.Name"><!--全职服务产品--></span>
+                            <span class="name-dec" v-html="positionDetail.Remark"><!--内含12项服务--></span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="price">
+                            <span class="price-text">价格</span>
+                            <span class="price-val" v-html="'¥'+positionDetail.Price"><!--￥12888.00--></span>
+                        </div>
                     </div>
                 </div>
                 <div class="pay-item">
                     <div class="title">学生信息</div>
                     <div class="input-box">
-                        <input type="text" class="input-name">
+                        <input type="text" class="input-name" placeholder="姓名" v-model="Name" v-on:focus="NameF" v-on:input="NameF" v-on:blur="NameBlur">
+                        <span class="input-clear name-clear" style="display:none;" v-show="nameShow" v-on:click="nameClear"></span>
                     </div>
                     <div class="input-box">
-                        <input type="text" class="input-tel">
+                        <input type="text" class="input-tel" placeholder="联系电话" v-model="Tel" v-on:focus="TelF" v-on:input="TelF" v-on:blur="TelBlur">
+                        <span class="input-clear tel-clear" style="display:none;" v-show="telShow" v-on:click="telClear"></span>
                     </div>
                     <div class="input-box">
-                        <input type="text" class="input-address">
+                        <input type="text" class="input-address" placeholder="邮箱地址" v-model="Email" v-on:focus="EmailF" v-on:input="EmailF" v-on:blur="EmailBlur">
+                        <span class="input-clear email-clear" style="display:none;" v-show="emailShow" v-on:click="emailClear"></span>
                     </div>
                 </div>
                 <div class="pay-item">
                     <div class="title">商家信息</div>
-                    <div class="text">
-                        <span class="icon"></span>
-                        <span class="icon-text"></span>
+                    <div class="contact-address contact-item">
+                        <i class="material-icons">room</i>
+                        <span class="contact-text">地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
                     </div>
-                    <div class="text">
-                        <span class="icon"></span>
-                        <span class="icon-text"></span>
+                    <div class="contact-tel contact-item">
+                        <i class="material-icons">call</i>
+                        <span class="contact-text">电话: (+86) 021-31336975</span>
                     </div>
-                    <div class="text">
-                        <span class="icon"></span>
-                        <span class="icon-text"></span>
+                    <div class="contact-email contact-item">
+                        <i class="material-icons">email</i>
+                        <span class="contact-text">careersuccess@knx.com.cn</span>
                     </div>
                 </div>
+                <div class="tip"><span style="color:#ee5c54">* </span>订单支付通过支付宝（支持国内信用卡/余额/花呗支付）</div>
+                <div class="tip"><span style="color:#ee5c54">* </span>支付手续费0.6%为支付宝收取</div>
+                <div class="control">
+                    <input type="checkbox" class="agree-input" v-model="controlKey">
+                    <span class="agree-text"> 我已经阅读并同意 <a href=""> 《用户付费协议》</a></span>
+                </div>
+            </form>
+            </section>
+
+            <section class="submit-container">
+                <div class="charge" v-html="'手续费￥'+(Number(positionDetail.Price)*0.006).toFixed(2)"></div>
+                <div class="btn-order-submit" v-bind:class="{'btn-disable':!submitBtnAble}" v-on:click="orderSubmit">提交订单</div>
+                <div class="total" v-html="'合计￥'+(positionDetail.Price+Number((Number(positionDetail.Price)*0.006).toFixed(2)))"></div>
             </section>
 
             <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
@@ -92,7 +116,7 @@
                     <div class="tip-num">+86 400 123 4567</div>
                 </div>
                 <ul class="slider-box">
-                    <li class="slider-item"><a href="../Assessment/m_Welcome.html">职位兴趣</a></li>
+                    <li class="slider-item"><a href="../Assessment/m_Welcome.html">职位性格</a></li>
                     <li class="slider-item"><a href="../Job/m_List.html">我的职位</a></li>
                     <li class="slider-item"><a href="../Home/m_Serve.html">服务产品</a></li>
                     <li class="slider-item"><a href="../Home/m_About.html">关于我们</a></li>
@@ -110,6 +134,13 @@
         } else {
             isLogin = false;
         }
+
+        var Product = JSON.parse('{"ID":1,"ProductName":"职业测评服务产品","Price":598.0,"Remark":null}');
+        var OrderNo = '2018061415120310000312411';
+        var OrderID = '23';
+        var UserName = "13761646494";
+        var Tel = "13761646494";
+        var Email = "lichxi1002@126.com";
     </script>
     <script src="../../Scripts/lib/slideout.min.js"></script>
     <script src="../../Scripts/js/m_Buy.js?v=20180604"></script>

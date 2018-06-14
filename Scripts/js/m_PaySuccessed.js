@@ -5,32 +5,13 @@ var app = new Vue({
         loginKey:true,
         //是否显示侧边菜单  
         menuKey: false,
-        
-        //产品详情
-        positionDetail:{
-            PositionID: Product.ID,
-            Price: Product.Price,
-            Name: Product.ProductName,
-            Remark: Product.Remark
-        },
 
-        //个人信息验证
-        nameShow:false,
-        telShow:false,
-        emailShow:false,
-
-        //个人信息
-        Name:UserName,
-        Tel:Tel,
-        Email:Email,
+        OrderPrice:OrderNo,
+        OrderPrice:OrderPrice,
         
-        //是否同意协议
-        controlKey:true,
     },
     computed:{
-        submitBtnAble:function(){
-            return ($.trim(this.Name)!=='')&&($.trim(this.Tel)!=='')&&($.trim(this.Email)!=='')&&this.controlKey;
-        }
+        
     },
     watch:{
         menuKey:function(val){
@@ -77,72 +58,6 @@ var app = new Vue({
                 loginKey = false;
             };
             myAjax("post", oLoginExitUrl, JSON.stringify(myParams), mySuccessFun, myErrorFun);
-        },
-        //信息验证
-        NameF:function(){
-            if(app.Name!==''){
-                app.nameShow=true;
-            }else{
-                app.nameShow=false;
-            }
-        },
-        TelF:function(){
-            if(app.Tel!==''){
-                app.telShow=true;
-            }else{
-                app.telShow=false;
-            }
-        },
-        EmailF:function(){
-            if(app.Email!==''){
-                app.emailShow=true;
-            }else{
-                app.emailShow=false;
-            }
-        },
-        NameBlur:function(){
-            app.nameShow = false;
-        },
-        TelBlur:function(){
-            app.telShow = false;
-        },
-        EmailBlur:function(){
-            app.emailShow = false;
-        },
-        nameClear:function(){
-            app.Name="";
-            $("input.input-name").focus();
-        },
-        telClear:function(){
-            app.Tel="";
-            $("input.input-tel").focus();
-        },
-        emailClear:function(){
-            app.Email="";
-            $("input.input-email").focus();
-        },
-        orderSubmit:function(){
-            if(app.submitBtnAble){
-                document.myform.submit();
-            }else{
-                if($.trim(app.Name)===''){
-                    showMessage("请先填写您的姓名");
-                    return;
-                }
-                
-                if($.trim(app.Tel)===''){
-                    showMessage("请先填写您的联系电话");
-                    return;
-                }
-
-                if($.trim(app.Email)===''){
-                    showMessage("请先填写您的联系地址");
-                }
-
-                if(!app.controlKey){
-                    showMessage("请先同意我们的服务协议");
-                }
-            }
         }
     }
 })

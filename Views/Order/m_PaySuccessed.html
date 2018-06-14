@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+    
+    <link rel="stylesheet" href="../../Content/css/m_PaySuccessed.css?v=20180614">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="/Home/Serve" class="top-back"></a>
+            <div class="top-title">订单支付</div>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div id="panel" class="wrapper">
+            
+            <section class="success-container">
+                <div class="msg-box">
+                    <div class="icon"></div>
+                    <div class="icon-text">您已付款成功！</div>
+                    <div class="tip">如遇问题请拨打客服电话：+86 400 123 4567</div>
+                    <div class="tip">服务时间：周一至周五 9:30 - 18:00</div>
+                    <div class="line"></div>
+                    <div class="dec"><span style="color:#ee5c54">* </span>订单支付通过支付宝（支持国内信用卡/余额/花呗支付）</div>
+                    <div class="dec"><span style="color:#ee5c54">* </span>请谨防钓鱼链接与诈骗电话</div>
+                </div>
+                <div class="money text">支付金额: <span style="color:#ee5c54" v-html="' ¥ '+OrderPrice" ></span></div>
+                <div class="num text">订单编号: <span v-html="OrderNo"></span></div>
+                <a href="/Home/Index" class="btn btn-back-index">返回首页</a>
+                <a href="/My/MyOrder" class="btn btn-view-order">查看订单</a>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
+        </div>
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="../Assessment/m_Welcome.html">职位性格</a></li>
+                    <li class="slider-item"><a href="../Job/m_List.html">我的职位</a></li>
+                    <li class="slider-item"><a href="../Home/m_Serve.html">服务产品</a></li>
+                    <li class="slider-item"><a href="../Home/m_About.html">关于我们</a></li>
+                </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey" v-on:click="exit">安全退出</div>
+            </div>
+        </aside>
+        
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "False";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+        var OrderNo = "23423423423423423423423423423";
+        var OrderPrice = "23424242342.23";
+
+    </script>
+    <script src="../../Scripts/lib/slideout.min.js"></script>
+    <script src="../../Scripts/js/m_PaySuccessed.js?v=20180604"></script>
+
+</body>
+</html>
