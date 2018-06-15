@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<title>活动</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            html,body{
+                position:relative;
+                margin:0 auto;
+                width:100%;
+                height:100%;
+                width:1000px;
+            }
+            img{
+                margin:0 auto;
+                width:100%;
+            }
+
+            .container{
+                position:relative;
+                margin:0 auto;
+                width:100%;
+            }
+            .container #btn{
+                display:block;
+                position:absolute;
+                bottom:150px;
+                left:50%;
+                margin-left:-180px;
+                width:360px;
+                height:46px;
+                line-height:46px;
+                background:rgba(0,0,0,0.8);
+                border-radius:3px;
+                font-size:14px;
+                color:#ffbf00;
+                text-align:center;
+                cursor:pointer;
+
+                transition:all 0.3s;
+                -webkit-transition:all 0.3s;
+            }
+            .container #btn:hover{
+                background:rgba(0,0,0,0.95);
+            }
+            .container #index{
+                display:block;
+                position:absolute;
+                top:5px;
+                left:50%;
+                margin-left:-120px;
+                width:240px;
+                height:100px;
+                line-height:100px;
+                background:rgba(0,0,0,0);
+                border-radius:5px;
+                cursor:pointer;
+
+                transition:all 0.3s;
+                -webkit-transition:all 0.3s;
+            }
+            .container #index:hover{
+                background:rgba(0,0,0,0.2);
+            }
+        </style>
+	</head>
+<body>
+        
+	<div class="container">
+        <a id="index" href="http://www.careersuccess.cn/" target="_blank" title="进入官方网站"></a>
+        <img src="../../Content/img/action_bg01.jpg" alt="" style="display:block;width:100%;">
+        <div id="btn">点击报名</div>
+    </div>
+    
+    <script>
+        window.onload=function(){
+            document.getElementById('btn').onclick=function(){
+                
+            }
+        }
+    </script>
+	
+</body>
+</html>

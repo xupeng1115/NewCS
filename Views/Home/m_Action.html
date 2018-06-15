@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<title>活动</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            html,body{
+                position:relative;
+                margin:0 auto;
+                width:100%;
+                max-width:1200px;
+            }
+
+            .container{
+                position:relative;
+                margin:0 auto;
+                width:100%;
+            }
+
+            .container img{
+                margin:0 auto;
+                width:100%;
+            }
+
+            .container #btn{
+                display:block;
+                position:absolute;
+                bottom:0;
+                left:0;
+                z-index:10;
+                width:100%;
+                height:54px;
+                line-height:54px;
+                background:transparent;
+                cursor:pointer;
+            }
+            .container #btn:hover{
+                background:rgba(0,0,0,0.95);
+            }
+            .container #index{
+                display:block;
+                position:absolute;
+                top:0;
+                left:50%;
+                z-index:10;
+                margin-left:-90px;
+                width:180px;
+                height:64px;
+                line-height:64px;
+                background:rgba(0,0,0,0);
+                border-radius:5px;
+                cursor:pointer;
+            }
+            .container #index:hover{
+                background:rgba(0,0,0,0.2);
+            }
+
+            @media (max-device-width: 1024px) and (orientation:landscape){
+                .container #index{
+                    margin-left:-135px;
+                    width:270px;
+                    height:160px;
+                    line-height:160px;
+                }
+
+                .container #btn {
+                    height: 130px;
+                    line-height: 130px;
+                }
+            }
+
+            @media (max-device-width: 800px) and (orientation:landscape){
+                .container #index{
+                    margin-left:-135px;
+                    width:270px;
+                    height:120px;
+                    line-height:120px;
+                }
+                .container #btn {
+                    height: 100px;
+                    line-height: 100px;
+                }
+            }
+
+            @media screen and (max-width:800px){
+                .container #index{
+                    margin-left:-125px;
+                    width:250px;
+                    height:140px;
+                    line-height:140px;
+                }
+
+                .container #btn {
+                    height: 100px;
+                    line-height: 100px;
+                }
+
+            }
+
+            @media screen and (max-width:740px){
+                .container #index{
+                    margin-left:-115px;
+                    width:230px;
+                    height:110px;
+                    line-height:110px;
+                }
+
+                .container #btn {
+                    height: 90px;
+                    line-height: 90px;
+                }
+
+            }
+
+            @media screen and (max-width:600px){
+                .container #index{
+                    margin-left:-100px;
+                    width:200px;
+                    height:100px;
+                    line-height:100px;
+                }
+
+                .container #btn {
+                    height: 70px;
+                    line-height: 70px;
+                }
+
+            }
+
+            @media screen and (max-width:414px){
+                .container #index{
+                    margin-left:-90px;
+                    width:180px;
+                    height:80px;
+                    line-height:80px;
+                }
+
+                .container #btn {
+                    height: 56px;
+                    line-height: 56px;
+                }
+
+            }
+
+            @media screen and (max-width:375px){
+                .container #index{
+                    margin-left:-90px;
+                    width:180px;
+                    height:60px;
+                    line-height:60px;
+                }
+
+            }
+
+            @media screen and (max-width:360px){
+                .container #index{
+                    margin-left:-70px;
+                    width:140px;
+                    height:6px;
+                    line-height:60px;
+                }
+
+                .container #btn {
+                    height: 50px;
+                    line-height: 50px;
+                }
+            }
+
+             @media screen and (max-width:320px){
+
+                .container #btn {
+                    height: 46px;
+                    line-height: 46px;
+                }
+            }
+
+        </style>
+	</head>
+<body>
+	
+	<div class="container">
+        <a id="index" href="http://www.careersuccess.cn/" target="_blank" title="进入官方网站"></a>
+        <img src="../../Content/m_img/m_action_bg01.jpg">
+        <div id="btn"></div>
+    </div>
+
+    <script>
+
+    </script>
+	
+</body>
+</html>
