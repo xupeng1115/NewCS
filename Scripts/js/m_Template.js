@@ -106,16 +106,16 @@ function getOS() {
     //移动平台iOS探测
     var reg = /like Mac OS X|Android|Windows Phone|Symbian/ig;
     var regResult = reg.exec(ua);
-    if(!regResult){
+    if (!regResult) {
         reg = /Mac OS X|Windows NT|Linux/ig;
         regResult = reg.exec(ua);
     }
-    if(!regResult){
+    if (!regResult) {
         //返回UNKNOWN
         return name;
-    }else{
+    } else {
         //操作系统检测
-        switch(regResult[0]){
+        switch (regResult[0]) {
             case 'like Mac OS X':
                 name = 'iPhone';
                 reg = /(iPhone|iPod|iPad).*?OS\s*(\d*[\_|\.\d]*)/ig;
@@ -147,11 +147,11 @@ function getOS() {
         }
         //获取版本号
         regResult = reg.exec(ua);
-        if(regResult && regResult.length >= 3){
+        if (regResult && regResult.length >= 3) {
             version = regResult[2].replace(/\_+/ig, '.');
             reg = /^\d+\.*\d*/ig;
             regResult = reg.exec(version);
-            if(regResult){
+            if (regResult) {
                 version = regResult[0];
             }
         }
@@ -163,17 +163,17 @@ function getOS() {
 };
 
 /*获取url指定参数值*/
-function getUrlParameter(name){
+function getUrlParameter(name) {
     var url = location.search.substr(1);
-    var value,arr1=[],arr2=[];
+    var value, arr1 = [], arr2 = [];
 
-    if(url){
+    if (url) {
         arr1 = url.split("&");
-        for(var i=0;i<arr1.length;i++){
-            arr2=arr1[i].split("=");
-            if(arr2[0]==name){
+        for (var i = 0; i < arr1.length; i++) {
+            arr2 = arr1[i].split("=");
+            if (arr2[0] == name) {
                 value = arr2[1];
-                if(value=="null" || value=="undefined"){
+                if (value == "null" || value == "undefined") {
                     value = null;
                 }
             }
@@ -183,74 +183,15 @@ function getUrlParameter(name){
 }
 
 /*公共ajax加载事件*/
-function g_loading(){
-    if($('.g_loading').length<1){
+function g_loading() {
+    if ($('.g_loading').length < 1) {
         $("body").append("<div class='g_loading'></div>")
     }
 }
 
 //去除加载
-function remove_loading(){
+function remove_loading() {
     $('.g_loading').remove();
-}
-
-//部分替换职位数据源列表
-function dataFormat(lists) {
-    var data = [];
-    for (var i = 0; i < lists.length; i++) {
-        var obj = {};
-        for (var j in lists[i]) {
-            if (j == "logoUrl") {
-                obj["ImgUrl"] = lists[i][j];
-            }
-            if (j == "id") {
-                obj["ID"] = lists[i][j];
-            }
-            if (j == "edu") {
-                obj["Education"] = lists[i][j];
-            }
-            //新增公司ID
-            if (j == "compId") {
-                obj["CompId"] = lists[i][j];
-            }
-            //新增jid
-            if (j == "jid") {
-                obj["JID"] = lists[i][j];
-            }
-            if (j == "company") {
-                obj["Company"] = lists[i][j];
-            }
-            if (j == "location") {
-                obj["Area"] = lists[i][j];
-            }
-            if (j == "name") {
-                obj["Name"] = lists[i][j];
-            }
-            if (j == "funType") {
-                obj["TagName"] = lists[i][j];
-            }
-            if (j == "platform") {
-                obj["PlatForm"] = lists[i][j];
-            }
-            if (j == "IsMailings") {
-                obj["IsMailings"] = 0;
-            }
-            if (j == "score") {
-                obj["Score"] = lists[i][j];
-            }
-            if (j == "isDelivered") {
-                obj["IsMailings"] = lists[i][j];
-            }
-            if (j == "isCollected") {
-                obj["IsLike"] = lists[i][j];
-            }
-            if (j == "totalCollection") {
-                obj["Like"] = lists[i][j];
-            }
-        }
-        data.push(obj);
-    }
-    return data;
 }
 
 
@@ -301,8 +242,7 @@ function filePictureChange() {
             console.log(result);
             if (result.Success) {
                 app.userInfo.PicturePath = result.Data;
-                $(".success-img").attr("src", result.Data);
-                $(".entrance-img").attr("src", result.Data);
+                $(".top-login-img").attr("src", result.Data);
             } else {
                 showMessage(result.Message);
             }
@@ -311,4 +251,62 @@ function filePictureChange() {
             showMessage("提交基本上信息后,再上传图片");
         }
     });
+}
+//部分替换职位数据源列表
+function dataFormat(lists) {
+    var data = [];
+    for (var i = 0; i < lists.length; i++) {
+        var obj = {};
+        for (var j in lists[i]) {
+            if (j == "logoUrl") {
+                obj["ImgUrl"] = lists[i][j];
+            }
+            if (j == "id") {
+                obj["ID"] = lists[i][j];
+            }
+            if (j == "edu") {
+                obj["Education"] = lists[i][j];
+            }
+            //新增公司ID
+            if (j == "compId") {
+                obj["CompId"] = lists[i][j];
+            }
+            //新增jid
+            if (j == "jid") {
+                obj["JID"] = lists[i][j];
+            }
+            if (j == "company") {
+                obj["Company"] = lists[i][j];
+            }
+            if (j == "location") {
+                obj["Area"] = lists[i][j];
+            }
+            if (j == "name") {
+                obj["Name"] = lists[i][j];
+            }
+            if (j == "funType") {
+                obj["TagName"] = lists[i][j];
+            }
+            if (j == "platform") {
+                obj["PlatForm"] = lists[i][j];
+            }
+            if (j == "IsMailings") {
+                obj["IsMailings"] = 0;
+            }
+            if (j == "score") {
+                obj["Score"] = Math.floor(lists[i][j] * 100) + '%';
+            }
+            if (j == "isDelivered") {
+                obj["IsMailings"] = lists[i][j];
+            }
+            if (j == "isCollected") {
+                obj["IsLike"] = lists[i][j];
+            }
+            if (j == "totalCollection") {
+                obj["Like"] = lists[i][j];
+            }
+        }
+        data.push(obj);
+    }
+    return data;
 }

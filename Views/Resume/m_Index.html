@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_ResumeIndex.css?v=20180626">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <div class="top-search-btn"></div>
+            <div class="top-title">我的后台管理</div>
+            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
+            <a href="/Home/m_User" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/m_user_default.png" class="top-login-img" /></a>
+            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+        </header>
+        <div id="panel" class="wrapper">
+
+            <section class="backage-nav-container">
+                <a href="/my/MyCollection" class="nav-item">我的收藏</a>
+                <a href="/my/MyJob" class="nav-item ">我的投递</a>
+                <a href="/Resume/Index" class="nav-item nav-active-item">我的简历</a>
+                <a href="/my/MyAssessment" class="nav-item">我的测评</a>
+                <a href="/my/MyOrder" class="nav-item">我的订单</a>
+            </section>
+            
+            <section class="go-container clearbox">
+                <div class="tip-note">添加标签将有利于更好地帮助您找到合适的职位</div>
+                <a href="../My/Label.html" class="btn-go">GO</a>
+            </section>
+
+            <section class="user-container">
+                <a href="m_Resume.html" class="user-wrapper clearbox">
+                    <img src="../../Content/m_img/m_user_default.png" class="user-img">
+                    <div class="user-name clearbox overflow-text">
+                        <span class="name">Jessie Lai</span>
+                        <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span>
+                        <!-- <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> -->
+                    </div>
+                </a>
+                <a href="m_Resume.html" class="btn-edit">编辑个人信息</a>
+            </section>
+
+            <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
+            
+        </div>
+
+        <aside id="menu" class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-tip">
+                    <div class="tip-text">求职小助手</div>
+                    <div class="tip-num">+86 400 123 4567</div>
+                </div>
+                <ul class="slider-box">
+                    <li class="slider-item"><a href="/Assessment/m_Welcome">职位性格</a></li>
+                    <li class="slider-item"><a href="/Job/List">我的职位</a></li>
+                    <li class="slider-item"><a href="/Home/Serve">服务产品</a></li>
+                    <li class="slider-item"><a href="/Home/About">关于我们</a></li>
+                </ul>
+                <div class="btn-exit" style="display:none;" v-show="loginKey">安全退出</div>
+            </div>
+        </aside>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var UserTitleList = [{"ID":54,"TitleName":"测试工程师","TitleID":3,"Remarks":"","UserID":100003}];
+        var ResumeBasic ={"ID":19,"UserID":100003,"Name":"黎","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海","PicturePath":"","Content":"我是一个热爱生活的人","Remarks":null,"CreatedUser":100003,"CreatedTime":"2018-06-12T20:59:36.607","ModifyUser":100003,"ModifyTime":"2018-06-12T20:59:47.493","JobStatus":null};
+	    var ResumeBasicPicturePaths = '/UserPhoto/Koala1528901850767.jpg';
+        var IsAssessment = '';
+
+    </script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/slideout.min.js"></script>
+    <script src="../../Scripts/js/m_ResumeIndex.js?v=20180626"></script>
+
+</body>
+</html>
