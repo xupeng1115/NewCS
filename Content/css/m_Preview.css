@@ -1,0 +1,318 @@
+@charset "utf-8";
+/**********************Content***********************/
+html,body{
+    overflow-y:scroll;
+    overflow-x:hidden;
+    background:#f2f2f2;
+}
+
+.container{
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+section{
+    z-index:auto;
+}
+
+header.top{
+    box-shadow: 0 2px 6px 0 rgba(228, 228, 228, 0.5);
+}
+
+/**************************************Preview*********************************/
+section.top-container{
+    background:#fff;
+    padding:20px 15px;
+}
+
+section.top-container img.user-img{
+    display:block;
+    float:left;
+    margin-right:10px;
+    width:45px;
+    height:45px;
+    border-radius:100%;
+}
+
+section.top-container .user-name{
+    position:relative;
+    padding-right:20px;
+    float:left;
+    max-width:calc(100% - 100px);
+    line-height:45px;
+    font-size:20px;
+    color:#333;
+    text-align:left;
+}
+
+section.top-container .user-name span{
+    display:inline-block;
+}
+
+section.top-container .user-name span.icon{
+    position:absolute;
+    top:0;
+    right:0px;
+    z-index:10;
+}
+
+section.top-container .user-name span.icon i{
+    font-size:20px;
+    color:#ee5c54
+}
+
+section.top-container .tags-wrapper{
+    padding-top:55px;
+    position:relative;
+    width:100%;
+}
+
+section.top-container .tags-wrapper .tags{
+    position:relative;
+    width:100%;
+}
+
+section.top-container .tags-wrapper .tags .tag{
+    float:left;
+    margin:0 7px 7px 0;
+    padding:0 4px;
+    height:20px;
+    line-height:20px;
+    border-radius:2px;
+    border:1px solid #ffbf00;
+    font-size:12px;
+    letter-spacing: 0.8px;
+    color:#ffbf00;
+}
+
+/****************************Module*********************************/
+section.module{
+    background:#fff;
+    padding:15px;
+}
+
+section.module:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:0;
+    border-top:1px solid #e1e1e1;
+
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5);
+}
+
+section.module .module-title{
+    position:relative;
+    line-height:24px;
+    font-size:16px;
+    font-weight:500;
+    color:#333;
+    text-align:left;
+}
+
+section.module .module-title:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-15px;
+    width:0;
+    height:24px;
+    border-left:3px solid #ffbf00;
+}
+
+section.module .wrapper{
+    position:relative;
+    padding-top:10px;
+}
+
+/****************************Basic*********************************/
+section.basic .basic-wrapper ul.basic-list{
+    position:relative;
+}
+
+section.basic .basic-wrapper ul.basic-list li.basic-item{
+    font-size:12px;
+    color:#6d6d6d;
+    line-height:18px;
+    margin-bottom:10px;
+    text-align:left;
+}
+
+section.basic .basic-wrapper ul.basic-list li.basic-item span{
+    display:block;
+}
+
+section.basic .basic-wrapper ul.basic-list li.basic-item span.text{
+    float:left;
+    width:65px;
+}
+
+section.basic .basic-wrapper ul.basic-list li.basic-item span.address{
+    margin-left:65px;
+}
+
+section.basic .basic-wrapper ul.basic-list li.basic-item:last-child{
+    margin-bottom:0;
+}
+
+/***************************Edu-bg****************************/
+section.background .background-wrapper ul.background-list{
+    position:relative;
+} 
+
+section.background .background-wrapper ul.background-list li.background-item{
+    display:block;
+    position:relative;
+    padding-bottom:30px;
+    padding-left:15px;
+}
+
+section.background .background-wrapper ul.background-list li.background-item:before{
+    position:absolute;
+    top:4px;
+    left:0;
+    z-index:10;
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:100%;
+    background:#69a2cd;
+}
+
+section.background .background-wrapper ul.background-list li.background-item:last-child{
+    padding-bottom:0;
+}
+
+section.background .background-wrapper ul.background-list li.background-item:after{
+    position:absolute;
+    top:7px;
+    left:2px;
+    z-index:5;
+    content:"";
+    width:0;
+    height:100%;
+    border-left:1px solid #cdd6e2;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .head{
+    position:relative;
+    max-width:calc(100% - 100px);
+    font-size:14px;
+    color:#333;
+    line-height:20px;
+    text-align:left;
+    padding-bottom:5px;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .head span{
+    display:inline-block;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .head .school{
+    position:relative;
+    padding-right:20px;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .major{
+    line-height:18px;
+    font-size:12px;
+    color:#6d6d6d;
+    text-align:left;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .head .school:before{
+    content:"";
+    position:absolute;
+    right:8px;
+    top:4px;
+    width:0;
+    height:12px;
+    border-left:1px solid #cdcdcd;
+}
+
+section.background .background-wrapper ul.background-list li.background-item .date-box{
+    position:absolute;
+    top:2px;
+    right:0;
+    font-size:12px;
+    color:#b0b0b0;
+}
+
+/******************************Honor**********************************/
+section.honor .honor-wrapper ul.honor-list{
+    position:relative;
+}
+
+section.honor .honor-wrapper ul.honor-list li.honor-item{
+    position:relative;
+    width:100%;
+    padding-bottom:10px;
+    line-height:20px;
+}
+
+section.honor .honor-wrapper ul.honor-list li.honor-item:last-child{
+    padding-bottom:0;
+}
+
+section.honor .honor-wrapper ul.honor-list li.honor-item .name{
+    max-width:calc(100% - 60px);
+    font-size:14px;
+    color:#333;
+    line-height:20px;
+    text-align:left;
+}
+
+section.honor .honor-wrapper ul.honor-list li.honor-item .date-box{
+    position:absolute;
+    top:2px;
+    right:0;
+    z-index:10;
+    font-size:12px;
+    color:#b0b0b0;
+}
+
+/**************************Practice***************************/
+section.practice .practice-wrapper ul.practice-list{
+    position:relative;
+}
+
+section.practice .practice-wrapper ul.practice-list li.practice-item{
+    position:relative;
+}
+
+
+
+
+
+
+
+
+
+/*******************************************Media Query******************************************/
+@media (max-device-width: 800px) and (orientation:landscape){
+
+}
+
+@media screen and (max-width:414px){
+	
+}
+
+@media screen and (max-width:384px){
+	
+}
+
+@media screen and (max-width:375px){
+	
+}
+
+@media screen and (max-width:360px){
+	
+}
+
+@media screen and (max-width:320px){
+   
+}
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_Preview.css?v=20180626">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="m_Index.html" class="top-back"></a>
+            <div class="top-title">简历预览</div>
+        </header>
+        <div id="panel" class="wrapper">
+
+            <section class="top-container clearbox">
+                <img v-bind:src="picUrl" class="user-img" onerror="nofind();">
+                <div class="user-name clearbox overflow-text" style="display:none;" v-show="userInfo.Name!=''">
+                    <span class="name" v-html="userInfo.Name"></span>
+                    <span class="icon" style="display:none;" v-show="userInfo.Gender===1"><i class="fa fa-venus" aria-hidden="true"></i></span>
+                    <span class="icon" style="display:none;" v-show="userInfo.Gender===0"><i class="fa fa-mars" aria-hidden="true"></i></span>
+                </div>
+                <div class="tags-wrapper">
+                    <ul class="tags clearbox">
+                        <li class="tag">数据分析</li>
+                        <li class="tag">证券/股票/经济研究</li>
+                        <li class="tag">数据分析</li>
+                        <li class="tag">IT开发工程师</li>
+                        <li class="tag">web开发工程师</li>
+                        <li class="tag">java开发工程师</li>
+                        <li class="tag">销售经理</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="module basic">
+                <div class="module-title">基本信息</div>
+                <div class="wrapper basic-wrapper">
+                    <ul class="basic-list">
+                        <li class="basic-item">
+                            <span class="text">联系电话：</span>
+                            <span class="phone">13801010101</span>
+                        </li>
+                        <li class="basic-item">
+                            <span class="text">联系邮箱：</span>
+                            <span class="email">9993332738@163.com</span>
+                        </li>
+                        <li class="basic-item">
+                            <span class="text">联系地址：</span>
+                            <span class="address">上海市长宁区玛瑙路1438号国际古北财富中心二期</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="module background">
+                <div class="module-title">教育背景</div>
+                <div class="wrapper background-wrapper">
+                    <ul class="background-list">
+                        <li class="background-item">
+                            <div class="head">
+                                <span class="school">武汉大学</span>
+                                <span class="bg">本科</span>
+                            </div>
+                            <div class="major">机械及自动化专业</div>
+                            <div class="date-box">
+                                <span class="end-year">2014年</span>
+                                <span class="end-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="background-item">
+                            <div class="head">
+                                <span class="school">武汉大学</span>
+                                <span class="bg">本科</span>
+                            </div>
+                            <div class="major">机械及自动化专业</div>
+                            <div class="date-box">
+                                <span class="end-year">2014年</span>
+                                <span class="end-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="background-item">
+                            <div class="head">
+                                <span class="school">武汉大学</span>
+                                <span class="bg">本科</span>
+                            </div>
+                            <div class="major">机械及自动化专业</div>
+                            <div class="date-box">
+                                <span class="end-year">2014年</span>
+                                <span class="end-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="background-item">
+                            <div class="head">
+                                <span class="school">武汉大学</span>
+                                <span class="bg">本科</span>
+                            </div>
+                            <div class="major">机械及自动化专业</div>
+                            <div class="date-box">
+                                <span class="end-year">2014年</span>
+                                <span class="end-month">8月</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="module honor">
+                <div class="module-title">所获荣誉</div>
+                <div class="wrapper honor-wrapper">
+                    <ul class="honor-list">
+                        <li class="honor-item">
+                            <div class="name">三好学生</div>
+                            <div class="date-box">
+                                <span class="begin-year">2014年</span>
+                                <span class="begin-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="honor-item">
+                            <div class="name">三好学生</div>
+                            <div class="date-box">
+                                <span class="begin-year">2014年</span>
+                                <span class="begin-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="honor-item">
+                            <div class="name">三好学生</div>
+                            <div class="date-box">
+                                <span class="begin-year">2014年</span>
+                                <span class="begin-month">8月</span>
+                            </div>
+                        </li>
+                        <li class="honor-item">
+                            <div class="name">三好学生</div>
+                            <div class="date-box">
+                                <span class="begin-year">2014年</span>
+                                <span class="begin-month">8月</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="module practice">
+                <div class="module-title">实习经历</div>
+                <div class="wrapper practice-wrapper">
+                    <ul class="practice-list">
+                        <li class="practice-item">
+                            <div class="company"></div>
+                            <div class="position"></div>
+                            <div class="date-box"></div>
+                            <div class="dec"></div>
+                        </li>
+                        <li class="practice-item">
+                            <div class="company"></div>
+                            <div class="position"></div>
+                            <div class="date-box"></div>
+                            <div class="dec"></div>
+                        </li>
+                        <li class="practice-item">
+                            <div class="company"></div>
+                            <div class="position"></div>
+                            <div class="date-box"></div>
+                            <div class="dec"></div>
+                        </li>
+                        <li class="practice-item">
+                            <div class="company"></div>
+                            <div class="position"></div>
+                            <div class="date-box"></div>
+                            <div class="dec"></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+        var ResumeBasic ={"ID":19,"UserID":100003,"Name":"黎","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海","PicturePath":"","Content":"我是一个热爱生活的人","Remarks":null,"CreatedUser":100003,"CreatedTime":"2018-06-12T20:59:36.607","ModifyUser":100003,"ModifyTime":"2018-06-12T20:59:47.493","JobStatus":null};
+	    var ResumeBasicPicturePaths = '/UserPhoto/Koala1528901850767.jpg';
+        var IsAssessment = '';
+
+    </script>
+    <script src="../../Scripts/js/m_Preview.js?v=20180626"></script>
+
+</body>
+</html>

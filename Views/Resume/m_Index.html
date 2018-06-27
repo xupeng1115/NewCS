@@ -65,14 +65,63 @@
 
             <section class="user-container">
                 <a href="m_Resume.html" class="user-wrapper clearbox">
-                    <img src="../../Content/m_img/m_user_default.png" class="user-img">
-                    <div class="user-name clearbox overflow-text">
-                        <span class="name">Jessie Lai</span>
-                        <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span>
-                        <!-- <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> -->
+                    <img v-bind:src="picUrl" class="user-img" onerror="nofind();">
+                    <div class="user-name clearbox overflow-text" style="display:none;" v-show="userInfo.Name!=''">
+                        <span class="name" v-html="userInfo.Name"></span>
+                        <span class="icon" style="display:none;" v-show="userInfo.Gender===1"><i class="fa fa-venus" aria-hidden="true"></i></span>
+                        <span class="icon" style="display:none;" v-show="userInfo.Gender===0"><i class="fa fa-mars" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="m_Resume.html" class="btn-edit">编辑个人信息</a>
+                <a href="m_Resume.html" class="btn-edit" v-bind:class="{'btn-edit-middle':userInfo.Name==''}">编辑个人信息</a>
+            </section>
+
+            <section class="upload-container">
+                <div class="upload-box">上传简历</div>
+            </section>
+
+            <section class="detail-container">
+                <ul class="detail-list">
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE80C;</i></span>
+                            <span class="text">教育背景</span>
+                        </a>
+                    </li>
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE86E;</i></span>
+                            <span class="text">所获荣誉</span>
+                        </a>
+                    </li>
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE85D;</i></span>
+                            <span class="text">实习经历</span>
+                        </a>
+                    </li>
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE8A3;</i></span>
+                            <span class="text">语言/技术技能</span>
+                        </a>
+                    </li>
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE566;</i></span>
+                            <span class="text">课外活动</span>
+                        </a>
+                    </li>
+                    <li class="detail-item">
+                        <a href="m_Preview.html" class="detail-href">
+                            <span class="icon"><i class="material-icons">&#xE873;</i></span>
+                            <span class="text">自我评价</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="preview-container">
+                <a href="m_Preview.html" class="preview-href">预览简历</a>
             </section>
 
             <section class="flo-container" v-bind:class="{'flo-container-show':menuKey}"></section>
@@ -105,8 +154,9 @@
         }
 
 	    var UserTitleList = [{"ID":54,"TitleName":"测试工程师","TitleID":3,"Remarks":"","UserID":100003}];
-        var ResumeBasic ={"ID":19,"UserID":100003,"Name":"黎","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海","PicturePath":"","Content":"我是一个热爱生活的人","Remarks":null,"CreatedUser":100003,"CreatedTime":"2018-06-12T20:59:36.607","ModifyUser":100003,"ModifyTime":"2018-06-12T20:59:47.493","JobStatus":null};
-	    var ResumeBasicPicturePaths = '/UserPhoto/Koala1528901850767.jpg';
+        // var ResumeBasic ={"ID":19,"UserID":100003,"Name":"黎","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海","PicturePath":"","Content":"我是一个热爱生活的人","Remarks":null,"CreatedUser":100003,"CreatedTime":"2018-06-12T20:59:36.607","ModifyUser":100003,"ModifyTime":"2018-06-12T20:59:47.493","JobStatus":null};
+        var ResumeBasic ='';
+        var ResumeBasicPicturePaths = '/UserPhoto/Koala1528901850767.jpg';
         var IsAssessment = '';
 
     </script>
