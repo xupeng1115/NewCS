@@ -56,13 +56,7 @@
                 </div>
                 <div class="tags-wrapper">
                     <ul class="tags clearbox">
-                        <li class="tag">数据分析</li>
-                        <li class="tag">证券/股票/经济研究</li>
-                        <li class="tag">数据分析</li>
-                        <li class="tag">IT开发工程师</li>
-                        <li class="tag">web开发工程师</li>
-                        <li class="tag">java开发工程师</li>
-                        <li class="tag">销售经理</li>
+                        <li class="tag" v-for="(item,index) in tagList" v-bind:key="item.ID" v-bind:index="item.ID" v-html="item.TitleName"><!--Java工程师--></li>
                     </ul>
                 </div>
             </section>
@@ -71,17 +65,21 @@
                 <div class="module-title">基本信息</div>
                 <div class="wrapper basic-wrapper">
                     <ul class="basic-list">
-                        <li class="basic-item">
+                        <li class="basic-item" style="display:none;" v-show="userInfo.Tel!=''">
                             <span class="text">联系电话：</span>
-                            <span class="phone">13801010101</span>
+                            <span class="phone" v-html="userInfo.Tel"><!--13801010101--></span>
                         </li>
-                        <li class="basic-item">
+                        <li class="basic-item" style="display:none;" v-show="userInfo.Email!=''">
                             <span class="text">联系邮箱：</span>
-                            <span class="email">9993332738@163.com</span>
+                            <span class="email" v-html="userInfo.Email"><!--9993332738@163.com--></span>
                         </li>
-                        <li class="basic-item">
+                        <li class="basic-item" style="display:none;" v-show="userInfo.AddressInfo!=''">
                             <span class="text">联系地址：</span>
-                            <span class="address">上海市长宁区玛瑙路1438号国际古北财富中心二期</span>
+                            <span class="address" v-html="userInfo.AddressInfo"><!--上海市长宁区玛瑙路1438号国际古北财富中心二期--></span>
+                        </li>
+                        <li class="basic-item" style="display:none;" v-show="userInfo.JobStatus!=''">
+                            <span class="text">工作状态：</span>
+                            <span class="status" v-html="userInfo.JobStatus"><!--正在找工作--></span>
                         </li>
                     </ul>
                 </div>
@@ -91,48 +89,15 @@
                 <div class="module-title">教育背景</div>
                 <div class="wrapper background-wrapper">
                     <ul class="background-list">
-                        <li class="background-item">
+                        <li class="background-item" v-for="(item,index) in backgroundList" v-bind:key="index" v-bind:index="index">
                             <div class="head">
-                                <span class="school">武汉大学</span>
-                                <span class="bg">本科</span>
+                                <span class="school" v-html="item.SchoolName"><!--武汉大学--></span>
+                                <span class="bg" v-html="item.Education>=14?'其他':(item.Education>=13?'博士':(item.Education>=12?'硕士':(item.Education>=11?'本科':(item.Education>=10?'大专':''))))"><!--本科--></span>
                             </div>
-                            <div class="major">机械及自动化专业</div>
+                            <div class="major" v-html="item.Major"><!--机械及自动化专业--></div>
                             <div class="date-box">
-                                <span class="end-year">2014年</span>
-                                <span class="end-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="background-item">
-                            <div class="head">
-                                <span class="school">武汉大学</span>
-                                <span class="bg">本科</span>
-                            </div>
-                            <div class="major">机械及自动化专业</div>
-                            <div class="date-box">
-                                <span class="end-year">2014年</span>
-                                <span class="end-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="background-item">
-                            <div class="head">
-                                <span class="school">武汉大学</span>
-                                <span class="bg">本科</span>
-                            </div>
-                            <div class="major">机械及自动化专业</div>
-                            <div class="date-box">
-                                <span class="end-year">2014年</span>
-                                <span class="end-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="background-item">
-                            <div class="head">
-                                <span class="school">武汉大学</span>
-                                <span class="bg">本科</span>
-                            </div>
-                            <div class="major">机械及自动化专业</div>
-                            <div class="date-box">
-                                <span class="end-year">2014年</span>
-                                <span class="end-month">8月</span>
+                                <span class="end-year" v-html="item.EndDate!==undefined?(item.EndDate.substr(0,4)+'年'):'XXXX年'"><!--2014年--></span>
+                                <span class="end-month" v-html="item.EndDate!==undefined?(item.EndDate.substr(5,2)+'月'):'XX月'"><!--8月--></span>
                             </div>
                         </li>
                     </ul>
@@ -143,32 +108,11 @@
                 <div class="module-title">所获荣誉</div>
                 <div class="wrapper honor-wrapper">
                     <ul class="honor-list">
-                        <li class="honor-item">
-                            <div class="name">三好学生</div>
+                        <li class="honor-item" v-for="(item,index) in honorList" v-bind:key="index" v-bind:index="index">
+                            <div class="name" v-html="item.HonorName"><!--三好学生--></div>
                             <div class="date-box">
-                                <span class="begin-year">2014年</span>
-                                <span class="begin-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="honor-item">
-                            <div class="name">三好学生</div>
-                            <div class="date-box">
-                                <span class="begin-year">2014年</span>
-                                <span class="begin-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="honor-item">
-                            <div class="name">三好学生</div>
-                            <div class="date-box">
-                                <span class="begin-year">2014年</span>
-                                <span class="begin-month">8月</span>
-                            </div>
-                        </li>
-                        <li class="honor-item">
-                            <div class="name">三好学生</div>
-                            <div class="date-box">
-                                <span class="begin-year">2014年</span>
-                                <span class="begin-month">8月</span>
+                                <span class="begin-year" v-html="item.GetTime!==undefined?(item.GetTime.substr(0,4)+'年'):'XXXX年'"><!--2014年--></span>
+                                <span class="begin-month" v-html="item.GetTime!==undefined?(item.GetTime.substr(5,2)+'月'):'XX月'"><!--8月--></span>
                             </div>
                         </li>
                     </ul>
@@ -179,31 +123,76 @@
                 <div class="module-title">实习经历</div>
                 <div class="wrapper practice-wrapper">
                     <ul class="practice-list">
-                        <li class="practice-item">
-                            <div class="company"></div>
-                            <div class="position"></div>
-                            <div class="date-box"></div>
-                            <div class="dec"></div>
+                        <li class="practice-item" v-for="(item,index) in practiceList" v-bind:key="index" v-bind:index="index">
+                            <div class="top clearbox">
+                                <div class="company" v-html="item.CompanyName"><!--洋葱数学--></div>
+                                <div class="position" v-html="item.PositionName"><!--HR助理--></div>
+                            </div>
+                            <div class="address" v-html="item.AddressInfo"><!--长沙-岳麓区--></div>
+                            <div class="date-box">
+                                <span class="begin-year" v-html="item.BeginDate!==undefined?(item.BeginDate.substr(0,4)+'年'):'XXXX年'"><!--2017年--></span>
+                                <span class="begin-month" v-html="item.BeginDate!==undefined?(item.BeginDate.substr(5,2)+'月'):'XX月'"><!--5月--></span>
+                                <span class="end-year" v-html="item.EndDate!==undefined?(item.EndDate.substr(0,4)+'年'):'XXXX年'"><!--2017年--></span>
+                                <span class="end-month" v-html="item.EndDate!==undefined?(item.EndDate.substr(5,2)+'月'):'XX月'"><!--7月--></span>
+                            </div>
+                            
+                            <div class="dec" v-html="item.JobDescription">
+                                <!--1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>2、建立、维护人事档案，办理和更新劳动合同；<br>3、收集相关的劳动用工等人事政策及法规；<br>4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；-->
+                            </div>
                         </li>
-                        <li class="practice-item">
-                            <div class="company"></div>
-                            <div class="position"></div>
-                            <div class="date-box"></div>
-                            <div class="dec"></div>
-                        </li>
-                        <li class="practice-item">
-                            <div class="company"></div>
-                            <div class="position"></div>
-                            <div class="date-box"></div>
-                            <div class="dec"></div>
-                        </li>
-                        <li class="practice-item">
-                            <div class="company"></div>
-                            <div class="position"></div>
-                            <div class="date-box"></div>
-                            <div class="dec"></div>
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <section class="module skill">
+                <div class="module-title">语言/技术技能</div>
+                <div class="wrapper skill-wrapper">
+                    <ul class="skill-list">
+                        <li class="skill-item" v-for="(item,index) in skillList" v-bind:key="index" v-bind:index="index">
+                            <div class="top clearbox">
+                                <div class="name" v-html="item.SepciltyName"><!--英语CET-6--></div>
+                                <div class="dec" v-html="item.SkillDescription"><!--熟练使用英语交流--></div>
+                            </div>
+                            <div class="degree">
+                                <div class="degree-bar" v-bind:style="{width:(item.Skilled/4)+'%'}"></div>
+                            </div>
                         </li>
                     </ul>
+                </div>
+            </section>
+
+            <section class="module activity">
+                <div class="module-title">课外活动</div>
+                <div class="wrapper activity-wrapper">
+                    <ul class="activity-list">
+                        <li class="activity-item" v-for="(item,index) in activityList">
+                            <div class="top clearbox">
+                                <div class="name" v-html="item.ActivityName"><!--学术学术辩论--></div>
+                                <div class="date-box">
+                                    <span class="begin-year" v-html="item.AttendTime!==undefined?(item.AttendTime.substr(0,4)+'年'):'XXXX年'"><!--2018年--></span>
+                                    <span class="begin-month" v-html="item.AttendTime!==undefined?(item.AttendTime.substr(5,2)+'月'):'XX月'"><!--7月--></span>
+                                </div>
+                            </div>
+                            <div class="address" v-html="item.AddressInfo">苏州</div>
+                            <div class="dec" v-html="item.Description">
+                            <!--《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="module evaluation">
+                <div class="module-title">自我评价</div>
+                <div class="wrapper evaluation-wrapper">
+                    <div class="dec" v-html="evaluation.Content">
+                        本人性格开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。
+                        <br>
+                        对待工作认真负责，善于沟通、协调有较强的组织能力与团队精神；活泼开朗、乐观上进、有爱心并善于施教并行；上进心强、勤于学习能不断提高自身的能力与综合素质。在未来的工作中，我将以充沛的精力，刻苦钻研的精神来努力工作，稳定地提高自己的工作能力，与企业同步发展。 
+                        <br>
+                        思想上积极要求上进，团结同学，尊敬师长，乐于助人，能吃苦耐劳，为人诚恳老实，性格开朗善于与人交际，工作上有较强的组织管理和动手能力，集体观念强，具有团队协作精神，创新意识。</pre>
+                    </div>
                 </div>
             </section>
 
@@ -218,8 +207,15 @@
             isLogin = false;
         }
 
-        var ResumeBasic ={"ID":19,"UserID":100003,"Name":"黎","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海","PicturePath":"","Content":"我是一个热爱生活的人","Remarks":null,"CreatedUser":100003,"CreatedTime":"2018-06-12T20:59:36.607","ModifyUser":100003,"ModifyTime":"2018-06-12T20:59:47.493","JobStatus":null};
-	    var ResumeBasicPicturePaths = '/UserPhoto/Koala1528901850767.jpg';
+        var UserTitleList = [{"ID":256,"TitleName":"互联网/电子商务","TitleID":1,"Remarks":"","UserID":100019},{"ID":257,"TitleName":"Java开发","TitleID":2,"Remarks":"","UserID":100019},{"ID":258,"TitleName":"房地产","TitleID":12,"Remarks":"","UserID":100019},{"ID":259,"TitleName":"经济研究员","TitleID":8,"Remarks":"","UserID":100019},{"ID":260,"TitleName":"结构/设计","TitleID":10,"Remarks":"","UserID":100019}];
+        var ResumeBasic =({"ID":31,"UserID":100019,"Name":"快快快快","Tel":"15136723391","Email":"111@qq.com","Gender":1,"AddressID":0,"AddressInfo":"考虑到了地落到了到来了顿了顿","PicturePath":"","Content":"\r\n<pre style=\"white-space:pre-wrap; font-family:&quot;Helvetica Neue&quot;,&quot;PingFang SC&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft Yahei&quot;,sans-serif; font-size:12px; margin-bottom:0px; padding:0px; border-width:initial; border-style:none; border-color:initial; line-height:20px; vertical-align:baseline; color:rgb(109,109,109); background-color:rgb(255,255,255)\">本人性&#26684;开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。 \n\n对待工作认真负责，善于沟通、协调有较强的组织能力与团队精神；活泼开朗、乐观上进、有爱心并善于施教并行；上进心强、勤于学习能不断提高自身的能力与综合素质。在未来的工作中，我将以充沛的精力，刻苦钻研的精神来努力工作，稳定地提高自己的工作能力，与企业同步发展。 \n\n思想上积极要求上进，团结同学，尊敬师长，乐于助人，能吃苦耐劳，为人诚恳老实，性&#26684;开朗善于与人交际，工作上有较强的组织管理和动手能力，集体观念强，具有团队协作精神，创新意识。</pre>\r\n","Remarks":null,"CreatedUser":100019,"CreatedTime":"2018-06-27T15:32:10.027","ModifyUser":100019,"ModifyTime":"2018-06-28T14:34:02.033","JobStatus":"正在找工作"});
+        var Activity = [{"ID":17,"ResumeID":31,"ActivityName":"滕讯AI研发实习生","AttendTime":"2018-03-01T00:00:00","AddressID":0,"AddressInfo":"深圳","Description":"《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。","CreatedUser":100019,"CreatedTime":"2018-06-28T14:42:30.263","ModifyUser":100019,"ModifyTime":"2018-06-28T14:42:30.263"},{"ID":16,"ResumeID":31,"ActivityName":"阿里巴巴实习HR助理","AttendTime":"2017-03-01T00:00:00","AddressID":0,"AddressInfo":"杭州","Description":"《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。","CreatedUser":100019,"CreatedTime":"2018-06-28T14:26:51.613","ModifyUser":100019,"ModifyTime":"2018-06-28T14:26:51.613"}];
+        var EducationBackround =([{"ID":36,"ResumeID":31,"SchoolName":"宾夕法&#23612;亚大学","Education":13,"Major":"计算机科学","BeginDate":"1990-01-01T00:00:00","EndDate":"2019-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:37:09.06","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:09.06"},{"ID":35,"ResumeID":31,"SchoolName":"斯坦福大学","Education":12,"Major":"计算机科学与安全","BeginDate":"1990-01-01T00:00:00","EndDate":"2016-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:35:27.94","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:25.377"},{"ID":34,"ResumeID":31,"SchoolName":"麻省理工学院","Education":11,"Major":"计算机科学与技术","BeginDate":"1990-01-01T00:00:00","EndDate":"2012-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:31:47.287","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:19.447"}]);
+        var Award = [{"ID":19,"ResumeID":31,"HonorName":"全国计算机6级等级","GetTime":"2013-04-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:38:16.737","ModifyUser":100019,"ModifyTime":"2018-06-28T14:38:16.737"},{"ID":20,"ResumeID":31,"HonorName":"英语CET-6","GetTime":"2015-03-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:38:38.027","ModifyUser":100019,"ModifyTime":"2018-06-28T14:38:38.027"}];
+        var InternshipExperience = [{"ID":16,"CompanyLogo":"/CompanyLogo/m_list_logo31530196063134.png","ResumeID":31,"CompanyName":"apple股份有限公司","AddressInfo":"美国加利福&#23612;亚州旧金山","PositionName":"java开发工程师","BeginDate":"2017-10-01T00:00:00","EndDate":"2018-06-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:29:51.267","ModifyUser":100019,"ModifyTime":"2018-06-28T14:29:51.267"},{"ID":17,"CompanyLogo":"/CompanyLogo/m_list_logo41530196735894.png","ResumeID":31,"CompanyName":"Microsoft股份有限公司","AddressInfo":"美国洛杉矶","PositionName":".net开发工程师","BeginDate":"2016-10-01T00:00:00","EndDate":"2017-05-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:40:03.843","ModifyUser":100019,"ModifyTime":"2018-06-28T14:40:03.843"}];
+        var Sepcilty = [{"ID":14,"ResumeID":31,"SepciltyName":"英语CET-4","Skilled":"254","SkillDescription":"能熟练听说读写","CreatedUser":100019,"CreatedTime":"2018-06-28T11:05:45.033","ModifyUser":100019,"ModifyTime":"2018-06-28T11:05:45.033"},{"ID":15,"ResumeID":31,"SepciltyName":"日语8级","Skilled":"359","SkillDescription":"非常熟练","CreatedUser":100019,"CreatedTime":"2018-06-28T14:41:40.027","ModifyUser":100019,"ModifyTime":"2018-06-28T14:41:40.027"}];
+        var ResumeContent = ({"ResumeID":31,"Content":"\r\n<pre style=\"white-space:pre-wrap; font-family:&quot;Helvetica Neue&quot;,&quot;PingFang SC&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft Yahei&quot;,sans-serif; font-size:12px; margin-bottom:0px; padding:0px; border-width:initial; border-style:none; border-color:initial; line-height:20px; vertical-align:baseline; color:rgb(109,109,109); background-color:rgb(255,255,255)\">本人性&#26684;开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。 \n\n对待工作认真负责，善于沟通、协调有较强的组织能力与团队精神；活泼开朗、乐观上进、有爱心并善于施教并行；上进心强、勤于学习能不断提高自身的能力与综合素质。在未来的工作中，我将以充沛的精力，刻苦钻研的精神来努力工作，稳定地提高自己的工作能力，与企业同步发展。 \n\n思想上积极要求上进，团结同学，尊敬师长，乐于助人，能吃苦耐劳，为人诚恳老实，性&#26684;开朗善于与人交际，工作上有较强的组织管理和动手能力，集体观念强，具有团队协作精神，创新意识。</pre>\r\n"});
+	    var ResumeBasicPicturePaths = '/UserPhoto/m_list_logo21530196982398.png';
         var IsAssessment = '';
 
     </script>

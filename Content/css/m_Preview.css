@@ -3,7 +3,7 @@
 html,body{
     overflow-y:scroll;
     overflow-x:hidden;
-    background:#f2f2f2;
+    background:#fff;
 }
 
 .container{
@@ -281,15 +281,227 @@ section.practice .practice-wrapper ul.practice-list{
 
 section.practice .practice-wrapper ul.practice-list li.practice-item{
     position:relative;
+    width:100%;
+    padding-bottom:10px;
 }
 
+section.practice .practice-wrapper ul.practice-list li.practice-item:last-child{
+    padding-bottom:0;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .top{
+    position:relative;
+    width:100%;
+    height:auto;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .top .company{
+    float:left;
+    max-width:calc(100% - 110px);
+    line-height:20px;
+    font-size:14px;
+    color:#333;
+    letter-spacing:0.9px;
+    text-align:left;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .top .position{
+    float:right;
+    max-width:110px;
+    margin-top:1px;
+    line-height:18px;
+    font-size:12px;
+    color:#6d6d6d;
+    letter-spacing:0.8px;
+    text-align:right;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .address{
+    position:relative;
+    padding-top:3px;
+    width:100%;
+    line-height:18px;
+    padding-right:10px;
+    font-size:11px;
+    color:#333;
+    text-align:left;
+    line-height:18px;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .date-box{
+    position:relative;
+    width:100%;
+    padding-top:8px;
+    font-size:12px;
+    color:#b0b0b0;
+    text-align:left;
+    line-height:18px;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .date-box span{
+    position:relative;
+    display:inline-block;
+}
 
+section.practice .practice-wrapper ul.practice-list li.practice-item .date-box span.end-year{
+    padding-left:8px;
+}
+
+section.practice .practice-wrapper ul.practice-list li.practice-item .date-box span.end-year:before{
+    content:"";
+    position:absolute;
+    top:8px;
+    left:-1px;
+    z-index:5;
+    width:7px;
+    height:0;
+    border-top:1px solid #b0b0b0;
+}
+
+section.practice .practice-wrapper ul.practice-list li.practice-item .dec{
+    padding-top:8px;
+    font-size:12px;
+    color:#6d6d6d;
+    letter-spacing:1px;
+    text-align:left;
+    line-height:20px;
+}
+
+/*******************************Skill**********************************/
+section.skill .skill-wrapper ul.skill-list{
+    position:relative;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item{
+    position:relative;
+    width:100%;
+    padding-bottom:15px;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item:last-child{
+    padding-bottom:0;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item .top{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item .top .name{
+    float:left;
+    max-width:calc(100% - 140px);
+    line-height:20px;
+    font-size:14px;
+    color:#333;
+    letter-spacing:0.9px;
+    text-align:left;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item .top .dec{
+    float:left;
+    padding-left:10px;
+    max-width:140px;
+    margin-top:1px;
+    line-height:18px;
+    font-size:12px;
+    color:#6d6d6d;
+    letter-spacing:0.8px;
+    text-align:left;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item .degree{
+    position:relative;
+    margin-top:10px;
+    width:100%;
+    height:5px;
+    border-radius:3px;
+    background:#efefef;
+}
+
+section.skill .skill-wrapper ul.skill-list li.skill-item .degree .degree-bar{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:5;
+    width:70%;
+    height:5px;
+    background:#ffbf00;
+    border-radius:3px;
+}
+
+/****************************Activity*****************************/
+section.activity .activity-wrapper ul.activity-list{
+    position:relative;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item{
+    position:relative;
+    width:100%;
+    padding-bottom:10px;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item:last-child{
+    padding-bottom:0;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item .top{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item .top .name{
+    float:left;
+    max-width:calc(100% - 90px);
+    line-height:20px;
+    font-size:14px;
+    color:#333;
+    text-align:left;
+    letter-spacing:1px;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item .top .date-box{
+    float:right;
+    max-width:90px;
+    margin-top:1px;
+    line-height:18px;
+    font-size:12px;
+    color:#b0b0b0;
+    text-align:right;
+    letter-spacing:1px;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item .address{
+    position:relative;
+    width:100%;
+    padding-top:5px;
+    line-height:18px;
+    font-size:12px;
+    color:#333;
+    letter-spacing:1px;
+    text-align:left;
+}
+
+section.activity .activity-wrapper ul.activity-list li.activity-item .dec{
+    position:relative;
+    width:100%;
+    padding-top:9px;
+    font-size: 12px;
+    line-height:20px;
+    color: #6d6d6d;
+    text-align:left;
+}
+
+/*****************************Evaluation**************************/
+section.evaluation .evaluation-wrapper .dec{
+    position:relative;
+    width:100%;
+    font-size: 12px;
+    line-height:20px;
+    color: #6d6d6d;
+    text-align:left;
+}
 
 /*******************************************Media Query******************************************/
 @media (max-device-width: 800px) and (orientation:landscape){

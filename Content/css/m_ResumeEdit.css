@@ -1,0 +1,65 @@
+@charset "utf-8";
+/**********************Content***********************/
+html,body{
+    overflow-y:scroll;
+    overflow-x:hidden;
+    background:#f3f5f7;
+}
+
+.container{
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+section{
+    z-index:auto;
+}
+
+header.top{
+    box-shadow: 0 2px 6px 0 rgba(228, 228, 228, 0.5);
+}
+
+/**************************************Resume*********************************/
+section.edit-module{
+    position:relative;
+}
+
+section.edit-module .edit-wrapper{
+    position:relative;
+    width:100%;
+}
+
+section.edit-module .edit-wrapper ul.edit-list{
+    position:relative;
+    width:100%;
+}
+
+
+
+
+
+/*******************************************Media Query******************************************/
+@media (max-device-width: 800px) and (orientation:landscape){
+
+}
+
+@media screen and (max-width:414px){
+	
+}
+
+@media screen and (max-width:384px){
+	
+}
+
+@media screen and (max-width:375px){
+	
+}
+
+@media screen and (max-width:360px){
+	
+}
+
+@media screen and (max-width:320px){
+   
+}
+
