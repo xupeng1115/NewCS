@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="../../Content/lib/toast.css">
     <link rel="stylesheet" href="../../Content/css/m_Template.css">
 
+    <link rel="stylesheet" href="../../Content/lib/FJL.css">
+    <link rel="stylesheet" href="../../Content/lib/FJL.picker.css">
     <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
     <link rel="stylesheet" href="../../Content/css/m_BackgroundEdit.css?v=20180628">
     
@@ -43,7 +45,7 @@
     <div class="container" id="app">
         <header class="top">
             <a href="m_Index.html" class="top-back"></a>
-            <div class="top-title">我的后台管理</div>
+            <div class="top-title">编辑教育背景</div>
             <div class="top-save-btn">保存</div>
         </header>
         <div id="panel" class="wrapper">
@@ -52,16 +54,132 @@
                     <ul class="edit-list">
                         <li class="edit-item">
                             <div class="input-group">
-                                <span class="text"></span>
+                                <div class="text">学校</div>
                                 <div class="input-box">
                                     <input type="text" placeholder="请输入学校名称" class="input-item">
                                 </div>
                             </div>
+                            <div class="input-group">
+                                <div class="text">学历</div>
+                                <div class="input-box select-box">
+                                    <div class="content">请选择</div>
+                                    <select>
+                                        <option value="大专">大专</option>
+                                        <option value="本科">本科</option>
+                                        <option value="硕士">硕士</option>
+                                        <option value="博士">博士</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">专业</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入专业名称" class="input-item">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">毕业时间</div>
+                                <div class="input-box select-box">
+                                    <div class="content">请选择</div>
+                                    <select>
+                                        <option value="2000">2000</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2007">2007</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="btn-resume-delete">删除</div>
                         </li>
-                        <li class="edit-item"></li>
-                        <li class="edit-item"></li>
+                        <li class="edit-item">
+                            <div class="input-group">
+                                <div class="text">学校</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入学校名称" class="input-item">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">学历</div>
+                                <div class="input-box select-box">
+                                    <div class="content">请选择</div>
+                                    <select>
+                                        <option value="大专">大专</option>
+                                        <option value="本科">本科</option>
+                                        <option value="硕士">硕士</option>
+                                        <option value="博士">博士</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">专业</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入专业名称" class="input-item">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">毕业时间</div>
+                                <div class="input-box select-box">
+                                    <div class="content">请选择</div>
+                                    <select>
+                                        <option value="2000">2000</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2007">2007</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="btn-resume-delete">删除</div>
+                        </li>
+                        <li class="edit-item">
+                            <div class="input-group">
+                                <div class="text">学校</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入学校名称" class="input-item">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">学历</div>
+                                <div class="input-box select-box">
+                                    <div class="content">请选择</div>
+                                    <select>
+                                        <option value="大专">大专</option>
+                                        <option value="本科">本科</option>
+                                        <option value="硕士">硕士</option>
+                                        <option value="博士">博士</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">专业</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入专业名称" class="input-item">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">毕业时间</div>
+                                <div class="input-box button-box">
+                                    <button id='demo2' data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn mui-btn mui-btn-block">请选择</button>
+                                </div>
+                            </div>
+                            <div class="btn-resume-delete">删除</div>
+                        </li>
                     </ul>
                 </div>
+            </section>
+            
+            <section class="add-container">
+                <div class="btn-resume-add">添加教育经历</div>
             </section>
         </div>
 
@@ -78,6 +196,8 @@
 	    var EducationBackround =([{"ID":36,"ResumeID":31,"SchoolName":"宾夕法&#23612;亚大学","Education":13,"Major":"计算机科学","BeginDate":"1990-01-01T00:00:00","EndDate":"2019-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:37:09.06","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:09.06"},{"ID":35,"ResumeID":31,"SchoolName":"斯坦福大学","Education":12,"Major":"计算机科学与安全","BeginDate":"1990-01-01T00:00:00","EndDate":"2016-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:35:27.94","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:25.377"},{"ID":34,"ResumeID":31,"SchoolName":"麻省理工学院","Education":11,"Major":"计算机科学与技术","BeginDate":"1990-01-01T00:00:00","EndDate":"2012-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:31:47.287","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:19.447"}]);
 
     </script>
+    <script src="../../Scripts/lib/FJL.min.js"></script>
+    <script src="../../Scripts/lib/FJL.picker.min.js"></script>
     <script src="../../Scripts/js/m_BackgroundEdit.js?v=20180628"></script>
 
 </body>

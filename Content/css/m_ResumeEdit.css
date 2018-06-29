@@ -19,9 +19,31 @@ header.top{
     box-shadow: 0 2px 6px 0 rgba(228, 228, 228, 0.5);
 }
 
+input:-moz-placeholder,   
+textarea:-moz-placeholder { 
+    font-size:12px;  
+    color: #a7a7a7;
+    letter-spacing: 1px;   
+}   
+
+input:-ms-input-placeholder,   
+textarea:-ms-input-placeholder {   
+    font-size:12px;  
+    color: #a7a7a7;
+    letter-spacing: 1px;   
+}   
+
+input::-webkit-input-placeholder,   
+textarea::-webkit-input-placeholder {   
+    font-size:12px;  
+    color: #a7a7a7;
+    letter-spacing: 1px;   
+}
+
 /**************************************Resume*********************************/
 section.edit-module{
     position:relative;
+    background:#f3f5f7;
 }
 
 section.edit-module .edit-wrapper{
@@ -34,7 +56,191 @@ section.edit-module .edit-wrapper ul.edit-list{
     width:100%;
 }
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item{
+    display:block;
+    position:relative;
+    margin-bottom:10px;
+    width:100%;
+    background:#fff;
+}
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group{
+    display:block;
+    position:relative;
+    padding-top:1px;
+    width:100%;
+    height:42px;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0;
+    border-top:1px solid #e1e1e1;
+    
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .text{
+    float:left;
+    padding-left:15px;
+    height:100%;
+    line-height:40px;
+    font-size:12px;
+    color:#333;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .input-box{
+    float:right;
+    position:relative;
+    width:calc(100% - 60px);
+    height:40px;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box{
+    width:calc(100% - 70px);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box{
+    width:calc(100% - 70px);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box:before{
+    content:"";
+    position:absolute;
+    top:16px;
+    right:15px;
+    z-index:5;
+    width:7px;
+    height:7px;
+    border-top:1px solid #c3c3c3;
+    border-right:1px solid #c3c3c3;
+
+    transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box:before{
+    content:"";
+    position:absolute;
+    top:16px;
+    right:15px;
+    z-index:5;
+    width:7px;
+    height:7px;
+    border-top:1px solid #c3c3c3;
+    border-right:1px solid #c3c3c3;
+
+    transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .input-box input.input-item{
+    display:block;
+    margin:0;
+    padding:0;
+    width:100%;
+    padding-right:15px;
+    line-height:38px;
+    border:0;
+    outline:none;
+    text-align:right;
+    font-size:12px;
+    color:#333;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box .content{
+    position:relative;
+    padding-right:27px;
+    float:right;
+    width:100%;
+    height:100%;
+    line-height:40px;
+    text-align:right;
+    font-size:12px;
+    color:#a7a7a7;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box .content-active{
+    color:#333;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box select{
+    position: absolute;
+    margin:0;
+    padding:0;
+    padding-right:20px;
+    width:100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 10;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box button{
+    display:block;
+    position: absolute;
+    margin:0;
+    padding:0;
+    padding-right:28px;
+    width:100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border:0;
+    border-radius:0;
+    color:#a7a7a7;
+    background:transparent;
+    font-size:12px;
+    text-align:right;
+    border:0;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box button.active{
+    color:#333;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .btn-resume-delete{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    text-align:center;
+    color:#ee5c54;
+}
+
+section.add-container{
+    position:relative;
+    padding-top:20px;
+    padding-bottom:40px;
+    width:100%;
+    background:#f3f5f7;
+    
+}
+
+section.add-container .btn-resume-add{
+    position:relative;
+    margin:0 auto;
+    width:calc(100% - 30px);
+    height:40px;
+    line-height:40px;
+    background:#ffbf00;
+    font-size:12px;
+    color:#fff;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/*************************年月日期选择器******************************/
+.mui-dtpicker-header {
+    text-align: left;
+}
 
 
 
