@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../../Content/lib/FJL.css">
     <link rel="stylesheet" href="../../Content/lib/FJL.picker.css">
     <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
-    <link rel="stylesheet" href="../../Content/css/m_BackgroundEdit.css?v=20180628">
+    <link rel="stylesheet" href="../../Content/css/m_ActivityEdit.css?v=20180628">
     
     <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
     <script src="../../Scripts/lib/vue.min.js"></script>
@@ -52,41 +52,34 @@
             <section class="edit-module">
                 <div class="edit-wrapper">
                     <ul class="edit-list">
-                        <li class="edit-item" v-for="(item,index) in backgroundList" v-bind:key="index" v-bind:index="index">
+                        <li class="edit-item" v-for="(item,index) in activityList" v-bind:key="index" v-bind:index="index">
                             <div class="input-group">
-                                <div class="text">学校</div>
+                                <div class="text">活动名称</div>
                                 <div class="input-box">
-                                    <input type="text" placeholder="请输入学校名称" class="input-item" v-model="item.SchoolName">
+                                    <input type="text" placeholder="请输入活动名称" class="input-item" v-model="item.ActivityName">
                                 </div>
                             </div>
                             <div class="input-group">
-                                <div class="text">学历</div>
-                                <div class="input-box select-box">
-                                    <div class="content" v-bind:class="{'content-able':item.Education>=10}" v-html="item.Education>=14?'其他':(item.Education>=13?'博士':(item.Education>=12?'硕士':(item.Education>=11?'本科':(item.Education>=10?'大专':'请选择'))))"><!--请选择--></div>
-                                    <select v-model="item.Education" v-on:change="changeEducation">
-                                        <option value="10">大专</option>
-                                        <option value="11">本科</option>
-                                        <option value="12">硕士</option>
-                                        <option value="13">博士</option>
-                                        <option value="14">其他</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <div class="text">专业</div>
-                                <div class="input-box">
-                                    <input type="text" placeholder="请输入专业名称" class="input-item" v-model="item.Major">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <div class="text">毕业时间</div>
+                                <div class="text">活动时间</div>
                                 <div class="input-box button-box">
-                                    <button v-bind:id="'date'+index" v-bind:index="index" v-bind:class="{'date-able':item.EndDate!==undefined&&item.EndDate!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.EndDate!==undefined&&item.EndDate!==''?(item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
+                                    <button v-bind:id="'date'+index" v-bind:index="index" v-bind:class="{'date-able':item.AttendTime!==undefined&&item.AttendTime!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.AttendTime!==undefined&&item.AttendTime!==''?(item.AttendTime.substr(0,4)+'年'+item.AttendTime.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">活动地点</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入活动地点" class="input-item" v-model="item.AddressInfo">
+                                </div>
+                            </div>
+                            <div class="area-group">
+                                <div class="text">活动描述</div>
+                                <div class="area-box">
+                                    <textarea type="text" placeholder="请输入活动描述" class="area-item" v-model="item.Description"></textarea>
                                 </div>
                             </div>
                             <div class="edit-box clearbox">
-                                <div class="btn-resume-delete" v-on:click="deleteBackground(index)">删除</div>
-                                <div class="btn-resume-save" v-on:click="SaveBackground(index)">保存</div>
+                                <div class="btn-resume-delete" v-on:click="deleteActivity(index)">删除</div>
+                                <div class="btn-resume-save" v-on:click="saveActivity(index)">保存</div>
                             </div>
                             
                         </li>
@@ -95,7 +88,7 @@
             </section>
             
             <section class="add-container">
-                <div class="btn-resume-add" v-on:click="addBackground">添加教育经历</div>
+                <div class="btn-resume-add" v-on:click="addActivity">添加活动经历</div>
             </section>
         </div>
 
@@ -109,18 +102,17 @@
             isLogin = false;
         }
 
-	    var EducationBackround =([{"ID":36,"ResumeID":31,"SchoolName":"宾夕法尼亚大学","Education":13,"Major":"计算机科学","BeginDate":"1990-01-01T00:00:00","EndDate":"2019-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:37:09.06","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:09.06"},{"ID":35,"ResumeID":31,"SchoolName":"斯坦福大学","Education":12,"Major":"计算机科学与安全","BeginDate":"1990-01-01T00:00:00","EndDate":"2016-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:35:27.94","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:25.377"},{"ID":34,"ResumeID":31,"SchoolName":"麻省理工学院","Education":11,"Major":"计算机科学与技术","BeginDate":"1990-01-01T00:00:00","EndDate":"2012-07-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:31:47.287","ModifyUser":100019,"ModifyTime":"2018-06-28T14:37:19.447"}]);
+	    var Activity = [{"ID":17,"ResumeID":31,"ActivityName":"滕讯AI研发实习生","AttendTime":"2018-03-01T00:00:00","AddressID":0,"AddressInfo":"深圳","Description":"《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。","CreatedUser":100019,"CreatedTime":"2018-06-28T14:42:30.263","ModifyUser":100019,"ModifyTime":"2018-06-28T14:42:30.263"},{"ID":16,"ResumeID":31,"ActivityName":"阿里巴巴实习HR助理","AttendTime":"2017-03-01T00:00:00","AddressID":0,"AddressInfo":"杭州","Description":"《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。","CreatedUser":100019,"CreatedTime":"2018-06-28T14:26:51.613","ModifyUser":100019,"ModifyTime":"2018-06-28T14:26:51.613"}];
         var addObj={
-            "SchoolName":"",
-            "Education":0,
-            "Major":"",
-            "BeginDate":"",
-            "EndDate":"",
+            "ActivityName":"",
+            "AddressInfo":"",
+            "Description":"",
+            "AttendTime":"",
         }
     </script>
     <script src="../../Scripts/lib/FJL.min.js"></script>
     <script src="../../Scripts/lib/FJL.picker.min.js"></script>
-    <script src="../../Scripts/js/m_BackgroundEdit.js?v=20180628"></script>
+    <script src="../../Scripts/js/m_ActivityEdit.js?v=20180628"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ var app = new Vue({
         loginKey: isLogin,
 
         //教育背景
-        backgroundList:EducationBackround,
+        practiceList:InternshipExperience,
     },
     computed:{
         
@@ -17,14 +17,14 @@ var app = new Vue({
         
     },
     methods: {
-        changeEducation:function(){
+        changePractice:function(){
 
         },
-        addBackground:function(){
-            app.backgroundList.push(addObj);
+        addPractice:function(){
+            app.practiceList.push(addObj);
         },
-        deleteBackground:function(index){
-            app.backgroundList.splice(index,1);
+        deletePractice:function(index){
+            app.practiceList.splice(index,1);
         }
     }
 });
@@ -47,6 +47,7 @@ $(function(){
                 var options = JSON.parse(optionsJson);
                 var id = this.getAttribute('id');
                 var index=this.getAttribute('index');
+                var status=this.getAttribute('title');
 
                 /*
                 * 首次显示时实例化组件
@@ -64,7 +65,8 @@ $(function(){
                     */
                     _self.innerText = rs.y.text+'年'+rs.m.text+'月';
                     //修改列表日期
-                    app.backgroundList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    if(status==="begin") app.practiceList[index].BeginDate=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    if(status==="end") app.practiceList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
 
                     /*
                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/lib/FJL.css">
+    <link rel="stylesheet" href="../../Content/lib/FJL.picker.css">
+    <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
+    <link rel="stylesheet" href="../../Content/css/m_AwardEdit.css?v=20180702">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="m_Index.html" class="top-back"></a>
+            <div class="top-title">编辑所获荣誉</div>
+            <!-- <div class="top-save-btn">保存</div> -->
+        </header>
+        <div id="panel" class="wrapper">
+            <section class="edit-module">
+                <div class="edit-wrapper">
+                    <ul class="edit-list">
+                        <li class="edit-item" v-for="(item,index) in awardList" v-bind:key="index" v-bind:index="index">
+                            <div class="input-group">
+                                <div class="text">荣誉名称</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入荣誉名称" class="input-item" v-model="item.HonorName">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">获取时间</div>
+                                <div class="input-box button-box">
+                                    <button v-bind:id="'date'+index" v-bind:index="index" v-bind:class="{'date-able':item.GetTime!==undefined&&item.GetTime!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.GetTime!==undefined&&item.GetTime!==''?(item.GetTime.substr(0,4)+'年'+item.GetTime.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
+                                </div>
+                            </div>
+                            <div class="edit-box clearbox">
+                                <div class="btn-resume-delete" v-on:click="deleteAward(index)">删除</div>
+                                <div class="btn-resume-save" v-on:click="SaveAward(index)">保存</div>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="add-container">
+                <div class="btn-resume-add" v-on:click="addAward">添加所获荣誉</div>
+            </section>
+        </div>
+
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var Award = [{"ID":19,"ResumeID":31,"HonorName":"全国计算机6级等级","GetTime":"2013-04-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:38:16.737","ModifyUser":100019,"ModifyTime":"2018-07-02T14:34:40.017"},{"ID":20,"ResumeID":31,"HonorName":"英语CET-6","GetTime":"2015-03-01T00:00:00","CreatedUser":100019,"CreatedTime":"2018-06-28T14:38:38.027","ModifyUser":100019,"ModifyTime":"2018-06-28T14:38:38.027"}];
+        var addObj={
+            "HonorName":"",
+            "GetTime":"",
+        }
+    </script>
+    <script src="../../Scripts/lib/FJL.min.js"></script>
+    <script src="../../Scripts/lib/FJL.picker.min.js"></script>
+    <script src="../../Scripts/js/m_AwardEdit.js?v=20180702"></script>
+
+</body>
+</html>

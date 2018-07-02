@@ -72,6 +72,13 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group{
     height:42px;
 }
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group{
+    display:block;
+    position:relative;
+    width:100%;
+    padding:0 15px;
+}
+
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group:before{
     content:"";
     position:absolute;
@@ -94,11 +101,41 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .text{
     color:#333;
 }
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .text{
+    width:100%;
+    height:42px;
+    line-height:42px;
+    text-align:left;
+    font-size:12px;
+    color:#333;
+}
+
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .input-box{
     float:right;
     position:relative;
-    width:calc(100% - 60px);
+    width:calc(100% - 70px);
     height:40px;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-box{
+    position:relative;
+    width:100%;
+    padding:5px 0;
+    background:#f6f6f6;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-box:before{
+    /* content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:10;
+    width:100%;
+    height:0;
+    border-top:1px solid #e1e1e1;
+
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5); */
 }
 
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box{
@@ -151,6 +188,49 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .input-
     text-align:right;
     font-size:12px;
     color:#333;
+
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-box textarea.area-item{
+    display:block;
+    margin:0;
+    padding:5px 10px;
+    width:100%;
+    height:80px;
+    line-height: 20px;
+    text-align:left;
+    font-size: 12px;
+    vertical-align: top;
+    background-color: transparent;
+    border: none;
+    color:#333;
+    resize: none;
+    outline:0;
+    background:#f6f6f6;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+textarea::-webkit-scrollbar
+{
+	background-color: #f6f6f6;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-box div.area-div{
+    display:block;
+    margin:0;
+    padding:5px 10px;
+    width:100%;
+    min-height:80px;
+    line-height: 20px;
+    font-size: 12px;
+    vertical-align: top;
+    text-align:left;
+    background-color: transparent;
+    border: none;
+    color:#333;
+    resize: none;
+    outline:0;
+    background:#f6f6f6;
 }
 
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box .content{
@@ -165,7 +245,8 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select
     color:#a7a7a7;
 }
 
-section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box .content-active{
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .select-box .content-able{
     color:#333;
 }
 
@@ -202,12 +283,41 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button
     border:0;
 }
 
-section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box button.active{
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .button-box button.date-able{
     color:#333;
 }
 
-section.edit-module .edit-wrapper ul.edit-list li.edit-item .btn-resume-delete{
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .edit-box{
+    position:relative;
     width:100%;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .edit-box .btn-resume-delete{
+    position:relative;
+    float:left;
+    width:50%;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    text-align:center;
+    color:#ee5c54;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .edit-box .btn-resume-delete:before{
+    position:absolute;
+    top:12px;
+    right:0;
+    z-index:10;
+    content:'';
+    width:0;
+    height:16px;
+    border-left:1px solid #c3c3c3;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .edit-box .btn-resume-save{
+    position:relative;
+    float:right;
+    width:50%;
     height:40px;
     line-height:40px;
     font-size:14px;
@@ -221,7 +331,6 @@ section.add-container{
     padding-bottom:40px;
     width:100%;
     background:#f3f5f7;
-    
 }
 
 section.add-container .btn-resume-add{

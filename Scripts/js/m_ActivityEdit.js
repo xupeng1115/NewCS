@@ -5,7 +5,7 @@ var app = new Vue({
         loginKey: isLogin,
 
         //教育背景
-        backgroundList:EducationBackround,
+        activityList:Activity,
     },
     computed:{
         
@@ -17,14 +17,14 @@ var app = new Vue({
         
     },
     methods: {
-        changeEducation:function(){
+        changeActivity:function(){
 
         },
-        addBackground:function(){
-            app.backgroundList.push(addObj);
+        addActivity:function(){
+            app.activityList.push(addObj);
         },
-        deleteBackground:function(index){
-            app.backgroundList.splice(index,1);
+        deleteActivity:function(index){
+            app.activityList.splice(index,1);
         }
     }
 });
@@ -64,7 +64,7 @@ $(function(){
                     */
                     _self.innerText = rs.y.text+'年'+rs.m.text+'月';
                     //修改列表日期
-                    app.backgroundList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    app.activityList[index].AttendTime=rs.y.text+'-'+rs.m.text+'-'+'01';
 
                     /*
                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。

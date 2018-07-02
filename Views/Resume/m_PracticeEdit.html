@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/lib/FJL.css">
+    <link rel="stylesheet" href="../../Content/lib/FJL.picker.css">
+    <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
+    <link rel="stylesheet" href="../../Content/css/m_PracticeEdit.css?v=20180702">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="m_Index.html" class="top-back"></a>
+            <div class="top-title">编辑实习经历</div>
+            <!-- <div class="top-save-btn">保存</div> -->
+        </header>
+        <div id="panel" class="wrapper">
+            <section class="edit-module">
+                <div class="edit-wrapper">
+                    <ul class="edit-list">
+                        <li class="edit-item" v-for="(item,index) in practiceList" v-bind:key="index" v-bind:index="index">
+                            <div class="input-group">
+                                <div class="text">公司名称</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入公司名称" class="input-item" v-model="item.CompanyName">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">职位名称</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入职位名称" class="input-item" v-model="item.PositionName">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">实习地点</div>
+                                <div class="input-box">
+                                    <input type="text" placeholder="请输入实习地点" class="input-item" v-model="item.AddressInfo">
+                                </div>
+                            </div>
+                            <div class="area-group">
+                                <div class="text">实习描述</div>
+                                <div class="area-box">
+                                    <textarea type="text" placeholder="请输入实习描述" class="area-item" v-model="item.JobDescription"></textarea>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">实习开始时间</div>
+                                <div class="input-box button-box">
+                                    <button v-bind:id="'date'+index" title="begin" v-bind:index="index" v-bind:class="{'date-able':item.BeginDate!==undefined&&item.BeginDate!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.BeginDate!==undefined&&item.BeginDate!==''?(item.BeginDate.substr(0,4)+'年'+item.BeginDate.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="text">实习结束时间</div>
+                                <div class="input-box button-box">
+                                    <button v-bind:id="'date'+index" title="end" v-bind:index="index" v-bind:class="{'date-able':item.EndDate!==undefined&&item.EndDate!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.EndDate!==undefined&&item.EndDate!==''?(item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
+                                </div>
+                            </div>
+                            <div class="edit-box clearbox">
+                                <div class="btn-resume-delete" v-on:click="deletePractice(index)">删除</div>
+                                <div class="btn-resume-save" v-on:click="SavePractice(index)">保存</div>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="add-container">
+                <div class="btn-resume-add" v-on:click="addPractice">添加教育经历</div>
+            </section>
+        </div>
+
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var InternshipExperience = [{"ID":16,"CompanyLogo":"/CompanyLogo/m_list_logo31530196063134.png","ResumeID":31,"CompanyName":"apple股份有限公司","AddressInfo":"美国加利福&#23612;亚州旧金山","PositionName":"java开发工程师","BeginDate":"2017-10-01T00:00:00","EndDate":"2018-06-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:29:51.267","ModifyUser":100019,"ModifyTime":"2018-06-28T14:29:51.267"},{"ID":17,"CompanyLogo":"/CompanyLogo/m_list_logo41530196735894.png","ResumeID":31,"CompanyName":"Microsoft股份有限公司","AddressInfo":"美国洛杉矶","PositionName":".net开发工程师","BeginDate":"2016-10-01T00:00:00","EndDate":"2017-05-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:40:03.843","ModifyUser":100019,"ModifyTime":"2018-06-28T14:40:03.843"}];
+        var addObj={
+            "CompanyLogo":"",
+            "CompanyName":"",
+            "AddressInfo":"",
+            "PositionName":"",
+            "JobDescription":"",
+            "BeginDate":"",
+            "EndDate":"",
+        }
+    </script>
+    <script src="../../Scripts/lib/FJL.min.js"></script>
+    <script src="../../Scripts/lib/FJL.picker.min.js"></script>
+    <script src="../../Scripts/js/m_PracticeEdit.js?v=20180702"></script>
+
+</body>
+</html>

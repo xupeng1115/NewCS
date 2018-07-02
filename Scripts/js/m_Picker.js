@@ -1,33 +1,8 @@
-var app = new Vue({
-    el: "#app",
-    data: {
-        //是否登录
-        loginKey: isLogin,
-
-        //教育背景
-        backgroundList:EducationBackround,
-    },
-    computed:{
+(function(obj){
+    obj.dateChange=function(){
         
-    },
-    watch:{
-        
-    },
-    updated: function () {
-        
-    },
-    methods: {
-        changeEducation:function(){
-
-        },
-        addBackground:function(){
-            app.backgroundList.push(addObj);
-        },
-        deleteBackground:function(index){
-            app.backgroundList.splice(index,1);
-        }
-    }
-});
+    };
+}(window.dateEvent={}));
 
 $(function(){
 
@@ -64,7 +39,8 @@ $(function(){
                     */
                     _self.innerText = rs.y.text+'年'+rs.m.text+'月';
                     //修改列表日期
-                    app.backgroundList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    dateObj=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    // app.awardList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
 
                     /*
                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
@@ -74,16 +50,8 @@ $(function(){
                 });
             }
         })
-    })(mui);
+    })(mui,dateObj);
 
 });
-
-
-//公司logo没有成功加载出来时处理
-function nofind() {
-    var oImg = event.srcElement;
-    oImg.src = "../../Content/m_img/m_empty.png";
-    oImg.onerror = null;
-}
 
 

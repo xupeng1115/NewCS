@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+
+    <title></title>
+	
+    <link rel="stylesheet" href="../../Content/css/m_Base.css">
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../../Content/lib/animate.css">
+    <link rel="stylesheet" href="../../Content/lib/toast.css">
+    <link rel="stylesheet" href="../../Content/css/m_Template.css">
+
+    <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
+    <link rel="stylesheet" href="../../Content/css/m_EvaluationEdit.css?v=20180702">
+    
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/toast.js"></script>
+    <script src="../../Scripts/lib/fastclick.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+    <script src="../../Scripts/js/m_Template.js"></script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/lib/babel.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="top">
+            <a href="m_Index.html" class="top-back"></a>
+            <div class="top-title">编辑自我评价</div>
+            <!-- <div class="top-save-btn">保存</div> -->
+        </header>
+        <div id="panel" class="wrapper">
+            <section class="edit-module">
+                <div class="edit-wrapper">
+                    <ul class="edit-list">
+                        <li class="edit-item">
+                            <div class="area-group">
+                                <div class="text">自我评价</div>
+                                <div class="area-box">
+                                    <div class="area-div" contenteditable="true" autofocus v-html="resumeContent.Content"  placeholeder="请输入自我评价"><!--自我评价--></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="add-container">
+                <div class="btn-resume-add" v-on:click="saveEvaluation">保存</div>
+            </section>
+        </div>
+
+    </div>
+    <script>
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+
+	    var ResumeContent = ({"ResumeID":31,"Content":"\r\n<pre style=\"white-space:pre-wrap; font-family:&quot;Helvetica Neue&quot;,&quot;PingFang SC&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft Yahei&quot;,sans-serif; font-size:12px; margin-bottom:0px; padding:0px; border-width:initial; border-style:none; border-color:initial; line-height:20px; vertical-align:baseline; color:rgb(109,109,109); background-color:rgb(255,255,255)\">本人性&#26684;开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。 \n\n对待工作认真负责，善于沟通、协调有较强的组织能力与团队精神；活泼开朗、乐观上进、有爱心并善于施教并行；上进心强、勤于学习能不断提高自身的能力与综合素质。在未来的工作中，我将以充沛的精力，刻苦钻研的精神来努力工作，稳定地提高自己的工作能力，与企业同步发展。 \n\n思想上积极要求上进，团结同学，尊敬师长，乐于助人，能吃苦耐劳，为人诚恳老实，性&#26684;开朗善于与人交际，工作上有较强的组织管理和动手能力，集体观念强，具有团队协作精神，创新意识。</pre>\r\n"});
+    </script>
+    <script src="../../Scripts/js/m_EvaluationEdit.js?v=20180628"></script>
+
+</body>
+</html>

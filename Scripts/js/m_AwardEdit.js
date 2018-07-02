@@ -5,7 +5,7 @@ var app = new Vue({
         loginKey: isLogin,
 
         //教育背景
-        backgroundList:EducationBackround,
+        awardList:Award,
     },
     computed:{
         
@@ -20,11 +20,11 @@ var app = new Vue({
         changeEducation:function(){
 
         },
-        addBackground:function(){
-            app.backgroundList.push(addObj);
+        addAward:function(){
+            app.awardList.push(addObj);
         },
-        deleteBackground:function(index){
-            app.backgroundList.splice(index,1);
+        deleteAward:function(index){
+            app.awardList.splice(index,1);
         }
     }
 });
@@ -64,7 +64,7 @@ $(function(){
                     */
                     _self.innerText = rs.y.text+'年'+rs.m.text+'月';
                     //修改列表日期
-                    app.backgroundList[index].EndDate=rs.y.text+'-'+rs.m.text+'-'+'01';
+                    app.awardList[index].GetTime=rs.y.text+'-'+rs.m.text+'-'+'01';
 
                     /*
                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
@@ -77,7 +77,6 @@ $(function(){
     })(mui);
 
 });
-
 
 //公司logo没有成功加载出来时处理
 function nofind() {
