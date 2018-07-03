@@ -241,23 +241,23 @@ section.background .background-wrapper ul.background-list li.background-item .da
     color:#b0b0b0;
 }
 
-/******************************Honor**********************************/
-section.honor .honor-wrapper ul.honor-list{
+/******************************award**********************************/
+section.award .award-wrapper ul.award-list{
     position:relative;
 }
 
-section.honor .honor-wrapper ul.honor-list li.honor-item{
+section.award .award-wrapper ul.award-list li.award-item{
     position:relative;
     width:100%;
     padding-bottom:10px;
     line-height:20px;
 }
 
-section.honor .honor-wrapper ul.honor-list li.honor-item:last-child{
+section.award .award-wrapper ul.award-list li.award-item:last-child{
     padding-bottom:0;
 }
 
-section.honor .honor-wrapper ul.honor-list li.honor-item .name{
+section.award .award-wrapper ul.award-list li.award-item .name{
     max-width:calc(100% - 60px);
     font-size:14px;
     color:#333;
@@ -265,7 +265,7 @@ section.honor .honor-wrapper ul.honor-list li.honor-item .name{
     text-align:left;
 }
 
-section.honor .honor-wrapper ul.honor-list li.honor-item .date-box{
+section.award .award-wrapper ul.award-list li.award-item .date-box{
     position:absolute;
     top:2px;
     right:0;
@@ -494,6 +494,10 @@ section.activity .activity-wrapper ul.activity-list li.activity-item .dec{
 }
 
 /*****************************Evaluation**************************/
+section.evaluation{
+    padding-bottom:40px;
+}
+
 section.evaluation .evaluation-wrapper .dec{
     position:relative;
     width:100%;

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="../../Content/lib/toast.css">
     <link rel="stylesheet" href="../../Content/css/m_Template.css">
 
-    <link rel="stylesheet" href="../../Content/css/m_Resume.css?v=20180613">
+    <link rel="stylesheet" href="../../Content/css/m_UserInfoEdit.css?v=20180703">
     
     <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
     <script src="../../Scripts/lib/vue.min.js"></script>
@@ -41,26 +41,16 @@
 <body>
     <div class="container" id="app">
         <header class="top">
-            <div class="top-search-btn"></div>
-            <div class="top-title">我的后台管理</div>
-            <a href="/Home/m_User" class="top-user" style="display:none;" v-show="!loginKey"><i class="material-icons">perm_identity</i></a>
-            <a href="/Home/m_User" class="top-login" style="display:none;" v-show="loginKey"><img src="../../Content/m_img/m_user_default.png" class="top-login-img" /></a>
-            <div class="top-menu" v-on:click="menuHandle" v-bind:class="{'menu-rotate':menuKey}"><i class="material-icons">menu</i></div>
+            <a href="m_Index.html" class="top-back"></a>
+            <div class="top-title">编辑个人信息</div>
         </header>
         <div id="panel" class="wrapper">
 
-            <section class="backage-nav-container">
-                <a href="/my/MyCollection" class="nav-item">我的收藏</a>
-                <a href="/my/MyJob" class="nav-item ">我的投递</a>
-                <a href="/Resume/Index" class="nav-item">我的简历</a>
-                <a href="/my/MyAssessment" class="nav-item">我的测评</a>
-                <a href="/my/MyOrder" class="nav-item nav-active-item">我的订单</a>
-            </section>
             <section class="resume-container">
                 <div class="input-wrapper picture">
                     <div class="text">更换头像</div>
                     <div class="file-box">
-                        <img class="head-img" v-bind:src="userInfo.PicturePath===''?'../../Content/m_img/head.png':userInfo.PicturePath" onerror="nofind();" v-on:click="headClick"/>
+                        <img class="head-img" v-bind:src="userInfo.PicturePath===''?'../../Content/m_img/m_empty.png':userInfo.PicturePath" onerror="nofind();" v-on:click="headClick"/>
                         <input id="PictureFile" name="file" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" type="file" class="upload-head"/>
                     </div>
                 </div>
@@ -116,21 +106,6 @@
             
         </div>
 
-        <aside id="menu" class="slider-container">
-            <div class="slider-wrapper">
-                <div class="slider-tip">
-                    <div class="tip-text">求职小助手</div>
-                    <div class="tip-num">+86 400 123 4567</div>
-                </div>
-                <ul class="slider-box">
-                    <li class="slider-item"><a href="/Assessment/m_Welcome">职位性格</a></li>
-                    <li class="slider-item"><a href="/Job/List">我的职位</a></li>
-                    <li class="slider-item"><a href="/Home/Serve">服务产品</a></li>
-                    <li class="slider-item"><a href="/Home/About">关于我们</a></li>
-                </ul>
-                <div class="btn-exit" style="display:none;" v-show="loginKey">安全退出</div>
-            </div>
-        </aside>
     </div>
     <script>
         //注册登陆key值
@@ -147,9 +122,7 @@
         var IsAssessment = '';
 
     </script>
-    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
-    <script src="../../Scripts/lib/slideout.min.js"></script>
-    <script src="../../Scripts/js/m_Resume.js?v=20180613"></script>
+    <script src="../../Scripts/js/m_UserInfoEdit.js?v=20180703"></script>
 
 </body>
 </html>

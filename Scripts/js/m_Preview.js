@@ -18,7 +18,7 @@ var app = new Vue({
         //教育背景
         backgroundList:EducationBackround,
         //所获荣誉
-        honorList:Award,
+        awardList:Award,
         //实习经历
         practiceList:InternshipExperience,
         //语言技能

@@ -21,7 +21,13 @@ var app = new Vue({
 
         },
         addBackground:function(){
-            app.backgroundList.push(addObj);
+            app.backgroundList.push({
+                "SchoolName":"",
+                "Education":0,
+                "Major":"",
+                "BeginDate":"",
+                "EndDate":"",
+            });
         },
         deleteBackground:function(index){
             app.backgroundList.splice(index,1);

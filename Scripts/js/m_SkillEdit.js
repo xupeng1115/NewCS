@@ -21,7 +21,11 @@ var app = new Vue({
 
         },
         addSkill:function(){
-            app.skillList.push(addObj);
+            app.skillList.push({
+                "SepciltyName":"",
+                "Skilled":"",
+                "SkillDescription":""
+            });
         },
         deleteSkill:function(index){
             app.skillList.splice(index,1);

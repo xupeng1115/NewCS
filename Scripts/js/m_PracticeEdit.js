@@ -21,7 +21,15 @@ var app = new Vue({
 
         },
         addPractice:function(){
-            app.practiceList.push(addObj);
+            app.practiceList.push({
+                "CompanyLogo":"",
+                "CompanyName":"",
+                "AddressInfo":"",
+                "PositionName":"",
+                "JobDescription":"",
+                "BeginDate":"",
+                "EndDate":"",
+            });
         },
         deletePractice:function(index){
             app.practiceList.splice(index,1);

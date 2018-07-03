@@ -21,7 +21,12 @@ var app = new Vue({
 
         },
         addActivity:function(){
-            app.activityList.push(addObj);
+            app.activityList.push({
+                "ActivityName":"",
+                "AddressInfo":"",
+                "Description":"",
+                "AttendTime":"",
+            });
         },
         deleteActivity:function(index){
             app.activityList.splice(index,1);

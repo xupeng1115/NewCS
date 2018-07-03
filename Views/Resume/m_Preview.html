@@ -104,11 +104,11 @@
                 </div>
             </section>
 
-            <section class="module honor">
+            <section class="module award">
                 <div class="module-title">所获荣誉</div>
-                <div class="wrapper honor-wrapper">
-                    <ul class="honor-list">
-                        <li class="honor-item" v-for="(item,index) in honorList" v-bind:key="index" v-bind:index="index">
+                <div class="wrapper award-wrapper">
+                    <ul class="award-list">
+                        <li class="award-item" v-for="(item,index) in awardList" v-bind:key="index" v-bind:index="index">
                             <div class="name" v-html="item.HonorName"><!--三好学生--></div>
                             <div class="date-box">
                                 <span class="begin-year" v-html="item.GetTime!==undefined?(item.GetTime.substr(0,4)+'年'):'XXXX年'"><!--2014年--></span>

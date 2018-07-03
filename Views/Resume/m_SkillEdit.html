@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="../../Content/lib/toast.css">
     <link rel="stylesheet" href="../../Content/css/m_Template.css">
 
+    <link rel="stylesheet" href="../../Content/lib/FJL.css">
     <link rel="stylesheet" href="../../Content/css/m_ResumeEdit.css">
     <link rel="stylesheet" href="../../Content/css/m_SkillEdit.css?v=20180702">
     
@@ -38,13 +39,55 @@
     <script src="../../Scripts/js/m_Template.js"></script>
     <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
     <script src="../../Scripts/lib/babel.min.js"></script>
+
+    <style>
+        /* 滑块重置样式 */
+        .mui-input-row.mui-input-range {
+            padding-right:0;
+        }
+
+        .mui-input-row label {
+            line-height:40px;
+            float: right;
+            width:40px;
+            font-size:12px;
+            color:#333;
+            text-align:right;
+            padding:0;
+        }
+
+        .mui-input-range input[type=range] {
+            margin: 18px 0;
+        }
+
+        .mui-input-range input[type=range]::-webkit-slider-thumb {
+            width: 24px;
+            height: 24px;
+            border-color: #ffbf00;
+            background-color: #ffbf00;
+        }
+
+        .mui-input-range label~input[type=range] {
+            width: 80%;
+        }
+
+        .mui-input-range .mui-tooltip {
+            display:none;
+            font-size: 20px;
+            line-height: 30px;
+            top: -45px;
+            width: 50px;
+            height: 30px;
+            border-radius: 3px;
+        }
+
+    </style>
 </head>
 <body>
     <div class="container" id="app">
         <header class="top">
             <a href="m_Index.html" class="top-back"></a>
             <div class="top-title">编辑语言技能</div>
-            <!-- <div class="top-save-btn">保存</div> -->
         </header>
         <div id="panel" class="wrapper">
             <section class="edit-module">
@@ -53,26 +96,23 @@
                         <li class="edit-item" v-for="(item,index) in skillList" v-bind:key="index" v-bind:index="index">
                             <div class="input-group">
                                 <div class="text">语言/技能名称</div>
-                                <div class="input-box">
+                                <div class="input-box" style="width:calc(100% - 100px);">
                                     <input type="text" placeholder="请输入名称" class="input-item" v-model="item.SepciltyName">
                                 </div>
                             </div>
                             <div class="input-group">
                                 <div class="text">熟练度描述</div>
-                                <div class="input-box">
+                                <div class="input-box" style="width:calc(100% - 100px);">
                                     <input type="text" placeholder="请输入描述" class="input-item" v-model="item.SkillDescription">
                                 </div>
                             </div>
                             <div class="input-group">
-                                <div class="text">学历</div>
-                                <div class="input-box select-box">
-                                    <div class="content" v-bind:class="{'content-able':item.Skilled!==''}" v-html="item.Skilled>=350?'精通':(item.Skilled>=300?'熟练':(item.Skilled>=200?'良好':(item.Skilled>=0&&item.Skilled!==''?'一般':'请选择')))"><!--请选择--></div>
-                                    <select v-model="item.Skilled" v-on:change="changeSkill">
-                                        <option value="199">一般</option>
-                                        <option value="299">良好</option>
-                                        <option value="349">熟练</option>
-                                        <option value="375">精通</option>
-                                    </select>
+                                <div class="text">熟练度选择</div>
+                                <div class="input-box" style="width:calc(100% - 100px);padding-right:15px;">
+                                    <div class="mui-input-row mui-input-range">
+                                        <label v-html="item.Skilled>=350?'精通':(item.Skilled>=300?'熟练':(item.Skilled>=200?'良好':(item.Skilled>=0&&item.Skilled!==''?'一般':'请选择')))"><!--Range--></label>
+                                        <input type="range" min="0" max="400" v-model="item.Skilled">
+                                    </div>
                                 </div>
                             </div>
                             <div class="edit-box clearbox">
@@ -107,6 +147,7 @@
             "SkillDescription":""
         }
     </script>
+    <script src="../../Scripts/lib/FJL.min.js"></script>
     <script src="../../Scripts/js/m_SkillEdit.js?v=20180702"></script>
 
 </body>

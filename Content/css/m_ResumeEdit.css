@@ -11,6 +11,11 @@ html,body{
     overflow-y:scroll;
 }
 
+.container .wrapper{
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
 section{
     z-index:auto;
 }
@@ -77,9 +82,42 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group{
     position:relative;
     width:100%;
     padding:0 15px;
+    padding-bottom:15px;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group{
+    position:relative;
+    width:100%;
+    height:65px;
 }
 
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0;
+    border-top:1px solid #e1e1e1;
+    
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0;
+    border-top:1px solid #e1e1e1;
+    
+    transform:scaleY(0.5);
+    -webkit-transform:scaleY(0.5);
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group:before{
     content:"";
     position:absolute;
     bottom:0;
@@ -110,6 +148,15 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .text{
     color:#333;
 }
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group .text{
+    float:left;
+    padding-left:15px;
+    height:100%;
+    line-height:65px;
+    font-size:12px;
+    color:#333;
+}
+
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .input-group .input-box{
     float:right;
     position:relative;
@@ -124,9 +171,59 @@ section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-bo
     background:#f6f6f6;
 }
 
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group .file-box{
+    float:right;
+    position:relative;
+    margin-top:15px;
+    margin-right:15px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group .file-box img.file-img{
+    display:block;
+    width:36px;
+    border-radius:50%;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group .file-box input.file-item{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: none;
+    background: #fff;
+    opacity: 0;
+    cursor: pointer;
+}
+
+section.edit-module .edit-wrapper ul.edit-list li.edit-item .file-group .file-box .file-flo{
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:10;
+	width:40px;
+	height:40px;
+	border-radius:100%;
+	line-height:100px;
+	text-align:center;
+	font-size:16px;
+	color:#fff;
+	background:rgba(0,0,0,0.5);
+}
+
 section.edit-module .edit-wrapper ul.edit-list li.edit-item .area-group .area-box:before{
-    /* content:"";
-    position:absolute;
+    content:"";
+    /* position:absolute;
     top:0;
     left:0;
     z-index:10;
@@ -350,8 +447,6 @@ section.add-container .btn-resume-add{
 .mui-dtpicker-header {
     text-align: left;
 }
-
-
 
 /*******************************************Media Query******************************************/
 @media (max-device-width: 800px) and (orientation:landscape){

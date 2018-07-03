@@ -17,11 +17,14 @@ var app = new Vue({
         
     },
     methods: {
-        changeEducation:function(){
+        changeAward:function(){
 
         },
         addAward:function(){
-            app.awardList.push(addObj);
+            app.awardList.push({
+                "HonorName":"",
+                "GetTime":"",
+            });
         },
         deleteAward:function(index){
             app.awardList.splice(index,1);

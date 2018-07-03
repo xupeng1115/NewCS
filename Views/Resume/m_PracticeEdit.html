@@ -53,6 +53,14 @@
                 <div class="edit-wrapper">
                     <ul class="edit-list">
                         <li class="edit-item" v-for="(item,index) in practiceList" v-bind:key="index" v-bind:index="index">
+                            <div class="file-group">
+                                <div class="text">公司logo</div>
+                                <div class="file-box">
+                                    <img src="../../Content/m_img/m_empty.png" class="file-img">
+                                    <input type="file" class="file-item" name="file" accept=".jpg,.jpeg,.png,.bmp">
+                                    <span class="file-flo"></span>
+                                </div>
+                            </div>
                             <div class="input-group">
                                 <div class="text">公司名称</div>
                                 <div class="input-box">
@@ -79,13 +87,13 @@
                             </div>
                             <div class="input-group">
                                 <div class="text">实习开始时间</div>
-                                <div class="input-box button-box">
+                                <div class="input-box button-box" style="width:calc(100% - 100px);">
                                     <button v-bind:id="'date'+index" title="begin" v-bind:index="index" v-bind:class="{'date-able':item.BeginDate!==undefined&&item.BeginDate!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.BeginDate!==undefined&&item.BeginDate!==''?(item.BeginDate.substr(0,4)+'年'+item.BeginDate.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <div class="text">实习结束时间</div>
-                                <div class="input-box button-box">
+                                <div class="input-box button-box" style="width:calc(100% - 100px);">
                                     <button v-bind:id="'date'+index" title="end" v-bind:index="index" v-bind:class="{'date-able':item.EndDate!==undefined&&item.EndDate!==''}" data-options='{"type":"month","beginYear":2010,"endYear":2030}' class="btn-date mui-btn mui-btn-block" v-text="item.EndDate!==undefined&&item.EndDate!==''?(item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'):'请选择'"><!--请选择--></button>
                                 </div>
                             </div>
@@ -115,15 +123,7 @@
         }
 
 	    var InternshipExperience = [{"ID":16,"CompanyLogo":"/CompanyLogo/m_list_logo31530196063134.png","ResumeID":31,"CompanyName":"apple股份有限公司","AddressInfo":"美国加利福&#23612;亚州旧金山","PositionName":"java开发工程师","BeginDate":"2017-10-01T00:00:00","EndDate":"2018-06-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:29:51.267","ModifyUser":100019,"ModifyTime":"2018-06-28T14:29:51.267"},{"ID":17,"CompanyLogo":"/CompanyLogo/m_list_logo41530196735894.png","ResumeID":31,"CompanyName":"Microsoft股份有限公司","AddressInfo":"美国洛杉矶","PositionName":".net开发工程师","BeginDate":"2016-10-01T00:00:00","EndDate":"2017-05-01T00:00:00","JobDescription":"1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；<br>\r\n2、建立、维护人事档案，办理和更新劳动合同；<br>\r\n3、收集相关的劳动用工等人事政策及法规；<br>\r\n4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；","CreatedUser":100019,"CreatedTime":"2018-06-28T14:40:03.843","ModifyUser":100019,"ModifyTime":"2018-06-28T14:40:03.843"}];
-        var addObj={
-            "CompanyLogo":"",
-            "CompanyName":"",
-            "AddressInfo":"",
-            "PositionName":"",
-            "JobDescription":"",
-            "BeginDate":"",
-            "EndDate":"",
-        }
+
     </script>
     <script src="../../Scripts/lib/FJL.min.js"></script>
     <script src="../../Scripts/lib/FJL.picker.min.js"></script>
